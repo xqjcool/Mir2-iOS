@@ -1,0 +1,194 @@
+[
+  {
+    "library": "smtiles",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mir\\data\\smtiles.wzl",
+    "overlap": 217,
+    "equal": 217,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "smtiles",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mirt\\data\\SmTiles.wzl",
+    "overlap": 217,
+    "equal": 217,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "smtiles",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\story of the legend\\Data\\smtiles.wzl",
+    "overlap": 0,
+    "equal": 0,
+    "eligible": false,
+    "availableTargets": []
+  },
+  {
+    "library": "smtiles",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\The return of Legend\\Data\\smtiles.wzl",
+    "overlap": 56,
+    "equal": 56,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "smtiles",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\The sec of Legend\\data\\smtiles.wzl",
+    "overlap": 35,
+    "equal": 35,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "smtiles",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\streaming-resource-repair\\donors\\return-web\\smtiles.wzl",
+    "overlap": 217,
+    "equal": 217,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "smtiles",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\streaming-resource-repair\\donors\\shanda2025\\smtiles.wzl",
+    "overlap": 217,
+    "equal": 217,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "objects6",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mir\\data\\objects6.wzl",
+    "overlap": 4012,
+    "equal": 4012,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "objects6",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mirt\\data\\Objects6.wzl",
+    "overlap": 4046,
+    "equal": 4046,
+    "eligible": true,
+    "availableTargets": [
+      1571,
+      1572,
+      1573,
+      1574,
+      1575,
+      1576,
+      1577,
+      1578,
+      1579,
+      1580,
+      1581,
+      1582,
+      1583,
+      1584,
+      1585,
+      1640,
+      1641,
+      1642,
+      1643,
+      1644,
+      1645,
+      1685,
+      1686,
+      1687,
+      1690,
+      1691,
+      1692,
+      1693,
+      1694,
+      1695,
+      1696,
+      1697,
+      1698,
+      1699,
+      1700,
+      1701,
+      1702,
+      1703,
+      1704,
+      1705,
+      1706,
+      1707,
+      1708,
+      1768,
+      1769,
+      1770,
+      1771
+    ]
+  },
+  {
+    "library": "objects6",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\story of the legend\\Data\\objects6.wzl",
+    "overlap": 0,
+    "equal": 0,
+    "eligible": false,
+    "availableTargets": []
+  },
+  {
+    "library": "objects6",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\The return of Legend\\Data\\objects6.wzl",
+    "overlap": 5,
+    "equal": 5,
+    "eligible": false,
+    "availableTargets": []
+  },
+  {
+    "library": "objects6",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\The sec of Legend\\data\\objects6.wzl",
+    "overlap": 0,
+    "equal": 0,
+    "eligible": false,
+    "availableTargets": []
+  },
+  {
+    "library": "objects",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mir\\data\\objects.wzl",
+    "overlap": 3,
+    "equal": 0,
+    "eligible": false,
+    "availableTargets": []
+  },
+  {
+    "library": "objects",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mirt\\data\\Objects.wzl",
+    "overlap": 8337,
+    "equal": 8337,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "objects",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\story of the legend\\Data\\objects.wzl",
+    "overlap": 0,
+    "equal": 0,
+    "eligible": false,
+    "availableTargets": []
+  },
+  {
+    "library": "objects",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\The return of Legend\\Data\\objects.wzl",
+    "overlap": 1391,
+    "equal": 1362,
+    "eligible": false,
+    "availableTargets": []
+  },
+  {
+    "library": "objects",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\The sec of Legend\\data\\objects.wzl",
+    "overlap": 51,
+    "equal": 51,
+    "eligible": true,
+    "availableTargets": []
+  },
+  {
+    "library": "objects",
+    "donor": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\streaming-resource-repair\\donors\\shanda2025\\objects.wzl",
+    "overlap": 8337,
+    "equal": 8313,
+    "eligible": false,
+    "availableTargets": []
+  }
+]

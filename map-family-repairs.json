@@ -1,0 +1,738 @@
+{
+  "kind": "type0_map_family_missing_only_compatibility",
+  "not_identical_shanda_recovery": true,
+  "mapSHA256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+  "source": "https://mirfiles.com/resources/mir2/crystal/patch/Data/Map/WemadeMir2/SmTiles.Lib",
+  "donorSHA256": "1a6389e666cf0579ed5721dc6f29e2d46d806d17350ff1bfcae857e5dffcc113",
+  "ruleSources": [
+    "https://github.com/Suprcode/Crystal/blob/master/Client/MirObjects/MapCode.cs",
+    "https://github.com/Suprcode/Crystal/blob/master/Client/MirGraphics/MLibrary.cs"
+  ],
+  "rule": "LoadMapType0 -> MiddleIndex 1 -> MapLibs[1] WemadeMir2/Smtiles; preserve nonempty existing images",
+  "indices": [
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    260,
+    261,
+    262,
+    264,
+    265,
+    266,
+    267,
+    268,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    278,
+    279,
+    280,
+    281,
+    287,
+    289,
+    290,
+    292
+  ],
+  "placements": [
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 276,
+      "x": 374,
+      "y": 206,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 249,
+      "x": 375,
+      "y": 206,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 255,
+      "x": 376,
+      "y": 206,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 274,
+      "x": 374,
+      "y": 207,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 240,
+      "x": 375,
+      "y": 207,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 289,
+      "x": 376,
+      "y": 207,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 248,
+      "x": 377,
+      "y": 207,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 252,
+      "x": 378,
+      "y": 207,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 268,
+      "x": 374,
+      "y": 208,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 281,
+      "x": 375,
+      "y": 208,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 244,
+      "x": 376,
+      "y": 208,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 242,
+      "x": 377,
+      "y": 208,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 258,
+      "x": 378,
+      "y": 208,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 270,
+      "x": 375,
+      "y": 209,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 267,
+      "x": 376,
+      "y": 209,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 266,
+      "x": 377,
+      "y": 209,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 262,
+      "x": 378,
+      "y": 209,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 279,
+      "x": 368,
+      "y": 212,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 250,
+      "x": 369,
+      "y": 212,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 248,
+      "x": 370,
+      "y": 212,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 248,
+      "x": 371,
+      "y": 212,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 254,
+      "x": 372,
+      "y": 212,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 279,
+      "x": 366,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 248,
+      "x": 367,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 287,
+      "x": 368,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 243,
+      "x": 369,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 241,
+      "x": 370,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 245,
+      "x": 371,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 290,
+      "x": 372,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 254,
+      "x": 373,
+      "y": 213,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 272,
+      "x": 366,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 240,
+      "x": 367,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 247,
+      "x": 368,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 245,
+      "x": 369,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 242,
+      "x": 370,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 243,
+      "x": 371,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 245,
+      "x": 372,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 257,
+      "x": 373,
+      "y": 214,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 270,
+      "x": 366,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 280,
+      "x": 367,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 242,
+      "x": 368,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 244,
+      "x": 369,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 241,
+      "x": 370,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 292,
+      "x": 371,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 264,
+      "x": 372,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 261,
+      "x": 373,
+      "y": 215,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 274,
+      "x": 367,
+      "y": 216,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 240,
+      "x": 368,
+      "y": 216,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 247,
+      "x": 369,
+      "y": 216,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 244,
+      "x": 370,
+      "y": 216,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 256,
+      "x": 371,
+      "y": 216,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 274,
+      "x": 367,
+      "y": 217,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 244,
+      "x": 368,
+      "y": 217,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 244,
+      "x": 369,
+      "y": 217,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 247,
+      "x": 370,
+      "y": 217,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 257,
+      "x": 371,
+      "y": 217,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 270,
+      "x": 367,
+      "y": 218,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 266,
+      "x": 368,
+      "y": 218,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 266,
+      "x": 369,
+      "y": 218,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 264,
+      "x": 370,
+      "y": 218,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 262,
+      "x": 371,
+      "y": 218,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 278,
+      "x": 354,
+      "y": 224,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 251,
+      "x": 355,
+      "y": 224,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 252,
+      "x": 356,
+      "y": 224,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 275,
+      "x": 354,
+      "y": 225,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 241,
+      "x": 355,
+      "y": 225,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 257,
+      "x": 356,
+      "y": 225,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 273,
+      "x": 354,
+      "y": 226,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 243,
+      "x": 355,
+      "y": 226,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 289,
+      "x": 356,
+      "y": 226,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 250,
+      "x": 357,
+      "y": 226,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 253,
+      "x": 358,
+      "y": 226,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 275,
+      "x": 354,
+      "y": 227,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 246,
+      "x": 355,
+      "y": 227,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 241,
+      "x": 356,
+      "y": 227,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 247,
+      "x": 357,
+      "y": 227,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 256,
+      "x": 358,
+      "y": 227,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 272,
+      "x": 354,
+      "y": 228,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 246,
+      "x": 355,
+      "y": 228,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 292,
+      "x": 356,
+      "y": 228,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 267,
+      "x": 357,
+      "y": 228,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 260,
+      "x": 358,
+      "y": 228,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 271,
+      "x": 354,
+      "y": 229,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 265,
+      "x": 355,
+      "y": 229,
+      "layer": "middle"
+    },
+    {
+      "map": "0.map",
+      "library": "smtiles",
+      "index": 262,
+      "x": 356,
+      "y": 229,
+      "layer": "middle"
+    }
+  ]
+}

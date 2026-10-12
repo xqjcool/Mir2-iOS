@@ -1,0 +1,29 @@
+{
+  "map": "0.map",
+  "crop": [
+    288,
+    96,
+    256,
+    192
+  ],
+  "spawn": {
+    "x": 117,
+    "y": 86
+  },
+  "walkable": 36602,
+  "connected": 33972,
+  "objectPlacements": 3115,
+  "objectTextures": 818,
+  "heroFrames": 80,
+  "specialCells": {
+    "animated": 26,
+    "blend": 28,
+    "doors": 24
+  },
+  "missing": [],
+  "sourceSHA256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+  "autoRouteSteps": 1960,
+  "scope": "256x192 test region, not the complete original map",
+  "legacyPlaceholderPlacements": 2,
+  "animatedBlendPlacements": 26
+}

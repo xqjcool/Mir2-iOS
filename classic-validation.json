@@ -1,0 +1,42 @@
+{
+  "server_tests": {
+    "world": {
+      "passed": true,
+      "birth": [
+        648,
+        630
+      ],
+      "npc_count": 2,
+      "npc_dialogue": [
+        "银杏老兵/欢迎来到比奇。\\村外可以找到鸡、鹿和稻草人，出发前记得做好准备。\\"
+      ]
+    },
+    "chinese_character": {
+      "passed": true,
+      "name": "经典道士",
+      "job": 2,
+      "position": [
+        289,
+        617
+      ],
+      "logon_body_hex": "000101010000000c130c04130c041f00"
+    },
+    "create_rejection": {
+      "passed": true,
+      "duplicate_rejected": true,
+      "full_slots_rejected": true,
+      "existing_character_enters_world": true,
+      "existing_gold": 692
+    }
+  },
+  "asset_references": 5295,
+  "all_exported_references_exist": true,
+  "checked_wire_frames": 43,
+  "swift_fixtures": 5,
+  "swift_tests_executed": false,
+  "xcode_build_executed": false,
+  "device_test_pending": true,
+  "source_empty_map_references_remaining": 48,
+  "npc_scripts": "reconstructed introductory dialogue; full original scripts unavailable",
+  "log_directory": "D:\\OpenMir2Test\\logs\\iphone-20261010-202003"
+}

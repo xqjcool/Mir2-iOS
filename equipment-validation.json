@@ -1,0 +1,10 @@
+{
+  "resourceReferences": 31083,
+  "resourceFilesPresent": true,
+  "serverEquipmentIntegration": "passed",
+  "serverWalkRunIntegration": "passed",
+  "csharpSkillSerialization": "passed",
+  "swiftTests": "not_run_no_toolchain",
+  "xcodeBuild": "not_run_no_mac",
+  "phoneAcceptance": "pending"
+}

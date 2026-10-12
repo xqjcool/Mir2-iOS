@@ -1,0 +1,91 @@
+[
+  {
+    "file": "SmTiles.Lib",
+    "sha256": "3c111f30c1b956be988b1123a35182e969e360334a12b9c51630374828907c0f",
+    "availableTargets": [],
+    "accepted": false
+  },
+  {
+    "file": "old-SmTiles.Lib.gz",
+    "sha256": "e98c950f4e6c166de653d035f8e02f63cf152581009c37edbf4b6273746d3d23",
+    "availableTargets": [],
+    "accepted": false
+  },
+  {
+    "file": "WemadeSmTiles.Lib",
+    "sha256": "1a6389e666cf0579ed5721dc6f29e2d46d806d17350ff1bfcae857e5dffcc113",
+    "availableTargets": [
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      260,
+      261,
+      262,
+      264,
+      265,
+      266,
+      267,
+      268,
+      270,
+      271,
+      272,
+      273,
+      274,
+      275,
+      276,
+      278,
+      279,
+      280,
+      281,
+      287,
+      289,
+      290,
+      292
+    ],
+    "accepted": false,
+    "overlap": 167,
+    "exactPixelAndOffsetMatches": 0,
+    "reason": "same-index contents differ; not accepted as original replacements"
+  },
+  {
+    "file": "crystal-resource-audit\\Objects.Lib",
+    "index": 1159,
+    "status": "empty"
+  },
+  {
+    "file": "extra-resource-search\\wemade-Objects.Lib",
+    "index": 1159,
+    "status": "empty"
+  },
+  {
+    "file": "extra-resource-search\\old-shanda-objects.Lib.gz",
+    "index": 1159,
+    "status": "empty"
+  },
+  {
+    "file": "extra-resource-search\\return-objects.wzl",
+    "index": 1159,
+    "status": "empty"
+  },
+  {
+    "file": "streaming-resource-repair\\donors\\shanda2025\\objects.wzl",
+    "index": 1159,
+    "status": "empty"
+  }
+]

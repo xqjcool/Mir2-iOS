@@ -1,0 +1,26 @@
+.DS_Store
+.build/
+.swiftpm/
+.build-xcode/
+xcuserdata/
+*.xcuserstate
+
+# Local builds, logs, editor files and credentials
+DerivedData/
+build/
+__pycache__/
+*.pyc
+*.log
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.mobileprovision
+*.xcarchive
+*.ipa
+*.zip
+*.xcconfig.local
+test-accounts.json
+db-secrets.json
+root.cnf

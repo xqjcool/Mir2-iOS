@@ -1,0 +1,32 @@
+{
+  "source": "https://mirfiles.com/resources/mir2/clients/wemade/mir14full.exe",
+  "library": "objects",
+  "index": 1159,
+  "kind": "legacy_1x1_record_compatibility",
+  "not_full_bridge_artwork": true,
+  "not_identical_shanda_recovery": true,
+  "originalMapSHA256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+  "placements": [
+    [
+      289,
+      203
+    ],
+    [
+      298,
+      212
+    ]
+  ],
+  "offset": 4090007,
+  "nextOffset": 4090016,
+  "paletteIndex": 41,
+  "rgba": [
+    148,
+    41,
+    0,
+    255
+  ],
+  "width": 1,
+  "height": 1,
+  "wilSHA256": "80b27c1be115a19c9d8baac878e90e182c9543ddb0640fda8626b90c636690f0",
+  "wixSHA256": "199be3894f277cb4e8ac16e222d7dcda725f2e1fc620d207f432367509afc503"
+}

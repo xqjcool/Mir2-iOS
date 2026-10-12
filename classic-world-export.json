@@ -1,0 +1,2084 @@
+{
+  "map": "0.map",
+  "width": 700,
+  "height": 700,
+  "sourceSHA256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+  "groundChunks": 1936,
+  "missing": [
+    {
+      "map": "0.map",
+      "x": 374,
+      "y": 206,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 276,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 375,
+      "y": 206,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 249,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 376,
+      "y": 206,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 255,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 374,
+      "y": 207,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 274,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 375,
+      "y": 207,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 240,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 376,
+      "y": 207,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 289,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 377,
+      "y": 207,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 248,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 378,
+      "y": 207,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 252,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 388,
+      "y": 194,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1770,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 389,
+      "y": 194,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1640,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 387,
+      "y": 195,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1768,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 388,
+      "y": 195,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1771,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 389,
+      "y": 195,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1641,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 390,
+      "y": 195,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1642,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 387,
+      "y": 196,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1769,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 390,
+      "y": 196,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1643,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 391,
+      "y": 196,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1644,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 392,
+      "y": 196,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1571,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 391,
+      "y": 197,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1645,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 392,
+      "y": 197,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1572,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 393,
+      "y": 197,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1574,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 392,
+      "y": 198,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1573,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 393,
+      "y": 198,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1575,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 394,
+      "y": 198,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1577,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 393,
+      "y": 199,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1576,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 394,
+      "y": 199,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1578,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 395,
+      "y": 199,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1580,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 394,
+      "y": 200,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1579,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 395,
+      "y": 200,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1581,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 396,
+      "y": 200,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1583,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 395,
+      "y": 201,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1582,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 396,
+      "y": 201,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1584,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 396,
+      "y": 202,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1585,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 397,
+      "y": 202,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1693,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 289,
+      "y": 203,
+      "layer": "front",
+      "library": "objects",
+      "index": 1159,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 397,
+      "y": 203,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1694,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 398,
+      "y": 203,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1698,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 398,
+      "y": 204,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1699,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 399,
+      "y": 204,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1703,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 399,
+      "y": 205,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1704,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 400,
+      "y": 205,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1707,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 398,
+      "y": 206,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1700,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 399,
+      "y": 206,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1705,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 400,
+      "y": 206,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1708,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 397,
+      "y": 207,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1695,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 398,
+      "y": 207,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1701,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 399,
+      "y": 207,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1706,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 374,
+      "y": 208,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 268,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 375,
+      "y": 208,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 281,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 376,
+      "y": 208,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 244,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 377,
+      "y": 208,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 242,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 378,
+      "y": 208,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 258,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 375,
+      "y": 209,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 270,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 376,
+      "y": 209,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 267,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 377,
+      "y": 209,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 266,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 378,
+      "y": 209,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 262,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 368,
+      "y": 212,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 279,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 369,
+      "y": 212,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 250,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 370,
+      "y": 212,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 248,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 371,
+      "y": 212,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 248,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 372,
+      "y": 212,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 254,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 366,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 279,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 367,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 248,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 368,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 287,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 369,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 243,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 370,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 241,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 371,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 245,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 372,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 290,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 373,
+      "y": 213,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 254,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 366,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 272,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 367,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 240,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 368,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 247,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 369,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 245,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 370,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 242,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 371,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 243,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 372,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 245,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 373,
+      "y": 214,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 257,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 366,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 270,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 367,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 280,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 368,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 242,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 369,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 244,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 370,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 241,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 371,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 292,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 372,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 264,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 373,
+      "y": 215,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 261,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 367,
+      "y": 216,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 274,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 368,
+      "y": 216,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 240,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 369,
+      "y": 216,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 247,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 370,
+      "y": 216,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 244,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 371,
+      "y": 216,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 256,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 367,
+      "y": 217,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 274,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 368,
+      "y": 217,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 244,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 369,
+      "y": 217,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 244,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 370,
+      "y": 217,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 247,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 371,
+      "y": 217,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 257,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 367,
+      "y": 218,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 270,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 368,
+      "y": 218,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 266,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 369,
+      "y": 218,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 266,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 370,
+      "y": 218,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 264,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 371,
+      "y": 218,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 262,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 396,
+      "y": 208,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1690,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 397,
+      "y": 208,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1696,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 398,
+      "y": 208,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1702,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 395,
+      "y": 209,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1685,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 396,
+      "y": 209,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1691,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 397,
+      "y": 209,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1697,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 395,
+      "y": 210,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1686,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 396,
+      "y": 210,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1692,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 395,
+      "y": 211,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1687,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 298,
+      "y": 212,
+      "layer": "front",
+      "library": "objects",
+      "index": 1159,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 354,
+      "y": 224,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 278,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 355,
+      "y": 224,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 251,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 356,
+      "y": 224,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 252,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 354,
+      "y": 225,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 275,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 355,
+      "y": 225,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 241,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 356,
+      "y": 225,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 257,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 354,
+      "y": 226,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 273,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 355,
+      "y": 226,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 243,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 356,
+      "y": 226,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 289,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 357,
+      "y": 226,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 250,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 358,
+      "y": 226,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 253,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 354,
+      "y": 227,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 275,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 355,
+      "y": 227,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 246,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 356,
+      "y": 227,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 241,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 357,
+      "y": 227,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 247,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 358,
+      "y": 227,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 256,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 354,
+      "y": 228,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 272,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 355,
+      "y": 228,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 246,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 356,
+      "y": 228,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 292,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 357,
+      "y": 228,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 267,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 358,
+      "y": 228,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 260,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 354,
+      "y": 229,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 271,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 355,
+      "y": 229,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 265,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 356,
+      "y": 229,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 262,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 240,
+      "y": 260,
+      "layer": "back",
+      "library": "tiles",
+      "index": 444,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 240,
+      "y": 262,
+      "layer": "back",
+      "library": "tiles",
+      "index": 445,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 336,
+      "y": 358,
+      "layer": "back",
+      "library": "tiles",
+      "index": 434,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 116,
+      "y": 402,
+      "layer": "front",
+      "library": "objects",
+      "index": 8638,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 98,
+      "y": 407,
+      "layer": "front",
+      "library": "objects",
+      "index": 8637,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 316,
+      "y": 478,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 432,
+      "y": 470,
+      "layer": "front",
+      "library": "objects",
+      "index": 0,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 314,
+      "y": 480,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 319,
+      "y": 490,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 314,
+      "y": 495,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 309,
+      "y": 500,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 322,
+      "y": 602,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1040,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 323,
+      "y": 605,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1055,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 324,
+      "y": 606,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1054,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 324,
+      "y": 609,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1053,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 326,
+      "y": 609,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1051,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 328,
+      "y": 614,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1047,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 315,
+      "y": 645,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1057,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 316,
+      "y": 645,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1056,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 275,
+      "y": 654,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1061,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 275,
+      "y": 655,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1088,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 276,
+      "y": 655,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1086,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 277,
+      "y": 655,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1083,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 275,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1089,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 276,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1085,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 277,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1082,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 278,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1080,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 276,
+      "y": 657,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1084,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 277,
+      "y": 657,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1081,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 278,
+      "y": 657,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1079,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 279,
+      "y": 658,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1078,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 280,
+      "y": 658,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1077,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 659,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1076,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 660,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1075,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 661,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1074,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 282,
+      "y": 661,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1072,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 662,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1073,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 282,
+      "y": 662,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1071,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 283,
+      "y": 662,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1069,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 282,
+      "y": 663,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1070,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 283,
+      "y": 663,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1068,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 284,
+      "y": 663,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1066,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 283,
+      "y": 664,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1067,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 284,
+      "y": 664,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1065,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 285,
+      "y": 664,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1063,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 284,
+      "y": 665,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1064,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 285,
+      "y": 665,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1065,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 285,
+      "y": 666,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1064,
+      "status": "empty_frame"
+    }
+  ],
+  "new_area_animations": "static first frame; old combat area retains audited animation",
+  "missing_outside_verified_combat_area": [
+    {
+      "map": "0.map",
+      "x": 240,
+      "y": 260,
+      "layer": "back",
+      "library": "tiles",
+      "index": 444,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 240,
+      "y": 262,
+      "layer": "back",
+      "library": "tiles",
+      "index": 445,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 336,
+      "y": 358,
+      "layer": "back",
+      "library": "tiles",
+      "index": 434,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 116,
+      "y": 402,
+      "layer": "front",
+      "library": "objects",
+      "index": 8638,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 98,
+      "y": 407,
+      "layer": "front",
+      "library": "objects",
+      "index": 8637,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 316,
+      "y": 478,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 432,
+      "y": 470,
+      "layer": "front",
+      "library": "objects",
+      "index": 0,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 314,
+      "y": 480,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 319,
+      "y": 490,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 314,
+      "y": 495,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 309,
+      "y": 500,
+      "layer": "middle",
+      "library": "smtiles",
+      "index": 46,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 322,
+      "y": 602,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1040,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 323,
+      "y": 605,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1055,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 324,
+      "y": 606,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1054,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 324,
+      "y": 609,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1053,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 326,
+      "y": 609,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1051,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 328,
+      "y": 614,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1047,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 315,
+      "y": 645,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1057,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 316,
+      "y": 645,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1056,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 275,
+      "y": 654,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1061,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 275,
+      "y": 655,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1088,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 276,
+      "y": 655,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1086,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 277,
+      "y": 655,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1083,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 275,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1089,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 276,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1085,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 277,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1082,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 278,
+      "y": 656,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1080,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 276,
+      "y": 657,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1084,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 277,
+      "y": 657,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1081,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 278,
+      "y": 657,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1079,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 279,
+      "y": 658,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1078,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 280,
+      "y": 658,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1077,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 659,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1076,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 660,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1075,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 661,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1074,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 282,
+      "y": 661,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1072,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 281,
+      "y": 662,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1073,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 282,
+      "y": 662,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1071,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 283,
+      "y": 662,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1069,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 282,
+      "y": 663,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1070,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 283,
+      "y": 663,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1068,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 284,
+      "y": 663,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1066,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 283,
+      "y": 664,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1067,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 284,
+      "y": 664,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1065,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 285,
+      "y": 664,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1063,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 284,
+      "y": 665,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1064,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 285,
+      "y": 665,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1065,
+      "status": "empty_frame"
+    },
+    {
+      "map": "0.map",
+      "x": 285,
+      "y": 666,
+      "layer": "front",
+      "library": "objects6",
+      "index": 1064,
+      "status": "empty_frame"
+    }
+  ],
+  "verified_combat_ground_restored": true,
+  "animated_additive_lights": 40
+}

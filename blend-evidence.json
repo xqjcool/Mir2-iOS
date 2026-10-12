@@ -1,0 +1,358 @@
+{
+  "placements": [
+    {
+      "map": "0.map",
+      "x": 324,
+      "y": 208,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 334,
+      "y": 218,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 318,
+      "y": 219,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 289,
+      "y": 223,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 322,
+      "y": 223,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 311,
+      "y": 227,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 296,
+      "y": 231,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 315,
+      "y": 231,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 304,
+      "y": 239,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 345,
+      "y": 246,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 312,
+      "y": 248,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 430,
+      "y": 248,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 349,
+      "y": 250,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 399,
+      "y": 253,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 338,
+      "y": 254,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 374,
+      "y": 254,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 320,
+      "y": 257,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 342,
+      "y": 258,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 328,
+      "y": 266,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 336,
+      "y": 274,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 400,
+      "y": 275,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 320,
+      "y": 276,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 379,
+      "y": 280,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 344,
+      "y": 283,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 313,
+      "y": 284,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    },
+    {
+      "map": "0.map",
+      "x": 383,
+      "y": 284,
+      "layer": "front",
+      "library": "objects",
+      "index": 2723,
+      "status": "unsupported_blend_skipped"
+    }
+  ],
+  "indices": [
+    2723,
+    2724,
+    2725,
+    2726,
+    2727,
+    2728,
+    2729,
+    2730,
+    2731,
+    2732
+  ],
+  "sourceSHA256": "613eed233f21f92404ada610cdce61d215adb81c3972df3ff081fe2a34d5e750",
+  "frameMetadata": [
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4212,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4212,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4242,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4246,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4189,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4152,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4209,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4230,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4227,
+      "decoded_bytes": 10000,
+      "stride": 100
+    },
+    {
+      "format": 3,
+      "width": 100,
+      "height": 100,
+      "offset_x": -51,
+      "offset_y": -113,
+      "compressed_bytes": 4184,
+      "decoded_bytes": 10000,
+      "stride": 100
+    }
+  ],
+  "atlasRGBABytes": 400000,
+  "mode": "SpriteKit additive compatibility; not exact Color256Anti palette LUT",
+  "positionRule": "PlayScn.pas: x + ax - 2, y + ay - 68",
+  "frameRule": "50ms * (1 + btAniTick)",
+  "iOSRuntimeVerified": false
+}

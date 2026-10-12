@@ -1,0 +1,39 @@
+{
+  "first_round": {
+    "passed": true,
+    "monster_id": 16328689,
+    "server_damage": true,
+    "observer_saw_death": true,
+    "drops": [
+      "木剑",
+      "金币"
+    ],
+    "gold_confirmed": true,
+    "item_confirmed": true
+  },
+  "respawn_round": {
+    "passed": true,
+    "monster_id": 16328689,
+    "server_damage": true,
+    "observer_saw_death": true,
+    "drops": [
+      "木剑",
+      "金币"
+    ],
+    "gold_confirmed": true,
+    "item_confirmed": true
+  },
+  "relogin": {
+    "passed": true,
+    "gold_after_relogin": 308,
+    "picked_up_item_record_preserved": true
+  },
+  "wire": {
+    "checked_frames": 219,
+    "representative_swift_fixtures": 14,
+    "wire_rules_pass": true,
+    "swift_executed": false
+  },
+  "ios_build_and_device_animation_verified": false,
+  "server_log_directory": "D:\\OpenMir2Test\\logs\\iphone-20261010-151624"
+}

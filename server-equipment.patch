@@ -1,0 +1,35 @@
+--- a/src/M2Server/Player/PlayObject.Operate.cs
++++ b/src/M2Server/Player/PlayObject.Operate.cs
+@@ -501,12 +501,13 @@
+             int n10 = 0;
+             if (!Dealing && btWhere < 13)
+             {
+-                if (UseItems[btWhere].Index > 0)
++                if (UseItems[btWhere] != null && UseItems[btWhere].Index > 0)
+                 {
+                     if (UseItems[btWhere].MakeIndex == nItemIdx)
+                     {
+                         StdItem stdItem = SystemShare.ItemSystem.GetStdItem(UseItems[btWhere].Index);
+-                        if (stdItem != null && M2Share.StdModeMap.Contains(stdItem.StdMode))
++                        if (stdItem == null) { n10 = -2; goto FailExit; }
++                        if (M2Share.StdModeMap.Contains(stdItem.StdMode))
+                         {
+                             if (!UserUnLockDurg && UseItems[btWhere].Desc[7] != 0)
+                             {
+@@ -544,6 +545,7 @@
+                                 RecalcAbilitys();
+                                 SendMsg(Messages.RM_ABILITY, 0, 0, 0, 0);
+                                 SendMsg(Messages.RM_SUBABILITY, 0, 0, 0, 0);
++                                n10 = 1;
+                                 SendDefMessage(Messages.SM_TAKEOFF_OK, GetFeatureToLong(), GetFeatureEx(), 0, 0);
+                                 FeatureChanged();
+                                 if (SystemShare.FunctionNPC != null)
+@@ -553,7 +555,7 @@
+                             }
+                             else
+                             {
+-                                Dispose(userItem);
++                                // The item remains equipped when the bag is full.
+                                 n10 = -3;
+                             }
+                         }

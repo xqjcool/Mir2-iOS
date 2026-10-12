@@ -1,0 +1,28 @@
+{
+  "kind": "offline_reference_model_not_iOS_measurement",
+  "mapCells": [
+    256,
+    192
+  ],
+  "steps": 19600,
+  "idealWalkingSeconds": 10584.0,
+  "peakSceneTextureRGBA_MB": 30.93,
+  "peakNodes": 213,
+  "uniqueGroundChunksVisited": 138,
+  "loads": 38337,
+  "unloads": 38168,
+  "cyclePeaksMB": [
+    30.93,
+    30.93,
+    30.93,
+    30.93,
+    30.93,
+    30.93,
+    30.93,
+    30.93,
+    30.93,
+    30.93
+  ],
+  "iPhonePhysicalMemory": "not measured",
+  "iPhoneFPS": "not measured"
+}

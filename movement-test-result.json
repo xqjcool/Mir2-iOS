@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "walk_accepted": true,
+  "two_cell_run_accepted": true,
+  "position_restored": [
+    638,
+    649
+  ],
+  "movements": [
+    {
+      "running": false,
+      "position": [
+        638,
+        648
+      ]
+    },
+    {
+      "running": true,
+      "position": [
+        638,
+        646
+      ]
+    },
+    {
+      "running": true,
+      "position": [
+        638,
+        648
+      ]
+    },
+    {
+      "running": false,
+      "position": [
+        638,
+        649
+      ]
+    }
+  ]
+}

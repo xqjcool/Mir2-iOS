@@ -1,0 +1,14 @@
+{
+  "changes": [
+    "automatic skill rotation",
+    "manual action feedback",
+    "rejected cast cooldown rollback",
+    "shared transient effect budget",
+    "unchanged animation frame caching",
+    "render counters in log"
+  ],
+  "swiftTests": "not_run_no_toolchain",
+  "xcodeBuild": "not_run_no_mac",
+  "phonePerformance": "not_measured",
+  "serverChanges": false
+}

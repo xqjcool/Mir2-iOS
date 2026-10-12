@@ -1,0 +1,360 @@
+{
+  "archive": "Mir 1.3 2002.rar",
+  "archiveSHA256": "3b60cc66c96d504d153d87a29e4145d0df54d28ba9fa65425cdf958ea76b681c",
+  "smallTilesTargets": [
+    {
+      "index": 240,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 241,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 242,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 243,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 244,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 245,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 246,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 247,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 248,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 249,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 250,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 251,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 252,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 253,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 254,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 255,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 256,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 257,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 258,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 260,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 261,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 262,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 264,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 265,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 266,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 267,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 268,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 270,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 271,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 272,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 273,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 274,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 275,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 276,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 278,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 279,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 280,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 281,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 287,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 289,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 290,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    },
+    {
+      "index": 292,
+      "width": 1,
+      "height": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "firstPixelIndex": 41
+    }
+  ],
+  "lastObjectCells": [
+    {
+      "x": 289,
+      "y": 203,
+      "old": "000000008804000000000000",
+      "current": "000000008804000000000000",
+      "identical": true
+    },
+    {
+      "x": 298,
+      "y": 212,
+      "old": "890300008804000000000000",
+      "current": "890300008804000000000000",
+      "identical": true
+    }
+  ],
+  "baseObjectsLibraryIncluded": false,
+  "conclusion": "Old archive has placeholder small tiles; its map still references objects 1159. This does not prove what the intended object image was."
+}

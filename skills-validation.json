@@ -1,0 +1,10 @@
+{
+  "originalEffectImagesVerified": 4033,
+  "requiredWarriorLightningFirewallShieldFramesPresent": true,
+  "openMir2SerializerHeadersVerified": true,
+  "loginRegression": "passed ProbeAlpha; no learned skills",
+  "liveSkillCombat": "not tested; test character has no learned skills",
+  "swiftTests": "not_run_no_swift",
+  "xcodeBuild": "not_run_no_mac",
+  "phoneAcceptance": "pending"
+}

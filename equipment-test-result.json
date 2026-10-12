@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "invalid_slot_rejected": true,
+  "equip_persisted_across_login": true,
+  "swap_and_unequip": true,
+  "only_success_on_unequip": true,
+  "empty_slot_rejected": true,
+  "original_bag_restored": true,
+  "item_count": 8,
+  "dc_equipped": 1539,
+  "dc_unequipped": 257
+}

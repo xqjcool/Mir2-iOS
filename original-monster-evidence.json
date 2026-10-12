@@ -1,0 +1,31 @@
+{
+  "monster": {
+    "Race": 83,
+    "RaceImg": 18,
+    "Appr": 27,
+    "Lvl": 10,
+    "Undead": 1,
+    "CoolEye": 0,
+    "Exp": 12,
+    "HP": 25,
+    "MP": 0,
+    "AC": 0,
+    "MAC": 0,
+    "DC": 1,
+    "DCMAX": 2,
+    "MC": 0,
+    "SC": 0,
+    "SPEED": 8,
+    "HIT": 5,
+    "WALK_SPD": 1500,
+    "WalkStep": 1,
+    "WalkWait": 0,
+    "ATTACK_SPD": 2500
+  },
+  "monsterDBSHA256": "8e028e4a6468b02f44c5449e1f32572df88f33c8b8c10660509fddbd51a01e5d",
+  "imageSource": "mir14full.exe/Data/Mon3.wil; Appr27 -> library3, offset2520",
+  "actionSource": "Actor.pas: RaceImg18 -> MA14",
+  "legacyDrop": "1/4   gold  3000\n",
+  "demoDrop": "Each kill: gold3000 + WoodenSword; guaranteed demo drops, not original rates",
+  "limitations": "Offline simplified hit/armor rules; player damage2-5; no claim of full server combat equivalence"
+}
