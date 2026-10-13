@@ -9,6 +9,7 @@ final class OnlineScene: SKScene {
     private var built=false, clock=0.0, lastStream=0.0, nextStep=0.0
     private var playerID:Int32?
     private var route:[Cell]=[], pending:Cell?, requestedAt=0.0
+    private var movementReadyAt=0.0
     private let cache=NSCache<NSString,SKTexture>()
     private var weaponOrder:[[Int]]=[]
     private var actors:[Int32:Avatar]=[:]
@@ -451,12 +452,19 @@ final class OnlineScene: SKScene {
         guard let target=pending,let id=playerID,let a=actors[id] else { return }
         view?.preferredFramesPerSecond=clock-requestedAt>0.8 ? 30 : 60
         pending=nil;a.cell=target
-        nextStep=max(requestedAt+0.65,clock+0.05);showPosition()
+        // Pace from the acknowledgement: network jitter must not compress two
+        // server-side movements below the configured 600 ms interval.
+        nextStep=clock+0.65
+        movementReadyAt=ProcessInfo.processInfo.systemUptime+0.65
+        net.log("move ack elapsed=\(clock-requestedAt) nextDelay=0.65")
+        showPosition()
     }
     override func update(_ time:TimeInterval) {
         guard built else { return };clock=time
         if (pending != nil && time-requestedAt>5) || (attackPending && time-attackRequested>5) {
-            net.log("action timeout");net.disconnect();net.status="动作确认超时，已停止；请重新登录"
+            net.log("action timeout move=\(pending != nil) attack=\(attackPending) moveAge=\(time-requestedAt) attackAge=\(time-attackRequested)")
+            pending=nil;attackPending=false;route=[];autoAttack=false;pickupSweep=false
+            net.disconnect();net.status="动作确认超时，已停止；请重新登录"
         }
         transientEffects.removeAll { $0.scene==nil }
         if net.online && time>=nextPerformanceLog {
@@ -465,7 +473,7 @@ final class OnlineScene: SKScene {
         }
         let locked = pending != nil || attackPending
         if net.actionLocked != locked { net.actionLocked=locked }
-        if net.online,!interactionSuspended,!net.npcOpen,pending==nil,!attackPending,net.inventory.pending==nil,!net.tradeBusy,time>=nextStep,let id=playerID,let a=actors[id],!a.dead {
+        if net.online,!interactionSuspended,!net.npcOpen,pending==nil,!attackPending,net.inventory.pending==nil,!net.tradeBusy,time>=nextStep,ProcessInfo.processInfo.systemUptime>=movementReadyAt,let id=playerID,let a=actors[id],!a.dead {
             if autoAttack && time>=nextAuto {
                 nextAuto=time+0.3
                 if let targetID=selected,let target=actors[targetID],!target.dead {

@@ -218,7 +218,10 @@ final class MirConnection: ObservableObject {
                     }
                 } catch { self.log("receive failure phase=\(self.phase) chunkBytes=\(data.count) error=\(error)");self.fail("服务器数据格式无法解析，请导出日志检查");return }
             }
-            if done || error != nil { self.fail("连接已断开，请重新登录");return }
+            if done || error != nil {
+                self.log("transport closed phase=\(self.phase) eof=\(done) error=\(String(describing:error))")
+                self.fail("连接已断开，请重新登录");return
+            }
             self.receive(c,token:token)
         }
     }
@@ -239,6 +242,7 @@ final class MirConnection: ObservableObject {
         case 522:timeout?.cancel();busy=false;status="创建失败：请检查名称是否重复或角色栏是否已满"
         case 766,767:
             tradeMessage=legacyText(p.body);equipmentMessage=tradeMessage
+            log("server hint id=\(p.id) text=\(tradeMessage.prefix(240))")
             onPacket?(p)
         case 643:
             npcID=p.actor

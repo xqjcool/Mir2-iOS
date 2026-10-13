@@ -210,11 +210,15 @@ private struct VirtualJoystick:View {
 private struct CombatButtons:View {
     @ObservedObject var net:MirConnection
     let scene:OnlineScene?
-    private let positions=[CGPoint(x:48,y:52),CGPoint(x:128,y:32),CGPoint(x:205,y:61),CGPoint(x:43,y:135)]
+    // Four thumb targets on a quarter-circle around the main attack button.
+    private func skillPosition(_ index:Int)->CGPoint {
+        let angle=Double(180+index*30) * .pi / 180
+        return CGPoint(x:206+122*cos(angle),y:158+122*sin(angle))
+    }
     var body:some View {
         ZStack {
-            Button { scene?.toggleAttack() } label: { Text("攻击").font(.title3.bold()).frame(width:86,height:86).background(Color.red.opacity(0.85)).clipShape(Circle()) }.position(x:137,y:127)
-            ForEach(Array(net.quickSkills.enumerated()),id:\.element.id) { index,skill in
+            Button { scene?.toggleAttack() } label: { Text("攻击").font(.title3.bold()).frame(width:86,height:86).background(Color.red.opacity(0.85)).clipShape(Circle()) }.position(x:206,y:158)
+            ForEach(Array(net.quickSkills.prefix(4).enumerated()),id:\.element.id) { index,skill in
                 TimelineView(.periodic(from:.now,by:0.2)) { _ in
                     let remaining=max(0,(net.skillReady[skill.id] ?? 0)-ProcessInfo.processInfo.systemUptime)
                     Button { scene?.castSkill(skill) } label: {
@@ -224,17 +228,17 @@ private struct CombatButtons:View {
                             else if net.automaticSkills.contains(skill.id) { Text("自动").font(.caption2).foregroundColor(.yellow) }
                             else if (skill.id==12 && net.warrior.thrust) || (skill.id==25 && net.warrior.halfMoon) { Text("已开启").font(.caption2).foregroundColor(.yellow) }
                             else if skill.id==26 && net.warrior.fireUntil>ProcessInfo.processInfo.systemUptime { Text("已蓄力").font(.caption2).foregroundColor(.orange) }
-                        }.frame(width:64,height:56).background(Color.brown.opacity(remaining>0 ? 0.5 : 0.9)).clipShape(Capsule())
+                        }.frame(width:56,height:56).background(Color.brown.opacity(remaining>0 ? 0.5 : 0.9)).clipShape(Circle())
                     }.disabled(remaining>0)
                     .highPriorityGesture(LongPressGesture(minimumDuration:0.65).onEnded { _ in scene?.toggleAutoSkill(skill.id) })
                 }
-                    .position(positions[index])
+                    .position(skillPosition(index))
             }
             HStack {
                 Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:44)
                 Button("拾取周围") { scene?.collectNearby() }.frame(minWidth:96,minHeight:44)
-            }.background(Color.blue.opacity(0.8)).clipShape(Capsule()).position(x:120,y:198)
-        }.frame(width:240,height:225).foregroundColor(.white).buttonStyle(.plain)
+            }.background(Color.blue.opacity(0.8)).clipShape(Capsule()).position(x:135,y:227)
+        }.frame(width:258,height:250).foregroundColor(.white).buttonStyle(.plain)
     }
 }
 private struct ClassicAsset:View {
@@ -339,6 +343,14 @@ private struct EquipmentPanel:View {
                     if let value=item {
                         Text("\(net.itemName(value)) · 耐久 \(value.durability)/\(value.maxDurability)")
                         Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc)) · 防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))").font(.caption)
+                    }
+                    Text(net.tradeMessage.isEmpty ? net.equipmentMessage : net.tradeMessage).font(.caption)
+                }.padding().disabled(locked)
+            }.background(Color.black).foregroundColor(Color(red:0.88,green:0.77,blue:0.48))
+            .safeAreaInset(edge:.bottom) {
+                VStack(spacing:4) {
+                    if let value=item {
+                        Text(net.itemName(value)).font(.caption.bold())
                         HStack {
                             if let slot=selectedSlot {
                                 Button("卸下") { net.changeEquipment(value,slot:slot,takingOff:true) }.frame(minHeight:44)
@@ -349,10 +361,9 @@ private struct EquipmentPanel:View {
                                 Button("丢弃",role:.destructive) { confirmDrop=true }.frame(minWidth:70,minHeight:44)
                             }
                         }.buttonStyle(.bordered).disabled(locked)
-                    }
-                    Text(net.tradeMessage.isEmpty ? net.equipmentMessage : net.tradeMessage).font(.caption)
-                }.padding().disabled(locked)
-            }.background(Color.black).foregroundColor(Color(red:0.88,green:0.77,blue:0.48))
+                    } else { Text("点选背包物品，可穿戴或丢弃；已穿戴物品请先卸下").font(.caption) }
+                }.padding(8).frame(maxWidth:.infinity).background(Color.black.opacity(0.96)).foregroundColor(Color(red:0.88,green:0.77,blue:0.48))
+            }
             .navigationTitle("人物与背包").navigationBarTitleDisplayMode(.inline)
             .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44).disabled(net.tradeBusy) }
             .confirmationDialog("丢到地面后，其他玩家可能捡走",isPresented:$confirmDrop,titleVisibility:.visible) {
