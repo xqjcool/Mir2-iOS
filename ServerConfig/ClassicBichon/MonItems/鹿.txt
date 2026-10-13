@@ -1,0 +1,2 @@
+; Classic deer meat is named Ив in this item database
+1/1 Ив 1

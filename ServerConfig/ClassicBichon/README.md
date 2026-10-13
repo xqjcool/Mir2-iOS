@@ -1,0 +1,12 @@
+# 比奇商店与割肉配置
+
+文本为 GBK，部署到 Windows 服务端 GameSrv/Envir 对应位置后重载商人/怪物物品，或重启测试服务。
+已部署范围：比奇地图 0，共 12 位 NPC（3 位原有老兵、9 位商人）。坐标/外观来自现有数据包 Merchant.txt；对话和基础库存为重建，不能称为完整原版脚本。未恢复其他地图、任务、仓库或修理服务。
+买卖价格由服务端物品库、耐久和商店倍率决定。鹿产物按本库原名为“肉”，鸡产“鸡肉”。MonItems 只负责库存，采集次数、肉质、入包均由服务端处理。
+不包含账号、密码、数据库备份。部署前备份原配置。
+
+当前测试地图整图 SAFE，Server.conf 的 InSafeDisableDrop 已设为 0，允许测试丢弃，PK 保护不变。正式地图应按自己的安全区规则配置。初始库存修复见 merchant-initial-stock.patch，已构建并部署至本机 GameSrv。
+
+`harvest-underflow.patch` 修复 byte 尸体采集量和 ushort 肉质扣减下溢，并拒绝失效或不同地图的尸体。已构建部署至本机 M2Server.dll；客户端不参与这些计算。
+
+同类店铺使用独立 ScriptName，以分开保存库存和物品编号，避免多名 NPC 读写同一个库存文件。通用 ClassicGoods/ClassicMeat 脚本保留为模板，不再直接挂载。

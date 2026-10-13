@@ -110,6 +110,13 @@ enum MirWire {
             let records = encodedBody.split(separator:47, omittingEmptySubsequences:false)
             guard records.count == 3, records.allSatisfy({ !$0.isEmpty }) else { throw Fault.malformed }
             parts = try records.map { try decode(Array($0)) }
+        } else if id == 652 {
+            // OpenMir2 encodes the complete string of separately encoded item records.
+            let inner=try decode(encodedBody)
+            var records=inner.split(separator:47,omittingEmptySubsequences:false)
+            if records.last?.isEmpty == true { records.removeLast() }
+            guard records.allSatisfy({ !$0.isEmpty }) else { throw Fault.malformed }
+            parts=try records.map { try decode(Array($0)) }
         } else if id == 201 || id == 211 {
             // Bag/skill lists contain separately encoded records and a trailing '/'.
             var records=encodedBody.split(separator:47,omittingEmptySubsequences:false)
@@ -279,6 +286,36 @@ enum MirSkills {
             if halfMoon && distance==1 { return 3024 }
             if power && distance==1 { return 3018 }
             return 3014
+        }
+    }
+}
+
+enum MirShop {
+    struct Good:Identifiable {
+        var id:String { name }
+        let name:String
+        let submenu,price,stock:Int
+    }
+    static func goods(_ text:String,count:Int)->[Good]? {
+        var fields=text.split(separator:"/",omittingEmptySubsequences:false)
+        if fields.last?.isEmpty == true { fields.removeLast() }
+        guard count>=0,count<=10000,fields.count==count*4 else { return nil }
+        var result:[Good]=[]
+        for i in stride(from:0,to:fields.count,by:4) {
+            guard !fields[i].isEmpty,let sub=Int(fields[i+1]),let price=Int(fields[i+2]),let stock=Int(fields[i+3]),price>=0,stock>=0 else { return nil }
+            result.append(Good(name:String(fields[i]),submenu:sub,price:price,stock:stock))
+        }
+        return result
+    }
+    struct Link:Identifiable {
+        var id:String { label+command }
+        let label,command:String
+    }
+    static func links(_ text:String)->[Link] {
+        guard let re=try? NSRegularExpression(pattern:"<([^<>/]+)/(@[^<>]+)>") else { return [] }
+        let ns=text as NSString
+        return re.matches(in:text,range:NSRange(location:0,length:ns.length)).map {
+            Link(label:ns.substring(with:$0.range(at:1)),command:ns.substring(with:$0.range(at:2)))
         }
     }
 }

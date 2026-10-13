@@ -1,0 +1,13 @@
+; Classic Bichon merchants; dialogue/stock reconstructed, not original scripts
+ClassicGuide 0 292 613 边界老兵 0 1 0
+ClassicGoodsBoundary 0 288 609 边界杂货店 0 3 0
+ClassicMeatBoundary 0 293 604 肉店老板 0 11 0
+ClassicGuide 0 646 626 银杏老兵 0 1 0
+ClassicGoodsGinkgo 0 643 611 银杏杂货店 0 3 0
+ClassicMeatGinkgo 0 650 592 肉店老板 0 11 0
+ClassicGuide 0 329 266 比奇老兵 0 1 0
+ClassicClothes 0 324 291 夏家店老板 0 5 0
+ClassicBooks 0 325 250 书店老板 0 2 0
+ClassicGoodsBichon 0 378 298 杂货铺老板 0 3 0
+ClassicMeatBichon 0 313 270 屠夫 0 4 0
+ClassicWeapon 0 302 221 铁匠 0 0 0

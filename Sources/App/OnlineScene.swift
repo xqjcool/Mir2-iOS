@@ -14,6 +14,7 @@ final class OnlineScene: SKScene {
     private var actors:[Int32:Avatar]=[:]
     private var attackPending=false, attackRequested=0.0, nextAttack=0.0, nextPickup=0.0
     private var selected:Int32?
+    private var selectedCorpse:Int32?
     private var stickDirection:Int?, stickRunning=false, autoAttack=false, routeRunning=false
     private var pendingDuration=0.54, pathGeneration=0, pathBusy=false
     private let navigationQueue=DispatchQueue(label:"mir.navigation",qos:.userInitiated)
@@ -91,7 +92,7 @@ final class OnlineScene: SKScene {
         performSkill(skill,ground:nil)
     }
     private func performSkill(_ skill:MirEquipment.Skill,ground:Cell?) {
-        guard net.online,net.inventory.pending==nil,!attackPending,pending==nil,clock>=nextAttack,
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!attackPending,pending==nil,clock>=nextAttack,
               ProcessInfo.processInfo.systemUptime >= (net.skillReady[skill.id] ?? 0),
               let id=playerID,let a=actors[id],!a.dead else { return }
         let selfCast=MirSkills.selfCast(skill.id)
@@ -121,6 +122,7 @@ final class OnlineScene: SKScene {
     private final class Avatar {
         let node=SKNode(), image=SKSpriteNode(), weapon=SKSpriteNode(), hair=SKSpriteNode(), label=SKLabelNode(fontNamed:"Helvetica-Bold")
         var cell:Cell, direction=4, walkingUntil=0.0, lastFile=""
+        var harvested=false
         var monster=false, dead=false, action="stand", actionAt=0.0, actionUntil=0.0
         var npc=false, appearanceKey="", displayName="角色", weaponVariant=0, hairVariant=0, sex=0, running=false
         init(_ cell:Cell) {
@@ -159,7 +161,7 @@ final class OnlineScene: SKScene {
         for actor in actors.values { actor.node.removeFromParent() }
         actors.removeAll();playerID=nil;route=[];pending=nil;stopAutomation();dropNames=[:];pickupAttempts=[:];effectsRoot.removeAllChildren();events=[:];shields=[:];targetReport?("");targetHealthReport?(nil)
         for drop in drops.values { drop.node.removeFromParent() };drops.removeAll()
-        selected=nil;attackPending=false;gold=0;combatReport?("")
+        selected=nil;selectedCorpse=nil;attackPending=false;gold=0;combatReport?("")
     }
     private func animate(_ actor:Avatar,_ action:String,duration:Double) {
         actor.action=action;actor.actionAt=clock;actor.actionUntil=clock+duration
@@ -176,6 +178,11 @@ final class OnlineScene: SKScene {
                 animate(a,"spell",duration:0.6);readyEffect(Int(p.series),actor:a)
             }
             return
+        }
+        if p.id==637,let a=actors[p.actor] { a.direction=Int(p.series & 7);animate(a,"butcher",duration:0.6);return }
+        if p.id==33,let a=actors[p.actor] {
+            a.harvested=true;a.dead=true;a.action="skeleton";a.actionAt=clock
+            if selectedCorpse==p.actor { selectedCorpse=nil;combatReport?("尸体已采集；所得物品以服务器背包更新为准") };return
         }
         if p.id==638 { magicFire(p);return }
         if p.id==639 {
@@ -205,7 +212,7 @@ final class OnlineScene: SKScene {
             drops[p.actor]?.node.removeFromParent()
             let node=SKNode();node.position=point(cell);node.zPosition=1000+CGFloat(cell.y*4)
             let name=text(p.body);dropNames[p.actor]=name
-            if name.contains("木剑"),let image=UIImage(contentsOfFile:root.appendingPathComponent("wooden-sword-ground.png").path) {
+            if let image=UIImage(contentsOfFile:root.appendingPathComponent("ground-items/\(p.series).png").path) {
                 node.addChild(SKSpriteNode(texture:SKTexture(image:image)))
             } else {
                 let coin=SKShapeNode(circleOfRadius:7);coin.fillColor = .yellow;coin.strokeColor = .orange;node.addChild(coin)
@@ -238,7 +245,7 @@ final class OnlineScene: SKScene {
             if let id=playerID,let a=actors[id] { a.cell=local(p.x,p.y);a.node.removeAllActions();a.node.position=point(a.cell) }
             report?("服务器拒绝移动，已校正位置");return
         }
-        guard [UInt16(50),10,11,9,13,27].contains(p.id) else { return }
+        guard [UInt16(50),10,11,9,13,27,32,34,33].contains(p.id) else { return }
         let cell=local(p.x,p.y)
         if p.id==50 {
             guard contains(cell) else { net.disconnect();net.status="角色位于资源范围外，请在电脑运行测试角色复位脚本";return }
@@ -256,12 +263,13 @@ final class OnlineScene: SKScene {
             avatar.npc=race==50
             avatar.monster=race>=10 && race<50
         }
-        if p.id==27 || p.id==10 { avatar.dead=false;avatar.action="stand";avatar.actionUntil=0 }
+        if p.id==27 || p.id==10 { avatar.dead=false;avatar.harvested=false;avatar.action="stand";avatar.actionUntil=0 }
         if p.id==10, p.bodyParts.count>1, !p.bodyParts[1].isEmpty {
             avatar.displayName=text(p.bodyParts[1]).components(separatedBy:"/").first ?? "角色"
         } else if avatar.monster {
             avatar.displayName=["11-160":"鸡","11-161":"鹿","18-27":"稻草人"][avatar.appearanceKey] ?? "怪物"
         }
+        if [UInt16(32),34,33].contains(p.id) { avatar.dead=true;avatar.harvested=p.id==33;animate(avatar,p.id==33 ? "skeleton" : "die",duration:1.2) }
         avatar.label.text = p.actor==playerID ? "我" : avatar.displayName
         avatar.label.fontColor = p.actor==playerID ? .yellow : .white
         avatar.direction=Int(p.series & 7);avatar.cell=cell
@@ -276,7 +284,7 @@ final class OnlineScene: SKScene {
         if let id=playerID,let a=actors[id] { positionReport?(a.cell);report?("比奇 (\(a.cell.x+map.originX),\(a.cell.y+map.originY)) · 可见角色 \(actors.count)") }
     }
     override func touchesEnded(_ touches:Set<UITouch>,with event:UIEvent?) {
-        guard net.online,let id=playerID,let a=actors[id],let touch=touches.first else { return }
+        guard net.online,!net.npcOpen,!net.tradeBusy,!interactionSuspended,let id=playerID,let a=actors[id],let touch=touches.first else { return }
         let p=touch.location(in:self),target=Cell(x:Int(floor(p.x/48)),y:Int(floor(-p.y/32)))
         if let skill=armedGroundSkill { performSkill(skill,ground:target);return }
         if let npc=actors.first(where:{$0.value.npc && $0.value.cell==target}) {
@@ -284,13 +292,16 @@ final class OnlineScene: SKScene {
             guard max(abs(target.x-a.cell.x),abs(target.y-a.cell.y))<=3 else { combatReport?("请走近 \(npc.value.displayName) 再交谈");return }
             net.talk(to:npc.key);return
         }
+        if let corpse=actors.first(where: { $0.value.dead && !$0.value.harvested && ["11-160","11-161"].contains($0.value.appearanceKey) && $0.value.cell==target }) {
+            stopAutomation();selectedCorpse=corpse.key;combatReport?("已选中 \(corpse.value.displayName) 尸体；靠近后反复点击割肉");return
+        }
         if let match=actors.first(where: { $0.value.monster && !$0.value.dead && $0.value.cell==target }) {
             selected=match.key;targetHealthReport?(nil);route=[];targetReport?(match.value.label.text ?? match.value.displayName);combatReport?("已锁定 \(match.value.displayName)，点击攻击开始追打");return
         }
         navigate(to:target)
     }
     func attackSelected() {
-        guard net.online,net.inventory.pending==nil,!attackPending,pending==nil,clock>=nextAttack,let id=playerID,let a=actors[id],!a.dead else { return }
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!attackPending,pending==nil,clock>=nextAttack,let id=playerID,let a=actors[id],!a.dead else { return }
         let candidates=actors.filter { $0.value.monster && !$0.value.dead && max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y))<=12 }
         if selected==nil || actors[selected!]?.dead != false { targetHealthReport?(nil);selected=candidates.min { lhs,rhs in
             let l=max(abs(lhs.value.cell.x-a.cell.x),abs(lhs.value.cell.y-a.cell.y))
@@ -316,8 +327,20 @@ final class OnlineScene: SKScene {
         meleeEffect(hit==3025 ? 8 : hit==3024 ? 24 : hit==3019 ? 19 : hit==3018 ? 18 : 14,actor:a)
         net.attack(x:a.cell.x+map.originX,y:a.cell.y+map.originY,direction:a.direction,distance:distance)
     }
+    func butcherNearby() {
+        guard net.online,!net.npcOpen,!interactionSuspended,pending==nil,!attackPending,let id=playerID,let a=actors[id],!a.dead else { return }
+        stopAutomation()
+        let candidates=actors.filter { $0.value.dead && !$0.value.harvested && ["11-160","11-161"].contains($0.value.appearanceKey) && max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y))<=2 }
+        if selectedCorpse==nil || candidates[selectedCorpse!]==nil { selectedCorpse=candidates.keys.sorted().first }
+        guard let corpseID=selectedCorpse,let corpse=candidates[corpseID] else { combatReport?("请靠近鸡或鹿的尸体再割肉");return }
+        let direction=MirTouchInput.direction(x:Double(corpse.cell.x-a.cell.x),y:Double(corpse.cell.y-a.cell.y)) ?? a.direction
+        if net.butcher(target:corpseID,x:corpse.cell.x+map.originX,y:corpse.cell.y+map.originY,direction:direction) {
+            a.direction=direction;nextStep=clock+0.65;nextAttack=clock+0.65
+            combatReport?("正在割肉；反复点击，直至服务器确认采集完成")
+        }
+    }
     func pickupHere() {
-        guard net.online,net.inventory.pending==nil,pending==nil,!attackPending,clock>=nextPickup,let id=playerID,let a=actors[id],!a.dead else { return }
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,pending==nil,!attackPending,clock>=nextPickup,let id=playerID,let a=actors[id],!a.dead else { return }
         guard drops.values.contains(where:{$0.cell==a.cell}) else { combatReport?("请先走到掉落物所在格子");return }
         let attempts=pickupAttempts[a.cell,default:0]
         guard attempts<3 else { pickupSweep=false;autoGold=false;combatReport?("连续拾取未获确认，已停止；请检查归属、背包和负重");return }
@@ -442,7 +465,7 @@ final class OnlineScene: SKScene {
         }
         let locked = pending != nil || attackPending
         if net.actionLocked != locked { net.actionLocked=locked }
-        if net.online,!interactionSuspended,net.npcText.isEmpty,pending==nil,!attackPending,net.inventory.pending==nil,time>=nextStep,let id=playerID,let a=actors[id],!a.dead {
+        if net.online,!interactionSuspended,!net.npcOpen,pending==nil,!attackPending,net.inventory.pending==nil,!net.tradeBusy,time>=nextStep,let id=playerID,let a=actors[id],!a.dead {
             if autoAttack && time>=nextAuto {
                 nextAuto=time+0.3
                 if let targetID=selected,let target=actors[targetID],!target.dead {
@@ -495,9 +518,9 @@ final class OnlineScene: SKScene {
             let active=a.dead || time<a.actionUntil
             let action=active ? a.action : walk ? (a.running ? "run" : "walk") : "stand"
             let library=actorLibraries[a.appearanceKey] ?? (a.monster ? map.monster : (actorLibraries["human-\(a.sex)"] ?? map.hero))
-            guard let directions=library[action] ?? library["stand"],directions.indices.contains(a.direction) else { continue }
+            guard let directions=library[action] ?? (a.dead ? library["die"] : library["stand"]),directions.indices.contains(a.direction) else { continue }
             let frames=directions[a.direction];guard !frames.isEmpty else { continue }
-            let phase=active ? min(frames.count-1,max(0,Int((time-a.actionAt)/0.1))) : Int(time/(walk ? 0.09 : 0.2)) % frames.count
+            let phase=active ? min(frames.count-1,max(0,Int((time-a.actionAt)/(action=="butcher" ? 0.3 : 0.1)))) : Int(time/(walk ? 0.09 : 0.2)) % frames.count
             let f=frames[phase]
             if a.lastFile != f.file {
                 let tex=texture(f.file)

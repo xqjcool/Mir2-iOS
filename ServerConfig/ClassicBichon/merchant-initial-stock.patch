@@ -1,0 +1,36 @@
+--- a/src/GameSrv/Npc/Merchant.cs
++++ b/src/GameSrv/Npc/Merchant.cs
+@@ -206,7 +206,7 @@
+         /// <summary>
+         /// 刷新在售商品
+         /// </summary>
+-        private void RefillGoods()
++        private void RefillGoods(bool initial = false)
+         {
+             const string sExceptionMsg = "[Exception] TMerchant::RefillGoods {0}/{1}:{2} [{3}] Code:{4}";
+             try
+@@ -217,7 +217,7 @@
+                 {
+                     goods = RefillGoodsList[i];
+                     int goodCout = goods.Count;
+-                    if ((HUtil32.GetTickCount() - goods.RefillTick) > (goods.RefillTime * 60 * 1000))
++                    if (initial || (HUtil32.GetTickCount() - goods.RefillTick) > (goods.RefillTime * 60 * 1000))
+                     {
+                         goods.RefillTick = HUtil32.GetTickCount();
+                         nIndex = SystemShare.ItemSystem.GetStdItemIdx(goods.ItemName);
+@@ -231,7 +231,7 @@
+                                 RefillGoodsItems(ref refillList, goods.ItemName, goods.Count - nRefillCount);
+                                 LocalDb.SaveGoodRecord(this, ScriptName + '-' + MapName);
+                                 LocalDb.SaveGoodPriceRecord(this, ScriptName + '-' + MapName);
+-                                return;
++                                if (!initial) return;
+                             }
+                             if (goodCout < nRefillCount)
+                             {
+@@ -1061,4 +1061,6 @@
+             LocalDb.LoadGoodRecord(this, sFile);
+             LocalDb.LoadGoodPriceRecord(this, sFile);
+             LoadUpgradeList();
++            // Populate all configured goods before accepting the first customer.
++            RefillGoods(initial: true);
+         }

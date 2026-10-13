@@ -66,7 +66,7 @@ struct OnlineView:View {
                         VStack(spacing:6) {
                             Text(model.combat).font(.caption).lineLimit(2).padding(6).background(.black.opacity(0.75))
                             HStack {
-                                Button("装备") { model.scene?.stopAutomation();showEquipment=true }
+                                Button("人物 / 背包") { model.scene?.stopAutomation();showEquipment=true }
                                 Button("地图") { model.scene?.stopAutomation();showMap=true }
                                 Button("技能") { model.scene?.stopAutomation();showSkills=true }
                             }.buttonStyle(.borderedProminent).controlSize(.large)
@@ -77,15 +77,11 @@ struct OnlineView:View {
             }.padding().foregroundColor(.white)
             if !net.online { ClassicLobby(net:net).disabled(model.scene==nil) }
             if let error=model.error { Text(error).foregroundColor(.red).padding().background(Color.black) }
-            if net.online && !net.npcText.isEmpty {
-                VStack(alignment:.leading,spacing:16) {
-                    ScrollView { Text(net.npcText).foregroundColor(Color(red:0.88,green:0.77,blue:0.48)).frame(maxWidth:.infinity,alignment:.leading) }
-                    Button("关闭") { net.closeNPC() }.buttonStyle(.borderedProminent)
-                }.padding(24).frame(maxWidth:460,maxHeight:300).background(Color.black.opacity(0.95)).overlay(Rectangle().stroke(Color.brown,lineWidth:3))
-            }
+            if net.online && net.npcOpen { NPCShopPanel(net:net) }
         }.sheet(isPresented:$showEquipment) { EquipmentPanel(net:net).onAppear { model.scene?.stopAutomation() } }
         .sheet(isPresented:$showMap) { NavigationPanel(model:model) }
         .sheet(isPresented:$showSkills) { SkillPanel(net:net,scene:model.scene) }
+        .onChange(of:net.npcOpen) { open in if open { model.scene?.stopAutomation() } }
         .onChange(of:showEquipment) { _ in model.scene?.suspendControls(showEquipment || showMap || showSkills) }
         .onChange(of:showMap) { _ in model.scene?.suspendControls(showEquipment || showMap || showSkills) }
         .onChange(of:showSkills) { _ in model.scene?.suspendControls(showEquipment || showMap || showSkills) }
@@ -234,66 +230,195 @@ private struct CombatButtons:View {
                 }
                     .position(positions[index])
             }
-            Button("拾取周围") { scene?.collectNearby() }.frame(minWidth:96,minHeight:44).background(Color.blue.opacity(0.8)).clipShape(Capsule()).position(x:130,y:198)
+            HStack {
+                Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:44)
+                Button("拾取周围") { scene?.collectNearby() }.frame(minWidth:96,minHeight:44)
+            }.background(Color.blue.opacity(0.8)).clipShape(Capsule()).position(x:120,y:198)
         }.frame(width:240,height:225).foregroundColor(.white).buttonStyle(.plain)
+    }
+}
+private struct ClassicAsset:View {
+    let path:String
+    var body:some View {
+        if let root=Bundle.main.resourceURL,let image=UIImage(contentsOfFile:root.appendingPathComponent("GameData/"+path+".png").path) {
+            Image(uiImage:image).resizable().interpolation(.none).scaledToFit()
+        } else { Color.clear }
     }
 }
 private struct EquipmentPanel:View {
     @ObservedObject var net:MirConnection
     @Environment(\.dismiss) private var dismiss
     @State private var selected:Int32?
-    private func icon(_ item:MirEquipment.Item)->some View {
+    @State private var selectedSlot:Int?
+    @State private var page=0
+    @State private var confirmDrop=false
+    private static let paperdoll:[String:SceneData.Frame] = {
+        guard let url=Bundle.main.resourceURL?.appendingPathComponent("GameData/paperdoll.json"),let data=try? Data(contentsOf:url) else { return [:] }
+        return (try? JSONDecoder().decode([String:SceneData.Frame].self,from:data)) ?? [:]
+    }()
+    private let scale:CGFloat=1.4
+    private let points:[CGPoint]=[.init(x:122,y:178),.init(x:70,y:113),.init(x:185,y:142),.init(x:185,y:103),.init(x:124,y:94),.init(x:185,y:192),.init(x:59,y:192),.init(x:185,y:232),.init(x:59,y:232)]
+    private var bag:[MirEquipment.Item] { net.inventory.bag.values.sorted{$0.id<$1.id} }
+    private var item:MirEquipment.Item? {
+        if let slot=selectedSlot { return net.inventory.equipped[slot] }
+        return selected.flatMap { net.inventory.bag[$0] }
+    }
+    private var locked:Bool { net.tradeBusy || net.inventory.pending != nil || net.actionLocked }
+    private func icon(_ item:MirEquipment.Item)->some View { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:38,height:38) }
+    private func paperLayer(_ key:String)->some View {
         Group {
-            if let path=Bundle.main.resourceURL?.appendingPathComponent("GameData/item-icons/\(item.looks).png").path,let image=UIImage(contentsOfFile:path) { Image(uiImage:image).resizable().scaledToFit() }
-            else { Image(systemName:"shippingbox").resizable().scaledToFit().padding(8) }
-        }.frame(width:38,height:38)
+            if let frame=Self.paperdoll[key] {
+                ClassicAsset(path:String(frame.file.dropLast(4)))
+                    .frame(width:CGFloat(frame.width)*scale,height:CGFloat(frame.height)*scale)
+                    .offset(x:CGFloat(31+frame.offsetX)*scale,y:CGFloat(96+frame.offsetY)*scale)
+            }
+        }.allowsHitTesting(false)
+    }
+    private var character:some View {
+        ZStack(alignment:.topLeading) {
+            ClassicAsset(path:"classic-ui/equipment").frame(width:232*scale,height:325*scale)
+            ClassicAsset(path:net.playerSex==1 ? "classic-ui/body-female" : "classic-ui/body-male")
+                .frame(width:168*scale,height:199*scale).offset(x:38*scale,y:52*scale)
+            paperLayer("hair-\(440+net.playerHair/2+net.playerSex)")
+            ForEach([0,1,4],id:\.self) { slot in
+                if let value=net.inventory.equipped[slot] { paperLayer(String(value.looks)) }
+            }
+            ForEach(0..<9,id:\.self) { slot in
+                Button { selectedSlot=slot;selected=nil } label: {
+                    ZStack {
+                        if let value=net.inventory.equipped[slot] {
+                            if ![0,1,4].contains(slot) || Self.paperdoll[String(value.looks)]==nil { icon(value) }
+                        }
+                        else { Text(MirEquipment.slotNames[slot]).font(.caption2).foregroundColor(.white.opacity(0.65)) }
+                    }.frame(width:slot==0 ? 74 : slot==1 ? 66 : 44,height:slot==0 ? 157 : slot==1 ? 122 : 44).contentShape(Rectangle()).background(selectedSlot==slot ? Color.yellow.opacity(0.3) : Color.clear)
+                }.position(x:points[slot].x*scale,y:points[slot].y*scale)
+            }
+            Text("人物装备").font(.headline).position(x:116*scale,y:24*scale)
+        }.frame(width:232*scale,height:325*scale)
+    }
+    private var backpack:some View {
+        ZStack(alignment:.topLeading) {
+            ClassicAsset(path:"classic-ui/bag").frame(width:336*scale,height:270*scale)
+            ForEach(0..<40,id:\.self) { index in
+                let offset=page*40+index
+                Button {
+                    selected=offset<bag.count ? bag[offset].id : nil;selectedSlot=nil
+                } label: {
+                    ZStack {
+                        if offset<bag.count { icon(bag[offset]) }
+                    }.frame(width:49,height:44).contentShape(Rectangle())
+                        .background(offset<bag.count && selected==bag[offset].id && selectedSlot==nil ? Color.yellow.opacity(0.3) : Color.clear)
+                }.position(x:(38+CGFloat(index%8)*36)*scale,y:(29+CGFloat(index/8)*32)*scale)
+            }
+            Text("\(net.goldBalance)").font(.caption.monospacedDigit()).position(x:126*scale,y:185*scale)
+            Text(item.map{net.itemName($0)} ?? "请选择物品").font(.caption).position(x:166*scale,y:228*scale)
+        }.frame(width:336*scale,height:270*scale)
     }
     var body:some View {
         NavigationStack {
-            VStack(alignment:.leading,spacing:8) {
-                Text(net.abilityText).font(.caption)
-                Text("金币 \(net.goldBalance) · 背包 \(net.inventory.bag.count)/46").font(.headline)
-                Text(net.equipmentMessage).font(.caption).foregroundColor(.secondary)
-                HStack(alignment:.top) {
-                    ScrollView {
-                        ForEach(0..<MirEquipment.slotNames.count,id:\.self) { slot in
-                            Button {
-                                if let item=net.inventory.equipped[slot] { net.changeEquipment(item,slot:slot,takingOff:true) }
-                            } label: {
-                                HStack {
-                                    Text(MirEquipment.slotNames[slot]).frame(width:55,alignment:.leading)
-                                    if let item=net.inventory.equipped[slot] { icon(item);Text(net.itemName(item));Spacer();Text("卸下") }
-                                    else { Text("空").foregroundColor(.secondary);Spacer() }
-                                }.frame(minHeight:44).padding(.horizontal,6)
-                            }.disabled(net.inventory.equipped[slot]==nil)
-                        }
-                    }.frame(maxWidth:330)
-                    VStack {
-                        ScrollView {
-                            LazyVGrid(columns:[GridItem(.adaptive(minimum:90))]) {
-                                ForEach(net.inventory.bag.values.sorted{$0.id<$1.id}) { item in
-                                    Button { selected=item.id } label: {
-                                        VStack { icon(item);Text(net.itemName(item)).font(.caption).lineLimit(1) }.frame(maxWidth:.infinity,minHeight:70).background(selected==item.id ? Color.brown.opacity(0.4) : Color.gray.opacity(0.12)).cornerRadius(6)
-                                    }
-                                }
+            ScrollView([.horizontal,.vertical]) {
+                VStack(alignment:.leading,spacing:8) {
+                    HStack(alignment:.top,spacing:8) {
+                        character
+                        VStack {
+                            backpack
+                            HStack {
+                                Text("背包 \(bag.count)/46")
+                                Button(page==0 ? "后 6 格 →" : "← 前 40 格") { page=1-page }.frame(minHeight:44)
                             }
                         }
-                        if let id=selected,let item=net.inventory.bag[id] {
-                            VStack(alignment:.leading,spacing:4) {
-                                Text("\(net.itemName(item))  耐久 \(item.durability/1000)/\(item.maxDurability/1000)").bold()
-                                Text("攻击 \(MirEquipment.range(item.dc))  魔法 \(MirEquipment.range(item.mc))  道术 \(MirEquipment.range(item.sc))").font(.caption)
-                                Text("防御 \(MirEquipment.range(item.ac))  魔防 \(MirEquipment.range(item.mac))  需求值 \(item.needLevel)（以服务端判定为准）").font(.caption)
-                                HStack {
-                                    ForEach(item.slots,id:\.self) { slot in Button("穿戴·"+MirEquipment.slotNames[slot]) { net.changeEquipment(item,slot:slot,takingOff:false) }.frame(minHeight:44).buttonStyle(.borderedProminent) }
-                                    if item.slots.isEmpty { Text("此物品不能穿戴").foregroundColor(.secondary) }
+                    }
+                    HStack {
+                        ForEach(9..<MirEquipment.slotNames.count,id:\.self) { slot in
+                            Button { selectedSlot=slot;selected=nil } label: {
+                                HStack { Text(MirEquipment.slotNames[slot]);if let value=net.inventory.equipped[slot] { icon(value) } }.frame(minWidth:100,minHeight:44)
+                            }
+                        }
+                    }
+                    Text(net.abilityText).font(.caption)
+                    if let value=item {
+                        Text("\(net.itemName(value)) · 耐久 \(value.durability)/\(value.maxDurability)")
+                        Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc)) · 防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))").font(.caption)
+                        HStack {
+                            if let slot=selectedSlot {
+                                Button("卸下") { net.changeEquipment(value,slot:slot,takingOff:true) }.frame(minHeight:44)
+                            } else {
+                                ForEach(value.slots,id:\.self) { slot in
+                                    Button("穿戴·"+MirEquipment.slotNames[slot]) { net.changeEquipment(value,slot:slot,takingOff:false) }.frame(minHeight:44)
+                                }
+                                Button("丢弃",role:.destructive) { confirmDrop=true }.frame(minWidth:70,minHeight:44)
+                            }
+                        }.buttonStyle(.bordered).disabled(locked)
+                    }
+                    Text(net.tradeMessage.isEmpty ? net.equipmentMessage : net.tradeMessage).font(.caption)
+                }.padding().disabled(locked)
+            }.background(Color.black).foregroundColor(Color(red:0.88,green:0.77,blue:0.48))
+            .navigationTitle("人物与背包").navigationBarTitleDisplayMode(.inline)
+            .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44).disabled(net.tradeBusy) }
+            .confirmationDialog("丢到地面后，其他玩家可能捡走",isPresented:$confirmDrop,titleVisibility:.visible) {
+                if let value=item,selectedSlot==nil { Button("丢弃 \(net.itemName(value))",role:.destructive) { net.drop(value) } }
+            }
+            .interactiveDismissDisabled(net.tradeBusy)
+        }
+    }
+}
+private struct NPCShopPanel:View {
+    @ObservedObject var net:MirConnection
+    @State private var purchaseName=""
+    @State private var purchaseIndex:Int32=0
+    @State private var purchasePrice=0
+    @State private var confirmBuy=false
+    private var dialogue:String {
+        net.npcText.replacingOccurrences(of:"<([^<>/]+)/(@[^<>]+)>",with:"$1",options:.regularExpression)
+    }
+    private func offer(_ name:String,index:Int32=0,price:Int) {
+        purchaseName=name;purchaseIndex=index;purchasePrice=price;confirmBuy=true
+    }
+    var body:some View {
+        VStack(alignment:.leading,spacing:8) {
+            HStack { Text("金币 \(net.goldBalance)").bold();Spacer();Button("关闭") { net.closeNPC() }.frame(minWidth:44,minHeight:44).disabled(net.tradeBusy) }
+            ScrollView {
+                VStack(alignment:.leading,spacing:8) {
+                    Text(dialogue).font(.callout)
+                    HStack {
+                        ForEach(net.npcLinks) { link in Button(link.label) { net.selectNPC(link.command) }.frame(minWidth:44,minHeight:44) }
+                    }
+                    if net.shopMode=="buy" {
+                        if !net.shopDetails.isEmpty {
+                            ForEach(net.shopDetails) { item in
+                                Button { offer(net.itemName(item),index:item.id,price:Int(item.maxDurability)) } label: {
+                                    HStack { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:38,height:38);Text("\(net.itemName(item)) · 耐久 \(item.durability) · \(item.maxDurability) 金币");Spacer();Text("购买") }.frame(minHeight:44)
+                                }
+                            }
+                        } else {
+                            ForEach(net.shopGoods) { good in
+                                Button {
+                                    if good.submenu>0 { net.browse(good) } else { offer(good.name,price:good.price) }
+                                } label: {
+                                    HStack { Text(good.name);Spacer();Text("\(good.price) 金币 · 库存 \(good.stock)");Text(good.submenu>0 ? "挑选" : "购买") }.frame(minHeight:44)
                                 }
                             }
                         }
                     }
-                }.disabled(net.inventory.pending != nil || net.actionLocked)
-            }.padding().navigationTitle("人物装备与背包").navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement:.confirmationAction) { Button("关闭") { dismiss() }.frame(minHeight:44) } }
-        }
+                    if net.shopMode=="sell" {
+                        Text("选择背包物品，由商店报价后确认出售")
+                        ForEach(net.inventory.bag.values.sorted{$0.id<$1.id}) { item in
+                            Button { net.quote(item) } label: {
+                                HStack { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:38,height:38);Text(net.itemName(item));Spacer();Text("询价") }.frame(minHeight:44)
+                            }
+                        }
+                        if let id=net.saleItem,let item=net.inventory.bag[id],let price=net.salePrice,price>0 {
+                            Button("确认出售 \(net.itemName(item))：\(price) 金币") { net.sellQuoted() }.frame(minHeight:44).buttonStyle(.borderedProminent)
+                        }
+                    }
+                }.disabled(net.tradeBusy)
+            }
+            Text(net.tradeMessage).font(.caption)
+        }.padding(16).frame(maxWidth:620,maxHeight:360).background(Color.black.opacity(0.97))
+            .foregroundColor(Color(red:0.88,green:0.77,blue:0.48)).overlay(Rectangle().stroke(Color.brown,lineWidth:3))
+            .confirmationDialog("购买 \(purchaseName)，价格 \(purchasePrice) 金币？",isPresented:$confirmBuy,titleVisibility:.visible) {
+                Button("购买") { net.buy(name:purchaseName,index:purchaseIndex) }
+            }
     }
 }
 private struct NavigationPanel:View {

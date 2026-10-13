@@ -41,6 +41,72 @@ final class MirConnection: ObservableObject {
     func itemName(_ item:MirEquipment.Item)->String { legacyText(item.nameBytes) }
     func skillName(_ skill:MirEquipment.Skill)->String { legacyText(skill.nameBytes) }
     private var npcID:Int32=0
+    @Published var shopMode=""
+    @Published var shopGoods:[MirShop.Good]=[]
+    @Published var shopDetails:[MirEquipment.Item]=[]
+    @Published var tradeBusy=false
+    @Published var tradeMessage=""
+    @Published var saleItem:Int32?
+    @Published var salePrice:Int?
+    @Published var playerSex=0
+    @Published var playerHair=0
+    private var tradeOperation=""
+    private var tradeItem:Int32?
+    private var tradeTimeout:DispatchWorkItem?
+    private var lastButch = -Double.infinity
+    var npcOpen:Bool { !npcText.isEmpty || !shopMode.isEmpty }
+    var npcLinks:[MirShop.Link] { MirShop.links(npcText) }
+    private func beginTrade(_ operation:String,item:Int32?=nil)->Bool {
+        guard online,!tradeBusy,!actionLocked,inventory.pending==nil else { return false }
+        tradeOperation=operation;tradeItem=item;tradeBusy=true;tradeMessage="等待服务器确认…"
+        let work=DispatchWorkItem { [weak self] in self?.fail("交易确认超时，已停止操作；请重新登录同步背包") }
+        tradeTimeout=work;DispatchQueue.main.asyncAfter(deadline:.now()+8,execute:work);return true
+    }
+    private func finishTrade(_ message:String) {
+        tradeTimeout?.cancel();tradeTimeout=nil;tradeBusy=false;tradeOperation="";tradeItem=nil;tradeMessage=message
+    }
+    func drop(_ item:MirEquipment.Item) {
+        guard inventory.bag[item.id] != nil,beginTrade("drop",item:item.id) else { return }
+        raw(MirWire.command(1000,actor:UInt32(bitPattern:item.id))+MirWire.encode(item.nameBytes))
+        log("drop request item=\(item.id)")
+    }
+    func selectNPC(_ command:String) {
+        guard online,!tradeBusy,npcLinks.contains(where:{$0.command==command}) || command=="@buy" || command=="@sell" else { return }
+        if command=="@exit" { closeNPC();return }
+        guard !command.hasPrefix("@@") else { tradeMessage="此对话需要输入，暂未接入";return }
+        shopMode="";shopGoods=[];shopDetails=[];saleItem=nil;salePrice=nil
+        raw(MirWire.command(1011,actor:UInt32(bitPattern:npcID))+MirWire.encode(legacyBytes(command)))
+    }
+    func browse(_ good:MirShop.Good) {
+        guard good.submenu>0,beginTrade("details") else { return }
+        raw(MirWire.command(1015,actor:UInt32(bitPattern:npcID))+MirWire.encode(legacyBytes(good.name)))
+    }
+    func buy(name:String,index:Int32=0) {
+        guard beginTrade("buy",item:index) else { return }
+        let id=UInt32(bitPattern:index)
+        raw(MirWire.command(1014,actor:UInt32(bitPattern:npcID),x:UInt16(truncatingIfNeeded:id),y:UInt16(truncatingIfNeeded:id>>16))+MirWire.encode(legacyBytes(name)))
+        log("buy request merchant=\(npcID) item=\(index)")
+    }
+    func quote(_ item:MirEquipment.Item) {
+        guard inventory.bag[item.id] != nil,beginTrade("quote",item:item.id) else { return }
+        saleItem=nil;salePrice=nil;itemTrade(1012,item:item)
+    }
+    func sellQuoted() {
+        guard let id=saleItem,let price=salePrice,price>0,let item=inventory.bag[id],beginTrade("sell",item:id) else { return }
+        itemTrade(1013,item:item)
+    }
+    private func itemTrade(_ command:UInt16,item:MirEquipment.Item) {
+        let id=UInt32(bitPattern:item.id)
+        raw(MirWire.command(command,actor:UInt32(bitPattern:npcID),x:UInt16(truncatingIfNeeded:id),y:UInt16(truncatingIfNeeded:id>>16))+MirWire.encode(item.nameBytes))
+        log("shop request command=\(command) item=\(item.id)")
+    }
+    func butcher(target:Int32,x:Int,y:Int,direction:Int)->Bool {
+        let now=ProcessInfo.processInfo.systemUptime
+        guard online,!tradeBusy,!actionLocked,inventory.pending==nil,now-lastButch>=0.65,(0...65535).contains(x),(0...65535).contains(y),(0...7).contains(direction) else { return false }
+        lastButch=now
+        raw(MirWire.command(1007,actor:UInt32(bitPattern:target),x:UInt16(x),y:UInt16(y),series:UInt16(direction)))
+        log("butcher target=\(target) x=\(x) y=\(y)");return true
+    }
     private func legacyText(_ bytes:[UInt8])->String {
         let code=String.Encoding(rawValue:CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue)))
         return String(bytes:bytes,encoding:code) ?? String(decoding:bytes,as:UTF8.self)
@@ -85,6 +151,8 @@ final class MirConnection: ObservableObject {
         connection?.cancel();connection=nil;online=false;busy=false;password="";ticket="";awaitingAttack=false
         equipmentTimeout?.cancel();equipmentTimeout=nil;inventory=MirEquipment.State();skills=[];abilityText="";goldBalance=0;actionLocked=false;playerActor=nil
         warrior=MirSkills.WarriorState();skillReady=[:];automaticSkills=[];mana=nil
+        tradeTimeout?.cancel();tradeTimeout=nil;tradeBusy=false;tradeOperation="";tradeItem=nil
+        shopMode="";shopGoods=[];shopDetails=[];saleItem=nil;salePrice=nil;tradeMessage=""
         onDisconnect?();log("disconnected");try? logger?.close();logger=nil
         screen="login";characters=[];selectedName="";npcText=""
     }
@@ -155,6 +223,7 @@ final class MirConnection: ObservableObject {
         }
     }
     private func handle(_ p:MirWire.Packet) {
+        if p.id==50,p.body.count>=4 { playerSex=Int(p.body[3])%2;playerHair=Int(p.body[2]) }
         receiveInventory(p)
         if p.id == 28 && p.actor==playerActor { awaitingAttack=false }
         switch p.id {
@@ -168,10 +237,40 @@ final class MirConnection: ObservableObject {
             characters=list;selectedName=list.first?.name ?? "";timeout?.cancel();busy=false;screen="characters";status=list.count==2 ? "请选择人物（两个角色栏均已使用）" : "请选择人物，或创建新人物"
         case 521:send(100,body:account+"/"+ticket);armTimeout()
         case 522:timeout?.cancel();busy=false;status="创建失败：请检查名称是否重复或角色栏是否已满"
+        case 766,767:
+            tradeMessage=legacyText(p.body);equipmentMessage=tradeMessage
+            onPacket?(p)
         case 643:
             npcID=p.actor
             npcText=legacyText(p.body).split(separator:"/",maxSplits:1,omittingEmptySubsequences:false).joined(separator:"\n\n").replacingOccurrences(of:"\\",with:"\n")
-        case 644:npcText=""
+        case 644:npcText="";shopMode="";saleItem=nil;salePrice=nil
+        case 645:
+            guard let goods=MirShop.goods(legacyText(p.body),count:Int(p.x)) else { fail("商店商品列表格式不匹配，请导出日志");return }
+            npcID=p.actor;shopGoods=goods;shopDetails=[];shopMode="buy"
+        case 646:npcID=p.actor;shopMode="sell";saleItem=nil;salePrice=nil
+        case 652:
+            guard tradeOperation=="details",p.actor==npcID else { break }
+            let items=p.bodyParts.compactMap(MirEquipment.item)
+            guard items.count==Int(p.x) else { fail("商店装备列表格式不匹配，请导出日志");return }
+            shopDetails=items;finishTrade("请选择一件装备购买")
+        case 647:
+            if tradeOperation=="quote" { saleItem=tradeItem;salePrice=Int(p.actor);finishTrade(p.actor>0 ? "服务器已报价，确认后出售" : "此商店不收购这件物品") }
+        case 648,649:
+            if tradeOperation=="sell" {
+                if p.id==648 { if let id=tradeItem { inventory.bag.removeValue(forKey:id) };goldBalance=p.actor }
+                saleItem=nil;salePrice=nil;finishTrade(p.id==648 ? "出售成功，金币已同步" : "出售失败，物品保留")
+            }
+        case 650,651:
+            if tradeOperation=="buy" {
+                if p.id==650 { goldBalance=p.actor };finishTrade(p.id==650 ? "购买成功，物品由服务器入包" : "购买失败：库存、金币、负重或背包空间不足")
+                shopDetails=[];selectNPC("@buy")
+            }
+        case 600,601:
+            if tradeOperation=="drop",tradeItem==p.actor {
+                if p.id==600 { inventory.bag.removeValue(forKey:p.actor) }
+                finishTrade(p.id==600 ? "物品已丢到地面" : "此物品或当前位置不允许丢弃")
+                equipmentMessage=tradeMessage
+            }
         case 525:connect(port:7200,phase:"game")
         case 658:send(1018);armTimeout()
         case 50:playerActor=p.actor;timeout?.cancel();busy=false;online=true;screen="world";status="已联网 · 点击地图行走";onPacket?(p);send(81)
@@ -198,6 +297,7 @@ final class MirConnection: ObservableObject {
         raw(MirWire.command(1010,actor:UInt32(bitPattern:actor)))
     }
     func closeNPC() {
+        guard !tradeBusy else { return };shopMode="";shopGoods=[];shopDetails=[];saleItem=nil;salePrice=nil
         raw(MirWire.command(1011,actor:UInt32(bitPattern:npcID),body:"@exit"));npcText=""
     }
     func enterSelectedCharacter() {
@@ -233,8 +333,8 @@ final class MirConnection: ObservableObject {
         raw(MirWire.command(1001,x:UInt16(x),y:UInt16(y)))
     }
     func changeEquipment(_ item:MirEquipment.Item,slot:Int,takingOff:Bool) {
-        guard online,!actionLocked,inventory.begin(item,slot:slot,takingOff:takingOff) else { return }
-        equipmentMessage="等待服务器确认…"
+        guard online,!tradeBusy,!actionLocked,inventory.begin(item,slot:slot,takingOff:takingOff) else { return }
+        tradeMessage="";equipmentMessage="等待服务器确认…"
         raw(MirWire.command(takingOff ? 1004 : 1003,actor:UInt32(bitPattern:item.id),x:UInt16(slot))+MirWire.encode(item.nameBytes))
         log("equipment request item=\(item.id) slot=\(slot) off=\(takingOff)")
         let work=DispatchWorkItem { [weak self] in

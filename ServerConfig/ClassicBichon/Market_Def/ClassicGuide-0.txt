@@ -1,0 +1,4 @@
+; Reconstructed dialogue for protocol validation; not recovered original script.
+[@main]
+#SAY
+欢迎来到比奇。\村外可以找到鸡、鹿和稻草人，出发前记得做好准备。\
