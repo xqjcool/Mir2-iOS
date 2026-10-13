@@ -5,7 +5,7 @@ final class OnlineModel:ObservableObject {
     let net=MirConnection()
     let scene:OnlineScene?
     @Published var coordinates=""
-    @Published var combat="点选目标，点击攻击；长按连续攻击"
+    @Published var combat="点击攻击：自动追打最近怪物；再次点击停止"
     @Published var target=""
     @Published var targetHealth:Double?
     @Published var position=Cell(x:0,y:0)
@@ -169,7 +169,7 @@ struct OnlineView:View {
         .onAppear { model.scene?.classicMode=classic }
         .onChange(of:classic) { value in
             model.scene?.input(.stop);model.scene?.classicMode=value
-            if value { model.scene?.autoGold=false;net.automaticSkills=[] }
+            if value { net.automaticSkills=[] }
         }
         .onChange(of:net.npcOpen) { open in if open { model.scene?.input(.stop) } }
         .onChange(of:net.online) { online in if !online { panel=nil } }
@@ -191,7 +191,7 @@ private struct HUDSettings:View {
     @AppStorage("hud.bottomInset") private var bottomInset=0.0
     var body:some View {
         NavigationStack { Form {
-            Toggle("经典模式（默认手动战斗、手动拾取）",isOn:$classic)
+            Toggle("经典模式（原版规则与地图操作）",isOn:$classic)
             Text("触屏增强模式可在技能面板主动开启辅助功能；服务端战斗规则保持不变。").font(.caption)
             Section("触屏布局 · 自动限制在安全区域") {
                 Toggle("浮动摇杆（在左下操作区内）",isOn:$floating)
@@ -417,31 +417,12 @@ private struct CombatButtons:View {
 }
 private struct HoldAttackButton:View {
     let scene:OnlineScene?
-    @GestureState private var touching=false
-    @State private var started=Date.distantPast
-    @State private var tracking=false
-    @State private var cancelled=false
-    @State private var work:DispatchWorkItem?
     var body:some View {
-        Text("攻击").font(.title3.bold()).frame(width:86,height:86)
-            .background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold,lineWidth:3))
-            .contentShape(Circle())
-            .gesture(DragGesture(minimumDistance:0).updating($touching) { _,state,_ in state=true }
-                .onChanged { value in
-                    if !tracking {
-                        tracking=true;cancelled=false;started=Date()
-                        let task=DispatchWorkItem { if !cancelled && tracking { scene?.input(.holdAttack(true)) } }
-                        work=task;DispatchQueue.main.asyncAfter(deadline:.now()+0.3,execute:task)
-                    }
-                    if hypot(value.location.x-43,value.location.y-43)>60 { cancelled=true;work?.cancel();scene?.input(.holdAttack(false)) }
-                }.onEnded { _ in
-                    work?.cancel();scene?.input(.holdAttack(false))
-                    if !cancelled && Date().timeIntervalSince(started)<0.3 { scene?.input(.attack) }
-                    tracking=false
-                })
-            .onChange(of:touching) { down in if !down { work?.cancel();scene?.input(.holdAttack(false));tracking=false } }
-            .onDisappear { work?.cancel();scene?.input(.holdAttack(false)) }
-            .accessibilityLabel("攻击，长按持续攻击，松开停止").accessibilityAddTraits(.isButton)
+        Button { scene?.input(.attack) } label: {
+            VStack(spacing:2) { Text("攻击").font(.title3.bold());Text("再点停止").font(.caption2) }
+                .frame(width:86,height:86).background(ClassicTheme.panel).clipShape(Circle())
+                .overlay(Circle().stroke(ClassicTheme.gold,lineWidth:3))
+        }.buttonStyle(.plain).accessibilityLabel("自动攻击最近怪物，再次点击停止")
     }
 }
 private struct ClassicAsset:View {
@@ -665,25 +646,27 @@ private struct NavigationPanel:View {
                 if let image=model.minimap,let scene=model.scene {
                     GeometryReader { geo in
                         let edge=min(geo.size.width,geo.size.height)*min(4,max(1,zoom*pinch))
+                        let mapHeight=edge * image.size.height / image.size.width
                         ScrollView([.horizontal,.vertical]) {
                             ZStack(alignment:.topLeading) {
                                 Image(uiImage:image).resizable().interpolation(.none)
                                 ForEach(Array(scene.npcMarkers.enumerated()),id:\.offset) { _,cell in
-                                    Circle().fill(Color.green).frame(width:5,height:5).position(x:CGFloat(cell.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(cell.y)/CGFloat(scene.mapHeight)*edge)
+                                    Circle().fill(Color.green).frame(width:5,height:5).position(x:CGFloat(cell.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(cell.y)/CGFloat(scene.mapHeight)*mapHeight)
                                 }
-                                Circle().fill(Color.yellow).frame(width:9,height:9).position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*edge)
-                                if let cell=marker { Image(systemName:"plus").foregroundColor(.white).position(x:CGFloat(cell.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(cell.y)/CGFloat(scene.mapHeight)*edge) }
-                            }.frame(width:edge,height:edge).contentShape(Rectangle())
+                                Circle().fill(Color.yellow).frame(width:9,height:9).position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*mapHeight)
+                                if let cell=marker { Image(systemName:"plus").foregroundColor(.white).position(x:CGFloat(cell.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(cell.y)/CGFloat(scene.mapHeight)*mapHeight) }
+                            }.frame(width:edge,height:mapHeight).contentShape(Rectangle())
                                 .simultaneousGesture(MagnificationGesture().updating($pinch) { value,state,_ in state=value }.onEnded { zoom=min(4,max(1,zoom * $0)) })
                                 .simultaneousGesture(SpatialTapGesture().onEnded { value in
-                                    marker=Cell(x:min(scene.mapWidth-1,max(0,Int(value.location.x/edge*CGFloat(scene.mapWidth)))),y:min(scene.mapHeight-1,max(0,Int(value.location.y/edge*CGFloat(scene.mapHeight)))))
+                                    marker=Cell(x:min(scene.mapWidth-1,max(0,Int(value.location.x/edge*CGFloat(scene.mapWidth)))),y:min(scene.mapHeight-1,max(0,Int(value.location.y/mapHeight*CGFloat(scene.mapHeight)))))
                                 })
                         }
                     }
-                    Text("黄点：本人 · 绿点：当前已观察到的 NPC").font(.caption)
+                    Text("黄点：本人 · 绿点：比奇商人/老兵及已观察 NPC").font(.caption)
                     if let cell=marker {
                         HStack {
                             Text("选中坐标 \(cell.x),\(cell.y)")
+                            if let name=scene.npcName(near:cell) { Text(name).foregroundColor(.green) }
                             if !classic { Button("前往此处") { scene.suspendControls(false);scene.navigate(to:cell);dismiss() }.frame(minHeight:44) }
                         }
                     }
@@ -698,11 +681,11 @@ private struct SkillPanel:View {
     let scene:OnlineScene?
     @Environment(\.dismiss) private var dismiss
     @AppStorage("hud.classic") private var classic=true
-    @State private var autoGold=false
+    @State private var autoPickup=true
     var body:some View {
         NavigationStack {
             List {
-                if !classic { Toggle("自动拾取附近金币",isOn:$autoGold).onChange(of:autoGold) { scene?.autoGold=$0 } }
+                Toggle("自动拾取附近物品和金币",isOn:$autoPickup).onChange(of:autoPickup) { scene?.autoPickup=$0 }
                 if net.skills.isEmpty { Text("当前角色尚未学习技能；学习后会显示服务器下发的技能。") }
                 ForEach(net.skills) { skill in
                     HStack {
@@ -718,7 +701,7 @@ private struct SkillPanel:View {
                     }.buttonStyle(.bordered)
                 }
                 Text("技能由服务端判断等级、蓝量、冷却和材料。火墙等范围技能先点技能，再点地图；自动释放时以当前怪物所在格为目标。刺杀／半月点击切换，烈火点击蓄力；长按快捷技能可替换绑定。经典模式不启用自动技能。")
-            }.onAppear { autoGold=scene?.autoGold ?? false }.navigationTitle("技能与拾取").navigationBarTitleDisplayMode(.inline)
+            }.onAppear { autoPickup=scene?.autoPickup ?? true }.navigationTitle("技能与拾取").navigationBarTitleDisplayMode(.inline)
             .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
         }
     }
