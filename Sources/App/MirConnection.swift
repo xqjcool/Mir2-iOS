@@ -25,16 +25,44 @@ final class MirConnection: ObservableObject {
     @Published var automaticSkills=Set<Int>()
     @Published var quickSlots:[Int]=[]
     @Published var mana:Int?
-    var quickSkills:[MirEquipment.Skill] {
-        let available=skills.filter(\.castable)
-        let ordered=quickSlots.compactMap { id in available.first { $0.id==id } }
-        return Array((ordered+available.filter { !quickSlots.contains($0.id) }).prefix(4))
+    @Published var vitals:MirVitals?
+    @Published var usePending:Int32?
+    @Published var messages:[String]=[]
+    private var useTimeout:DispatchWorkItem?
+    private var lastUse = -Double.infinity
+    func message(_ text:String) {
+        guard !text.isEmpty else { return }
+        messages.append(text);if messages.count>80 { messages.removeFirst(messages.count-80) }
     }
+    func useItem(_ item:MirEquipment.Item) {
+        let now=ProcessInfo.processInfo.systemUptime
+        guard online,!npcOpen,!tradeBusy,usePending==nil,inventory.pending==nil,inventory.bag[item.id] != nil,[0,1,2,3,4,31].contains(item.mode),now-lastUse>=0.8 else { return }
+        usePending=item.id;lastUse=now
+        raw(MirWire.command(1006,actor:UInt32(bitPattern:item.id))+MirWire.encode(item.nameBytes))
+        let work=DispatchWorkItem { [weak self] in self?.fail("使用物品确认超时，请重新登录同步背包") }
+        useTimeout=work;DispatchQueue.main.asyncAfter(deadline:.now()+8,execute:work)
+    }
+    func say(_ text:String) {
+        let value=text.trimmingCharacters(in:.whitespacesAndNewlines)
+        guard online,!value.isEmpty,legacyBytes(value).count<=120,!value.contains("\n"),!value.contains("\r") else { return }
+        send(3030,body:value)
+    }
+
+    var quickSkillSlots:[MirEquipment.Skill?] {
+        let available=skills.filter(\.castable)
+        if quickSlots.isEmpty { return (0..<4).map { available.indices.contains($0) ? available[$0] : nil } }
+        return (0..<4).map { slot in
+            guard quickSlots.indices.contains(slot) else { return nil }
+            return available.first { $0.id==quickSlots[slot] }
+        }
+    }
+    var quickSkills:[MirEquipment.Skill] { quickSkillSlots.compactMap{$0} }
     func setQuickSkill(_ id:Int,slot:Int) {
-        var ids=quickSkills.map(\.id)
-        guard ids.indices.contains(slot) else { return }
+        guard (0..<4).contains(slot),skills.contains(where:{$0.id==id && $0.castable}) else { return }
+        var ids=quickSkillSlots.map{$0?.id ?? 0}
         if let old=ids.firstIndex(of:id) { ids.swapAt(old,slot) } else { ids[slot]=id }
         quickSlots=ids
+        UserDefaults.standard.set(ids,forKey:"mir.quick.\(account).\(character)")
     }
     private var equipmentTimeout:DispatchWorkItem?
     private var lastMovement = -Double.infinity
@@ -57,7 +85,7 @@ final class MirConnection: ObservableObject {
     var npcOpen:Bool { !npcText.isEmpty || !shopMode.isEmpty }
     var npcLinks:[MirShop.Link] { MirShop.links(npcText) }
     private func beginTrade(_ operation:String,item:Int32?=nil)->Bool {
-        guard online,!tradeBusy,!actionLocked,inventory.pending==nil else { return false }
+        guard online,!tradeBusy,!actionLocked,usePending==nil,inventory.pending==nil else { return false }
         tradeOperation=operation;tradeItem=item;tradeBusy=true;tradeMessage="等待服务器确认…"
         let work=DispatchWorkItem { [weak self] in self?.fail("交易确认超时，已停止操作；请重新登录同步背包") }
         tradeTimeout=work;DispatchQueue.main.asyncAfter(deadline:.now()+8,execute:work);return true
@@ -148,6 +176,7 @@ final class MirConnection: ObservableObject {
     }
     func disconnect() {
         generation += 1;timeout?.cancel();timeout=nil
+        useTimeout?.cancel();useTimeout=nil;usePending=nil;vitals=nil
         connection?.cancel();connection=nil;online=false;busy=false;password="";ticket="";awaitingAttack=false
         equipmentTimeout?.cancel();equipmentTimeout=nil;inventory=MirEquipment.State();skills=[];abilityText="";goldBalance=0;actionLocked=false;playerActor=nil
         warrior=MirSkills.WarriorState();skillReady=[:];automaticSkills=[];mana=nil
@@ -240,8 +269,11 @@ final class MirConnection: ObservableObject {
             characters=list;selectedName=list.first?.name ?? "";timeout?.cancel();busy=false;screen="characters";status=list.count==2 ? "请选择人物（两个角色栏均已使用）" : "请选择人物，或创建新人物"
         case 521:send(100,body:account+"/"+ticket);armTimeout()
         case 522:timeout?.cancel();busy=false;status="创建失败：请检查名称是否重复或角色栏是否已满"
+        case 100,101,102,103,104:
+            message(legacyText(p.body));onPacket?(p)
         case 766,767:
             tradeMessage=legacyText(p.body);equipmentMessage=tradeMessage
+            message(tradeMessage)
             log("server hint id=\(p.id) text=\(tradeMessage.prefix(240))")
             onPacket?(p)
         case 643:
@@ -277,7 +309,7 @@ final class MirConnection: ObservableObject {
             }
         case 525:connect(port:7200,phase:"game")
         case 658:send(1018);armTimeout()
-        case 50:playerActor=p.actor;timeout?.cancel();busy=false;online=true;screen="world";status="已联网 · 点击地图行走";onPacket?(p);send(81)
+        case 50:quickSlots=UserDefaults.standard.array(forKey:"mir.quick.\(account).\(character)") as? [Int] ?? [];playerActor=p.actor;timeout?.cancel();busy=false;online=true;screen="world";status="已联网 · 点击地图行走";onPacket?(p);send(81)
         case 503:fail(p.actor == -3 ? "旧会话正在退出，请稍等 10 秒后再登录" : "账号或密码不正确")
         case 527,526:fail("角色认证或进入游戏失败，请稍后重试")
         default:onPacket?(p)
@@ -337,7 +369,7 @@ final class MirConnection: ObservableObject {
         raw(MirWire.command(1001,x:UInt16(x),y:UInt16(y)))
     }
     func changeEquipment(_ item:MirEquipment.Item,slot:Int,takingOff:Bool) {
-        guard online,!tradeBusy,!actionLocked,inventory.begin(item,slot:slot,takingOff:takingOff) else { return }
+        guard online,!tradeBusy,usePending==nil,!actionLocked,inventory.begin(item,slot:slot,takingOff:takingOff) else { return }
         tradeMessage="";equipmentMessage="等待服务器确认…"
         raw(MirWire.command(takingOff ? 1004 : 1003,actor:UInt32(bitPattern:item.id),x:UInt16(slot))+MirWire.encode(item.nameBytes))
         log("equipment request item=\(item.id) slot=\(slot) off=\(takingOff)")
@@ -348,6 +380,12 @@ final class MirConnection: ObservableObject {
     }
     private func receiveInventory(_ p:MirWire.Packet) {
         switch p.id {
+        case 635,636:
+            if let id=usePending {
+                useTimeout?.cancel();useTimeout=nil;usePending=nil
+                if p.id==635 { inventory.bag.removeValue(forKey:id) }
+                message(p.id==635 ? "服务器确认使用物品" : "物品使用失败，请检查状态、等级或使用间隔")
+            }
         case 201:
             let items=p.bodyParts.compactMap(MirEquipment.item)
             guard items.count==p.bodyParts.count else { equipmentMessage="背包格式不匹配，请导出日志";log("invalid bag item layout");return }
@@ -375,14 +413,19 @@ final class MirConnection: ObservableObject {
             goldBalance=p.actor
             if p.body.count==40 {
                 let b=p.body
+                vitals=MirVitals.decode(b);mana=vitals?.mp
                 abilityText="等级 \(b[0])  攻击 \(MirEquipment.range(MirEquipment.word(b,6)))  魔法 \(MirEquipment.range(MirEquipment.word(b,8)))  道术 \(MirEquipment.range(MirEquipment.word(b,10)))\n防御 \(MirEquipment.range(MirEquipment.word(b,2)))  魔防 \(MirEquipment.range(MirEquipment.word(b,4)))"
             }
         case 53:
-            if p.actor==playerActor { mana=Int(p.y) }
+            if p.actor==playerActor { mana=Int(p.y);vitals?.hp=Int(p.x);vitals?.mp=Int(p.y);vitals?.maxHP=Int(p.series) }
         case 653:goldBalance=p.actor
         case 211:skills=p.bodyParts.compactMap(MirEquipment.skill)
         case 210:
             if let skill=MirEquipment.skill(p.body) { skills.removeAll{$0.id==skill.id};skills.append(skill) }
+        case 640:
+            if let index=skills.firstIndex(where:{$0.id==Int(p.actor)}) {
+                skills[index].level=Int(p.x);skills[index].training=Int(UInt32(p.y) | UInt32(p.series)<<16)
+            }
         case 212:skills.removeAll{$0.id==Int(p.actor)}
         default:break
         }

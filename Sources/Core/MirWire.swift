@@ -193,7 +193,10 @@ enum MirEquipment {
     }
     static func range(_ value:Int)->String { "\(value & 255)–\(value >> 8)" }
     struct Skill:Identifiable,Equatable {
-        let id,level,cost,delayMS:Int
+        let id:Int
+        var level:Int
+        let cost,delayMS:Int
+        var training:Int = 0
         var effect:Int = 0
         let nameBytes:[UInt8]
         // Warrior readiness is confirmed by +LNG/+WID/+FIR before choosing a hit packet.
@@ -201,7 +204,7 @@ enum MirEquipment {
     }
     static func skill(_ b:[UInt8])->Skill? {
         guard b.count==84,b[10]>0,b[10]<=14 else { return nil }
-        return Skill(id:word(b,8),level:Int(b[1]),cost:word(b,28),delayMS:max(1400,Int(integer(b,56))+800),effect:Int(b[26]),nameBytes:Array(b[11...10+Int(b[10])]))
+        return Skill(id:word(b,8),level:Int(b[1]),cost:word(b,28),delayMS:max(1400,Int(integer(b,56))+800),training:Int(integer(b,4)),effect:Int(b[26]),nameBytes:Array(b[11...10+Int(b[10])]))
     }
     struct Pending {
         let item:Item
@@ -317,5 +320,14 @@ enum MirShop {
         return re.matches(in:text,range:NSRange(location:0,length:ns.length)).map {
             Link(label:ns.substring(with:$0.range(at:1)),command:ns.substring(with:$0.range(at:2)))
         }
+    }
+}
+
+// Server packet Ability.cs, 40-byte classic layout. Missing state stays unknown.
+struct MirVitals:Equatable {
+    var level:Int, hp:Int, mp:Int, maxHP:Int, maxMP:Int, experience:Int, maxExperience:Int
+    static func decode(_ b:[UInt8])->MirVitals? {
+        guard b.count==40 else { return nil }
+        return MirVitals(level:Int(b[0]),hp:MirEquipment.word(b,12),mp:MirEquipment.word(b,14),maxHP:MirEquipment.word(b,16),maxMP:MirEquipment.word(b,18),experience:Int(MirEquipment.integer(b,24)),maxExperience:Int(MirEquipment.integer(b,28)))
     }
 }

@@ -5,7 +5,7 @@ final class OnlineModel:ObservableObject {
     let net=MirConnection()
     let scene:OnlineScene?
     @Published var coordinates=""
-    @Published var combat="点击稻草人选中，再点攻击"
+    @Published var combat="点选目标，点击攻击；长按连续攻击"
     @Published var target=""
     @Published var targetHealth:Double?
     @Published var position=Cell(x:0,y:0)
@@ -30,65 +30,199 @@ struct OnlineRoot:View {
     @StateObject private var model=OnlineModel()
     var body:some View { OnlineView(model:model,net:model.net) }
 }
+private enum HUDPanel:String,Identifiable {
+    case bag,character,skills,map,settings,chat
+    var id:String { rawValue }
+}
+private enum ClassicTheme {
+    static let gold=Color(red:0.61,green:0.45,blue:0.26)
+    static let text=Color(red:0.91,green:0.83,blue:0.67)
+    static let panel=Color(red:0.13,green:0.106,blue:0.09)
+}
 struct OnlineView:View {
     @ObservedObject var model:OnlineModel
     @ObservedObject var net:MirConnection
     @Environment(\.scenePhase) private var phase
-    @State private var showEquipment=false
-    @State private var showMap=false
-    @State private var showSkills=false
-
-    init(model: OnlineModel, net: MirConnection) {
-        _model = ObservedObject(wrappedValue: model)
-        _net = ObservedObject(wrappedValue: net)
+    @State private var panel:HUDPanel?
+    @AppStorage("hud.classic") private var classic=true
+    @AppStorage("hud.opacity") private var opacity=0.9
+    @AppStorage("hud.scale") private var scale=1.0
+    @AppStorage("hud.leftInset") private var leftInset=0.0
+    @AppStorage("hud.rightInset") private var rightInset=0.0
+    @AppStorage("hud.bottomInset") private var bottomInset=0.0
+    init(model:OnlineModel,net:MirConnection) {
+        _model=ObservedObject(wrappedValue:model);_net=ObservedObject(wrappedValue:net)
+    }
+    private func controlScale(_ size:CGSize)->CGFloat {
+        let inset=min(bottomInset,max(0,Double(size.height)-350))
+        return CGFloat(min(1.1,max(0.9,min(scale,(Double(size.height)-92-inset)/254))))
+    }
+    private func open(_ value:HUDPanel) { model.scene?.suspendControls(true);panel=value }
+    private func shortcut(_ title:String,_ icon:String,_ value:HUDPanel)->some View {
+        Button { open(value) } label: {
+            VStack(spacing:2) { Image(systemName:icon);Text(title).font(.caption2) }.frame(width:44,height:44)
+        }.background(ClassicTheme.panel).overlay(Circle().stroke(ClassicTheme.gold)).clipShape(Circle())
+    }
+    private var statusCard:some View {
+        Button { open(.character) } label: {
+            HStack(spacing:6) {
+                Image(systemName:"person.crop.circle").font(.system(size:32)).frame(width:44,height:44)
+                VStack(alignment:.leading,spacing:3) {
+                    Text(net.selectedName+"  Lv.\(net.vitals?.level.description ?? "—")").font(.caption.bold()).lineLimit(1)
+                    meter("HP",net.vitals?.hp,net.vitals?.maxHP,.red)
+                    meter("MP",net.vitals?.mp,net.vitals?.maxMP,.blue)
+                }
+            }.padding(6).frame(width:190).background(ClassicTheme.panel.opacity(opacity))
+                .overlay(RoundedRectangle(cornerRadius:4).stroke(ClassicTheme.gold))
+        }.buttonStyle(.plain)
+    }
+    private func meter(_ title:String,_ value:Int?,_ maximum:Int?,_ color:Color)->some View {
+        ZStack {
+            ProgressView(value:Double(value ?? 0),total:Double(max(1,maximum ?? 1))).tint(color)
+            Text("\(title) \(value?.description ?? "—")/\(maximum?.description ?? "—")").font(.system(size:10)).foregroundColor(.white)
+        }.frame(height:14)
+    }
+    private var miniMap:some View {
+        Button { open(.map) } label: {
+            VStack(spacing:2) {
+                Text("比奇大陆").font(.caption.bold())
+                if let image=model.minimap,let scene=model.scene {
+                    ZStack(alignment:.topLeading) {
+                        Image(uiImage:image).resizable().interpolation(.none)
+                        Circle().fill(Color.yellow).frame(width:5,height:5)
+                            .position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*88,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*34)
+                    }.frame(width:88,height:34).clipped()
+                }
+                Text("\(model.position.x),\(model.position.y)").font(.caption2.monospacedDigit())
+            }.padding(4).background(ClassicTheme.panel.opacity(opacity)).overlay(Rectangle().stroke(ClassicTheme.gold))
+        }.buttonStyle(.plain).accessibilityLabel("打开地图")
     }
     var body:some View {
         ZStack {
             Color.black.ignoresSafeArea()
             if net.online,let scene=model.scene { SpriteView(scene:scene).ignoresSafeArea() }
-            VStack {
-                HStack {
-                    VStack(alignment:.leading) {
-                        Text("传奇 · 比奇联网测试").font(.headline)
-                        Text(net.status).font(.caption)
-                        if let mana=net.mana { Text("MP \(mana)").font(.caption).foregroundColor(.cyan) }
-                        Text(model.coordinates).font(.caption.monospacedDigit())
-                    }.padding(8).background(.black.opacity(0.75))
-                    Spacer()
-                    if let url=net.logURL { ShareLink("导出日志",item:url).buttonStyle(.borderedProminent) }
-                    if net.online || net.busy { Button("退出登录"){net.disconnect();net.status="已退出，可重新登录"}.buttonStyle(.borderedProminent) }
-                }
-                if net.online { Text(model.target).font(.headline).foregroundColor(.yellow);if let health=model.targetHealth { ProgressView(value:health).tint(.red).frame(width:220) } }
-                Spacer()
-                if net.online {
-                    HStack(alignment:.bottom) {
-                        VirtualJoystick { x,y in model.scene?.joystick(x:x,y:y) }
-                        VStack(spacing:6) {
-                            Text(model.combat).font(.caption).lineLimit(2).padding(6).background(.black.opacity(0.75))
-                            HStack {
-                                Button("人物 / 背包") { model.scene?.stopAutomation();showEquipment=true }
-                                Button("地图") { model.scene?.stopAutomation();showMap=true }
-                                Button("技能") { model.scene?.stopAutomation();showSkills=true }
-                            }.buttonStyle(.borderedProminent).controlSize(.large)
-                        }.frame(maxWidth:.infinity)
-                        CombatButtons(net:net,scene:model.scene)
-                    }
-                }
-            }.padding().foregroundColor(.white)
-            if !net.online { ClassicLobby(net:net).disabled(model.scene==nil) }
+            if net.online {
+                GeometryReader { geo in
+                    VStack(spacing:0) {
+                        HStack(alignment:.top,spacing:6) {
+                            statusCard
+                            HStack(spacing:4) {
+                                shortcut("背包","bag",.bag)
+                                shortcut("角色","person",.character)
+                                shortcut("技能","sparkles",.skills)
+                                shortcut("更多","ellipsis",.settings)
+                            }
+                            Spacer(minLength:0);miniMap
+                        }
+                        Spacer(minLength:0)
+                        HStack(alignment:.bottom,spacing:4) {
+                            VirtualJoystick { x,y in model.scene?.input(.move(x,y)) }
+                                .scaleEffect(controlScale(geo.size),anchor:.bottomLeading)
+                                .frame(width:148*controlScale(geo.size),height:148*controlScale(geo.size))
+                                .padding(.leading,min(leftInset,max(0,(geo.size.width-550)/2)))
+                                .opacity(opacity)
+                            Spacer(minLength:0)
+                            CombatButtons(net:net,scene:model.scene)
+                                .scaleEffect(controlScale(geo.size),anchor:.bottomTrailing)
+                                .frame(width:258*controlScale(geo.size),height:254*controlScale(geo.size))
+                                .padding(.trailing,min(rightInset,max(0,(geo.size.width-550)/2)))
+                                .opacity(opacity)
+                        }.padding(.bottom,min(bottomInset,max(0,geo.size.height-350)))
+                    }.padding(8)
+                    VStack(spacing:3) {
+                        if !model.target.isEmpty {
+                            Text(model.target).font(.caption).foregroundColor(.yellow)
+                            if let health=model.targetHealth { ProgressView(value:health).tint(.red).frame(width:160) }
+                        }
+                    }.frame(maxWidth:.infinity).padding(.top,78).allowsHitTesting(false)
+                    VStack { Spacer();HStack { Spacer();
+                        Button { open(.chat) } label: {
+                            VStack(spacing:3) {
+                                ForEach(Array(net.messages.suffix(2).enumerated()),id:\.offset) { _,message in Text(message).font(.caption2).lineLimit(1) }
+                                Text(model.combat.isEmpty ? "聊天" : model.combat).font(.caption2).lineLimit(2)
+                            }.padding(5).frame(width:max(60,min(240,geo.size.width-440))).frame(minHeight:44).background(ClassicTheme.panel.opacity(0.65))
+                        }.buttonStyle(.plain)
+                        Spacer() }.padding(.bottom,8) }.allowsHitTesting(panel==nil)
+                }.foregroundColor(ClassicTheme.text)
+            } else {
+                ClassicLobby(net:net).disabled(model.scene==nil)
+                VStack { HStack { Spacer();if let url=net.logURL { ShareLink("导出日志",item:url) } };Spacer() }.padding()
+            }
             if let error=model.error { Text(error).foregroundColor(.red).padding().background(Color.black) }
-            if net.online && net.npcOpen { NPCShopPanel(net:net) }
-        }.sheet(isPresented:$showEquipment) { EquipmentPanel(net:net).onAppear { model.scene?.stopAutomation() } }
-        .sheet(isPresented:$showMap) { NavigationPanel(model:model) }
-        .sheet(isPresented:$showSkills) { SkillPanel(net:net,scene:model.scene) }
-        .onChange(of:net.npcOpen) { open in if open { model.scene?.stopAutomation() } }
-        .onChange(of:showEquipment) { _ in model.scene?.suspendControls(showEquipment || showMap || showSkills) }
-        .onChange(of:showMap) { _ in model.scene?.suspendControls(showEquipment || showMap || showSkills) }
-        .onChange(of:showSkills) { _ in model.scene?.suspendControls(showEquipment || showMap || showSkills) }
+            if net.online && net.npcOpen {
+                Color.black.opacity(0.35).ignoresSafeArea().onTapGesture {}
+                NPCShopPanel(net:net)
+            }
+        }
+        .sheet(item:$panel,onDismiss:{ model.scene?.suspendControls(false) }) { selected in
+            Group {
+                switch selected {
+                case .bag:EquipmentPanel(net:net,characterOnly:false)
+                case .character:EquipmentPanel(net:net,characterOnly:true)
+                case .skills:SkillPanel(net:net,scene:model.scene)
+                case .map:NavigationPanel(model:model)
+                case .settings:HUDSettings(net:net)
+                case .chat:ChatPanel(net:net)
+                }
+            }.onAppear { model.scene?.suspendControls(true) }
+        }
+        .onAppear { model.scene?.classicMode=classic }
+        .onChange(of:classic) { value in
+            model.scene?.input(.stop);model.scene?.classicMode=value
+            if value { model.scene?.autoGold=false;net.automaticSkills=[] }
+        }
+        .onChange(of:net.npcOpen) { open in if open { model.scene?.input(.stop) } }
+        .onChange(of:net.online) { online in if !online { panel=nil } }
         .onChange(of:phase) { value in
+            if value != .active { model.scene?.input(.stop) }
             if value == .background { net.disconnect();net.status="已进入后台，返回后请重新登录" }
         }.persistentSystemOverlays(.hidden)
     }
+}
+private struct HUDSettings:View {
+    @ObservedObject var net:MirConnection
+    @Environment(\.dismiss) private var dismiss
+    @AppStorage("hud.classic") private var classic=true
+    @AppStorage("hud.floating") private var floating=false
+    @AppStorage("hud.opacity") private var opacity=0.9
+    @AppStorage("hud.scale") private var scale=1.0
+    @AppStorage("hud.leftInset") private var leftInset=0.0
+    @AppStorage("hud.rightInset") private var rightInset=0.0
+    @AppStorage("hud.bottomInset") private var bottomInset=0.0
+    var body:some View {
+        NavigationStack { Form {
+            Toggle("经典模式（默认手动战斗、手动拾取）",isOn:$classic)
+            Text("触屏增强模式可在技能面板主动开启辅助功能；服务端战斗规则保持不变。").font(.caption)
+            Section("触屏布局 · 自动限制在安全区域") {
+                Toggle("浮动摇杆（在左下操作区内）",isOn:$floating)
+                Text("操作区缩放");Slider(value:$scale,in:0.9...1.1)
+                Text("HUD 透明度");Slider(value:$opacity,in:0.45...1)
+                Text("摇杆向内移动");Slider(value:$leftInset,in:0...60)
+                Text("技能区向内移动");Slider(value:$rightInset,in:0...60)
+                Text("操作区向上移动");Slider(value:$bottomInset,in:0...40)
+                Button("恢复默认布局") { opacity=0.9;scale=1;leftInset=0;rightInset=0;bottomInset=0 }
+            }
+            Section("诊断") {
+                Text(net.status)
+                if let url=net.logURL { ShareLink("导出联网日志",item:url) }
+                Button("退出登录",role:.destructive) { net.disconnect();net.status="已退出，可重新登录";dismiss() }
+            }
+        }.navigationTitle("设置").toolbar { Button("关闭") { dismiss() } } }
+    }
+}
+private struct ChatPanel:View {
+    @ObservedObject var net:MirConnection
+    @Environment(\.dismiss) private var dismiss
+    @State private var draft=""
+    var body:some View {
+        NavigationStack {
+            VStack {
+                List(Array(net.messages.enumerated()),id:\.offset) { _,message in Text(message) }
+                HStack { TextField("普通聊天",text:$draft).textFieldStyle(.roundedBorder).onSubmit { send() };Button("发送") { send() }.frame(minWidth:44,minHeight:44) }.padding()
+            }.navigationTitle("聊天与系统消息").toolbar { Button("关闭") { dismiss() } }
+        }
+    }
+    private func send() { net.say(draft);draft="" }
 }
 
 private struct ClassicLobby:View {
@@ -191,54 +325,123 @@ private struct ClassicLobby:View {
 
 private struct VirtualJoystick:View {
     let changed:(Double,Double)->Void
+    @AppStorage("hud.floating") private var floating=false
+    @GestureState private var tracking=false
     @State private var offset=CGSize.zero
+    @State private var origin=CGPoint(x:74,y:74)
     var body:some View {
         ZStack {
-            Circle().fill(Color.black.opacity(0.45)).overlay(Circle().stroke(Color.white.opacity(0.4),lineWidth:2))
+            Circle().fill(ClassicTheme.panel.opacity(0.6)).overlay(Circle().stroke(ClassicTheme.gold,lineWidth:2))
+                .frame(width:floating ? 104:148,height:floating ? 104:148).offset(x:origin.x-74,y:origin.y-74)
             Text("轻推走 · 满推跑").font(.caption2).offset(y:59)
-            Circle().fill(Color.white.opacity(0.5)).frame(width:52,height:52).offset(offset)
-        }.frame(width:148,height:148).contentShape(Circle())
-        .gesture(DragGesture(minimumDistance:0).onChanged { value in
-            let dx=Double(value.location.x-74),dy=Double(value.location.y-74),distance=hypot(dx,dy)
+            Circle().fill(ClassicTheme.gold.opacity(0.8)).frame(width:52,height:52).offset(x:origin.x-74+offset.width,y:origin.y-74+offset.height)
+        }.frame(width:148,height:148).contentShape(Rectangle())
+        .gesture(DragGesture(minimumDistance:0).updating($tracking) { _,state,_ in state=true }.onChanged { value in
+            origin=floating ? CGPoint(x:min(96,max(52,value.startLocation.x)),y:min(96,max(52,value.startLocation.y))) : CGPoint(x:74,y:74)
+            let dx=Double(value.location.x-origin.x),dy=Double(value.location.y-origin.y),distance=hypot(dx,dy)
             let factor=distance>48 ? 48/distance : 1
             offset=CGSize(width:dx*factor,height:dy*factor);changed(dx*factor/48,dy*factor/48)
-        }.onEnded { _ in offset = .zero;changed(0,0) })
-        .onDisappear { changed(0,0) }
+        }.onEnded { _ in reset() })
+        .onChange(of:tracking) { active in if !active { reset() } }
+        .onDisappear { reset() }
         .accessibilityLabel("移动摇杆，轻推行走，满推奔跑")
     }
+    private func reset() { offset = .zero;origin=CGPoint(x:74,y:74);changed(0,0) }
 }
 private struct CombatButtons:View {
     @ObservedObject var net:MirConnection
     let scene:OnlineScene?
-    // Four thumb targets on a quarter-circle around the main attack button.
+    @State private var bindingSlot=0
+    @State private var chooseSkill=false
+    @State private var choosePotion=false
+    @GestureState private var aiming=false
+    @AppStorage("hud.potion") private var potionName=""
+    private var potions:[MirEquipment.Item] { net.inventory.bag.values.filter { (0...3).contains($0.mode) }.sorted{$0.id<$1.id} }
+    private var potion:MirEquipment.Item? { potions.first { net.itemName($0)==potionName } ?? (potionName.isEmpty ? potions.first : nil) }
+    private var potionCount:Int { guard let item=potion else { return 0 };return potions.filter{net.itemName($0)==net.itemName(item)}.count }
     private func skillPosition(_ index:Int)->CGPoint {
         let angle=Double(180+index*30) * .pi / 180
         return CGPoint(x:206+122*cos(angle),y:158+122*sin(angle))
     }
     var body:some View {
         ZStack {
-            Button { scene?.toggleAttack() } label: { Text("攻击").font(.title3.bold()).frame(width:86,height:86).background(Color.red.opacity(0.85)).clipShape(Circle()) }.position(x:206,y:158)
-            ForEach(Array(net.quickSkills.prefix(4).enumerated()),id:\.element.id) { index,skill in
-                TimelineView(.periodic(from:.now,by:0.2)) { _ in
-                    let remaining=max(0,(net.skillReady[skill.id] ?? 0)-ProcessInfo.processInfo.systemUptime)
-                    Button { scene?.castSkill(skill) } label: {
+            HoldAttackButton(scene:scene).position(x:206,y:158)
+            ForEach(0..<4,id:\.self) { index in
+                if let skill=net.quickSkillSlots[index] {
+                    TimelineView(.periodic(from:.now,by:0.2)) { _ in
+                        let remaining=max(0,(net.skillReady[skill.id] ?? 0)-ProcessInfo.processInfo.systemUptime)
                         VStack(spacing:2) {
-                            Text(net.skillName(skill)).font(.caption.bold())
+                            Text(net.skillName(skill)).font(.caption.bold()).lineLimit(2)
                             if remaining>0 { Text(String(format:"%.1fs",remaining)).font(.caption2.monospacedDigit()) }
-                            else if net.automaticSkills.contains(skill.id) { Text("自动").font(.caption2).foregroundColor(.yellow) }
-                            else if (skill.id==12 && net.warrior.thrust) || (skill.id==25 && net.warrior.halfMoon) { Text("已开启").font(.caption2).foregroundColor(.yellow) }
-                            else if skill.id==26 && net.warrior.fireUntil>ProcessInfo.processInfo.systemUptime { Text("已蓄力").font(.caption2).foregroundColor(.orange) }
-                        }.frame(width:56,height:56).background(Color.brown.opacity(remaining>0 ? 0.5 : 0.9)).clipShape(Circle())
-                    }.disabled(remaining>0)
-                    .highPriorityGesture(LongPressGesture(minimumDuration:0.65).onEnded { _ in scene?.toggleAutoSkill(skill.id) })
+                        }.frame(width:56,height:56).background(ClassicTheme.panel.opacity(remaining>0 ? 0.6:1))
+                            .clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold,lineWidth:2))
+                            .contentShape(Circle())
+                            .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in bindingSlot=index;scene?.suspendControls(true);chooseSkill=true }
+                                .exclusively(before:TapGesture().onEnded { scene?.input(.skill(skill)) }))
+                            .simultaneousGesture(DragGesture(minimumDistance:14).updating($aiming) { _,state,_ in state=true }
+                                .onChanged { value in scene?.aimSkill(skill,dx:Double(value.translation.width),dy:Double(value.translation.height)) }
+                                .onEnded { value in scene?.aimSkill(skill,dx:Double(value.translation.width),dy:Double(value.translation.height),release:true) })
+                            .accessibilityLabel(net.skillName(skill)+"，长按替换")
+                            .accessibilityAddTraits(.isButton)
+                    }.position(skillPosition(index))
+                } else {
+                    Button { bindingSlot=index;scene?.suspendControls(true);chooseSkill=true } label: { Text("技能\(index+1)").font(.caption2).frame(width:56,height:56) }
+                        .background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold)).position(skillPosition(index))
                 }
-                    .position(skillPosition(index))
             }
+            VStack(spacing:0) {
+                if let item=potion { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:30,height:30) }
+                Text(potion == nil ? "药水" : "×\(potionCount)").font(.caption2)
+            }.frame(width:50,height:50).background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold))
+                .opacity(potion == nil || net.usePending != nil ? 0.5:1).contentShape(Circle())
+                .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in scene?.suspendControls(true);choosePotion=true }
+                    .exclusively(before:TapGesture().onEnded { if let item=potion { net.useItem(item) } else { scene?.suspendControls(true);choosePotion=true } }))
+                .position(x:137,y:139).accessibilityLabel("药水，长按更换")
             HStack {
-                Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:44)
-                Button("拾取周围") { scene?.collectNearby() }.frame(minWidth:96,minHeight:44)
-            }.background(Color.blue.opacity(0.8)).clipShape(Capsule()).position(x:135,y:227)
-        }.frame(width:258,height:250).foregroundColor(.white).buttonStyle(.plain)
+                Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:50)
+                Button("拾取") { scene?.input(.pickup) }.frame(minWidth:70,minHeight:50)
+            }.background(ClassicTheme.panel).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule()).position(x:132,y:228)
+        }.frame(width:258,height:254).foregroundColor(ClassicTheme.text).buttonStyle(.plain)
+        .confirmationDialog("替换快捷技能",isPresented:$chooseSkill,titleVisibility:.visible) {
+            ForEach(net.skills.filter(\.castable)) { skill in Button(net.skillName(skill)) { net.setQuickSkill(skill.id,slot:bindingSlot) } }
+            Button("取消",role:.cancel) {}
+        }
+        .confirmationDialog("选择快捷药水",isPresented:$choosePotion,titleVisibility:.visible) {
+            ForEach(Array(Set(potions.map{net.itemName($0)})).sorted(),id:\.self) { name in Button(name) { potionName=name } }
+            Button("取消",role:.cancel) {}
+        }
+        .onChange(of:aiming) { active in if !active { scene?.cancelAim() } }
+        .onChange(of:chooseSkill) { _ in scene?.suspendControls(chooseSkill || choosePotion) }
+        .onChange(of:choosePotion) { _ in scene?.suspendControls(chooseSkill || choosePotion) }
+    }
+}
+private struct HoldAttackButton:View {
+    let scene:OnlineScene?
+    @GestureState private var touching=false
+    @State private var started=Date.distantPast
+    @State private var tracking=false
+    @State private var cancelled=false
+    @State private var work:DispatchWorkItem?
+    var body:some View {
+        Text("攻击").font(.title3.bold()).frame(width:86,height:86)
+            .background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold,lineWidth:3))
+            .contentShape(Circle())
+            .gesture(DragGesture(minimumDistance:0).updating($touching) { _,state,_ in state=true }
+                .onChanged { value in
+                    if !tracking {
+                        tracking=true;cancelled=false;started=Date()
+                        let task=DispatchWorkItem { if !cancelled && tracking { scene?.input(.holdAttack(true)) } }
+                        work=task;DispatchQueue.main.asyncAfter(deadline:.now()+0.3,execute:task)
+                    }
+                    if hypot(value.location.x-43,value.location.y-43)>60 { cancelled=true;work?.cancel();scene?.input(.holdAttack(false)) }
+                }.onEnded { _ in
+                    work?.cancel();scene?.input(.holdAttack(false))
+                    if !cancelled && Date().timeIntervalSince(started)<0.3 { scene?.input(.attack) }
+                    tracking=false
+                })
+            .onChange(of:touching) { down in if !down { work?.cancel();scene?.input(.holdAttack(false));tracking=false } }
+            .onDisappear { work?.cancel();scene?.input(.holdAttack(false)) }
+            .accessibilityLabel("攻击，长按持续攻击，松开停止").accessibilityAddTraits(.isButton)
     }
 }
 private struct ClassicAsset:View {
@@ -251,6 +454,8 @@ private struct ClassicAsset:View {
 }
 private struct EquipmentPanel:View {
     @ObservedObject var net:MirConnection
+    let characterOnly:Bool
+    @State private var category="全部"
     @Environment(\.dismiss) private var dismiss
     @State private var selected:Int32?
     @State private var selectedSlot:Int?
@@ -262,12 +467,21 @@ private struct EquipmentPanel:View {
     }()
     private let scale:CGFloat=1.4
     private let points:[CGPoint]=[.init(x:122,y:178),.init(x:70,y:113),.init(x:185,y:142),.init(x:185,y:103),.init(x:124,y:94),.init(x:185,y:192),.init(x:59,y:192),.init(x:185,y:232),.init(x:59,y:232)]
-    private var bag:[MirEquipment.Item] { net.inventory.bag.values.sorted{$0.id<$1.id} }
+    private var bag:[MirEquipment.Item] {
+        net.inventory.bag.values.filter { item in
+            switch category {
+            case "装备":return !item.slots.isEmpty
+            case "药品":return (0...3).contains(item.mode)
+            case "其他":return item.slots.isEmpty && !(0...3).contains(item.mode)
+            default:return true
+            }
+        }.sorted{$0.id<$1.id}
+    }
     private var item:MirEquipment.Item? {
         if let slot=selectedSlot { return net.inventory.equipped[slot] }
         return selected.flatMap { net.inventory.bag[$0] }
     }
-    private var locked:Bool { net.tradeBusy || net.inventory.pending != nil || net.actionLocked }
+    private var locked:Bool { net.tradeBusy || net.inventory.pending != nil || net.usePending != nil || net.actionLocked }
     private func icon(_ item:MirEquipment.Item)->some View { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:38,height:38) }
     private func paperLayer(_ key:String)->some View {
         Group {
@@ -323,21 +537,24 @@ private struct EquipmentPanel:View {
             ScrollView([.horizontal,.vertical]) {
                 VStack(alignment:.leading,spacing:8) {
                     HStack(alignment:.top,spacing:8) {
-                        character
+                        if characterOnly { character } else {
                         VStack {
+                            Picker("分类",selection:$category) { ForEach(["全部","装备","药品","其他"],id:\.self) { Text($0) } }.pickerStyle(.segmented)
                             backpack
                             HStack {
-                                Text("背包 \(bag.count)/46")
+                                Text("背包 \(net.inventory.bag.count)/46")
                                 Button(page==0 ? "后 6 格 →" : "← 前 40 格") { page=1-page }.frame(minHeight:44)
                             }
                         }
                     }
-                    HStack {
+                    }
+                    if characterOnly { HStack {
                         ForEach(9..<MirEquipment.slotNames.count,id:\.self) { slot in
                             Button { selectedSlot=slot;selected=nil } label: {
                                 HStack { Text(MirEquipment.slotNames[slot]);if let value=net.inventory.equipped[slot] { icon(value) } }.frame(minWidth:100,minHeight:44)
                             }
                         }
+                    }
                     }
                     Text(net.abilityText).font(.caption)
                     if let value=item {
@@ -358,13 +575,15 @@ private struct EquipmentPanel:View {
                                 ForEach(value.slots,id:\.self) { slot in
                                     Button("穿戴·"+MirEquipment.slotNames[slot]) { net.changeEquipment(value,slot:slot,takingOff:false) }.frame(minHeight:44)
                                 }
-                                Button("丢弃",role:.destructive) { confirmDrop=true }.frame(minWidth:70,minHeight:44)
+                                if [0,1,2,3,4,31].contains(value.mode) { Button("使用") { net.useItem(value) }.frame(minWidth:44,minHeight:44) }
+                                Button("丢弃",role:.destructive) { confirmDrop=true }.frame(minWidth:70,minHeight:50)
                             }
                         }.buttonStyle(.bordered).disabled(locked)
                     } else { Text("点选背包物品，可穿戴或丢弃；已穿戴物品请先卸下").font(.caption) }
                 }.padding(8).frame(maxWidth:.infinity).background(Color.black.opacity(0.96)).foregroundColor(Color(red:0.88,green:0.77,blue:0.48))
             }
-            .navigationTitle("人物与背包").navigationBarTitleDisplayMode(.inline)
+            .onChange(of:category) { _ in page=0;selected=nil }
+            .navigationTitle(characterOnly ? "人物装备与属性" : "背包").navigationBarTitleDisplayMode(.inline)
             .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44).disabled(net.tradeBusy) }
             .confirmationDialog("丢到地面后，其他玩家可能捡走",isPresented:$confirmDrop,titleVisibility:.visible) {
                 if let value=item,selectedSlot==nil { Button("丢弃 \(net.itemName(value))",role:.destructive) { net.drop(value) } }
@@ -435,24 +654,42 @@ private struct NPCShopPanel:View {
 private struct NavigationPanel:View {
     @ObservedObject var model:OnlineModel
     @Environment(\.dismiss) private var dismiss
+    @AppStorage("hud.classic") private var classic=true
+    @State private var zoom:CGFloat=1
+    @GestureState private var pinch:CGFloat=1
+    @State private var marker:Cell?
     var body:some View {
         NavigationStack {
             VStack {
-                Text("点击地图目的地自动跑图；推摇杆可取消")
+                Text("双指缩放，拖动浏览，点选查看坐标").font(.caption)
                 if let image=model.minimap,let scene=model.scene {
                     GeometryReader { geo in
-                        ZStack(alignment:.topLeading) {
-                            Image(uiImage:image).resizable().interpolation(.none)
-                            Circle().fill(Color.yellow).frame(width:9,height:9).position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*geo.size.width,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*geo.size.height)
-                        }.contentShape(Rectangle()).gesture(DragGesture(minimumDistance:0).onEnded { value in
-                            let x=min(scene.mapWidth-1,max(0,Int(value.location.x/geo.size.width*CGFloat(scene.mapWidth))))
-                            let y=min(scene.mapHeight-1,max(0,Int(value.location.y/geo.size.height*CGFloat(scene.mapHeight))))
-                            scene.navigate(to:Cell(x:x,y:y));dismiss()
-                        })
-                    }.aspectRatio(1,contentMode:.fit)
+                        let edge=min(geo.size.width,geo.size.height)*min(4,max(1,zoom*pinch))
+                        ScrollView([.horizontal,.vertical]) {
+                            ZStack(alignment:.topLeading) {
+                                Image(uiImage:image).resizable().interpolation(.none)
+                                ForEach(Array(scene.npcMarkers.enumerated()),id:\.offset) { _,cell in
+                                    Circle().fill(Color.green).frame(width:5,height:5).position(x:CGFloat(cell.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(cell.y)/CGFloat(scene.mapHeight)*edge)
+                                }
+                                Circle().fill(Color.yellow).frame(width:9,height:9).position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*edge)
+                                if let cell=marker { Image(systemName:"plus").foregroundColor(.white).position(x:CGFloat(cell.x)/CGFloat(scene.mapWidth)*edge,y:CGFloat(cell.y)/CGFloat(scene.mapHeight)*edge) }
+                            }.frame(width:edge,height:edge).contentShape(Rectangle())
+                                .simultaneousGesture(MagnificationGesture().updating($pinch) { value,state,_ in state=value }.onEnded { zoom=min(4,max(1,zoom * $0)) })
+                                .simultaneousGesture(SpatialTapGesture().onEnded { value in
+                                    marker=Cell(x:min(scene.mapWidth-1,max(0,Int(value.location.x/edge*CGFloat(scene.mapWidth)))),y:min(scene.mapHeight-1,max(0,Int(value.location.y/edge*CGFloat(scene.mapHeight)))))
+                                })
+                        }
+                    }
+                    Text("黄点：本人 · 绿点：当前已观察到的 NPC").font(.caption)
+                    if let cell=marker {
+                        HStack {
+                            Text("选中坐标 \(cell.x),\(cell.y)")
+                            if !classic { Button("前往此处") { scene.suspendControls(false);scene.navigate(to:cell);dismiss() }.frame(minHeight:44) }
+                        }
+                    }
                 }
             }.padding().navigationTitle("比奇通行地图").navigationBarTitleDisplayMode(.inline)
-            .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
+                .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
         }
     }
 }
@@ -460,27 +697,28 @@ private struct SkillPanel:View {
     @ObservedObject var net:MirConnection
     let scene:OnlineScene?
     @Environment(\.dismiss) private var dismiss
-    @State private var autoGold=true
+    @AppStorage("hud.classic") private var classic=true
+    @State private var autoGold=false
     var body:some View {
         NavigationStack {
             List {
-                Toggle("自动拾取附近金币",isOn:$autoGold).onChange(of:autoGold) { scene?.autoGold=$0 }
+                if !classic { Toggle("自动拾取附近金币",isOn:$autoGold).onChange(of:autoGold) { scene?.autoGold=$0 } }
                 if net.skills.isEmpty { Text("当前角色尚未学习技能；学习后会显示服务器下发的技能。") }
                 ForEach(net.skills) { skill in
                     HStack {
-                        Text("\(net.skillName(skill)) · \(skill.level)级")
+                        Text("\(net.skillName(skill)) · \(skill.level)级 · 熟练度 \(skill.training)")
                         Spacer()
                         if skill.castable {
-                            Button("释放") { scene?.castSkill(skill);dismiss() }.frame(minHeight:44)
-                            if !MirSkills.warrior(skill.id) { Button(net.automaticSkills.contains(skill.id) ? "关闭自动" : "自动") { scene?.toggleAutoSkill(skill.id) }.frame(minHeight:44) }
+                            Button("释放") { scene?.suspendControls(false);scene?.input(.skill(skill));dismiss() }.frame(minHeight:44)
+                            if !classic && !MirSkills.warrior(skill.id) { Button(net.automaticSkills.contains(skill.id) ? "关闭自动" : "自动") { scene?.toggleAutoSkill(skill.id) }.frame(minHeight:44) }
                             Menu("快捷键") {
-                                ForEach(0..<net.quickSkills.count,id:\.self) { slot in Button("位置 \(slot+1)") { net.setQuickSkill(skill.id,slot:slot) } }
+                                ForEach(0..<4,id:\.self) { slot in Button("位置 \(slot+1)") { net.setQuickSkill(skill.id,slot:slot) } }
                             }.frame(minHeight:44)
                         } else { Text("被动技能或尚未接入的技能").font(.caption) }
                     }.buttonStyle(.bordered)
                 }
-                Text("技能由服务端判断等级、蓝量、冷却和材料。火墙等范围技能先点技能，再点地图；自动释放时以当前怪物所在格为目标。刺杀／半月点击切换，烈火点击蓄力；其余技能长按快捷键可切换自动。")
-            }.onAppear { autoGold=scene?.autoGold ?? true }.navigationTitle("技能与拾取").navigationBarTitleDisplayMode(.inline)
+                Text("技能由服务端判断等级、蓝量、冷却和材料。火墙等范围技能先点技能，再点地图；自动释放时以当前怪物所在格为目标。刺杀／半月点击切换，烈火点击蓄力；长按快捷技能可替换绑定。经典模式不启用自动技能。")
+            }.onAppear { autoGold=scene?.autoGold ?? false }.navigationTitle("技能与拾取").navigationBarTitleDisplayMode(.inline)
             .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
         }
     }

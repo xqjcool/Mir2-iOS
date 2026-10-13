@@ -32,12 +32,19 @@ final class OnlineScene: SKScene {
     private var nextPerformanceLog=0.0
     private var transientEffects:[SKNode]=[]
     private var pickupAttempts:[Cell:Int]=[:]
-    var autoGold=true
+    var autoGold=false
+    var classicMode=true
+    private var attackHeld=false
+    private var queuedSkill:MirEquipment.Skill?
+    private var queuedAttack=false
+    private var queuedGround:Cell?
+    private var aimMarker:SKShapeNode?
     private var interactionSuspended=false
     func suspendControls(_ value:Bool) { interactionSuspended=value;if value { stopAutomation() } }
     var targetReport:((String)->Void)?
     var targetHealthReport:((Double?)->Void)?
     var positionReport:((Cell)->Void)?
+    var npcMarkers:[Cell] { actors.values.filter{$0.npc}.map(\.cell) }
     var mapWidth:Int { map.width }
     var mapHeight:Int { map.height }
     var minimapImage:UIImage? {
@@ -47,7 +54,7 @@ final class OnlineScene: SKScene {
         guard let provider=CGDataProvider(data:Data(bytes) as CFData),let image=CGImage(width:map.width,height:map.height,bitsPerComponent:8,bitsPerPixel:32,bytesPerRow:map.width*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGBitmapInfo(rawValue:CGImageAlphaInfo.last.rawValue),provider:provider,decode:nil,shouldInterpolate:false,intent:.defaultIntent) else { return nil }
         return UIImage(cgImage:image)
     }
-    func stopAutomation() { armedGroundSkill=nil;stickDirection=nil;autoAttack=false;pickupSweep=false;route=[];pathGeneration+=1;pathBusy=false }
+    func stopAutomation() { cancelAim();queuedGround=nil;queuedSkill=nil;queuedAttack=false;armedGroundSkill=nil;stickDirection=nil;autoAttack=false;attackHeld=false;pickupSweep=false;route=[];pathGeneration+=1;pathBusy=false }
     func joystick(x:Double,y:Double) {
         let direction=MirTouchInput.direction(x:x,y:y)
         if direction != nil { armedGroundSkill=nil;autoAttack=false;pickupSweep=false;route=[];pathGeneration+=1;pathBusy=false }
@@ -70,10 +77,26 @@ final class OnlineScene: SKScene {
             }
         }
     }
-    func toggleAttack() {
-        let enabled = !autoAttack;stopAutomation();autoAttack=enabled
-        combatReport?(autoAttack ? "自动追打已开启；推摇杆或再点攻击停止" : "自动攻击已停止")
-        if autoAttack { attackSelected() }
+    enum Input {
+        case move(Double,Double), attack, holdAttack(Bool), skill(MirEquipment.Skill), pickup, stop
+    }
+    func input(_ command:Input) {
+        // Cancellation is always accepted, including while a modal owns input.
+        switch command {
+        case .stop:stopAutomation();return
+        case .holdAttack(false):attackHeld=false;return
+        case let .move(x,y) where x==0 && y==0:stickDirection=nil;stickRunning=false;return
+        default:break
+        }
+        guard net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy else { return }
+        switch command {
+        case let .move(x,y):joystick(x:x,y:y)
+        case .attack:queuedAttack=true
+        case .holdAttack(let held):attackHeld=held;if held { attackSelected() }
+        case .skill(let skill):castSkill(skill)
+        case .pickup:collectNearby()
+        case .stop:stopAutomation()
+        }
     }
     func collectNearby() { stopAutomation();pickupSweep=true;combatReport?("拾取周围物品；推摇杆取消") }
     func toggleAutoSkill(_ id:Int) {
@@ -81,14 +104,35 @@ final class OnlineScene: SKScene {
         if net.automaticSkills.contains(id) { net.automaticSkills.remove(id);combatReport?("已关闭技能自动释放") }
         else { net.automaticSkills.insert(id);combatReport?("自动追打时释放该技能") }
     }
+    func cancelAim() { aimMarker?.removeFromParent();aimMarker=nil }
+    private func aimedCell(dx:Double,dy:Double)->Cell? {
+        guard let id=playerID,let a=actors[id],hypot(dx,dy)<=220 else { return nil }
+        let cell=Cell(x:a.cell.x+Int((dx/22).rounded()),y:a.cell.y+Int((dy/22).rounded()))
+        return contains(cell) ? cell : nil
+    }
+    func aimSkill(_ skill:MirEquipment.Skill,dx:Double,dy:Double,release:Bool=false) {
+        guard net.online,!interactionSuspended,!net.npcOpen,MirSkills.ground(skill.id) else { return }
+        cancelAim()
+        guard let cell=aimedCell(dx:dx,dy:dy) else { if release { combatReport?("已取消施法") };return }
+        if release {
+            queuedSkill=skill;queuedGround=cell;queuedAttack=false
+        } else {
+            let ring=SKShapeNode(ellipseOf:CGSize(width:48,height:32));ring.strokeColor = .yellow;ring.lineWidth=2
+            ring.position=point(cell);ring.zPosition=100000;addChild(ring);aimMarker=ring
+        }
+    }
     func castSkill(_ skill:MirEquipment.Skill) {
+        queuedGround=nil
         guard skill.castable else { combatReport?("被动技能由服务器自动判定");return }
-        stopAutomation()
-        if attackPending || pending != nil { combatReport?("等待当前动作确认后再施法");return }
+        guard net.online,!interactionSuspended,!net.npcOpen else { return }
+        if attackPending || pending != nil || clock<nextAttack {
+            queuedSkill=skill;queuedAttack=false;combatReport?("当前动作结束后释放技能");return
+        }
+        autoAttack=false;attackHeld=false;route=[];pickupSweep=false
         let remaining=(net.skillReady[skill.id] ?? 0)-ProcessInfo.processInfo.systemUptime
         if remaining>0 { combatReport?(String(format:"技能冷却中，还需 %.1f 秒",remaining));return }
         if MirSkills.ground(skill.id) {
-            stopAutomation();armedGroundSkill=skill;combatReport?("点击地图释放 \(net.skillName(skill))；推摇杆取消");return
+            armedGroundSkill=skill;combatReport?("点击地图释放 \(net.skillName(skill))；推摇杆取消");return
         }
         performSkill(skill,ground:nil)
     }
@@ -97,7 +141,7 @@ final class OnlineScene: SKScene {
               ProcessInfo.processInfo.systemUptime >= (net.skillReady[skill.id] ?? 0),
               let id=playerID,let a=actors[id],!a.dead else { return }
         let selfCast=MirSkills.selfCast(skill.id)
-        if !selfCast && ground==nil && (selected==nil || actors[selected!]?.dead != false) {
+        if !classicMode && !selfCast && ground==nil && (selected==nil || actors[selected!]?.dead != false) {
             selected=actors.filter { $0.value.monster && !$0.value.dead }.min {
                 max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y)) < max(abs($1.value.cell.x-a.cell.x),abs($1.value.cell.y-a.cell.y))
             }?.key
@@ -206,7 +250,7 @@ final class OnlineScene: SKScene {
         }
         if p.id==41,let a=actors[p.actor],!a.monster,!a.npc { applyFeature(a,UInt32(p.x) | UInt32(p.y)<<16) }
         if (p.id==615 || p.id==619),let id=playerID,let a=actors[id] { applyFeature(a,UInt32(bitPattern:p.actor)) }
-        if p.id==52 || p.id==653 { gold=p.actor;combatReport?("金币 \(gold) · 点击稻草人选中，再点攻击") }
+        if p.id==52 || p.id==653 { gold=p.actor;combatReport?("金币 \(gold)") }
         if p.id==200 { combatReport?("服务端确认获得物品 · 金币 \(gold)") }
         if p.id==610 {
             let cell=local(p.x,p.y);guard contains(cell) else { return }
@@ -297,24 +341,31 @@ final class OnlineScene: SKScene {
             stopAutomation();selectedCorpse=corpse.key;combatReport?("已选中 \(corpse.value.displayName) 尸体；靠近后反复点击割肉");return
         }
         if let match=actors.first(where: { $0.value.monster && !$0.value.dead && $0.value.cell==target }) {
-            selected=match.key;targetHealthReport?(nil);route=[];targetReport?(match.value.label.text ?? match.value.displayName);combatReport?("已锁定 \(match.value.displayName)，点击攻击开始追打");return
+            selected=match.key;targetHealthReport?(nil);route=[];targetReport?(match.value.label.text ?? match.value.displayName);combatReport?("已锁定 \(match.value.displayName)，点击攻击；长按攻击连续挥击");return
         }
         navigate(to:target)
     }
     func attackSelected() {
         guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!attackPending,pending==nil,clock>=nextAttack,let id=playerID,let a=actors[id],!a.dead else { return }
         let candidates=actors.filter { $0.value.monster && !$0.value.dead && max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y))<=12 }
-        if selected==nil || actors[selected!]?.dead != false { targetHealthReport?(nil);selected=candidates.min { lhs,rhs in
+        if !classicMode && (selected==nil || actors[selected!]?.dead != false) { targetHealthReport?(nil);selected=candidates.min { lhs,rhs in
             let l=max(abs(lhs.value.cell.x-a.cell.x),abs(lhs.value.cell.y-a.cell.y))
             let r=max(abs(rhs.value.cell.x-a.cell.x),abs(rhs.value.cell.y-a.cell.y))
             return l==r ? lhs.key<rhs.key : l<r
         }?.key }
-        guard let selected=selected,let target=actors[selected],!target.dead else { return }
+        guard let selected=selected,let target=actors[selected],!target.dead else {
+            // A normal swing uses the existing direction and authoritative attack command.
+            lastSkillID=nil;attackPending=true;attackRequested=clock;nextAttack=clock+1;nextStep=nextAttack
+            animate(a,"attack",duration:0.6)
+            net.attack(x:a.cell.x+map.originX,y:a.cell.y+map.originY,direction:a.direction)
+            return
+        }
         targetReport?(target.label.text ?? target.displayName)
         let dx=target.cell.x-a.cell.x,dy=target.cell.y-a.cell.y
         let distance=max(abs(dx),abs(dy))
         let thrust=net.warrior.thrust && distance==2 && (dx==0 || dy==0 || abs(dx)==abs(dy))
         guard distance==1 || thrust else {
+            guard !classicMode else { combatReport?("目标不在攻击距离，请靠近");return }
             guard route.isEmpty,max(abs(dx),abs(dy))<=12 else { return }
             let goals=map.grid.neighbors(target.cell).sorted { max(abs($0.x-a.cell.x),abs($0.y-a.cell.y)) < max(abs($1.x-a.cell.x),abs($1.y-a.cell.y)) }
             if let goal=goals.first(where:{ cell in !actors.values.contains(where:{!$0.dead && $0.cell==cell}) }) { queuePath(to:goal,running:false) }
@@ -473,13 +524,20 @@ final class OnlineScene: SKScene {
         }
         let locked = pending != nil || attackPending
         if net.actionLocked != locked { net.actionLocked=locked }
+        if net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy,net.inventory.pending==nil,pending==nil,!attackPending,clock>=nextAttack {
+            if let skill=queuedSkill {
+                let ground=queuedGround;queuedSkill=nil;queuedGround=nil
+                if let ground=ground { performSkill(skill,ground:ground) } else { castSkill(skill) }
+            }
+            else if queuedAttack { queuedAttack=false;attackSelected() }
+        }
         if net.online,!interactionSuspended,!net.npcOpen,pending==nil,!attackPending,net.inventory.pending==nil,!net.tradeBusy,time>=nextStep,ProcessInfo.processInfo.systemUptime>=movementReadyAt,let id=playerID,let a=actors[id],!a.dead {
-            if autoAttack && time>=nextAuto {
+            if (autoAttack || attackHeld) && time>=nextAuto {
                 nextAuto=time+0.3
                 if let targetID=selected,let target=actors[targetID],!target.dead {
                     let distance=max(abs(target.cell.x-a.cell.x),abs(target.cell.y-a.cell.y))
                     let eligible=net.skills.filter { skill in
-                        skill.castable && !MirSkills.warrior(skill.id) && net.automaticSkills.contains(skill.id)
+                        !classicMode && skill.castable && !MirSkills.warrior(skill.id) && net.automaticSkills.contains(skill.id)
                         && ProcessInfo.processInfo.systemUptime >= (net.skillReady[skill.id] ?? 0)
                         && (MirSkills.selfCast(skill.id) || distance<=10)
                         && !(skill.id==31 && shields[id] != nil)
@@ -491,7 +549,7 @@ final class OnlineScene: SKScene {
                 }
                 if !attackPending { attackSelected() }
             }
-            if !attackPending,stickDirection==nil,route.isEmpty,!autoAttack,(autoGold || pickupSweep),time>=nextPickup {
+            if !attackPending,stickDirection==nil,route.isEmpty,!autoAttack,!attackHeld,(autoGold || pickupSweep),time>=nextPickup {
                 if net.inventory.bag.count>=46 { pickupSweep=false;autoGold=false;combatReport?("背包已满，自动拾取已停止") }
                 else if let drop=drops.filter({ pair in
                     max(abs(pair.value.cell.x-a.cell.x),abs(pair.value.cell.y-a.cell.y))<=3 && (pickupSweep || (dropNames[pair.key]?.contains("金币") ?? false))
