@@ -119,15 +119,15 @@ struct OnlineView:View {
                             VirtualJoystick { x,y in model.scene?.input(.move(x,y)) }
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomLeading)
                                 .frame(width:148*controlScale(geo.size),height:148*controlScale(geo.size))
-                                .padding(.leading,min(leftInset,max(0,(geo.size.width-550)/2)))
+                                .padding(.leading,CGFloat(min(leftInset,max(0,(Double(geo.size.width)-550)/2))))
                                 .opacity(opacity)
                             Spacer(minLength:0)
                             CombatButtons(net:net,scene:model.scene)
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomTrailing)
                                 .frame(width:258*controlScale(geo.size),height:254*controlScale(geo.size))
-                                .padding(.trailing,min(rightInset,max(0,(geo.size.width-550)/2)))
+                                .padding(.trailing,CGFloat(min(rightInset,max(0,(Double(geo.size.width)-550)/2))))
                                 .opacity(opacity)
-                        }.padding(.bottom,min(bottomInset,max(0,geo.size.height-350)))
+                        }.padding(.bottom,CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350))))
                     }.padding(8)
                     VStack(spacing:3) {
                         if !model.target.isEmpty {
