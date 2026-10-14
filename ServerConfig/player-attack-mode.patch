@@ -1,0 +1,45 @@
+--- a/src/Modules/GameCommand/GameCommands.cs
++++ b/src/Modules/GameCommand/GameCommands.cs
+@@ -394,7 +394,7 @@
+             Master = new GameCmd { CmdName = "Master", PerMissionMin = 10, PerMissionMax = 10 };
+             AllowMasterRecall = new GameCmd { CmdName = "AllowMasterRecall", PerMissionMin = 10, PerMissionMax = 10 };
+             MasteRecall = new GameCmd { CmdName = "MasteRecall", PerMissionMin = 10, PerMissionMax = 10 };
+-            AttackMode = new GameCmd { CmdName = "AttackMode", PerMissionMin = 10, PerMissionMax = 10 };
++            AttackMode = new GameCmd { CmdName = "AttackMode", PerMissionMin = 0, PerMissionMax = 10 };
+             Rest = new GameCmd { CmdName = "Rest", PerMissionMin = 10, PerMissionMax = 10 };
+             TakeonHorse = new GameCmd { CmdName = "TakeonHorse", PerMissionMin = 10, PerMissionMax = 10 };
+             TakeofHorse = new GameCmd { CmdName = "TakeofHorse", PerMissionMin = 10, PerMissionMax = 10 };
+--- a/src/Modules/GameCommand/Commands/ChangeAttackModeCommand.cs
++++ b/src/Modules/GameCommand/Commands/ChangeAttackModeCommand.cs
+@@ -15,29 +15,8 @@
+         [ExecuteCommand]
+         public void Execute(IPlayerActor PlayerActor)
+         {
+-            if (PlayerActor.AttatckMode >= AttackMode.HAM_PKATTACK)
+-            {
+-                PlayerActor.AttatckMode = 0;
+-            }
+-            else
+-            {
+-                if (PlayerActor.AttatckMode < AttackMode.HAM_PKATTACK)
+-                {
+-                    PlayerActor.AttatckMode++;
+-                }
+-                else
+-                {
+-                    PlayerActor.AttatckMode = AttackMode.HAM_ALL;
+-                }
+-            }
+-            if (PlayerActor.AttatckMode < AttackMode.HAM_PKATTACK)
+-            {
+-                PlayerActor.AttatckMode++;
+-            }
+-            else
+-            {
+-                PlayerActor.AttatckMode = AttackMode.HAM_ALL;
+-            }
++            PlayerActor.AttatckMode = PlayerActor.AttatckMode >= AttackMode.HAM_PKATTACK
++                ? AttackMode.HAM_ALL : (AttackMode)((byte)PlayerActor.AttatckMode + 1);
+             switch (PlayerActor.AttatckMode)
+             {
+                 case AttackMode.HAM_ALL:// [攻击模式: 全体攻击]

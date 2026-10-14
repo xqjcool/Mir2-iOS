@@ -17,7 +17,7 @@ final class OnlineScene: SKScene {
     private var weaponOrder:[[Int]]=[]
     private var actors:[Int32:Avatar]=[:]
     private var attackPending=false, attackRequested=0.0, nextAttack=0.0, nextPickup=0.0
-    private var selected:Int32?
+    private var selected:Int32? { didSet { refreshTargetMarker() } }
     private var selectedCorpse:Int32?
     private var stickDirection:Int?, stickRunning=false, autoAttack=false, routeRunning=false
     private var pendingDuration=0.54, pathGeneration=0, pathBusy=false
@@ -47,6 +47,20 @@ final class OnlineScene: SKScene {
     var targetReport:((String)->Void)?
     var targetHealthReport:((Double?)->Void)?
     var positionReport:((Cell)->Void)?
+    private let targetMarker=SKLabelNode(text:"▼")
+    private func refreshTargetMarker() {
+        targetMarker.removeFromParent()
+        guard let id=selected,let actor=actors[id],!actor.dead else { return }
+        targetMarker.fontSize=26;targetMarker.fontColor = .yellow
+        targetMarker.position=CGPoint(x:0,y:76);targetMarker.zPosition=100
+        actor.node.addChild(targetMarker)
+    }
+    func lockPlayer(_ target:PlayerTarget,attack:Bool=false) {
+        guard let actor=actors[target.id],!actor.dead,!actor.monster,!actor.npc,target.id != playerID else { net.peerMessage="目标已离开或无法交互";return }
+        stopAutomation();selected=target.id;targetHealthReport?(nil);targetReport?(actor.displayName)
+        combatReport?("已锁定 \(actor.displayName)，点击右侧攻击或技能；伤害由服务端判定")
+        if attack { autoAttack=true;queuedAttack=true }
+    }
     struct PlayerTarget:Identifiable,Equatable { let id:Int32;let name:String }
     var playerReport:((PlayerTarget)->Void)?
     func inspect(_ target:PlayerTarget) {
@@ -129,8 +143,12 @@ final class OnlineScene: SKScene {
             let right=max(abs($1.value.cell.x-player.cell.x),abs($1.value.cell.y-player.cell.y))
             return left==right ? $0.key<$1.key : left<right
         }
+        let chosen=selected.flatMap { key -> (key:Int32,value:Avatar)? in
+            guard let actor=actors[key],!actor.dead,!actor.npc else { return nil }
+            return (key,actor)
+        } ?? nearest
         stopAutomation()
-        guard let target=nearest else { selected=nil;targetReport?("");combatReport?("附近没有可攻击的怪物");return }
+        guard let target=chosen else { selected=nil;targetReport?("");combatReport?("附近没有可攻击的怪物");return }
         selected=target.key;autoAttack=true;queuedAttack=true;targetHealthReport?(nil)
         targetReport?(target.value.displayName);combatReport?("自动追打 \(target.value.displayName)；推摇杆或再点攻击停止")
     }
@@ -183,7 +201,7 @@ final class OnlineScene: SKScene {
             }?.key
         }
         let targetID: Int32 = ground != nil ? 0 : (selfCast ? id : (selected ?? 0))
-        guard let cell=ground ?? actors[targetID]?.cell else { combatReport?("附近没有目标，请先点选怪物");return }
+        guard let cell=ground ?? actors[targetID]?.cell else { combatReport?("附近没有目标，请先点选玩家或怪物");return }
         guard contains(cell),max(abs(cell.x-a.cell.x),abs(cell.y-a.cell.y))<=10 else { combatReport?("目标距离太远");return }
         route=[];pathGeneration+=1;pathBusy=false;armedGroundSkill=nil
         attackPending=true;attackRequested=clock;nextAttack=clock+1.5;nextStep=nextAttack
@@ -326,10 +344,14 @@ final class OnlineScene: SKScene {
             addChild(node);drops[p.actor]=(cell,node);combatReport?("地面掉落：\(name) · 走到物品上点击拾取");return
         }
         if p.id==611 { if let cell=drops[p.actor]?.cell { pickupAttempts.removeValue(forKey:cell) };drops.removeValue(forKey:p.actor)?.node.removeFromParent();dropNames.removeValue(forKey:p.actor);return }
+        if p.id==53,let a=actors[p.actor],p.actor != playerID {
+            a.label.text="\(a.displayName) HP \(p.x)/\(p.series) MP \(p.y)"
+            if selected==p.actor { targetHealthReport?(p.series>0 ? min(1,Double(p.x)/Double(p.series)) : nil) }
+        }
         if p.id==31,let a=actors[p.actor] {
             if p.actor==playerID { route=[];pickupSweep=false }
             if !a.dead { animate(a,"struck",duration:0.25) }
-            a.label.text = "\(a.displayName) \(p.x)/\(p.y)"
+            if p.actor != playerID { a.label.text = "\(a.displayName) HP \(p.x)/\(p.y)" }
             if selected==p.actor { targetReport?("\(a.displayName)  HP \(p.x)/\(p.y)");targetHealthReport?(p.y>0 ? min(1,Double(p.x)/Double(p.y)) : nil) }
             let number=SKLabelNode(text:"-\(p.series)");number.fontColor = .red;number.fontSize=18;number.position.y=55;a.node.addChild(number)
             number.run(.sequence([.moveBy(x:0,y:24,duration:0.6),.removeFromParent()]));return
@@ -397,13 +419,13 @@ final class OnlineScene: SKScene {
             net.talk(to:npc.key);return
         }
         if let other=actors.first(where: { $0.key != id && !$0.value.monster && !$0.value.npc && !$0.value.dead && ($0.value.cell==target || $0.value.node.calculateAccumulatedFrame().insetBy(dx:-8,dy:-8).contains(p)) }) {
-            stopAutomation();net.peerMessage="";net.inspectedName="";net.inspectedItems=[:];playerReport?(PlayerTarget(id:other.key,name:other.value.displayName));return
+            stopAutomation();selected=other.key;targetHealthReport?(nil);targetReport?(other.value.displayName);net.peerMessage="";net.inspectedName="";net.inspectedItems=[:];playerReport?(PlayerTarget(id:other.key,name:other.value.displayName));return
         }
         if let corpse=actors.first(where: { $0.value.dead && !$0.value.harvested && ["11-160","11-161"].contains($0.value.appearanceKey) && $0.value.cell==target }) {
             stopAutomation();selectedCorpse=corpse.key;combatReport?("已选中 \(corpse.value.displayName) 尸体；靠近后反复点击割肉");return
         }
         if let match=actors.first(where: { $0.value.monster && !$0.value.dead && $0.value.cell==target }) {
-            stopAutomation();selected=match.key;targetHealthReport?(nil);route=[];targetReport?(match.value.label.text ?? match.value.displayName);combatReport?("已锁定 \(match.value.displayName)，点击攻击自动选择最近怪物并追打");return
+            stopAutomation();selected=match.key;targetHealthReport?(nil);route=[];targetReport?(match.value.label.text ?? match.value.displayName);combatReport?("已锁定 \(match.value.displayName)，点击攻击追打当前目标");return
         }
         navigate(to:target)
     }
@@ -574,6 +596,9 @@ final class OnlineScene: SKScene {
         showPosition()
     }
     override func update(_ time:TimeInterval) {
+        if let id=playerID,let me=actors[id],let v=net.vitals {
+            me.label.text="我 HP \(v.hp)/\(v.maxHP) MP \(v.mp)/\(v.maxMP)"
+        }
         guard built else { return };clock=time
         if (pending != nil && time-requestedAt>5) || (attackPending && time-attackRequested>5) {
             net.log("action timeout move=\(pending != nil) attack=\(attackPending) moveAge=\(time-requestedAt) attackAge=\(time-attackRequested)")

@@ -26,6 +26,19 @@ final class MirConnection: ObservableObject {
     @Published var quickSlots:[Int]=[]
     @Published var mana:Int?
     @Published var vitals:MirVitals?
+    @Published var attackMode:Int?
+    var attackModeName:String {
+        let names=["全体","和平","夫妻","师徒","组队","行会","红名"]
+        guard let mode=attackMode,names.indices.contains(mode) else { return "未知" }
+        return names[mode]
+    }
+    private var modeRequestedAt = -Double.infinity
+    func cycleAttackMode() {
+        let now=ProcessInfo.processInfo.systemUptime
+        guard online,!dealOpen,!tradeBusy,now-modeRequestedAt>=1 else { return }
+        modeRequestedAt=now
+        raw(MirWire.command(3030)+MirWire.encode(legacyBytes("@AttackMode")))
+    }
     @Published var usePending:Int32?
     @Published var messages:[String]=[]
     private var useTimeout:DispatchWorkItem?
@@ -271,7 +284,7 @@ final class MirConnection: ObservableObject {
     }
     func disconnect() {
         generation += 1;timeout?.cancel();timeout=nil
-        useTimeout?.cancel();useTimeout=nil;usePending=nil;vitals=nil
+        useTimeout?.cancel();useTimeout=nil;usePending=nil;vitals=nil;attackMode=nil
         connection?.cancel();connection=nil;online=false;busy=false;password="";ticket="";awaitingAttack=false
         equipmentTimeout?.cancel();equipmentTimeout=nil;inventory=MirEquipment.State();skills=[];abilityText="";goldBalance=0;actionLocked=false;playerActor=nil
         warrior=MirSkills.WarriorState();skillReady=[:];automaticSkills=[];mana=nil
@@ -514,8 +527,12 @@ final class MirConnection: ObservableObject {
                 vitals=MirVitals.decode(b);mana=vitals?.mp
                 abilityText="等级 \(b[0])  攻击 \(MirEquipment.range(MirEquipment.word(b,6)))  魔法 \(MirEquipment.range(MirEquipment.word(b,8)))  道术 \(MirEquipment.range(MirEquipment.word(b,10)))\n防御 \(MirEquipment.range(MirEquipment.word(b,2)))  魔防 \(MirEquipment.range(MirEquipment.word(b,4)))"
             }
-        case 53:
-            if p.actor==playerActor { mana=Int(p.y);vitals?.hp=Int(p.x);vitals?.mp=Int(p.y);vitals?.maxHP=Int(p.series) }
+        case 213:attackMode=Int(p.actor)
+        case 31,53,32,34:
+            if p.actor==playerActor {
+                vitals?.apply(id:p.id,x:p.x,y:p.y,series:p.series)
+                mana=vitals?.mp
+            }
         case 653:goldBalance=p.actor
         case 211:skills=p.bodyParts.compactMap(MirEquipment.skill)
         case 210:

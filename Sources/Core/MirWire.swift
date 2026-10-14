@@ -326,6 +326,14 @@ enum MirShop {
 // Server packet Ability.cs, 40-byte classic layout. Missing state stays unknown.
 struct MirVitals:Equatable {
     var level:Int, hp:Int, mp:Int, maxHP:Int, maxMP:Int, experience:Int, maxExperience:Int
+    mutating func apply(id:UInt16,x:UInt16,y:UInt16,series:UInt16) {
+        switch id {
+        case 31:hp=Int(x);maxHP=Int(y)
+        case 53:hp=Int(x);mp=Int(y);maxHP=Int(series)
+        case 32,34:hp=0
+        default:break
+        }
+    }
     static func decode(_ b:[UInt8])->MirVitals? {
         guard b.count==40 else { return nil }
         return MirVitals(level:Int(b[0]),hp:MirEquipment.word(b,12),mp:MirEquipment.word(b,14),maxHP:MirEquipment.word(b,16),maxMP:MirEquipment.word(b,18),experience:Int(MirEquipment.integer(b,24)),maxExperience:Int(MirEquipment.integer(b,28)))

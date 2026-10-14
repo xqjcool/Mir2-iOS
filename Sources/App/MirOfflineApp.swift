@@ -726,13 +726,19 @@ private struct PeerPlayerPanel:View {
     let target:OnlineScene.PlayerTarget
     let close:()->Void
     var body:some View {
-        VStack(spacing:8) {
+        ScrollView { VStack(spacing:8) {
             HStack { Text(target.name).font(.headline);Spacer();Button("关闭",action:close).frame(minWidth:44,minHeight:44) }
             HStack {
                 Button("查看装备") { scene?.inspect(target) }
                 Button("面向对方") { scene?.face(target) }
                 Button("发起交易") { scene?.face(target,trade:true) }
             }.buttonStyle(.bordered).frame(minHeight:44).disabled(net.tradeBusy)
+            HStack {
+                Button("锁定施法") { scene?.lockPlayer(target);close() }
+                Button("攻击此人") { scene?.lockPlayer(target,attack:true);close() }
+                Button("模式："+net.attackModeName) { net.cycleAttackMode() }
+            }.buttonStyle(.bordered).frame(minHeight:44).disabled(net.tradeBusy)
+            Text("锁定后用右侧技能施法；点击模式切换。安全区及和平模式等限制由服务端判定。").font(.caption)
             Text("交易需双方相邻、面对面；请双方分别点“面向对方”。").font(.caption)
             Text(net.peerMessage).font(.caption).foregroundColor(.yellow)
             if !net.inspectedName.isEmpty {
@@ -747,9 +753,9 @@ private struct PeerPlayerPanel:View {
                             } else { Text("空").foregroundColor(.gray) }
                         }.frame(minHeight:44)
                     }
-                } }
+                } }.frame(height:160)
             }
-        }.padding().frame(maxWidth:570,maxHeight:340).background(ClassicTheme.panel).foregroundColor(ClassicTheme.text).overlay(Rectangle().stroke(ClassicTheme.gold))
+        }.padding() }.frame(maxWidth:570,maxHeight:340).background(ClassicTheme.panel).foregroundColor(ClassicTheme.text).overlay(Rectangle().stroke(ClassicTheme.gold))
     }
 }
 private struct PeerTradePanel:View {
