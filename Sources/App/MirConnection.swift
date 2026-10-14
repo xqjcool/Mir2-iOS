@@ -36,7 +36,7 @@ final class MirConnection: ObservableObject {
     }
     func useItem(_ item:MirEquipment.Item) {
         let now=ProcessInfo.processInfo.systemUptime
-        guard online,!npcOpen,!tradeBusy,usePending==nil,inventory.pending==nil,inventory.bag[item.id] != nil,[0,1,2,3,4,31].contains(item.mode),now-lastUse>=0.8 else { return }
+        guard online,!dealOpen,!npcOpen,!tradeBusy,usePending==nil,inventory.pending==nil,inventory.bag[item.id] != nil,[0,1,2,3,4,31].contains(item.mode),now-lastUse>=0.8 else { return }
         usePending=item.id;lastUse=now
         raw(MirWire.command(1006,actor:UInt32(bitPattern:item.id))+MirWire.encode(item.nameBytes))
         let work=DispatchWorkItem { [weak self] in self?.fail("使用物品确认超时，请重新登录同步背包") }
@@ -64,6 +64,98 @@ final class MirConnection: ObservableObject {
         quickSlots=ids
         UserDefaults.standard.set(ids,forKey:"mir.quick.\(account).\(character)")
     }
+    @Published var inspectedName=""
+    @Published var inspectedGuild=""
+    @Published var inspectedItems:[Int:MirEquipment.Item]=[:]
+    @Published var peerMessage=""
+    @Published var dealOpen=false
+    @Published var dealPartner=""
+    @Published var dealOwn:[Int32:MirEquipment.Item]=[:]
+    @Published var dealRemote:[Int32:MirEquipment.Item]=[:]
+    @Published var dealOwnGold=0
+    @Published var dealRemoteGold=0
+    @Published var dealConfirmed=false
+    @Published var dealRevision=0
+    private var dealChangedAt=0.0
+    private var dealPendingItem:MirEquipment.Item?
+    func inspectPlayer(id:Int32,x:Int,y:Int) {
+        guard !dealOpen,beginTrade("inspect") else { return }
+        inspectedName="";inspectedGuild="";inspectedItems=[:];peerMessage="正在读取对方装备…"
+        raw(MirWire.command(82,actor:UInt32(bitPattern:id),x:UInt16(x),y:UInt16(y)))
+    }
+    func facePlayer(x:Int,y:Int,direction:Int)->Bool {
+        let now=ProcessInfo.processInfo.systemUptime
+        guard online,!dealOpen,!tradeBusy,!awaitingAttack,now-lastMovement>=0.65 else { return false }
+        lastMovement=now
+        raw(MirWire.command(3010,actor:UInt32(x)|(UInt32(y)<<16),y:UInt16(direction)));return true
+    }
+    func requestPeerTrade(name:String) {
+        guard !dealOpen,beginTrade("peer-request") else { return }
+        peerMessage="等待服务器开启交易"
+        raw(MirWire.command(1025)+MirWire.encode(legacyBytes(name)))
+    }
+    func offerPeerItem(_ item:MirEquipment.Item,remove:Bool=false) {
+        guard dealOpen,!dealConfirmed,(remove ? dealOwn[item.id] != nil : inventory.bag[item.id] != nil),remove || dealOwn.count<12,
+              beginTrade(remove ? "peer-remove" : "peer-add",item:item.id) else { return }
+        dealPendingItem=item
+        raw(MirWire.command(remove ? 1027 : 1026,actor:UInt32(bitPattern:item.id))+MirWire.encode(item.nameBytes))
+    }
+    func offerPeerGold(_ text:String) {
+        guard dealOpen,!dealConfirmed,let amount=Int(text),amount>=0,amount<=Int(goldBalance)+dealOwnGold,amount<=Int(Int32.max) else { peerMessage="请输入可用范围内的整数金币";return }
+        guard beginTrade("peer-gold") else { return }
+        raw(MirWire.command(1029,actor:UInt32(amount)))
+    }
+    func confirmPeerTrade(revision:Int) {
+        guard dealOpen,!tradeBusy,!dealConfirmed else { return }
+        guard revision==dealRevision else { peerMessage="交易内容已变化，请重新核对";return }
+        guard ProcessInfo.processInfo.systemUptime-dealChangedAt>=3 else { peerMessage="交易内容刚变化，请等待3秒再确认";return }
+        dealConfirmed=true;peerMessage="已确认，等待对方；仍可取消交易";raw(MirWire.command(1030))
+    }
+    func cancelPeerTrade() {
+        guard dealOpen,!tradeBusy,beginTrade("peer-cancel") else { return }
+        raw(MirWire.command(1028))
+    }
+    private func peerChanged() {
+        dealRevision+=1;dealChangedAt=ProcessInfo.processInfo.systemUptime
+        if dealConfirmed && !tradeBusy { cancelPeerTrade() }
+    }
+    private func receivePeer(_ p:MirWire.Packet) {
+        switch p.id {
+        case 751:
+            guard tradeOperation=="inspect" else { return }
+            guard let state=MirPeerInspection.decode(p.body) else { finishTrade("装备数据格式不匹配");peerMessage=tradeMessage;return }
+            inspectedName=legacyText(state.name);inspectedGuild=legacyText(state.guild);inspectedItems=state.equipment
+            finishTrade("装备已读取");peerMessage="装备由服务器返回"
+        case 673:
+            if tradeBusy && tradeOperation != "peer-request" || inventory.pending != nil || usePending != nil { raw(MirWire.command(1028));return }
+            finishTrade("");dealOpen=true;dealPartner=legacyText(p.body);dealOwn=[:];dealRemote=[:];dealOwnGold=0;dealRemoteGold=0;dealConfirmed=false;dealPendingItem=nil;peerChanged();peerMessage="放入物品或金币，核对双方内容后确认"
+        case 674:
+            if tradeOperation=="peer-request" { finishTrade("交易未开启");peerMessage="请双方相邻并面对面，确认对方未在交易中" }
+        case 675,677:
+            guard dealOpen,let item=dealPendingItem,tradeOperation==(p.id==675 ? "peer-add" : "peer-remove") else { return }
+            if p.id==675 { dealOwn[item.id]=item;inventory.bag.removeValue(forKey:item.id) }
+            else { dealOwn.removeValue(forKey:item.id);inventory.bag[item.id]=item }
+            dealPendingItem=nil;finishTrade("");peerChanged();peerMessage="服务器已更新交易物品"
+        case 676,678:
+            if tradeOperation.hasPrefix("peer-") { dealPendingItem=nil;finishTrade("");peerMessage="操作被拒绝，可能对方已确认或物品不可交易" }
+        case 682,683:
+            guard dealOpen,let item=MirEquipment.item(p.body) else { return }
+            if p.id==682 { dealRemote[item.id]=item } else { dealRemote.removeValue(forKey:item.id) }
+            peerChanged();peerMessage="对方更改了物品，请重新核对"
+        case 684,685:
+            guard dealOpen else { return }
+            dealOwnGold=Int(p.actor);goldBalance=Int32(bitPattern:UInt32(p.x)|(UInt32(p.y)<<16))
+            if tradeOperation=="peer-gold" { finishTrade("") };peerChanged();peerMessage=p.id==684 ? "金币已更新" : "金币修改被拒绝"
+        case 686:
+            guard dealOpen else { return };dealRemoteGold=Int(p.actor);peerChanged();peerMessage="对方更改了金币，请重新核对"
+        case 681,687:
+            guard dealOpen else { return }
+            if p.id==681 { for (id,item) in dealOwn { inventory.bag[id]=item };goldBalance+=Int32(dealOwnGold) }
+            finishTrade("");dealOpen=false;dealConfirmed=false;dealOwn=[:];dealRemote=[:];dealOwnGold=0;dealRemoteGold=0;dealPendingItem=nil
+            peerMessage=p.id==687 ? "服务器确认交易成功" : "交易已取消，物品和金币已退回";message(peerMessage)
+        default:break
+        }
+    }
     private var equipmentTimeout:DispatchWorkItem?
     private var lastMovement = -Double.infinity
     func itemName(_ item:MirEquipment.Item)->String { legacyText(item.nameBytes) }
@@ -85,9 +177,12 @@ final class MirConnection: ObservableObject {
     var npcOpen:Bool { !npcText.isEmpty || !shopMode.isEmpty }
     var npcLinks:[MirShop.Link] { MirShop.links(npcText) }
     private func beginTrade(_ operation:String,item:Int32?=nil)->Bool {
-        guard online,!tradeBusy,!actionLocked,usePending==nil,inventory.pending==nil else { return false }
+        guard online,!tradeBusy,!actionLocked,usePending==nil,inventory.pending==nil,(!dealOpen || operation.hasPrefix("peer-")) else { return false }
         tradeOperation=operation;tradeItem=item;tradeBusy=true;tradeMessage="等待服务器确认…"
-        let work=DispatchWorkItem { [weak self] in self?.fail("交易确认超时，已停止操作；请重新登录同步背包") }
+        let work=DispatchWorkItem { [weak self] in
+            if operation=="inspect" || operation=="peer-request" { self?.finishTrade("请求未得到响应");self?.peerMessage="对方可能已离开、拒绝交易或距离过远，请重新选择" }
+            else { self?.fail("交易确认超时，已停止操作；请重新登录同步背包") }
+        }
         tradeTimeout=work;DispatchQueue.main.asyncAfter(deadline:.now()+8,execute:work);return true
     }
     private func finishTrade(_ message:String) {
@@ -181,6 +276,7 @@ final class MirConnection: ObservableObject {
         equipmentTimeout?.cancel();equipmentTimeout=nil;inventory=MirEquipment.State();skills=[];abilityText="";goldBalance=0;actionLocked=false;playerActor=nil
         warrior=MirSkills.WarriorState();skillReady=[:];automaticSkills=[];mana=nil
         tradeTimeout?.cancel();tradeTimeout=nil;tradeBusy=false;tradeOperation="";tradeItem=nil
+        dealOpen=false;dealConfirmed=false;dealOwn=[:];dealRemote=[:];dealPendingItem=nil;dealOwnGold=0;dealRemoteGold=0;dealPartner="";peerMessage="";inspectedItems=[:];inspectedName="";inspectedGuild=""
         shopMode="";shopGoods=[];shopDetails=[];saleItem=nil;salePrice=nil;tradeMessage=""
         onDisconnect?();log("disconnected");try? logger?.close();logger=nil
         screen="login";characters=[];selectedName="";npcText=""
@@ -257,6 +353,7 @@ final class MirConnection: ObservableObject {
     private func handle(_ p:MirWire.Packet) {
         if p.id==50,p.body.count>=4 { playerSex=Int(p.body[3])%2;playerHair=Int(p.body[2]) }
         if p.id==51 || p.id==634 || p.id==633 { awaitingAttack=false }
+        receivePeer(p)
         receiveInventory(p)
         if p.id == 28 && p.actor==playerActor { awaitingAttack=false }
         switch p.id {
@@ -370,7 +467,7 @@ final class MirConnection: ObservableObject {
         raw(MirWire.command(1001,x:UInt16(x),y:UInt16(y)))
     }
     func changeEquipment(_ item:MirEquipment.Item,slot:Int,takingOff:Bool) {
-        guard online,!tradeBusy,usePending==nil,!actionLocked,inventory.begin(item,slot:slot,takingOff:takingOff) else { return }
+        guard online,!dealOpen,!tradeBusy,usePending==nil,!actionLocked,inventory.begin(item,slot:slot,takingOff:takingOff) else { return }
         tradeMessage="";equipmentMessage="等待服务器确认…"
         raw(MirWire.command(takingOff ? 1004 : 1003,actor:UInt32(bitPattern:item.id),x:UInt16(slot))+MirWire.encode(item.nameBytes))
         log("equipment request item=\(item.id) slot=\(slot) off=\(takingOff)")

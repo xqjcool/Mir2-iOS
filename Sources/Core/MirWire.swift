@@ -331,3 +331,19 @@ struct MirVitals:Equatable {
         return MirVitals(level:Int(b[0]),hp:MirEquipment.word(b,12),mp:MirEquipment.word(b,14),maxHP:MirEquipment.word(b,16),maxMP:MirEquipment.word(b,18),experience:Int(MirEquipment.integer(b,24)),maxExperience:Int(MirEquipment.integer(b,28)))
     }
 }
+
+// OpenMir2 UserStateInfo: feature(4), short strings, 13 ClientItem(124) records.
+enum MirPeerInspection {
+    struct State { let name:[UInt8];let guild:[UInt8];let equipment:[Int:MirEquipment.Item] }
+    static func decode(_ bytes:[UInt8])->State? {
+        guard bytes.count==1688,bytes[4]>0,bytes[4]<=14,bytes[24]<=20,bytes[45]<=14 else { return nil }
+        var items:[Int:MirEquipment.Item]=[:]
+        for slot in 0..<13 {
+            let start=60+slot*124, record=Array(bytes[start..<start+124])
+            if record[0]==0 { continue }
+            guard let item=MirEquipment.item(record) else { return nil }
+            items[slot]=item
+        }
+        return State(name:Array(bytes[5..<5+Int(bytes[4])]),guild:Array(bytes[25..<25+Int(bytes[24])]),equipment:items)
+    }
+}

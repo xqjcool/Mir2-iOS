@@ -4,6 +4,7 @@ import SpriteKit
 final class OnlineModel:ObservableObject {
     let net=MirConnection()
     let scene:OnlineScene?
+    @Published var playerTarget:OnlineScene.PlayerTarget?
     @Published var coordinates=""
     @Published var combat="点击攻击：自动追打最近怪物；再次点击停止"
     @Published var target=""
@@ -21,6 +22,7 @@ final class OnlineModel:ObservableObject {
             scene?.targetReport={ [weak self] in self?.target=$0 }
             scene?.targetHealthReport={ [weak self] in self?.targetHealth=$0 }
             scene?.positionReport={ [weak self] in self?.position=$0 }
+            scene?.playerReport={ [weak self] in self?.playerTarget=$0 }
             scene?.mapReport={ [weak self] name,image in self?.mapName=name;self?.minimap=image }
         } catch { scene=nil;minimap=nil;self.error=error.localizedDescription }
     }
@@ -155,8 +157,15 @@ struct OnlineView:View {
                 Color.black.opacity(0.35).ignoresSafeArea().onTapGesture {}
                 NPCShopPanel(net:net)
             }
+            if net.online && net.dealOpen {
+                Color.black.opacity(0.5).ignoresSafeArea().onTapGesture {}
+                PeerTradePanel(net:net)
+            } else if net.online,let target=model.playerTarget {
+                Color.black.opacity(0.5).ignoresSafeArea().onTapGesture {}
+                PeerPlayerPanel(net:net,scene:model.scene,target:target) { model.playerTarget=nil }
+            }
         }
-        .sheet(item:$panel,onDismiss:{ model.scene?.suspendControls(false) }) { selected in
+        .sheet(item:$panel,onDismiss:{ model.scene?.suspendControls(net.dealOpen || model.playerTarget != nil) }) { selected in
             Group {
                 switch selected {
                 case .bag:EquipmentPanel(net:net,characterOnly:false)
@@ -174,7 +183,9 @@ struct OnlineView:View {
             if value { net.automaticSkills=[] }
         }
         .onChange(of:net.npcOpen) { open in if open { model.scene?.input(.stop) } }
-        .onChange(of:net.online) { online in if !online { panel=nil } }
+        .onChange(of:net.online) { online in if !online { panel=nil;model.playerTarget=nil } }
+        .onChange(of:model.playerTarget) { target in model.scene?.suspendControls(target != nil || panel != nil || net.dealOpen) }
+        .onChange(of:net.dealOpen) { open in if open { panel=nil;model.playerTarget=nil };model.scene?.suspendControls(open || panel != nil || model.playerTarget != nil) }
         .onChange(of:phase) { value in
             if value != .active { model.scene?.input(.stop) }
             if value == .background { net.disconnect();net.status="已进入后台，返回后请重新登录" }
@@ -464,7 +475,7 @@ private struct EquipmentPanel:View {
         if let slot=selectedSlot { return net.inventory.equipped[slot] }
         return selected.flatMap { net.inventory.bag[$0] }
     }
-    private var locked:Bool { net.tradeBusy || net.inventory.pending != nil || net.usePending != nil || net.actionLocked }
+    private var locked:Bool { net.dealOpen || net.tradeBusy || net.inventory.pending != nil || net.usePending != nil || net.actionLocked }
     private func icon(_ item:MirEquipment.Item)->some View { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:38,height:38) }
     private func paperLayer(_ key:String)->some View {
         Group {
@@ -706,5 +717,81 @@ private struct SkillPanel:View {
             }.onAppear { autoPickup=scene?.autoPickup ?? true }.navigationTitle("技能与拾取").navigationBarTitleDisplayMode(.inline)
             .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
         }
+    }
+}
+
+private struct PeerPlayerPanel:View {
+    @ObservedObject var net:MirConnection
+    let scene:OnlineScene?
+    let target:OnlineScene.PlayerTarget
+    let close:()->Void
+    var body:some View {
+        VStack(spacing:8) {
+            HStack { Text(target.name).font(.headline);Spacer();Button("关闭",action:close).frame(minWidth:44,minHeight:44) }
+            HStack {
+                Button("查看装备") { scene?.inspect(target) }
+                Button("面向对方") { scene?.face(target) }
+                Button("发起交易") { scene?.face(target,trade:true) }
+            }.buttonStyle(.bordered).frame(minHeight:44).disabled(net.tradeBusy)
+            Text("交易需双方相邻、面对面；请双方分别点“面向对方”。").font(.caption)
+            Text(net.peerMessage).font(.caption).foregroundColor(.yellow)
+            if !net.inspectedName.isEmpty {
+                Text("\(net.inspectedName) 的装备 · \(net.inspectedGuild)").font(.headline)
+                ScrollView { VStack(alignment:.leading,spacing:6) {
+                    ForEach(0..<MirEquipment.slotNames.count,id:\.self) { slot in
+                        HStack {
+                            Text(MirEquipment.slotNames[slot]).frame(width:65,alignment:.leading)
+                            if let item=net.inspectedItems[slot] {
+                                ClassicAsset(path:"item-icons/\(item.looks)").frame(width:32,height:32)
+                                VStack(alignment:.leading) { Text(net.itemName(item));Text("攻击 \(MirEquipment.range(item.dc)) 魔法 \(MirEquipment.range(item.mc)) 道术 \(MirEquipment.range(item.sc)) 防御 \(MirEquipment.range(item.ac)) 魔御 \(MirEquipment.range(item.mac)) · 持久 \(item.durability)/\(item.maxDurability)").font(.caption2) }
+                            } else { Text("空").foregroundColor(.gray) }
+                        }.frame(minHeight:44)
+                    }
+                } }
+            }
+        }.padding().frame(maxWidth:570,maxHeight:340).background(ClassicTheme.panel).foregroundColor(ClassicTheme.text).overlay(Rectangle().stroke(ClassicTheme.gold))
+    }
+}
+private struct PeerTradePanel:View {
+    @ObservedObject var net:MirConnection
+    @State private var gold="0"
+    @State private var confirming=false
+    @State private var revision=0
+    private var locked:Bool { net.tradeBusy || net.dealConfirmed }
+    private var summary:String {
+        "我方金币：\(net.dealOwnGold)，物品：" + net.dealOwn.values.sorted{$0.id<$1.id}.map{net.itemName($0)}.joined(separator:"、") +
+        "\n对方金币：\(net.dealRemoteGold)，物品：" + net.dealRemote.values.sorted{$0.id<$1.id}.map{net.itemName($0)}.joined(separator:"、")
+    }
+    var body:some View {
+        ScrollView { VStack(spacing:6) {
+            HStack { Text("与 \(net.dealPartner) 交易").font(.headline);Spacer();Button("取消交易") { net.cancelPeerTrade() }.frame(minHeight:44).disabled(net.tradeBusy) }
+            HStack(alignment:.top) {
+                VStack(alignment:.leading) {
+                    Text("我方 · 金币 \(net.dealOwnGold)").bold()
+                    Text("点背包物品放入；禁止取回时可取消整笔交易").font(.caption2)
+                    ScrollView { ForEach(net.dealOwn.values.sorted{$0.id<$1.id}) { item in
+                        Button("取回："+net.itemName(item)) { net.offerPeerItem(item,remove:true) }.frame(minHeight:44).disabled(locked)
+                    } }.frame(height:75)
+                    HStack { TextField("金币",text:$gold).keyboardType(.numberPad).textFieldStyle(.roundedBorder);Button("放入") { net.offerPeerGold(gold) }.frame(minHeight:44) }.disabled(locked)
+                }.frame(maxWidth:.infinity)
+                VStack(alignment:.leading) {
+                    Text("对方 · 金币 \(net.dealRemoteGold)").bold()
+                    ScrollView { ForEach(net.dealRemote.values.sorted{$0.id<$1.id}) { item in
+                        VStack(alignment:.leading) { Text(net.itemName(item));Text("攻击 \(MirEquipment.range(item.dc)) 魔法 \(MirEquipment.range(item.mc)) 道术 \(MirEquipment.range(item.sc)) 防御 \(MirEquipment.range(item.ac)) 魔御 \(MirEquipment.range(item.mac)) · 持久 \(item.durability)/\(item.maxDurability)").font(.caption2) }.frame(minHeight:44)
+                    } }.frame(height:125)
+                }.frame(maxWidth:.infinity)
+            }
+            ScrollView(.horizontal) { HStack { ForEach(net.inventory.bag.values.sorted{$0.id<$1.id}) { item in
+                Button { net.offerPeerItem(item) } label: { VStack { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:28,height:28);Text(net.itemName(item)).font(.caption2) }.frame(minWidth:66,minHeight:48) }.disabled(locked)
+            } } }.frame(height:55)
+            HStack {
+                Text(net.peerMessage).font(.caption).frame(maxWidth:.infinity,alignment:.leading)
+                Button(net.dealConfirmed ? "等待对方确认" : "核对并确认") { revision=net.dealRevision;confirming=true }.frame(minHeight:44).disabled(locked)
+            }
+        }.padding(12) }.frame(maxWidth:640,maxHeight:340).background(ClassicTheme.panel).foregroundColor(ClassicTheme.text).overlay(Rectangle().stroke(ClassicTheme.gold))
+        .alert("确认双方交易内容",isPresented:$confirming) {
+            Button("确认交易") { net.confirmPeerTrade(revision:revision) }
+            Button("返回核对",role:.cancel) {}
+        } message: { Text(summary) }
     }
 }

@@ -47,6 +47,22 @@ final class OnlineScene: SKScene {
     var targetReport:((String)->Void)?
     var targetHealthReport:((Double?)->Void)?
     var positionReport:((Cell)->Void)?
+    struct PlayerTarget:Identifiable,Equatable { let id:Int32;let name:String }
+    var playerReport:((PlayerTarget)->Void)?
+    func inspect(_ target:PlayerTarget) {
+        guard let actor=actors[target.id],!actor.monster,!actor.npc else { net.peerMessage="对方已离开视野";return }
+        net.inspectPlayer(id:target.id,x:actor.cell.x+map.originX,y:actor.cell.y+map.originY)
+    }
+    func face(_ target:PlayerTarget,trade:Bool=false) {
+        guard pending==nil,!attackPending,let id=playerID,let me=actors[id],let other=actors[target.id],!other.dead else { net.peerMessage="请等待当前动作结束，或重新选择对方";return }
+        let dx=other.cell.x-me.cell.x,dy=other.cell.y-me.cell.y
+        guard max(abs(dx),abs(dy))==1 else { net.peerMessage="请先走到对方相邻的一格，再点人物操作";return }
+        let dir=MirTouchInput.direction(x:Double(dx),y:Double(dy)) ?? 0
+        if trade {
+            guard me.direction==dir,other.direction==(dir+4)%8 else { net.peerMessage="双方需分别点“面向对方”，再发起交易";return }
+            net.requestPeerTrade(name:other.displayName)
+        } else { guard net.facePlayer(x:me.cell.x+map.originX,y:me.cell.y+map.originY,direction:dir) else { net.peerMessage="请稍候再转向";return };me.direction=dir;net.peerMessage="已面向对方，请对方也面向你" }
+    }
     private struct WorldNPC:Decodable { let x:Int;let y:Int;let name:String }
     private var knownNPCs:[WorldNPC]=[]
     var npcMarkers:[Cell] { Array(Set(knownNPCs.map { Cell(x:$0.x,y:$0.y) } + actors.values.filter{$0.npc}.map(\.cell))).sorted { $0.x == $1.x ? $0.y < $1.y : $0.x < $1.x } }
@@ -95,7 +111,7 @@ final class OnlineScene: SKScene {
         case let .move(x,y) where x==0 && y==0:stickDirection=nil;stickRunning=false;return
         default:break
         }
-        guard net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy else { return }
+        guard net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy,!net.dealOpen else { return }
         switch command {
         case let .move(x,y):joystick(x:x,y:y)
         case .attack:toggleAutoAttack()
@@ -157,7 +173,7 @@ final class OnlineScene: SKScene {
         performSkill(skill,ground:nil)
     }
     private func performSkill(_ skill:MirEquipment.Skill,ground:Cell?) {
-        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!attackPending,pending==nil,clock>=nextAttack,
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,!attackPending,pending==nil,clock>=nextAttack,
               ProcessInfo.processInfo.systemUptime >= (net.skillReady[skill.id] ?? 0),
               let id=playerID,let a=actors[id],!a.dead else { return }
         let selfCast=MirSkills.selfCast(skill.id)
@@ -372,13 +388,16 @@ final class OnlineScene: SKScene {
         if let id=playerID,let a=actors[id] { positionReport?(a.cell);report?("\(map.name) (\(a.cell.x+map.originX),\(a.cell.y+map.originY)) · 可见角色 \(actors.count)") }
     }
     override func touchesEnded(_ touches:Set<UITouch>,with event:UIEvent?) {
-        guard net.online,!net.npcOpen,!net.tradeBusy,!interactionSuspended,let id=playerID,let a=actors[id],let touch=touches.first else { return }
+        guard net.online,!net.npcOpen,!net.tradeBusy,!net.dealOpen,!interactionSuspended,let id=playerID,let a=actors[id],let touch=touches.first else { return }
         let p=touch.location(in:self),target=Cell(x:Int(floor(p.x/48)),y:Int(floor(-p.y/32)))
         if let skill=armedGroundSkill { performSkill(skill,ground:target);return }
         if let npc=actors.first(where:{$0.value.npc && $0.value.cell==target}) {
             stopAutomation()
             guard max(abs(target.x-a.cell.x),abs(target.y-a.cell.y))<=3 else { combatReport?("请走近 \(npc.value.displayName) 再交谈");return }
             net.talk(to:npc.key);return
+        }
+        if let other=actors.first(where: { $0.key != id && !$0.value.monster && !$0.value.npc && !$0.value.dead && ($0.value.cell==target || $0.value.node.calculateAccumulatedFrame().insetBy(dx:-8,dy:-8).contains(p)) }) {
+            stopAutomation();net.peerMessage="";net.inspectedName="";net.inspectedItems=[:];playerReport?(PlayerTarget(id:other.key,name:other.value.displayName));return
         }
         if let corpse=actors.first(where: { $0.value.dead && !$0.value.harvested && ["11-160","11-161"].contains($0.value.appearanceKey) && $0.value.cell==target }) {
             stopAutomation();selectedCorpse=corpse.key;combatReport?("已选中 \(corpse.value.displayName) 尸体；靠近后反复点击割肉");return
@@ -389,7 +408,7 @@ final class OnlineScene: SKScene {
         navigate(to:target)
     }
     func attackSelected() {
-        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!attackPending,pending==nil,clock>=nextAttack,let id=playerID,let a=actors[id],!a.dead else { return }
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,!attackPending,pending==nil,clock>=nextAttack,let id=playerID,let a=actors[id],!a.dead else { return }
         let candidates=actors.filter { $0.value.monster && !$0.value.dead && max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y))<=12 }
         if !classicMode && (selected==nil || actors[selected!]?.dead != false) { targetHealthReport?(nil);selected=candidates.min { lhs,rhs in
             let l=max(abs(lhs.value.cell.x-a.cell.x),abs(lhs.value.cell.y-a.cell.y))
@@ -436,7 +455,7 @@ final class OnlineScene: SKScene {
         }
     }
     func pickupHere() {
-        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,pending==nil,!attackPending,clock>=nextPickup,let id=playerID,let a=actors[id],!a.dead else { return }
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,pending==nil,!attackPending,clock>=nextPickup,let id=playerID,let a=actors[id],!a.dead else { return }
         guard drops.values.contains(where:{$0.cell==a.cell}) else { combatReport?("请先走到掉落物所在格子");return }
         let attempts=pickupAttempts[a.cell,default:0]
         guard attempts<3 else { pickupSweep=false;autoPickup=false;combatReport?("连续拾取未获确认，已停止；请检查归属、背包和负重");return }
@@ -568,14 +587,14 @@ final class OnlineScene: SKScene {
         }
         let locked = pending != nil || attackPending
         if net.actionLocked != locked { net.actionLocked=locked }
-        if net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy,net.inventory.pending==nil,pending==nil,!attackPending,clock>=nextAttack {
+        if net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy,!net.dealOpen,net.inventory.pending==nil,pending==nil,!attackPending,clock>=nextAttack {
             if let skill=queuedSkill {
                 let ground=queuedGround;queuedSkill=nil;queuedGround=nil
                 if let ground=ground { performSkill(skill,ground:ground) } else { castSkill(skill) }
             }
             else if queuedAttack { queuedAttack=false;attackSelected() }
         }
-        if net.online,!interactionSuspended,!net.npcOpen,pending==nil,!attackPending,net.inventory.pending==nil,!net.tradeBusy,time>=nextStep,ProcessInfo.processInfo.systemUptime>=movementReadyAt,let id=playerID,let a=actors[id],!a.dead {
+        if net.online,!interactionSuspended,!net.npcOpen,pending==nil,!attackPending,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,time>=nextStep,ProcessInfo.processInfo.systemUptime>=movementReadyAt,let id=playerID,let a=actors[id],!a.dead {
             if (autoAttack || attackHeld) && time>=nextAuto {
                 nextAuto=time+0.3
                 if let targetID=selected,let target=actors[targetID],!target.dead {

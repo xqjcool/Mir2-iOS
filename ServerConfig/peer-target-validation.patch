@@ -1,0 +1,31 @@
+--- a/src/M2Server/Player/PlayObject.Operate.cs
++++ b/src/M2Server/Player/PlayObject.Operate.cs
+@@ -70,8 +70,8 @@
+ 
+         private void ClientQueryUserInformation(int charId, int nX, int nY)
+         {
+-            IPlayerActor playObject = (IPlayerActor)SystemShare.ActorMgr.Get(charId);
+-            if (!CretInNearXy(playObject, nX, nY))
++            IPlayerActor playObject = SystemShare.ActorMgr.Get(charId) as IPlayerActor;
++            if (playObject == null || !CretInNearXy(playObject, nX, nY))
+             {
+                 return;
+             }
+@@ -932,11 +932,16 @@
+                 return;
+             }
+             IActor poseObject = GetPoseCreate();
+-            if (poseObject.Race == ActorRace.Play)
++            if (poseObject is IPlayerActor && poseObject.Race == ActorRace.Play)
+             {
+                 IPlayerActor targetPlayObject = (IPlayerActor)poseObject;
+                 if (targetPlayObject != this)
+                 {
++                    if (!string.IsNullOrEmpty(sHumName) && !string.Equals(sHumName, targetPlayObject.ChrName, StringComparison.OrdinalIgnoreCase))
++                    {
++                        SendDefMessage(Messages.SM_DEALTRY_FAIL, 0, 0, 0, 0);
++                        return;
++                    }
+                     if (targetPlayObject.GetPoseCreate() == this && !targetPlayObject.Dealing)
+                     {
+                         if (targetPlayObject.AllowDeal && targetPlayObject.IsCanDeal)
