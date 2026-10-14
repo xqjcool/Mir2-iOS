@@ -11,3 +11,10 @@ ClassicBooks 0 325 250 书店老板 0 2 0
 ClassicGoodsBichon 0 378 298 杂货铺老板 0 3 0
 ClassicMeatBichon 0 313 270 屠夫 0 4 0
 ClassicWeapon 0 302 221 铁匠 0 0 0
+
+; Bichon interiors: original NPC positions, rebuilt basic shop dialogues.
+InteriorWeapon 0103 19 18 卫家店 0 1 0
+InteriorClothes 0106 19 6 安家布衣 0 7 0
+InteriorRings 0105 18 6 戒指店老板 0 4 0
+InteriorBracelets 0105 12 12 手镯店老板 0 5 0
+InteriorNecklaces 0105 6 18 项链店老板 0 6 0

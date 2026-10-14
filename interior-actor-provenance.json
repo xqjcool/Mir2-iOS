@@ -1,0 +1,22 @@
+{
+  "cats": {
+    "source": "combat-original-audit/Data/Mon3.wil",
+    "sha256": "d7dafcf37c13daa481f6544e10f89f9c69d0e0409d45fdd979ad8a13e4797a9a"
+  },
+  "orc": {
+    "source": "Shanda Mir 2/Legend of mirt/data/Mon11.wzl",
+    "sha256": "fae0505dcaf5e645fa234b3ff7b5c3e77668f731cf2b8dee5bad3662e26d7c9b"
+  },
+  "npc": {
+    "source": "classic-ui-audit/legacy/Data/npc.wil",
+    "sha256": "02bd88f7e55a98c7069d82a6fc9f7e7e9996aed5f4f0f6dc108a8c3327085379"
+  },
+  "mapping": {
+    "17-25": "Mon3, base1800, MA14",
+    "17-26": "Mon3, base2160, MA14",
+    "19-100": "Mon11, base0, MA19",
+    "50-6": "NPC base360",
+    "50-7": "NPC base420"
+  },
+  "reference": "Original Actor.pas GetMonsterAction/Race17,19 and appearance div10 / mod10 mapping; monster DB RaceImg/Appr values."
+}

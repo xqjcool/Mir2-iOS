@@ -25,11 +25,13 @@ struct SceneData: Decodable {
     let autoRoute: [Cell]
     var grid: NavigationGrid { NavigationGrid(width: width, height: height, mask: walkable) }
 
-    static func load() throws -> (SceneData, URL) {
+    static func load(mapID:String = "0") throws -> (SceneData, URL) {
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("GameData") else {
             throw LoadError.invalid("找不到随应用打包的地图资源")
         }
-        let data = try JSONDecoder().decode(SceneData.self, from: Data(contentsOf: root.appendingPathComponent("scene.json")))
+        guard ["0", "0103", "0105", "0106"].contains(mapID) else { throw LoadError.invalid("尚未安装地图资源：\(mapID)") }
+        let sceneFile = mapID == "0" ? "scene.json" : "maps/\(mapID)/scene.json"
+        let data = try JSONDecoder().decode(SceneData.self, from: Data(contentsOf: root.appendingPathComponent(sceneFile)))
         guard data.version == 1, (1...1024).contains(data.width), (1...1024).contains(data.height),
               data.walkable.count == data.width * data.height, data.grid.canWalk(data.spawn) else {
             throw LoadError.invalid("地图尺寸或出生点无效")

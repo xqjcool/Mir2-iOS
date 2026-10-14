@@ -256,6 +256,7 @@ final class MirConnection: ObservableObject {
     }
     private func handle(_ p:MirWire.Packet) {
         if p.id==50,p.body.count>=4 { playerSex=Int(p.body[3])%2;playerHair=Int(p.body[2]) }
+        if p.id==51 || p.id==634 || p.id==633 { awaitingAttack=false }
         receiveInventory(p)
         if p.id == 28 && p.actor==playerActor { awaitingAttack=false }
         switch p.id {

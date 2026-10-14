@@ -1,0 +1,128 @@
+{
+  "events": [
+    {
+      "map": "0",
+      "position": [
+        336,
+        296
+      ],
+      "packet": 51
+    },
+    {
+      "map": "0103",
+      "position": [
+        6,
+        12
+      ],
+      "packet": 634
+    },
+    {
+      "shop": "0103",
+      "npc": [
+        19,
+        18
+      ],
+      "dialogue": true,
+      "buyList": true
+    },
+    {
+      "map": "0",
+      "position": [
+        334,
+        301
+      ],
+      "packet": 634
+    },
+    {
+      "map": "0105",
+      "position": [
+        9,
+        23
+      ],
+      "packet": 634
+    },
+    {
+      "shop": "0105",
+      "npc": [
+        18,
+        6
+      ],
+      "dialogue": true,
+      "buyList": true
+    },
+    {
+      "shop": "0105",
+      "npc": [
+        12,
+        12
+      ],
+      "dialogue": true,
+      "buyList": true
+    },
+    {
+      "shop": "0105",
+      "npc": [
+        6,
+        18
+      ],
+      "dialogue": true,
+      "buyList": true
+    },
+    {
+      "map": "0",
+      "position": [
+        296,
+        285
+      ],
+      "packet": 634
+    },
+    {
+      "map": "0106",
+      "position": [
+        9,
+        23
+      ],
+      "packet": 634
+    },
+    {
+      "shop": "0106",
+      "npc": [
+        19,
+        6
+      ],
+      "dialogue": true,
+      "buyList": true
+    },
+    {
+      "map": "0",
+      "position": [
+        308,
+        311
+      ],
+      "packet": 634
+    }
+  ],
+  "lastMap": "0",
+  "lastPosition": [
+    308,
+    311
+  ],
+  "originalTestPosition": [
+    "0",
+    648,
+    629
+  ],
+  "relogin": {
+    "passed": true,
+    "savedMap": "0106",
+    "insidePosition": [
+      10,
+      22
+    ],
+    "returnedMap": "0",
+    "returnedPosition": [
+      308,
+      311
+    ]
+  }
+}

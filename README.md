@@ -1,3 +1,13 @@
+# 比奇室内地图与周边怪物（2026-10-13）
+
+新增铁器店、首饰店、衣服店三张原始室内地图，5位室内商人及多钩猫、钉耙猫、半兽人。进店/出店采用服务器原地图连接，客户端已接入切图加载。详见 [本轮更新与验收](INTERIOR-WORLD-UPDATE.md)。
+
+请先在 Mac 执行 `git pull --ff-only`、`bash validate-on-mac.sh` 并重新安装，再进入室内地图；旧客户端不支持新地图。
+
+下面为历史记录，最新刷新分布见 `ServerConfig/ClassicBichon/MonGen.txt`，自动操作以 [自动追打更新](AUTO-COMBAT-WORLD-UPDATE.md) 为准。
+
+---
+
 # 人物、背包、商店与割肉（2026-10-12）
 
 Mac 在本仓库执行 `git pull --ff-only`，然后 `bash validate-on-mac.sh`，打开 `MirOffline.xcodeproj` 运行。Windows 测试服务已部署，客户端仍由服务端确认物品、金币和战斗结果。

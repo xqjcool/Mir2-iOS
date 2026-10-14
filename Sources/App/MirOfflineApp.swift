@@ -9,7 +9,8 @@ final class OnlineModel:ObservableObject {
     @Published var target=""
     @Published var targetHealth:Double?
     @Published var position=Cell(x:0,y:0)
-    let minimap:UIImage?
+    @Published var minimap:UIImage?
+    @Published var mapName="比奇省"
     let error:String?
     init() {
         do {
@@ -20,6 +21,7 @@ final class OnlineModel:ObservableObject {
             scene?.targetReport={ [weak self] in self?.target=$0 }
             scene?.targetHealthReport={ [weak self] in self?.targetHealth=$0 }
             scene?.positionReport={ [weak self] in self?.position=$0 }
+            scene?.mapReport={ [weak self] name,image in self?.mapName=name;self?.minimap=image }
         } catch { scene=nil;minimap=nil;self.error=error.localizedDescription }
     }
 }
@@ -85,7 +87,7 @@ struct OnlineView:View {
     private var miniMap:some View {
         Button { open(.map) } label: {
             VStack(spacing:2) {
-                Text("比奇大陆").font(.caption.bold())
+                Text(model.mapName).font(.caption.bold())
                 if let image=model.minimap,let scene=model.scene {
                     ZStack(alignment:.topLeading) {
                         Image(uiImage:image).resizable().interpolation(.none)
@@ -662,7 +664,7 @@ private struct NavigationPanel:View {
                                 })
                         }
                     }
-                    Text("黄点：本人 · 绿点：比奇商人/老兵及已观察 NPC").font(.caption)
+                    Text("黄点：本人 · 绿点：当前地图商人及已观察 NPC").font(.caption)
                     if let cell=marker {
                         HStack {
                             Text("选中坐标 \(cell.x),\(cell.y)")

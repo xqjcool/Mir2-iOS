@@ -3,7 +3,10 @@ import UIKit
 import CoreFoundation
 
 final class OnlineScene: SKScene {
-    private let map:SceneData, root:URL, net:MirConnection
+    private var map:SceneData
+    private let root:URL, net:MirConnection
+    private var mapID="0"
+    var mapReport:((String,UIImage?)->Void)?
     private let cameraNode=SKCameraNode()
     private var streamer:SceneStreamer!
     private var built=false, clock=0.0, lastStream=0.0, nextStep=0.0
@@ -51,7 +54,7 @@ final class OnlineScene: SKScene {
     var mapWidth:Int { map.width }
     var mapHeight:Int { map.height }
     var minimapImage:UIImage? {
-        if map.width==700, map.height==700, map.originX==0, map.originY==0, let image=UIImage(contentsOfFile:root.appendingPathComponent("classic-ui/bichon-minimap.png").path) { return image }
+        if mapID=="0", let image=UIImage(contentsOfFile:root.appendingPathComponent("classic-ui/bichon-minimap.png").path) { return image }
         let bytes: [UInt8] = map.walkable.flatMap { walkable -> [UInt8] in
             walkable ? [110, 95, 65, 255] : [18, 24, 22, 255]
         }
@@ -220,11 +223,34 @@ final class OnlineScene: SKScene {
     private func point(_ c:Cell)->CGPoint { CGPoint(x:CGFloat(c.x*48+24),y:CGFloat(-(c.y*32+16))) }
     private func contains(_ c:Cell)->Bool { c.x>=0 && c.y>=0 && c.x<map.width && c.y<map.height }
     private func clear() {
-        lastSkillID=nil;lastAutoSkillID=nil;transientEffects=[]
+        lastSkillID=nil;lastAutoSkillID=nil;predictingSpell=false;transientEffects=[]
         for actor in actors.values { actor.node.removeFromParent() }
         actors.removeAll();playerID=nil;route=[];pending=nil;stopAutomation();dropNames=[:];pickupAttempts=[:];effectsRoot.removeAllChildren();events=[:];shields=[:];targetReport?("");targetHealthReport?(nil)
         for drop in drops.values { drop.node.removeFromParent() };drops.removeAll()
         selected=nil;selectedCorpse=nil;attackPending=false;gold=0;combatReport?("")
+    }
+    private func clearWorldKeepingPlayer() {
+        let oldID=playerID, player=playerID.flatMap { actors[$0] }, balance=gold
+        clear();gold=balance
+        if let id=oldID,let player=player { player.node.removeAllActions();actors[id]=player;playerID=id;addChild(player.node) }
+    }
+    private func changeMap(_ p:MirWire.Packet) {
+        let id=String(decoding:p.body,as:UTF8.self).trimmingCharacters(in:CharacterSet.whitespacesAndNewlines.union(CharacterSet(charactersIn:"\0")))
+        do {
+            let (next,_)=try SceneData.load(mapID:id)
+            let destination=Cell(x:Int(p.x)-next.originX,y:Int(p.y)-next.originY)
+            guard destination.x>=0,destination.y>=0,destination.x<next.width,destination.y<next.height else { throw SceneData.LoadError.invalid("入场坐标超出地图范围") }
+            if p.id==634 { clearWorldKeepingPlayer() } else { clear() }
+            streamer?.suspend();streamer=nil;cache.removeAllObjects()
+            map=next;mapID=id;knownNPCs=[]
+            let markerFile=id=="0" ? "classic-ui/bichon-npcs.json" : "maps/\(id)/npcs.json"
+            if let data=try? Data(contentsOf:root.appendingPathComponent(markerFile)),let entries=try? JSONDecoder().decode([WorldNPC].self,from:data) { knownNPCs=entries }
+            if built { streamer=SceneStreamer(scene:self,map:map,root:root) }
+            if let ownID=playerID,let player=actors[ownID] { player.cell=destination;player.node.position=point(destination);player.action="stand";player.actionUntil=0 }
+            cameraNode.position=point(destination);positionReport?(destination)
+            nextStep=clock+0.65;movementReadyAt=ProcessInfo.processInfo.systemUptime+0.65;lastStream=0
+            mapReport?(map.name,minimapImage);net.log("map loaded id=\(id) size=\(map.width)x\(map.height) destination=\(p.x),\(p.y)")
+        } catch { net.disconnect();net.status="地图加载失败：\(error.localizedDescription)" }
     }
     private func animate(_ actor:Avatar,_ action:String,duration:Double) {
         actor.action=action;actor.actionAt=clock;actor.actionUntil=clock+duration
@@ -298,9 +324,8 @@ final class OnlineScene: SKScene {
             return
         }
         if [UInt16(14),15,18,19].contains(p.id),let a=actors[p.actor] { a.direction=Int(p.series & 7);animate(a,"attack",duration:0.6);meleeEffect(p.id,actor:a);return }
-        if p.id==51 && String(decoding:p.body,as:UTF8.self) != "0" {
-            net.disconnect();net.status="测试包只包含比奇地图，请使用指定测试角色";return
-        }
+        if p.id==51 || p.id==634 { changeMap(p);return }
+        if p.id==633 { clearWorldKeepingPlayer();return }
         if p.id==30 { shields.removeValue(forKey:p.actor)?.removeFromParent();actors.removeValue(forKey:p.actor)?.node.removeFromParent();if selected==p.actor { stopAutomation();selected=nil;targetReport?("");targetHealthReport?(nil) };return }
         if p.id==28 {
             guard p.actor==playerID else { return }
@@ -330,7 +355,7 @@ final class OnlineScene: SKScene {
         if p.id==10, p.bodyParts.count>1, !p.bodyParts[1].isEmpty {
             avatar.displayName=text(p.bodyParts[1]).components(separatedBy:"/").first ?? "角色"
         } else if avatar.monster {
-            avatar.displayName=["11-160":"鸡","11-161":"鹿","18-27":"稻草人"][avatar.appearanceKey] ?? "怪物"
+            avatar.displayName=["11-160":"鸡","11-161":"鹿","18-27":"稻草人","17-25":"多钩猫","17-26":"钉耙猫","19-100":"半兽人"][avatar.appearanceKey] ?? "怪物"
         }
         if [UInt16(32),34,33].contains(p.id) { avatar.dead=true;avatar.harvested=p.id==33;animate(avatar,p.id==33 ? "skeleton" : "die",duration:1.2) }
         avatar.label.text = p.actor==playerID ? "我" : avatar.displayName
@@ -344,7 +369,7 @@ final class OnlineScene: SKScene {
         showPosition()
     }
     private func showPosition() {
-        if let id=playerID,let a=actors[id] { positionReport?(a.cell);report?("比奇 (\(a.cell.x+map.originX),\(a.cell.y+map.originY)) · 可见角色 \(actors.count)") }
+        if let id=playerID,let a=actors[id] { positionReport?(a.cell);report?("\(map.name) (\(a.cell.x+map.originX),\(a.cell.y+map.originY)) · 可见角色 \(actors.count)") }
     }
     override func touchesEnded(_ touches:Set<UITouch>,with event:UIEvent?) {
         guard net.online,!net.npcOpen,!net.tradeBusy,!interactionSuspended,let id=playerID,let a=actors[id],let touch=touches.first else { return }

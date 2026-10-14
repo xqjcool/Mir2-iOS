@@ -1,0 +1,33 @@
+{
+  "0103": {
+    "width": 27,
+    "height": 29,
+    "missing": [
+      {
+        "map": "0103",
+        "x": 21,
+        "y": 0,
+        "layer": "front",
+        "library": "objects",
+        "index": 0,
+        "status": "empty_frame"
+      }
+    ],
+    "sha256": "d314a54fea40b85eb0bd68d6b18a3fef6fc9221499697feb81f003ad9713da79",
+    "objects": 69
+  },
+  "0105": {
+    "width": 27,
+    "height": 29,
+    "missing": [],
+    "sha256": "9de531bcf6f502482a809bcdbac50a38365f2c163202ba146b9f71b70519523e",
+    "objects": 67
+  },
+  "0106": {
+    "width": 27,
+    "height": 29,
+    "missing": [],
+    "sha256": "eb5361adfcb1a7576759733386cff453d59e16388047fb32dbfa2c394c28a74c",
+    "objects": 67
+  }
+}

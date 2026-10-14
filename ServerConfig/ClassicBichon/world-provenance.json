@@ -10,12 +10,22 @@
   },
   "spawnSource": "openmir2-data-clean/Mir200/Envir/MonGen.txt",
   "spawnSourceSHA256": "e5c39fb7eda66b70f82a61a5c2cea25df9cf0b6892b916fb6d579f88ff43748f",
-  "supportedRows": 19,
-  "configuredPopulation": 840,
+  "supportedRows": 44,
+  "configuredPopulation": 1350,
   "species": [
+    "半兽人",
+    "多钩猫",
     "稻草人",
+    "钉耙猫",
     "鸡",
     "鹿"
   ],
-  "limitation": "Source contains later/custom content; selected records are not proof of exact official 1.76 spawn tables. All-map SAFE/test drop fixture remains unchanged. Unsupported species and indoor maps excluded."
+  "limitation": "Source contains later/custom content, not an exact official 1.76 table. Outdoor SAFE/test-drop settings retained. Indoor basic buy/sell scripts rebuilt. Unsupported maps excluded; new monster original drop tables unavailable.",
+  "interiorMaps": [
+    "0103",
+    "0105",
+    "0106"
+  ],
+  "interiorNPCs": 5,
+  "portalRows": 24
 }
