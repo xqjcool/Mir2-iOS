@@ -61,6 +61,22 @@ final class OnlineScene: SKScene {
         combatReport?("已锁定 \(actor.displayName)，点击右侧攻击或技能；伤害由服务端判定")
         if attack { autoAttack=true;queuedAttack=true }
     }
+    struct NearbyTarget:Identifiable {
+        let id:Int32;let name:String;let monster:Bool;let distance:Int
+    }
+    var nearbyTargets:[NearbyTarget] {
+        guard let me=playerID.flatMap({ actors[$0] }) else { return [] }
+        return actors.compactMap { id,actor -> NearbyTarget? in
+            guard id != playerID,!actor.dead,!actor.npc else { return nil }
+            return NearbyTarget(id:id,name:actor.displayName,monster:actor.monster,distance:max(abs(actor.cell.x-me.cell.x),abs(actor.cell.y-me.cell.y)))
+        }.sorted { $0.distance == $1.distance ? $0.id<$1.id : $0.distance<$1.distance }
+    }
+    func chooseNearby(_ target:NearbyTarget) {
+        guard let actor=actors[target.id],!actor.dead,!actor.npc else { combatReport?("目标已离开视野");return }
+        stopAutomation();selected=target.id;targetHealthReport?(nil);targetReport?(actor.displayName)
+        if !actor.monster { net.peerMessage="";net.inspectedName="";net.inspectedItems=[:];playerReport?(PlayerTarget(id:target.id,name:actor.displayName)) }
+        else { combatReport?("已锁定 \(actor.displayName)，点击攻击或技能") }
+    }
     struct PlayerTarget:Identifiable,Equatable { let id:Int32;let name:String }
     var playerReport:((PlayerTarget)->Void)?
     func inspect(_ target:PlayerTarget) {

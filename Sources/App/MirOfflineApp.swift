@@ -35,7 +35,7 @@ struct OnlineRoot:View {
     var body:some View { OnlineView(model:model,net:model.net) }
 }
 private enum HUDPanel:String,Identifiable {
-    case bag,character,skills,map,settings,chat
+    case bag,character,skills,map,settings,chat,nearby
     var id:String { rawValue }
 }
 private enum ClassicTheme {
@@ -48,6 +48,7 @@ struct OnlineView:View {
     @ObservedObject var net:MirConnection
     @Environment(\.scenePhase) private var phase
     @State private var panel:HUDPanel?
+    @AppStorage("hud.menuExpanded") private var menuExpanded=false
     @AppStorage("hud.classic") private var classic=true
     @AppStorage("hud.opacity") private var opacity=0.9
     @AppStorage("hud.scale") private var scale=1.0
@@ -61,23 +62,43 @@ struct OnlineView:View {
         let inset=min(bottomInset,max(0,Double(size.height)-350))
         return CGFloat(min(1.1,max(0.9,min(scale,(Double(size.height)-92-inset)/254))))
     }
-    private func open(_ value:HUDPanel) { model.scene?.suspendControls(true);panel=value }
+    private func open(_ value:HUDPanel) { menuExpanded=false;model.scene?.suspendControls(true);panel=value }
     private func shortcut(_ title:String,_ icon:String,_ value:HUDPanel)->some View {
         Button { open(value) } label: {
             VStack(spacing:2) { Image(systemName:icon);Text(title).font(.caption2) }.frame(width:44,height:44)
         }.background(ClassicTheme.panel).overlay(Circle().stroke(ClassicTheme.gold)).clipShape(Circle())
     }
     private var statusCard:some View {
-        Button { open(.character) } label: {
-            HStack(spacing:6) {
-                Image(systemName:"person.crop.circle").font(.system(size:32)).frame(width:44,height:44)
-                VStack(alignment:.leading,spacing:3) {
-                    Text(net.selectedName+"  Lv.\(net.vitals?.level.description ?? "—")").font(.caption.bold()).lineLimit(1)
-                    meter("HP",net.vitals?.hp,net.vitals?.maxHP,.red)
-                    meter("MP",net.vitals?.mp,net.vitals?.maxMP,.blue)
-                }
-            }.padding(6).frame(width:190).background(ClassicTheme.panel.opacity(opacity))
-                .overlay(RoundedRectangle(cornerRadius:4).stroke(ClassicTheme.gold))
+        HStack(spacing:4) {
+            Button { open(.character) } label: {
+                HStack(spacing:6) {
+                    Image(systemName:"person.crop.circle").font(.system(size:30)).frame(width:44,height:44)
+                    VStack(alignment:.leading,spacing:3) {
+                        Text(net.selectedName+"  Lv.\(net.vitals?.level.description ?? "—")").font(.caption.bold()).lineLimit(1)
+                        meter("HP",net.vitals?.hp,net.vitals?.maxHP,.red)
+                        meter("MP",net.vitals?.mp,net.vitals?.maxMP,.blue)
+                        ProgressView(value:Double(min(max(0,net.vitals?.experience ?? 0),max(1,net.vitals?.maxExperience ?? 1))),total:Double(max(1,net.vitals?.maxExperience ?? 1)))
+                            .tint(ClassicTheme.gold).frame(height:3).accessibilityLabel("经验 \(net.vitals?.experience ?? 0)/\(net.vitals?.maxExperience ?? 0)")
+                    }
+                }.frame(width:178)
+            }.accessibilityLabel("角色属性")
+            Button { net.cycleAttackMode() } label: {
+                VStack(spacing:2) { Image(systemName:"shield.lefthalf.filled");Text(net.attackModeName).font(.caption2);Text("PK模式").font(.system(size:9)) }.frame(width:48,height:56)
+            }.disabled(net.attackMode==nil || net.tradeBusy || net.dealOpen).accessibilityLabel("当前\(net.attackModeName)攻击模式，点击切换")
+        }.padding(6).background(ClassicTheme.panel.opacity(opacity))
+            .overlay(RoundedRectangle(cornerRadius:4).stroke(ClassicTheme.gold)).buttonStyle(.plain)
+    }
+    private var quickMenu:some View {
+        VStack(alignment:.trailing,spacing:4) {
+            Button { withAnimation(.easeInOut(duration:0.15)) { menuExpanded.toggle() } } label: {
+                HStack(spacing:4) { Image(systemName:menuExpanded ? "chevron.up" : "square.grid.2x2");Text(menuExpanded ? "收起" : "菜单").font(.caption) }.frame(width:72,height:44)
+            }.background(ClassicTheme.panel.opacity(opacity)).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule())
+            if menuExpanded {
+                VStack(spacing:4) {
+                    HStack(spacing:4) { shortcut("背包","bag",.bag);shortcut("角色","person",.character);shortcut("技能","sparkles",.skills) }
+                    HStack(spacing:4) { shortcut("附近","person.2",.nearby);shortcut("聊天","bubble.left",.chat);shortcut("设置","gearshape",.settings) }
+                }.padding(4).background(ClassicTheme.panel.opacity(opacity))
+            }
         }.buttonStyle(.plain)
     }
     private func meter(_ title:String,_ value:Int?,_ maximum:Int?,_ color:Color)->some View {
@@ -110,14 +131,10 @@ struct OnlineView:View {
                     VStack(spacing:0) {
                         HStack(alignment:.top,spacing:6) {
                             statusCard
-                            HStack(spacing:4) {
-                                shortcut("背包","bag",.bag)
-                                shortcut("角色","person",.character)
-                                shortcut("技能","sparkles",.skills)
-                                shortcut("更多","ellipsis",.settings)
-                            }
-                            Spacer(minLength:0);miniMap
-                        }
+                            Spacer(minLength:0)
+                            Color.clear.frame(width:72,height:44).overlay(alignment:.topTrailing) { quickMenu }
+                            miniMap
+                        }.zIndex(10)
                         Spacer(minLength:0)
                         HStack(alignment:.bottom,spacing:4) {
                             VirtualJoystick { x,y in model.scene?.input(.move(x,y)) }
@@ -174,6 +191,9 @@ struct OnlineView:View {
                 case .map:NavigationPanel(model:model)
                 case .settings:HUDSettings(net:net)
                 case .chat:ChatPanel(net:net)
+                case .nearby:NearbyPanel(scene:model.scene) { target in
+                    panel=nil;model.scene?.chooseNearby(target)
+                }
                 }
             }.onAppear { model.scene?.suspendControls(true) }
         }
@@ -799,5 +819,36 @@ private struct PeerTradePanel:View {
             Button("确认交易") { net.confirmPeerTrade(revision:revision) }
             Button("返回核对",role:.cancel) {}
         } message: { Text(summary) }
+    }
+}
+
+private struct NearbyPanel:View {
+    let scene:OnlineScene?
+    let select:(OnlineScene.NearbyTarget)->Void
+    @Environment(\.dismiss) private var dismiss
+    @State private var playersOnly=false
+    var body:some View {
+        NavigationStack {
+            VStack {
+                Picker("目标类型",selection:$playersOnly) { Text("全部目标").tag(false);Text("玩家").tag(true) }.pickerStyle(.segmented).padding(.horizontal)
+                TimelineView(.periodic(from:.now,by:0.5)) { _ in
+                    let targets=(scene?.nearbyTargets ?? []).filter { !playersOnly || !$0.monster }
+                    List {
+                        if targets.isEmpty { Text("视野内没有符合条件的目标") }
+                        ForEach(targets) { target in
+                            Button { select(target) } label: {
+                                HStack {
+                                    Image(systemName:target.monster ? "flame" : "person")
+                                    Text(target.name);Spacer();Text("\(target.distance)格").font(.caption)
+                                    Text(target.monster ? "锁定" : "交互").font(.caption)
+                                }.frame(minHeight:44)
+                            }
+                        }
+                    }
+                }
+                Text("点击怪物锁定；点击玩家可查看装备、交易或选择攻击。列表仅显示服务端已同步到视野的目标。").font(.caption).padding(.horizontal)
+            }.navigationTitle("附近目标").navigationBarTitleDisplayMode(.inline)
+                .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
+        }
     }
 }
