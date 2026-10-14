@@ -60,7 +60,7 @@ struct OnlineView:View {
     }
     private func controlScale(_ size:CGSize)->CGFloat {
         let inset=min(bottomInset,max(0,Double(size.height)-350))
-        return CGFloat(min(1.1,max(0.9,min(scale,(Double(size.height)-92-inset)/254))))
+        return CGFloat(min(1.1,max(0.9,min(scale,min((Double(size.width)-20)/548,(Double(size.height)-92-inset)/158)))))
     }
     private func open(_ value:HUDPanel) { menuExpanded=false;model.scene?.suspendControls(true);panel=value }
     private func shortcut(_ title:String,_ icon:String,_ value:HUDPanel)->some View {
@@ -140,13 +140,13 @@ struct OnlineView:View {
                             VirtualJoystick { x,y in model.scene?.input(.move(x,y)) }
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomLeading)
                                 .frame(width:148*controlScale(geo.size),height:148*controlScale(geo.size))
-                                .padding(.leading,CGFloat(min(leftInset,max(0,(Double(geo.size.width)-550)/2))))
+                                .padding(.leading,CGFloat(min(leftInset,max(0,(Double(geo.size.width)-20-548*Double(controlScale(geo.size)))/2))))
                                 .opacity(opacity)
                             Spacer(minLength:0)
                             CombatButtons(net:net,scene:model.scene)
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomTrailing)
-                                .frame(width:258*controlScale(geo.size),height:254*controlScale(geo.size))
-                                .padding(.trailing,CGFloat(min(rightInset,max(0,(Double(geo.size.width)-550)/2))))
+                                .frame(width:400*controlScale(geo.size),height:158*controlScale(geo.size))
+                                .padding(.trailing,CGFloat(min(rightInset,max(0,(Double(geo.size.width)-20-548*Double(controlScale(geo.size)))/2))))
                                 .opacity(opacity)
                         }.padding(.bottom,CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350))))
                     }.padding(8)
@@ -155,7 +155,7 @@ struct OnlineView:View {
                             Text(model.target).font(.caption).foregroundColor(.yellow)
                             if let health=model.targetHealth { ProgressView(value:health).tint(.red).frame(width:160) }
                         }
-                    }.frame(maxWidth:.infinity).padding(.top,78).allowsHitTesting(false)
+                    }.frame(maxWidth:.infinity).padding(.top,geo.size.height<360 ? 70 : 78).allowsHitTesting(false)
                     VStack { Spacer();HStack { Spacer();
                         Button { open(.chat) } label: {
                             VStack(spacing:3) {
@@ -163,7 +163,7 @@ struct OnlineView:View {
                                 Text(model.combat.isEmpty ? "聊天" : model.combat).font(.caption2).lineLimit(2)
                             }.padding(5).frame(width:max(60,min(240,geo.size.width-440))).frame(minHeight:44).background(ClassicTheme.panel.opacity(0.65))
                         }.buttonStyle(.plain)
-                        Spacer() }.padding(.bottom,8) }.allowsHitTesting(panel==nil)
+                        Spacer() }.padding(.bottom,158*controlScale(geo.size)+16+CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350)))) }.allowsHitTesting(panel==nil)
                 }.foregroundColor(ClassicTheme.text)
             } else {
                 ClassicLobby(net:net).disabled(model.scene==nil)
@@ -208,7 +208,7 @@ struct OnlineView:View {
         .onChange(of:net.dealOpen) { open in if open { panel=nil;model.playerTarget=nil };model.scene?.suspendControls(open || panel != nil || model.playerTarget != nil) }
         .onChange(of:phase) { value in
             if value != .active { model.scene?.input(.stop) }
-            if value == .background { net.disconnect();net.status="已进入后台，返回后请重新登录" }
+            if value == .background { net.log("app entered background; closing connection intentionally");net.disconnect();net.status="已进入后台，返回后请重新登录" }
         }.persistentSystemOverlays(.hidden)
     }
 }
@@ -393,22 +393,22 @@ private struct CombatButtons:View {
     private var potion:MirEquipment.Item? { potions.first { net.itemName($0)==potionName } ?? (potionName.isEmpty ? potions.first : nil) }
     private var potionCount:Int { guard let item=potion else { return 0 };return potions.filter{net.itemName($0)==net.itemName(item)}.count }
     private func skillPosition(_ index:Int)->CGPoint {
-        let angle=Double(180+index*30) * .pi / 180
-        return CGPoint(x:206+122*cos(angle),y:158+122*sin(angle))
+        CGPoint(x:28+CGFloat(index)*62,y:112)
     }
     var body:some View {
         ZStack {
-            HoldAttackButton(scene:scene).position(x:206,y:158)
+            HoldAttackButton(scene:scene).position(x:350,y:100)
             ForEach(0..<4,id:\.self) { index in
                 if let skill=net.quickSkillSlots[index] {
                     TimelineView(.periodic(from:.now,by:0.2)) { _ in
                         let remaining=max(0,(net.skillReady[skill.id] ?? 0)-ProcessInfo.processInfo.systemUptime)
                         VStack(spacing:2) {
+                            Text("F\(index+1)").font(.system(size:9)).foregroundColor(ClassicTheme.gold)
                             Text(net.skillName(skill)).font(.caption.bold()).lineLimit(2)
                             if remaining>0 { Text(String(format:"%.1fs",remaining)).font(.caption2.monospacedDigit()) }
                         }.frame(width:56,height:56).background(ClassicTheme.panel.opacity(remaining>0 ? 0.6:1))
-                            .clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold,lineWidth:2))
-                            .contentShape(Circle())
+                            .clipShape(RoundedRectangle(cornerRadius:6)).overlay(RoundedRectangle(cornerRadius:6).stroke(ClassicTheme.gold,lineWidth:2))
+                            .contentShape(Rectangle())
                             .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in bindingSlot=index;scene?.suspendControls(true);chooseSkill=true }
                                 .exclusively(before:TapGesture().onEnded { scene?.input(.skill(skill)) }))
                             .simultaneousGesture(DragGesture(minimumDistance:14).updating($aiming) { _,state,_ in state=true }
@@ -419,22 +419,22 @@ private struct CombatButtons:View {
                     }.position(skillPosition(index))
                 } else {
                     Button { bindingSlot=index;scene?.suspendControls(true);chooseSkill=true } label: { Text("技能\(index+1)").font(.caption2).frame(width:56,height:56) }
-                        .background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold)).position(skillPosition(index))
+                        .background(ClassicTheme.panel).clipShape(RoundedRectangle(cornerRadius:6)).overlay(RoundedRectangle(cornerRadius:6).stroke(ClassicTheme.gold)).position(skillPosition(index))
                 }
             }
             VStack(spacing:0) {
                 if let item=potion { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:30,height:30) }
                 Text(potion == nil ? "药水" : "×\(potionCount)").font(.caption2)
-            }.frame(width:50,height:50).background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold))
-                .opacity(potion == nil || net.usePending != nil ? 0.5:1).contentShape(Circle())
+            }.frame(width:50,height:50).background(ClassicTheme.panel).clipShape(RoundedRectangle(cornerRadius:6)).overlay(RoundedRectangle(cornerRadius:6).stroke(ClassicTheme.gold))
+                .opacity(potion == nil || net.usePending != nil ? 0.5:1).contentShape(Rectangle())
                 .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in scene?.suspendControls(true);choosePotion=true }
                     .exclusively(before:TapGesture().onEnded { if let item=potion { net.useItem(item) } else { scene?.suspendControls(true);choosePotion=true } }))
-                .position(x:137,y:139).accessibilityLabel("药水，长按更换")
+                .position(x:280,y:112).accessibilityLabel("药水，长按更换")
             HStack {
                 Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:50)
                 Button("拾取") { scene?.input(.pickup) }.frame(minWidth:70,minHeight:50)
-            }.background(ClassicTheme.panel).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule()).position(x:132,y:228)
-        }.frame(width:258,height:254).foregroundColor(ClassicTheme.text).buttonStyle(.plain)
+            }.background(ClassicTheme.panel).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule()).position(x:132,y:40)
+        }.frame(width:400,height:158).foregroundColor(ClassicTheme.text).buttonStyle(.plain)
         .confirmationDialog("替换快捷技能",isPresented:$chooseSkill,titleVisibility:.visible) {
             ForEach(net.skills.filter(\.castable)) { skill in Button(net.skillName(skill)) { net.setQuickSkill(skill.id,slot:bindingSlot) } }
             Button("取消",role:.cancel) {}

@@ -355,3 +355,12 @@ enum MirPeerInspection {
         return State(name:Array(bytes[5..<5+Int(bytes[4])]),guild:Array(bytes[25..<25+Int(bytes[24])]),equipment:items)
     }
 }
+
+// Keep an outstanding action until its acknowledgement: replaying it can duplicate
+// movement or let a late generic +GD acknowledge the wrong subsequent action.
+enum MirActionWait {
+    enum Decision:Equatable { case waiting, delayed, expired }
+    static func decision(elapsed:Double)->Decision {
+        elapsed>=20 ? .expired : elapsed>=5 ? .delayed : .waiting
+    }
+}

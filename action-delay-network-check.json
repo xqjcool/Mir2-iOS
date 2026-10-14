@@ -1,0 +1,17 @@
+{
+  "kind": "Python client delayed receive; not iOS runtime",
+  "samePositionTurnCommands": [
+    {
+      "readDelaySeconds": 0.7,
+      "acknowledged": true
+    },
+    {
+      "readDelaySeconds": 6.0,
+      "acknowledged": true
+    },
+    {
+      "readDelaySeconds": 0.7,
+      "acknowledged": true
+    }
+  ]
+}

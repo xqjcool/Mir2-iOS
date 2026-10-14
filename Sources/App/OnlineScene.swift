@@ -13,9 +13,11 @@ final class OnlineScene: SKScene {
     private var playerID:Int32?
     private var route:[Cell]=[], pending:Cell?, requestedAt=0.0
     private var movementReadyAt=0.0
+    private var attackReadyAt=0.0
     private let cache=NSCache<NSString,SKTexture>()
     private var weaponOrder:[[Int]]=[]
     private var actors:[Int32:Avatar]=[:]
+    private var delayNotified=false
     private var attackPending=false, attackRequested=0.0, nextAttack=0.0, nextPickup=0.0
     private var selected:Int32? { didSet { refreshTargetMarker() } }
     private var selectedCorpse:Int32?
@@ -195,7 +197,7 @@ final class OnlineScene: SKScene {
         queuedGround=nil
         guard skill.castable else { combatReport?("被动技能由服务器自动判定");return }
         guard net.online,!interactionSuspended,!net.npcOpen else { return }
-        if attackPending || pending != nil || clock<nextAttack {
+        if attackPending || pending != nil || clock<nextAttack || ProcessInfo.processInfo.systemUptime<attackReadyAt {
             queuedSkill=skill;queuedAttack=false;combatReport?("当前动作结束后释放技能");return
         }
         autoAttack=false;attackHeld=false;route=[];pickupSweep=false
@@ -207,7 +209,7 @@ final class OnlineScene: SKScene {
         performSkill(skill,ground:nil)
     }
     private func performSkill(_ skill:MirEquipment.Skill,ground:Cell?) {
-        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,!attackPending,pending==nil,clock>=nextAttack,
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,!attackPending,pending==nil,clock>=nextAttack,ProcessInfo.processInfo.systemUptime>=attackReadyAt,
               ProcessInfo.processInfo.systemUptime >= (net.skillReady[skill.id] ?? 0),
               let id=playerID,let a=actors[id],!a.dead else { return }
         let selfCast=MirSkills.selfCast(skill.id)
@@ -260,6 +262,10 @@ final class OnlineScene: SKScene {
         net.onAttackAck={ [weak self] in
             guard let self=self else { return };self.attackPending=false
             self.predictingSpell=false
+            self.delayNotified=false
+            self.attackReadyAt=ProcessInfo.processInfo.systemUptime+1.0
+            self.nextAttack=max(self.nextAttack,self.clock+1.0)
+            self.nextStep=max(self.nextStep,self.nextAttack)
         }
         net.onDisconnect={ [weak self] in self?.clear() }
     }
@@ -446,7 +452,7 @@ final class OnlineScene: SKScene {
         navigate(to:target)
     }
     func attackSelected() {
-        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,!attackPending,pending==nil,clock>=nextAttack,let id=playerID,let a=actors[id],!a.dead else { return }
+        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,!attackPending,pending==nil,clock>=nextAttack,ProcessInfo.processInfo.systemUptime>=attackReadyAt,let id=playerID,let a=actors[id],!a.dead else { return }
         let candidates=actors.filter { $0.value.monster && !$0.value.dead && max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y))<=12 }
         if !classicMode && (selected==nil || actors[selected!]?.dead != false) { targetHealthReport?(nil);selected=candidates.min { lhs,rhs in
             let l=max(abs(lhs.value.cell.x-a.cell.x),abs(lhs.value.cell.y-a.cell.y))
@@ -603,7 +609,7 @@ final class OnlineScene: SKScene {
     private func accepted() {
         guard let target=pending,let id=playerID,let a=actors[id] else { return }
         view?.preferredFramesPerSecond=clock-requestedAt>0.8 ? 30 : 60
-        pending=nil;a.cell=target
+        pending=nil;delayNotified=false;a.cell=target
         // Pace from the acknowledgement: network jitter must not compress two
         // server-side movements below the configured 600 ms interval.
         nextStep=clock+0.65
@@ -616,11 +622,22 @@ final class OnlineScene: SKScene {
             me.label.text="我 HP \(v.hp)/\(v.maxHP) MP \(v.mp)/\(v.maxMP)"
         }
         guard built else { return };clock=time
-        if (pending != nil && time-requestedAt>5) || (attackPending && time-attackRequested>5) {
-            net.log("action timeout move=\(pending != nil) attack=\(attackPending) moveAge=\(time-requestedAt) attackAge=\(time-attackRequested)")
-            pending=nil;attackPending=false;route=[];autoAttack=false;pickupSweep=false
-            net.disconnect();net.status="动作确认超时，已停止；请重新登录"
-        }
+        if pending != nil || attackPending {
+            let elapsed=time-(pending != nil ? requestedAt : attackRequested)
+            switch MirActionWait.decision(elapsed:elapsed) {
+            case .waiting:break
+            case .delayed:
+                if !delayNotified {
+                    delayNotified=true;stopAutomation()
+                    net.log("action delayed move=\(pending != nil) attack=\(attackPending) age=\(elapsed); waiting without replay")
+                    combatReport?("网络响应较慢，已暂停连续操作，等待服务器确认")
+                }
+            case .expired:
+                net.log("action expired move=\(pending != nil) attack=\(attackPending) age=\(elapsed)")
+                net.disconnect();net.status="动作超过20秒未确认，请重新登录同步位置；可导出日志排查"
+                return
+            }
+        } else { delayNotified=false }
         transientEffects.removeAll { $0.scene==nil }
         if net.online && time>=nextPerformanceLog {
             nextPerformanceLog=time+10
@@ -628,7 +645,7 @@ final class OnlineScene: SKScene {
         }
         let locked = pending != nil || attackPending
         if net.actionLocked != locked { net.actionLocked=locked }
-        if net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy,!net.dealOpen,net.inventory.pending==nil,pending==nil,!attackPending,clock>=nextAttack {
+        if net.online,!interactionSuspended,!net.npcOpen,!net.tradeBusy,!net.dealOpen,net.inventory.pending==nil,pending==nil,!attackPending,clock>=nextAttack,ProcessInfo.processInfo.systemUptime>=attackReadyAt {
             if let skill=queuedSkill {
                 let ground=queuedGround;queuedSkill=nil;queuedGround=nil
                 if let ground=ground { performSkill(skill,ground:ground) } else { castSkill(skill) }

@@ -283,6 +283,7 @@ final class MirConnection: ObservableObject {
         connect(port:7000, phase:"login")
     }
     func disconnect() {
+        log("disconnect requested online=\(online) awaitingAttack=\(awaitingAttack)")
         generation += 1;timeout?.cancel();timeout=nil
         useTimeout?.cancel();useTimeout=nil;usePending=nil;vitals=nil;attackMode=nil
         connection?.cancel();connection=nil;online=false;busy=false;password="";ticket="";awaitingAttack=false
