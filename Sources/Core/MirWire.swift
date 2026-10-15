@@ -364,3 +364,15 @@ enum MirActionWait {
         elapsed>=20 ? .expired : elapsed>=5 ? .delayed : .waiting
     }
 }
+
+enum MirChatChannel {
+    static func name(for id:UInt16)->String {
+        switch id {
+        case 40,102:return "当前"
+        case 104:return "行会"
+        case 103:return "私聊"
+        case 101:return "组队"
+        default:return "系统"
+        }
+    }
+}

@@ -159,14 +159,14 @@ struct OnlineView:View {
                     }.frame(maxWidth:.infinity).padding(.top,geo.size.height<360 ? 70 : 78).allowsHitTesting(false)
                     VStack(alignment:.leading,spacing:0) {
                         HStack(spacing:0) {
-                            Button { open(.chat) } label: { Text("行会聊天").font(.caption).frame(minWidth:80,minHeight:44) }
+                            Button { open(.chat) } label: { Text(net.chatChannel+"聊天").font(.caption).frame(minWidth:80,minHeight:44) }
                             Button { chatMinimized.toggle() } label: { Image(systemName:chatMinimized ? "plus" : "minus").frame(width:44,height:44) }.accessibilityLabel(chatMinimized ? "恢复聊天窗口" : "最小化聊天窗口")
                         }
                         if !chatMinimized {
                             Button { open(.chat) } label: {
                                 VStack(alignment:.leading,spacing:2) {
-                                    if net.guildMessages.isEmpty { Text(net.guildName.isEmpty ? "未加入行会 · 点击打开聊天" : "暂无行会消息") }
-                                    ForEach(Array(net.guildMessages.suffix(2).enumerated()),id:\.offset) { _,text in Text(text).lineLimit(1) }
+                                    if net.displayedChat().isEmpty { Text("暂无"+net.chatChannel+"消息 · 点击切换频道") }
+                                    ForEach(Array(net.displayedChat().suffix(2).enumerated()),id:\.offset) { _,text in Text(text).lineLimit(1) }
                                 }.font(.caption2).frame(width:180,height:36,alignment:.leading)
                             }.frame(minHeight:44)
                         }
@@ -255,18 +255,18 @@ private struct ChatPanel:View {
     @ObservedObject var net:MirConnection
     @Environment(\.dismiss) private var dismiss
     @State private var draft=""
-    @State private var guild=true
     var body:some View {
         NavigationStack {
             VStack {
-                Picker("频道",selection:$guild) { Text("综合／普通").tag(false);Text("行会").tag(true) }.pickerStyle(.segmented).padding(.horizontal)
-                List(Array((guild ? net.guildMessages : net.messages).enumerated()),id:\.offset) { _,message in Text(message) }
-                Text(guild && net.guildName.isEmpty ? "尚未加入行会，可切换普通聊天" : net.chatFeedback).font(.caption)
-                HStack { TextField(guild ? "行会聊天" : "普通聊天",text:$draft).textFieldStyle(.roundedBorder).onSubmit { send() };Button("发送") { send() }.frame(minWidth:44,minHeight:44) }.padding()
+                Picker("频道",selection:$net.chatChannel) { ForEach(["当前","行会","系统","综合"],id:\.self) { Text($0).tag($0) } }.pickerStyle(.segmented).padding(.horizontal)
+                List(Array(net.displayedChat().enumerated()),id:\.offset) { _,message in Text(message) }
+                Text(net.chatChannel=="行会" && net.guildName.isEmpty ? "尚未加入行会，可切换普通聊天" : net.chatFeedback).font(.caption)
+                HStack { TextField(net.chatChannel=="行会" ? "行会聊天" : "当前聊天",text:$draft).textFieldStyle(.roundedBorder).onSubmit { send() };Button("发送") { send() }.frame(minWidth:44,minHeight:44) }.padding().disabled(net.chatChannel=="系统")
+                if net.chatChannel=="系统" { Text("系统频道仅供查看").font(.caption) }
             }.navigationTitle("聊天与系统消息").toolbar { Button("关闭") { dismiss() } }
         }
     }
-    private func send() { if net.sendChat(draft,guild:guild) { draft="" } }
+    private func send() { guard net.chatChannel != "系统" else { return };if net.sendChat(draft,guild:net.chatChannel=="行会") { draft="" } }
 }
 
 private struct ClassicLobby:View {
@@ -825,6 +825,8 @@ private struct PeerPlayerPanel:View {
 }
 private struct PeerTradePanel:View {
     @ObservedObject var net:MirConnection
+    @State private var choosingItem=false
+    @State private var selectedItem:Int32?
     @State private var gold="0"
     @State private var confirming=false
     @State private var revision=0
@@ -852,14 +854,38 @@ private struct PeerTradePanel:View {
                     } }.frame(height:125)
                 }.frame(maxWidth:.infinity)
             }
-            ScrollView(.horizontal) { HStack { ForEach(net.inventory.bag.values.sorted{$0.id<$1.id}) { item in
-                Button { net.offerPeerItem(item) } label: { VStack { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:28,height:28);Text(net.itemName(item)).font(.caption2) }.frame(minWidth:66,minHeight:48) }.disabled(locked)
-            } } }.frame(height:55)
+            Button { selectedItem=nil;choosingItem=true } label: {
+                Label("选择背包物品（\(net.inventory.bag.count)）",systemImage:"bag").frame(maxWidth:.infinity,minHeight:48)
+            }.buttonStyle(.borderedProminent).disabled(locked)
+            Text("已穿戴装备需先取消交易，卸下到背包后再交易。确认报价后不能继续添加物品。").font(.caption2)
             HStack {
                 Text(net.peerMessage).font(.caption).frame(maxWidth:.infinity,alignment:.leading)
                 Button(net.dealConfirmed ? "等待对方确认" : "核对并确认") { revision=net.dealRevision;confirming=true }.frame(minHeight:44).disabled(locked)
             }
         }.padding(12) }.frame(maxWidth:640,maxHeight:340).background(ClassicTheme.panel).foregroundColor(ClassicTheme.text).overlay(Rectangle().stroke(ClassicTheme.gold))
+        .sheet(isPresented:$choosingItem) {
+            NavigationStack {
+                VStack(spacing:8) {
+                    List(net.inventory.bag.values.sorted{$0.id<$1.id}) { item in
+                        Button { selectedItem=item.id } label: {
+                            HStack {
+                                ClassicAsset(path:"item-icons/\(item.looks)").frame(width:40,height:40)
+                                VStack(alignment:.leading) { Text(net.itemName(item));Text("持久 \(item.durability)/\(item.maxDurability)").font(.caption) }
+                                Spacer();if selectedItem==item.id { Image(systemName:"checkmark.circle.fill") }
+                            }.frame(minHeight:52).contentShape(Rectangle())
+                        }.buttonStyle(.plain)
+                    }
+                    if net.inventory.bag.isEmpty { Text("背包没有可放入的物品；已穿戴装备请先卸下") }
+                    if let id=selectedItem,let item=net.inventory.bag[id] {
+                        Text("攻击 \(MirEquipment.range(item.dc)) · 魔法 \(MirEquipment.range(item.mc)) · 道术 \(MirEquipment.range(item.sc))").font(.caption)
+                        Button("放入交易："+net.itemName(item)) { net.offerPeerItem(item);choosingItem=false }.frame(minHeight:48).buttonStyle(.borderedProminent).disabled(locked)
+                    }
+                    Text(net.peerMessage).font(.caption)
+                }.padding(.bottom).navigationTitle("选择交易物品").navigationBarTitleDisplayMode(.inline)
+                    .toolbar { Button("返回交易") { choosingItem=false }.frame(minHeight:44) }
+            }
+        }
+        .onChange(of:net.dealOpen) { open in if !open { choosingItem=false } }
         .alert("确认双方交易内容",isPresented:$confirming) {
             Button("确认交易") { net.confirmPeerTrade(revision:revision) }
             Button("返回核对",role:.cancel) {}

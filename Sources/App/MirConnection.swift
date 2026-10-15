@@ -41,6 +41,12 @@ final class MirConnection: ObservableObject {
     }
     @Published var usePending:Int32?
     @Published var messages:[String]=[]
+    struct ChatEntry { let text:String;let channel:String }
+    @Published var chatEntries:[ChatEntry]=[]
+    @Published var chatChannel="当前"
+    func displayedChat()->[String] {
+        chatEntries.filter { chatChannel=="综合" || $0.channel==chatChannel }.map { chatChannel=="综合" ? "[\($0.channel)] "+$0.text : $0.text }
+    }
     @Published var guildMessages:[String]=[]
     @Published var guildName=""
     @Published var chatFeedback=""
@@ -54,9 +60,10 @@ final class MirConnection: ObservableObject {
     }
     private var useTimeout:DispatchWorkItem?
     private var lastUse = -Double.infinity
-    func message(_ text:String) {
+    func message(_ text:String,channel:String="系统") {
         guard !text.isEmpty else { return }
         messages.append(text);if messages.count>80 { messages.removeFirst(messages.count-80) }
+        chatEntries.append(ChatEntry(text:text,channel:channel));if chatEntries.count>200 { chatEntries.removeFirst(chatEntries.count-200) }
     }
     func useItem(_ item:MirEquipment.Item) {
         let now=ProcessInfo.processInfo.systemUptime
@@ -119,8 +126,11 @@ final class MirConnection: ObservableObject {
         raw(MirWire.command(1025)+MirWire.encode(legacyBytes(name)))
     }
     func offerPeerItem(_ item:MirEquipment.Item,remove:Bool=false) {
-        guard dealOpen,!dealConfirmed,(remove ? dealOwn[item.id] != nil : inventory.bag[item.id] != nil),remove || dealOwn.count<12,
-              beginTrade(remove ? "peer-remove" : "peer-add",item:item.id) else { return }
+        guard dealOpen else { peerMessage="交易已结束，请重新发起";return }
+        guard !dealConfirmed else { peerMessage="已经确认报价；如需修改请取消交易后重开";return }
+        guard remove ? dealOwn[item.id] != nil : inventory.bag[item.id] != nil else { peerMessage="该物品已不在背包或交易栏中";return }
+        guard remove || dealOwn.count<12 else { peerMessage="交易栏最多放入12件物品";return }
+        guard beginTrade(remove ? "peer-remove" : "peer-add",item:item.id) else { peerMessage="正在等待动作或物品操作确认，请稍后再放入";return }
         dealPendingItem=item
         raw(MirWire.command(remove ? 1027 : 1026,actor:UInt32(bitPattern:item.id))+MirWire.encode(item.nameBytes))
     }
@@ -397,9 +407,9 @@ final class MirConnection: ObservableObject {
         case 104:
             let text=legacyText(p.body);guildMessages.append(text)
             if guildMessages.count>80 { guildMessages.removeFirst(guildMessages.count-80) }
-            message("[行会] "+text);onPacket?(p)
+            message(text,channel:"行会");onPacket?(p)
         case 40,100,101,102,103:
-            message(legacyText(p.body));onPacket?(p)
+            message(legacyText(p.body),channel:MirChatChannel.name(for:p.id));onPacket?(p)
         case 766,767:
             tradeMessage=legacyText(p.body);equipmentMessage=tradeMessage
             message(tradeMessage)
