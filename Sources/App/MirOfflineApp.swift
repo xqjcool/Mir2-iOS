@@ -713,14 +713,20 @@ private struct NPCShopPanel:View {
 private struct NavigationPanel:View {
     @ObservedObject var model:OnlineModel
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("hud.classic") private var classic=true
+    @State private var tapToWalk=true
     @State private var zoom:CGFloat=1
     @GestureState private var pinch:CGFloat=1
     @State private var marker:Cell?
     var body:some View {
         NavigationStack {
             VStack {
-                Text("双指缩放，拖动浏览，点选查看坐标").font(.caption)
+                HStack {
+                    Button { zoom=max(1,zoom-0.5) } label: { Image(systemName:"minus.magnifyingglass").frame(minWidth:44,minHeight:44) }
+                    Text("地图放大 \(Int(zoom*100))%").font(.caption).monospacedDigit()
+                    Button { zoom=min(4,zoom+0.5) } label: { Image(systemName:"plus.magnifyingglass").frame(minWidth:44,minHeight:44) }
+                    Toggle("点击寻路",isOn:$tapToWalk).fixedSize()
+                }
+                Text("双指缩放、拖动浏览；开启点击寻路后，点地图即可前往，推摇杆可中断").font(.caption)
                 if let image=model.minimap,let scene=model.scene {
                     GeometryReader { geo in
                         let edge=min(geo.size.width,geo.size.height)*min(4,max(1,zoom*pinch))
@@ -737,6 +743,7 @@ private struct NavigationPanel:View {
                                 .simultaneousGesture(MagnificationGesture().updating($pinch) { value,state,_ in state=value }.onEnded { zoom=min(4,max(1,zoom * $0)) })
                                 .simultaneousGesture(SpatialTapGesture().onEnded { value in
                                     marker=Cell(x:min(scene.mapWidth-1,max(0,Int(value.location.x/edge*CGFloat(scene.mapWidth)))),y:min(scene.mapHeight-1,max(0,Int(value.location.y/mapHeight*CGFloat(scene.mapHeight)))))
+                                    if tapToWalk,let cell=marker { scene.suspendControls(false);scene.navigate(to:cell);dismiss() }
                                 })
                         }
                     }
@@ -745,11 +752,11 @@ private struct NavigationPanel:View {
                         HStack {
                             Text("选中坐标 \(cell.x),\(cell.y)")
                             if let name=scene.npcName(near:cell) { Text(name).foregroundColor(.green) }
-                            if !classic { Button("前往此处") { scene.suspendControls(false);scene.navigate(to:cell);dismiss() }.frame(minHeight:44) }
+                            if !tapToWalk { Button("前往此处") { scene.suspendControls(false);scene.navigate(to:cell);dismiss() }.frame(minHeight:44) }
                         }
                     }
                 }
-            }.padding().navigationTitle("比奇通行地图").navigationBarTitleDisplayMode(.inline)
+            }.padding().navigationTitle("当前地图").navigationBarTitleDisplayMode(.inline)
                 .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
         }
     }

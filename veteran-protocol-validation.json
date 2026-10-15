@@ -1,0 +1,29 @@
+{
+  "roundtrips": [
+    {
+      "map": "11",
+      "roundtrip": true
+    },
+    {
+      "map": "2",
+      "roundtrip": true
+    },
+    {
+      "map": "4",
+      "roundtrip": true
+    },
+    {
+      "map": "0103",
+      "roundtrip": true
+    },
+    {
+      "map": "0105",
+      "roundtrip": true
+    },
+    {
+      "map": "0106",
+      "roundtrip": true
+    }
+  ],
+  "testCharacterRestored": true
+}

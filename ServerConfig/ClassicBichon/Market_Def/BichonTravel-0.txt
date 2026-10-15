@@ -1,0 +1,41 @@
+; Reconstructed travel menu; not an exact recovered original script.
+[@main]
+#SAY
+我可以送你前往以下地点。\
+<白日门/@go11> <毒蛇山谷/@go2> <封魔谷/@go4> \
+<比奇武器店/@go0103> <比奇首饰店/@go0105> <比奇衣服店/@go0106> \
+<离开/@exit>
+
+[@go11]
+#ACT
+MAPMOVE 11 187 301
+CLOSE
+
+[@go2]
+#ACT
+MAPMOVE 2 500 480
+CLOSE
+
+[@go4]
+#ACT
+MAPMOVE 4 238 200
+CLOSE
+
+[@go0103]
+#ACT
+MAPMOVE 0103 6 5
+CLOSE
+
+[@go0105]
+#ACT
+MAPMOVE 0105 17 6
+CLOSE
+
+[@go0106]
+#ACT
+MAPMOVE 0106 17 6
+CLOSE
+
+[@exit]
+#ACT
+CLOSE

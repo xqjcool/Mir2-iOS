@@ -1,0 +1,23 @@
+[
+  {
+    "map": "11",
+    "chunks": 1024,
+    "objects": 20275,
+    "missingReferences": 289,
+    "missingImages": 34
+  },
+  {
+    "map": "2",
+    "chunks": 1444,
+    "objects": 13530,
+    "missingReferences": 269,
+    "missingImages": 46
+  },
+  {
+    "map": "4",
+    "chunks": 1024,
+    "objects": 5947,
+    "missingReferences": 804,
+    "missingImages": 612
+  }
+]

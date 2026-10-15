@@ -1,0 +1,13 @@
+[@main]
+#SAY
+可由此返回比奇城。\
+<返回比奇/@return> <离开/@exit>
+
+[@return]
+#ACT
+MAPMOVE 0 330 267
+CLOSE
+
+[@exit]
+#ACT
+CLOSE

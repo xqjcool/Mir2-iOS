@@ -1,0 +1,32 @@
+--- a/src/Modules/ScriptEngine/ScriptParsers.cs
++++ b/src/Modules/ScriptEngine/ScriptParsers.cs
+@@ -54,7 +54,7 @@
+                             LogService.Warn($"重复脚本执行编码[{codeField.CommandName}]定义");
+                             continue;
+                         }
+-                        ExecutionCodeDefMap.Add(codeField.CommandName, i);
++                        ExecutionCodeDefMap.Add(codeField.CommandName, Convert.ToInt32(executionFields[i].GetRawConstantValue()));
+                     }
+                 }
+             }
+@@ -498,7 +498,7 @@
+                 }
+                 else
+                 {
+-                    nCMDCode = code - 1;
++                    nCMDCode = code;
+                 }
+             }
+ 
+--- a/src/Modules/ScriptEngine/ScriptEngine.cs
++++ b/src/Modules/ScriptEngine/ScriptEngine.cs
+@@ -890,7 +890,8 @@
+                 if (ExecutionProcessing.IsRegister(questActionInfo.nCmdCode))
+                 {
+                     ExecutionProcessing.Execute(normNpc, playerActor, questActionInfo, ref result);
+-                    return result;
++                    if (!result) return false;
++                    continue;
+                 }
+                 ExecutionCode executionCode = (ExecutionCode)questActionInfo.nCmdCode;
+                 switch (executionCode)
