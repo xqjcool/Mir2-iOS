@@ -49,6 +49,7 @@ struct OnlineView:View {
     @Environment(\.scenePhase) private var phase
     @State private var panel:HUDPanel?
     @AppStorage("hud.menuExpanded") private var menuExpanded=false
+    @AppStorage("hud.chatMinimized") private var chatMinimized=false
     @AppStorage("hud.classic") private var classic=true
     @AppStorage("hud.opacity") private var opacity=0.9
     @AppStorage("hud.scale") private var scale=1.0
@@ -60,7 +61,7 @@ struct OnlineView:View {
     }
     private func controlScale(_ size:CGSize)->CGFloat {
         let inset=min(bottomInset,max(0,Double(size.height)-350))
-        return CGFloat(min(1.1,max(0.9,min(scale,min((Double(size.width)-20)/548,(Double(size.height)-92-inset)/158)))))
+        return CGFloat(min(1.1,max(0.9,min(scale,min((Double(size.width)-20)/406,(Double(size.height)-92-inset)/254)))))
     }
     private func open(_ value:HUDPanel) { menuExpanded=false;model.scene?.suspendControls(true);panel=value }
     private func shortcut(_ title:String,_ icon:String,_ value:HUDPanel)->some View {
@@ -140,13 +141,13 @@ struct OnlineView:View {
                             VirtualJoystick { x,y in model.scene?.input(.move(x,y)) }
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomLeading)
                                 .frame(width:148*controlScale(geo.size),height:148*controlScale(geo.size))
-                                .padding(.leading,CGFloat(min(leftInset,max(0,(Double(geo.size.width)-20-548*Double(controlScale(geo.size)))/2))))
+                                .padding(.leading,CGFloat(min(leftInset,max(0,(Double(geo.size.width)-20-406*Double(controlScale(geo.size)))/2))))
                                 .opacity(opacity)
                             Spacer(minLength:0)
                             CombatButtons(net:net,scene:model.scene)
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomTrailing)
-                                .frame(width:400*controlScale(geo.size),height:158*controlScale(geo.size))
-                                .padding(.trailing,CGFloat(min(rightInset,max(0,(Double(geo.size.width)-20-548*Double(controlScale(geo.size)))/2))))
+                                .frame(width:258*controlScale(geo.size),height:254*controlScale(geo.size))
+                                .padding(.trailing,CGFloat(min(rightInset,max(0,(Double(geo.size.width)-20-406*Double(controlScale(geo.size)))/2))))
                                 .opacity(opacity)
                         }.padding(.bottom,CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350))))
                     }.padding(8)
@@ -156,14 +157,21 @@ struct OnlineView:View {
                             if let health=model.targetHealth { ProgressView(value:health).tint(.red).frame(width:160) }
                         }
                     }.frame(maxWidth:.infinity).padding(.top,geo.size.height<360 ? 70 : 78).allowsHitTesting(false)
-                    VStack { Spacer();HStack { Spacer();
-                        Button { open(.chat) } label: {
-                            VStack(spacing:3) {
-                                ForEach(Array(net.messages.suffix(2).enumerated()),id:\.offset) { _,message in Text(message).font(.caption2).lineLimit(1) }
-                                Text(model.combat.isEmpty ? "聊天" : model.combat).font(.caption2).lineLimit(2)
-                            }.padding(5).frame(width:max(60,min(240,geo.size.width-440))).frame(minHeight:44).background(ClassicTheme.panel.opacity(0.65))
-                        }.buttonStyle(.plain)
-                        Spacer() }.padding(.bottom,158*controlScale(geo.size)+16+CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350)))) }.allowsHitTesting(panel==nil)
+                    VStack(alignment:.leading,spacing:0) {
+                        HStack(spacing:0) {
+                            Button { open(.chat) } label: { Text("行会聊天").font(.caption).frame(minWidth:80,minHeight:44) }
+                            Button { chatMinimized.toggle() } label: { Image(systemName:chatMinimized ? "plus" : "minus").frame(width:44,height:44) }.accessibilityLabel(chatMinimized ? "恢复聊天窗口" : "最小化聊天窗口")
+                        }
+                        if !chatMinimized {
+                            Button { open(.chat) } label: {
+                                VStack(alignment:.leading,spacing:2) {
+                                    if net.guildMessages.isEmpty { Text(net.guildName.isEmpty ? "未加入行会 · 点击打开聊天" : "暂无行会消息") }
+                                    ForEach(Array(net.guildMessages.suffix(2).enumerated()),id:\.offset) { _,text in Text(text).lineLimit(1) }
+                                }.font(.caption2).frame(width:180,height:36,alignment:.leading)
+                            }.frame(minHeight:44)
+                        }
+                    }.padding(.horizontal,4).background(ClassicTheme.panel.opacity(0.8)).buttonStyle(.plain)
+                        .padding(.leading,8).padding(.top,76)
                 }.foregroundColor(ClassicTheme.text)
             } else {
                 ClassicLobby(net:net).disabled(model.scene==nil)
@@ -247,15 +255,18 @@ private struct ChatPanel:View {
     @ObservedObject var net:MirConnection
     @Environment(\.dismiss) private var dismiss
     @State private var draft=""
+    @State private var guild=true
     var body:some View {
         NavigationStack {
             VStack {
-                List(Array(net.messages.enumerated()),id:\.offset) { _,message in Text(message) }
-                HStack { TextField("普通聊天",text:$draft).textFieldStyle(.roundedBorder).onSubmit { send() };Button("发送") { send() }.frame(minWidth:44,minHeight:44) }.padding()
+                Picker("频道",selection:$guild) { Text("综合／普通").tag(false);Text("行会").tag(true) }.pickerStyle(.segmented).padding(.horizontal)
+                List(Array((guild ? net.guildMessages : net.messages).enumerated()),id:\.offset) { _,message in Text(message) }
+                Text(guild && net.guildName.isEmpty ? "尚未加入行会，可切换普通聊天" : net.chatFeedback).font(.caption)
+                HStack { TextField(guild ? "行会聊天" : "普通聊天",text:$draft).textFieldStyle(.roundedBorder).onSubmit { send() };Button("发送") { send() }.frame(minWidth:44,minHeight:44) }.padding()
             }.navigationTitle("聊天与系统消息").toolbar { Button("关闭") { dismiss() } }
         }
     }
-    private func send() { net.say(draft);draft="" }
+    private func send() { if net.sendChat(draft,guild:guild) { draft="" } }
 }
 
 private struct ClassicLobby:View {
@@ -387,27 +398,32 @@ private struct CombatButtons:View {
     @State private var bindingSlot=0
     @State private var chooseSkill=false
     @State private var choosePotion=false
+    @State private var chooseScroll=false
+    @AppStorage("hud.randomScroll") private var scrollName=""
+    private var scrolls:[MirEquipment.Item] { net.inventory.bag.values.filter { [0,1,2,3,31].contains($0.mode) && net.itemName($0).contains("随机") }.sorted { $0.id<$1.id } }
+    private var scrollCount:Int { guard let item=scroll else { return 0 };return scrolls.filter { net.itemName($0)==net.itemName(item) }.count }
+    private var scroll:MirEquipment.Item? { scrollName.isEmpty ? scrolls.first : scrolls.first { net.itemName($0)==scrollName } }
     @GestureState private var aiming=false
     @AppStorage("hud.potion") private var potionName=""
-    private var potions:[MirEquipment.Item] { net.inventory.bag.values.filter { (0...3).contains($0.mode) }.sorted{$0.id<$1.id} }
+    private var potions:[MirEquipment.Item] { net.inventory.bag.values.filter { (0...3).contains($0.mode) && !net.itemName($0).contains("随机") }.sorted{$0.id<$1.id} }
     private var potion:MirEquipment.Item? { potions.first { net.itemName($0)==potionName } ?? (potionName.isEmpty ? potions.first : nil) }
     private var potionCount:Int { guard let item=potion else { return 0 };return potions.filter{net.itemName($0)==net.itemName(item)}.count }
     private func skillPosition(_ index:Int)->CGPoint {
-        CGPoint(x:28+CGFloat(index)*62,y:112)
+        let angle=Double(180+index*30) * .pi / 180
+        return CGPoint(x:206+122*cos(angle),y:158+122*sin(angle))
     }
     var body:some View {
         ZStack {
-            HoldAttackButton(scene:scene).position(x:350,y:100)
+            HoldAttackButton(scene:scene).position(x:206,y:158)
             ForEach(0..<4,id:\.self) { index in
                 if let skill=net.quickSkillSlots[index] {
                     TimelineView(.periodic(from:.now,by:0.2)) { _ in
                         let remaining=max(0,(net.skillReady[skill.id] ?? 0)-ProcessInfo.processInfo.systemUptime)
                         VStack(spacing:2) {
-                            Text("F\(index+1)").font(.system(size:9)).foregroundColor(ClassicTheme.gold)
                             Text(net.skillName(skill)).font(.caption.bold()).lineLimit(2)
                             if remaining>0 { Text(String(format:"%.1fs",remaining)).font(.caption2.monospacedDigit()) }
                         }.frame(width:56,height:56).background(ClassicTheme.panel.opacity(remaining>0 ? 0.6:1))
-                            .clipShape(RoundedRectangle(cornerRadius:6)).overlay(RoundedRectangle(cornerRadius:6).stroke(ClassicTheme.gold,lineWidth:2))
+                            .clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold,lineWidth:2))
                             .contentShape(Rectangle())
                             .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in bindingSlot=index;scene?.suspendControls(true);chooseSkill=true }
                                 .exclusively(before:TapGesture().onEnded { scene?.input(.skill(skill)) }))
@@ -419,22 +435,30 @@ private struct CombatButtons:View {
                     }.position(skillPosition(index))
                 } else {
                     Button { bindingSlot=index;scene?.suspendControls(true);chooseSkill=true } label: { Text("技能\(index+1)").font(.caption2).frame(width:56,height:56) }
-                        .background(ClassicTheme.panel).clipShape(RoundedRectangle(cornerRadius:6)).overlay(RoundedRectangle(cornerRadius:6).stroke(ClassicTheme.gold)).position(skillPosition(index))
+                        .background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold)).position(skillPosition(index))
                 }
             }
             VStack(spacing:0) {
                 if let item=potion { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:30,height:30) }
                 Text(potion == nil ? "药水" : "×\(potionCount)").font(.caption2)
-            }.frame(width:50,height:50).background(ClassicTheme.panel).clipShape(RoundedRectangle(cornerRadius:6)).overlay(RoundedRectangle(cornerRadius:6).stroke(ClassicTheme.gold))
+            }.frame(width:50,height:50).background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold))
                 .opacity(potion == nil || net.usePending != nil ? 0.5:1).contentShape(Rectangle())
                 .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in scene?.suspendControls(true);choosePotion=true }
                     .exclusively(before:TapGesture().onEnded { if let item=potion { net.useItem(item) } else { scene?.suspendControls(true);choosePotion=true } }))
-                .position(x:280,y:112).accessibilityLabel("药水，长按更换")
+                .position(x:137,y:139).accessibilityLabel("药水，长按更换")
+            VStack(spacing:0) {
+                if let item=scroll { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:28,height:28) }
+                Text(scroll == nil ? "随机卷" : "×\(scrollCount)").font(.caption2)
+            }.frame(width:50,height:50).background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold))
+                .opacity(scroll == nil || net.usePending != nil ? 0.5 : 1).contentShape(Circle())
+                .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in scene?.suspendControls(true);chooseScroll=true }
+                    .exclusively(before:TapGesture().onEnded { if let item=scroll { net.useItem(item) } else { scene?.suspendControls(true);chooseScroll=true } }))
+                .position(x:190,y:90).accessibilityLabel("随机传送卷，长按绑定")
             HStack {
                 Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:50)
                 Button("拾取") { scene?.input(.pickup) }.frame(minWidth:70,minHeight:50)
-            }.background(ClassicTheme.panel).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule()).position(x:132,y:40)
-        }.frame(width:400,height:158).foregroundColor(ClassicTheme.text).buttonStyle(.plain)
+            }.background(ClassicTheme.panel).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule()).position(x:132,y:228)
+        }.frame(width:258,height:254).foregroundColor(ClassicTheme.text).buttonStyle(.plain)
         .confirmationDialog("替换快捷技能",isPresented:$chooseSkill,titleVisibility:.visible) {
             ForEach(net.skills.filter(\.castable)) { skill in Button(net.skillName(skill)) { net.setQuickSkill(skill.id,slot:bindingSlot) } }
             Button("取消",role:.cancel) {}
@@ -443,9 +467,14 @@ private struct CombatButtons:View {
             ForEach(Array(Set(potions.map{net.itemName($0)})).sorted(),id:\.self) { name in Button(name) { potionName=name } }
             Button("取消",role:.cancel) {}
         }
+        .confirmationDialog("绑定随机传送卷",isPresented:$chooseScroll,titleVisibility:.visible) {
+            ForEach(Array(Set(scrolls.map { net.itemName($0) })).sorted(),id:\.self) { name in Button(name) { scrollName=name } }
+            Button("取消",role:.cancel) {}
+        }
+        .onChange(of:chooseScroll) { _ in scene?.suspendControls(chooseSkill || choosePotion || chooseScroll) }
         .onChange(of:aiming) { active in if !active { scene?.cancelAim() } }
-        .onChange(of:chooseSkill) { _ in scene?.suspendControls(chooseSkill || choosePotion) }
-        .onChange(of:choosePotion) { _ in scene?.suspendControls(chooseSkill || choosePotion) }
+        .onChange(of:chooseSkill) { _ in scene?.suspendControls(chooseSkill || choosePotion || chooseScroll) }
+        .onChange(of:choosePotion) { _ in scene?.suspendControls(chooseSkill || choosePotion || chooseScroll) }
     }
 }
 private struct HoldAttackButton:View {
@@ -479,7 +508,8 @@ private struct EquipmentPanel:View {
         guard let url=Bundle.main.resourceURL?.appendingPathComponent("GameData/paperdoll.json"),let data=try? Data(contentsOf:url) else { return [:] }
         return (try? JSONDecoder().decode([String:SceneData.Frame].self,from:data)) ?? [:]
     }()
-    private let scale:CGFloat=1.4
+    @State private var characterTab="属性"
+    private var scale:CGFloat { characterOnly ? 1.0 : 1.4 }
     private let points:[CGPoint]=[.init(x:122,y:178),.init(x:70,y:113),.init(x:185,y:142),.init(x:185,y:103),.init(x:124,y:94),.init(x:185,y:192),.init(x:59,y:192),.init(x:185,y:232),.init(x:59,y:232)]
     private var bag:[MirEquipment.Item] {
         net.inventory.bag.values.filter { item in
@@ -528,6 +558,29 @@ private struct EquipmentPanel:View {
             Text("人物装备").font(.headline).position(x:116*scale,y:24*scale)
         }.frame(width:232*scale,height:325*scale)
     }
+    private var characterDetails:some View {
+        VStack(alignment:.leading,spacing:10) {
+            Picker("人物信息",selection:$characterTab) { Text("属性").tag("属性");Text("装备").tag("装备") }.pickerStyle(.segmented)
+            if characterTab=="属性" {
+                Text(net.selectedName).font(.headline)
+                if let v=net.vitals {
+                    Text("等级：\(v.level)")
+                    Text("生命：\(v.hp)/\(v.maxHP)").foregroundColor(.red)
+                    Text("魔法：\(v.mp)/\(v.maxMP)").foregroundColor(.blue)
+                    Text("经验：\(v.experience)/\(v.maxExperience)")
+                }
+                Text(net.abilityText).font(.callout)
+                Text("金币：\(net.goldBalance)")
+                Text("攻击模式：\(net.attackModeName)")
+            } else {
+                ForEach(0..<MirEquipment.slotNames.count,id:\.self) { slot in
+                    Button { selectedSlot=slot;selected=nil } label: {
+                        HStack { Text(MirEquipment.slotNames[slot]);Spacer();if let value=net.inventory.equipped[slot] { icon(value);Text(net.itemName(value)) } else { Text("空") } }.frame(minHeight:44)
+                    }
+                }
+            }
+        }.padding(10).frame(width:240,alignment:.topLeading).background(ClassicTheme.panel).overlay(Rectangle().stroke(ClassicTheme.gold))
+    }
     private var backpack:some View {
         ZStack(alignment:.topLeading) {
             ClassicAsset(path:"classic-ui/bag").frame(width:336*scale,height:270*scale)
@@ -551,7 +604,7 @@ private struct EquipmentPanel:View {
             ScrollView([.horizontal,.vertical]) {
                 VStack(alignment:.leading,spacing:8) {
                     HStack(alignment:.top,spacing:8) {
-                        if characterOnly { character } else {
+                        if characterOnly { character;characterDetails } else {
                         VStack {
                             Picker("分类",selection:$category) { ForEach(["全部","装备","药品","其他"],id:\.self) { Text($0) } }.pickerStyle(.segmented)
                             backpack
@@ -562,15 +615,7 @@ private struct EquipmentPanel:View {
                         }
                     }
                     }
-                    if characterOnly { HStack {
-                        ForEach(9..<MirEquipment.slotNames.count,id:\.self) { slot in
-                            Button { selectedSlot=slot;selected=nil } label: {
-                                HStack { Text(MirEquipment.slotNames[slot]);if let value=net.inventory.equipped[slot] { icon(value) } }.frame(minWidth:100,minHeight:44)
-                            }
-                        }
-                    }
-                    }
-                    Text(net.abilityText).font(.caption)
+                    if !characterOnly { Text(net.abilityText).font(.caption) }
                     if let value=item {
                         Text("\(net.itemName(value)) · 耐久 \(value.durability)/\(value.maxDurability)")
                         Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc)) · 防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))").font(.caption)

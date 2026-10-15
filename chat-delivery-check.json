@@ -1,0 +1,7 @@
+{
+  "ordinaryChatToOtherPlayer": true,
+  "ordinaryPacket": 40,
+  "whisperDelivered": true,
+  "whisperPacket": 103,
+  "guildDeliveryTested": false
+}

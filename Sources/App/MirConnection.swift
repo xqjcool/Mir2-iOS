@@ -41,6 +41,17 @@ final class MirConnection: ObservableObject {
     }
     @Published var usePending:Int32?
     @Published var messages:[String]=[]
+    @Published var guildMessages:[String]=[]
+    @Published var guildName=""
+    @Published var chatFeedback=""
+    @discardableResult func sendChat(_ text:String,guild:Bool)->Bool {
+        let value=text.trimmingCharacters(in:.whitespacesAndNewlines)
+        guard online,!value.isEmpty else { chatFeedback="请输入聊天内容";return false }
+        guard !guild || !guildName.isEmpty else { chatFeedback="尚未加入行会，不能发送行会消息";return false }
+        let payload=(guild ? "!~" : "")+value
+        guard legacyBytes(payload).count<=120,!value.contains("\n"),!value.contains("\r") else { chatFeedback="消息过长或包含换行，请缩短后发送";return false }
+        send(3030,body:payload);chatFeedback="已发送请求，消息以服务器回传为准";return true
+    }
     private var useTimeout:DispatchWorkItem?
     private var lastUse = -Double.infinity
     func message(_ text:String) {
@@ -286,6 +297,7 @@ final class MirConnection: ObservableObject {
         log("disconnect requested online=\(online) awaitingAttack=\(awaitingAttack)")
         generation += 1;timeout?.cancel();timeout=nil
         useTimeout?.cancel();useTimeout=nil;usePending=nil;vitals=nil;attackMode=nil
+        guildName="";guildMessages=[];chatFeedback=""
         connection?.cancel();connection=nil;online=false;busy=false;password="";ticket="";awaitingAttack=false
         equipmentTimeout?.cancel();equipmentTimeout=nil;inventory=MirEquipment.State();skills=[];abilityText="";goldBalance=0;actionLocked=false;playerActor=nil
         warrior=MirSkills.WarriorState();skillReady=[:];automaticSkills=[];mana=nil
@@ -381,7 +393,12 @@ final class MirConnection: ObservableObject {
             characters=list;selectedName=list.first?.name ?? "";timeout?.cancel();busy=false;screen="characters";status=list.count==2 ? "请选择人物（两个角色栏均已使用）" : "请选择人物，或创建新人物"
         case 521:send(100,body:account+"/"+ticket);armTimeout()
         case 522:timeout?.cancel();busy=false;status="创建失败：请检查名称是否重复或角色栏是否已满"
-        case 100,101,102,103,104:
+        case 750:guildName=legacyText(p.body).components(separatedBy:"/").first ?? ""
+        case 104:
+            let text=legacyText(p.body);guildMessages.append(text)
+            if guildMessages.count>80 { guildMessages.removeFirst(guildMessages.count-80) }
+            message("[行会] "+text);onPacket?(p)
+        case 40,100,101,102,103:
             message(legacyText(p.body));onPacket?(p)
         case 766,767:
             tradeMessage=legacyText(p.body);equipmentMessage=tradeMessage
