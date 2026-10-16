@@ -1,0 +1,218 @@
+{
+  "addedGroups": 23,
+  "configuredCount": 1481,
+  "blocked": [
+    {
+      "map": "4",
+      "monster": "千年树妖",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "11",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "2",
+      "monster": "弓箭护卫",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "4",
+      "monster": "恶魔弓箭手",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "11",
+      "monster": "剧毒蜘蛛",
+      "reason": "unresolved actor or drop file"
+    },
+    {
+      "map": "11",
+      "monster": "半兽统领",
+      "reason": "Drop table references missing item definitions; probability table left unchanged"
+    },
+    {
+      "map": "11",
+      "monster": "雪人王",
+      "reason": "Drop table references missing item definitions; probability table left unchanged"
+    },
+    {
+      "map": "11",
+      "monster": "多钩猫王",
+      "reason": "Drop table references missing item definitions; probability table left unchanged"
+    },
+    {
+      "map": "11",
+      "monster": "钉耙猫王",
+      "reason": "Drop table references missing item definitions; probability table left unchanged"
+    }
+  ],
+  "dropSHA256": {
+    "半兽人": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96",
+    "虎蛇": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96",
+    "红蛇": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96",
+    "毒蜘蛛": "b29435319eb7f48592ae8739e8cb0b9710f49ab743b8e269d96711bad1657503",
+    "食人花": "2cafa82c9dbcfd89781b2edcdf2012c2b8a39919663ba3b8f9ac9a1fdc9129e0",
+    "半兽战士": "cfaf9afd2363604d06c90cdb2b104a293ce34ea9818e1e5c9570635e3af73778",
+    "半兽勇士": "54074f31b201fe640b87c5fb2f8318a58d7928a29494cce897fcb102201442bd",
+    "天狼蜘蛛": "fb17312e347cfb536c1205f1d11a73ace5a517313cab7c5f4f5e2745471070e7",
+    "半兽统领": "0509a0424c286e1702a082616d2ed0560a188ca548fa94fee9d875f1db468c0e",
+    "雪人王": "439e6c936baf8c8113492019e0b41528a82d3e77eb9c23e408160acc22076fda",
+    "多钩猫王": "3722fbc86d442c6a9d99ffbd29712702048112c5dac063e7fd6f83f4a35637fe",
+    "钉耙猫王": "fe34e21f7ae8801e27c3376f5d29b0e1a52779e9b0cbf4cd21b1fd7aec34b071",
+    "骷髅": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3",
+    "僵尸1": "c9259749ed1cdeae9f19dd901b27e750cc9bb8268fb716b70eb3295e2d0a2f2a",
+    "僵尸2": "c9259749ed1cdeae9f19dd901b27e750cc9bb8268fb716b70eb3295e2d0a2f2a",
+    "半兽勇士1": "4a8333dfe593470cb1061ac474671e811c6a5c6537fc3e19f8c5bda317ef48a0",
+    "掷斧骷髅": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3",
+    "骷髅战士": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3",
+    "骷髅战将": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3",
+    "骷髅精灵": "7c80884ad6040ca12dd9bdae0371c77f47ad38624f682186b902add19170e335"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "groups": 23,
+  "configuredCount": 1481,
+  "monsters": [
+    {
+      "name": "僵尸1",
+      "appearance": "40-40",
+      "frames": 224,
+      "dropSHA256": "c9259749ed1cdeae9f19dd901b27e750cc9bb8268fb716b70eb3295e2d0a2f2a"
+    },
+    {
+      "name": "僵尸2",
+      "appearance": "41-50",
+      "frames": 224,
+      "dropSHA256": "c9259749ed1cdeae9f19dd901b27e750cc9bb8268fb716b70eb3295e2d0a2f2a"
+    },
+    {
+      "name": "半兽人",
+      "appearance": "19-100",
+      "frames": 224,
+      "dropSHA256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "name": "半兽勇士",
+      "appearance": "19-102",
+      "frames": 224,
+      "dropSHA256": "54074f31b201fe640b87c5fb2f8318a58d7928a29494cce897fcb102201442bd"
+    },
+    {
+      "name": "半兽勇士1",
+      "appearance": "19-102",
+      "frames": 224,
+      "dropSHA256": "4a8333dfe593470cb1061ac474671e811c6a5c6537fc3e19f8c5bda317ef48a0"
+    },
+    {
+      "name": "半兽战士",
+      "appearance": "19-101",
+      "frames": 224,
+      "dropSHA256": "cfaf9afd2363604d06c90cdb2b104a293ce34ea9818e1e5c9570635e3af73778"
+    },
+    {
+      "name": "天狼蜘蛛",
+      "appearance": "19-119",
+      "frames": 224,
+      "dropSHA256": "fb17312e347cfb536c1205f1d11a73ace5a517313cab7c5f4f5e2745471070e7"
+    },
+    {
+      "name": "掷斧骷髅",
+      "appearance": "15-21",
+      "frames": 224,
+      "dropSHA256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "name": "毒蜘蛛",
+      "appearance": "19-163",
+      "frames": 224,
+      "dropSHA256": "b29435319eb7f48592ae8739e8cb0b9710f49ab743b8e269d96711bad1657503"
+    },
+    {
+      "name": "红蛇",
+      "appearance": "19-36",
+      "frames": 224,
+      "dropSHA256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "name": "虎蛇",
+      "appearance": "19-38",
+      "frames": 224,
+      "dropSHA256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "name": "食人花",
+      "appearance": "13-10",
+      "frames": 240,
+      "dropSHA256": "2cafa82c9dbcfd89781b2edcdf2012c2b8a39919663ba3b8f9ac9a1fdc9129e0"
+    },
+    {
+      "name": "骷髅",
+      "appearance": "14-20",
+      "frames": 224,
+      "dropSHA256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "name": "骷髅战士",
+      "appearance": "14-22",
+      "frames": 224,
+      "dropSHA256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "name": "骷髅战将",
+      "appearance": "14-23",
+      "frames": 224,
+      "dropSHA256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "name": "骷髅精灵",
+      "appearance": "14-150",
+      "frames": 224,
+      "dropSHA256": "7c80884ad6040ca12dd9bdae0371c77f47ad38624f682186b902add19170e335"
+    }
+  ],
+  "testCharactersRestored": true
+}
