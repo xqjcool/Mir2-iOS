@@ -1,0 +1,2355 @@
+{
+  "source": "mirbeta/MirServer",
+  "installed": 10,
+  "total": 322,
+  "maps": [
+    {
+      "map": "jiaren|0150",
+      "name": "假人配置室",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "G002",
+      "name": "真爱质询屋",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "M100A|M100",
+      "name": "爱情长廊",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "M100B|M100",
+      "name": "爱情长廊",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "M100C|M100",
+      "name": "爱情长廊",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "F002",
+      "name": "爱的小屋",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "B013",
+      "name": "赌场",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "B013A|B013",
+      "name": "赌场",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "DB|DM011",
+      "name": "担保地图",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "GA0",
+      "name": "庄园",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 150,
+      "height": 150
+    },
+    {
+      "map": "GA2",
+      "name": "比武场",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "N109",
+      "name": "世外桃源",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0147",
+      "name": "监狱",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 20
+    },
+    {
+      "map": "T2361",
+      "name": "小黑屋",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "Q001",
+      "name": "勇斗寺殿",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T118",
+      "name": "命运囚笼",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "G003",
+      "name": "玛法足球场",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "F003",
+      "name": "行会战地图",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "F005",
+      "name": "行会战地图",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "ZM6|D5071",
+      "name": "行会争霸地图",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "Q011",
+      "name": "神秘迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "Q012",
+      "name": "天地迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "Q013",
+      "name": "天地迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "Q014",
+      "name": "天地迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "Q015",
+      "name": "生死之间",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "Q016",
+      "name": "神秘商店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0",
+      "name": "比奇省",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 700,
+      "height": 700
+    },
+    {
+      "map": "0122",
+      "name": "皇宫",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 51,
+      "height": 55
+    },
+    {
+      "map": "0110",
+      "name": "研究院",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 21
+    },
+    {
+      "map": "0111",
+      "name": "研究院",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 21
+    },
+    {
+      "map": "0112",
+      "name": "研究院",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 21
+    },
+    {
+      "map": "0102",
+      "name": "肉店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 15,
+      "height": 15
+    },
+    {
+      "map": "0108",
+      "name": "药店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 15,
+      "height": 18
+    },
+    {
+      "map": "0109",
+      "name": "炼药房",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 10,
+      "height": 15
+    },
+    {
+      "map": "0104",
+      "name": "技能书店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 13,
+      "height": 16
+    },
+    {
+      "map": "0107",
+      "name": "水美酒店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0125",
+      "name": "东方客栈",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 25,
+      "height": 24
+    },
+    {
+      "map": "0126",
+      "name": "东方客栈二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "map": "0103",
+      "name": "铁器店",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 27,
+      "height": 29
+    },
+    {
+      "map": "0105",
+      "name": "首饰店",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 27,
+      "height": 29
+    },
+    {
+      "map": "0106",
+      "name": "衣服店",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 27,
+      "height": 29
+    },
+    {
+      "map": "0101",
+      "name": "客栈",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 28
+    },
+    {
+      "map": "0100",
+      "name": "厨房",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 15,
+      "height": 18
+    },
+    {
+      "map": "0128",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 9,
+      "height": 12
+    },
+    {
+      "map": "0129",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 7,
+      "height": 10
+    },
+    {
+      "map": "0123",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 18,
+      "height": 21
+    },
+    {
+      "map": "0124",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 12,
+      "height": 15
+    },
+    {
+      "map": "0114",
+      "name": "高级武士之家",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 23
+    },
+    {
+      "map": "0115",
+      "name": "高级魔法师之家",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 22,
+      "height": 25
+    },
+    {
+      "map": "0113",
+      "name": "高级道士之家",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 21
+    },
+    {
+      "map": "0137",
+      "name": "竞技场",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0135",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 12,
+      "height": 14
+    },
+    {
+      "map": "0134",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 13,
+      "height": 16
+    },
+    {
+      "map": "0133",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 10,
+      "height": 11
+    },
+    {
+      "map": "0119",
+      "name": "银杏村药店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 21,
+      "height": 24
+    },
+    {
+      "map": "0118",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "map": "0121",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 18,
+      "height": 20
+    },
+    {
+      "map": "0127",
+      "name": "监狱",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 21
+    },
+    {
+      "map": "0130",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 12,
+      "height": 16
+    },
+    {
+      "map": "0131",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 21
+    },
+    {
+      "map": "0136",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 19,
+      "height": 24
+    },
+    {
+      "map": "0132",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 22,
+      "height": 24
+    },
+    {
+      "map": "0138",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 15,
+      "height": 18
+    },
+    {
+      "map": "0141",
+      "name": "杂货店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 27,
+      "height": 32
+    },
+    {
+      "map": "0140",
+      "name": "仓库",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 20
+    },
+    {
+      "map": "D001",
+      "name": "兽人古墓一层",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D002",
+      "name": "兽人古墓二层",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "DM001",
+      "name": "商店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 9,
+      "height": 13
+    },
+    {
+      "map": "DM002",
+      "name": "国王陵墓",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 32,
+      "height": 38
+    },
+    {
+      "map": "D003",
+      "name": "兽人古墓三层",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D011",
+      "name": "天然洞穴一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D012",
+      "name": "天然洞穴二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "DM011",
+      "name": "商店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 9,
+      "height": 13
+    },
+    {
+      "map": "1",
+      "name": "沃玛森林",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 600,
+      "height": 600
+    },
+    {
+      "map": "D021",
+      "name": "沃玛寺庙入口",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D022",
+      "name": "沃玛寺庙一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 500,
+      "height": 500
+    },
+    {
+      "map": "D023",
+      "name": "沃玛寺庙二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D024",
+      "name": "沃玛教主大殿",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "2",
+      "name": "毒蛇山谷",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 600,
+      "height": 600
+    },
+    {
+      "map": "0116",
+      "name": "客栈",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 21,
+      "height": 27
+    },
+    {
+      "map": "0117",
+      "name": "药店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 15,
+      "height": 21
+    },
+    {
+      "map": "0120",
+      "name": "武器店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 17,
+      "height": 20
+    },
+    {
+      "map": "0142",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 12,
+      "height": 14
+    },
+    {
+      "map": "D401",
+      "name": "废矿入口",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D411",
+      "name": "矿区B一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D413",
+      "name": "矿区A一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D402",
+      "name": "废矿区东部",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D414",
+      "name": "矿区C一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D403",
+      "name": "矿区一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D412",
+      "name": "桥",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D404",
+      "name": "矿区B二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D416",
+      "name": "桥",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D405",
+      "name": "矿物回收站",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D415",
+      "name": "桥",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D406",
+      "name": "废矿区南部",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D421",
+      "name": "山谷矿区一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D422",
+      "name": "山谷矿区二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "Q004",
+      "name": "尸王殿",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "3",
+      "name": "盟重省",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 1000,
+      "height": 800
+    },
+    {
+      "map": "0143",
+      "name": "民房",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 24,
+      "height": 28
+    },
+    {
+      "map": "0144",
+      "name": "民房",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 23,
+      "height": 24
+    },
+    {
+      "map": "0145",
+      "name": "仓库",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 23
+    },
+    {
+      "map": "0146",
+      "name": "仓库二楼",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 24
+    },
+    {
+      "map": "0148",
+      "name": "客栈",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 15,
+      "height": 19
+    },
+    {
+      "map": "0149",
+      "name": "服饰店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 27,
+      "height": 30
+    },
+    {
+      "map": "0158",
+      "name": "饰品店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 26,
+      "height": 31
+    },
+    {
+      "map": "0159",
+      "name": "武器店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 18,
+      "height": 24
+    },
+    {
+      "map": "0160",
+      "name": "售药房",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 13,
+      "height": 19
+    },
+    {
+      "map": "0161",
+      "name": "书店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 19,
+      "height": 22
+    },
+    {
+      "map": "0150",
+      "name": "沙巴克皇宫",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 23,
+      "height": 27
+    },
+    {
+      "map": "0151",
+      "name": "武器店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0152",
+      "name": "仓库",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0153",
+      "name": "药品店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0154",
+      "name": "饰品店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0155",
+      "name": "服装店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "0156",
+      "name": "监狱",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D701",
+      "name": "秘密通道",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "E701",
+      "name": "香石古墓一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "E702",
+      "name": "香石古墓二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "E703",
+      "name": "香石古墓三层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "0157",
+      "name": "祖玛寺庙大殿",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 30,
+      "height": 32
+    },
+    {
+      "map": "D501",
+      "name": "祖玛寺庙一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D502",
+      "name": "祖玛寺庙二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D503",
+      "name": "祖玛寺庙三层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D504",
+      "name": "祖玛寺庙四层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D505",
+      "name": "祖玛寺庙五层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D511",
+      "name": "图书馆",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "map": "D512",
+      "name": "图书馆",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "map": "D513",
+      "name": "图书馆",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "map": "D514",
+      "name": "图书馆",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "map": "D5061",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5062",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5063",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5064",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5065",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5066",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D5067",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5068",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5069",
+      "name": "祖玛阁",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D5071",
+      "name": "祖玛六层大厅",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D5072",
+      "name": "祖玛七层一",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D5073",
+      "name": "祖玛七层二",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D5074",
+      "name": "祖玛七层三",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D515",
+      "name": "祖玛教主之家",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "map": "D710",
+      "name": "石墓入口",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "D711",
+      "name": "石墓一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D712",
+      "name": "石墓二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D713",
+      "name": "石墓三层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D714",
+      "name": "石墓四层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D715",
+      "name": "石墓五层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D716",
+      "name": "石墓六层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "D717",
+      "name": "石墓七层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D71601",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "D71602",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71603",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71604",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71605",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71606",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71607",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71608",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71609",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71610",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71611",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71612",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71613",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71614",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71615",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71616",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71617",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71618",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71619",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71620",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71621",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71622",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71623",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71624",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71625",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71650",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71651",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71652",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D71653",
+      "name": "石墓阵",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "R001",
+      "name": "桃源之门",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D601",
+      "name": "地牢一层东",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 250,
+      "height": 250
+    },
+    {
+      "map": "D602",
+      "name": "地牢一层西",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 250,
+      "height": 250
+    },
+    {
+      "map": "D603",
+      "name": "地牢一层北",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 250,
+      "height": 250
+    },
+    {
+      "map": "D604",
+      "name": "地牢一层西",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D605",
+      "name": "地牢一层北",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D612",
+      "name": "黑暗地带",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D613",
+      "name": "生死之间",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D614",
+      "name": "传奇部落",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D615",
+      "name": "邪恶势力",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D616",
+      "name": "幽明圣域",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D617",
+      "name": "恐怖空间",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D618",
+      "name": "一线天",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D606",
+      "name": "死亡棺材",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D607",
+      "name": "铁灯笼屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "D608",
+      "name": "紫水晶屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "D609",
+      "name": "石路小溪",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D610",
+      "name": "石棺材屋",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D611",
+      "name": "阴森石路",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "M001",
+      "name": "未知暗殿",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "E001",
+      "name": "沃玛自然洞穴一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "E002",
+      "name": "沃玛自然洞穴二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "E401",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 110,
+      "height": 110
+    },
+    {
+      "map": "E402",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "E403",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "E404",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "E601",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 150,
+      "height": 150
+    },
+    {
+      "map": "E602",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 150,
+      "height": 150
+    },
+    {
+      "map": "E603",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 210,
+      "height": 210
+    },
+    {
+      "map": "E604",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 150,
+      "height": 150
+    },
+    {
+      "map": "E605",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "11",
+      "name": "白日门",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 500,
+      "height": 500
+    },
+    {
+      "map": "12",
+      "name": "丛林迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 350,
+      "height": 500
+    },
+    {
+      "map": "1001",
+      "name": "白日门武器库",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 22,
+      "height": 22
+    },
+    {
+      "map": "1002",
+      "name": "虎卫堂",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "map": "1003",
+      "name": "白日门服装店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 26
+    },
+    {
+      "map": "1004",
+      "name": "白日门图书馆",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 26
+    },
+    {
+      "map": "1005",
+      "name": "白日门饰品屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 26
+    },
+    {
+      "map": "1006",
+      "name": "白日门药品屋",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 28,
+      "height": 20
+    },
+    {
+      "map": "1007",
+      "name": "白日门杂货店",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 24
+    },
+    {
+      "map": "0123A|0123",
+      "name": "房屋",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D10011",
+      "name": "赤月峡谷北",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D10012",
+      "name": "赤月峡谷南",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D10013",
+      "name": "赤月峡谷东",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D1002",
+      "name": "赤月峡谷广场",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D10031",
+      "name": "左回廊",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D10032",
+      "name": "右回廊",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D1004",
+      "name": "抉择之地",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D10051",
+      "name": "山谷秘道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D10052",
+      "name": "山谷秘道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D10061",
+      "name": "恶魔祭坛",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 30,
+      "height": 30
+    },
+    {
+      "map": "D10062",
+      "name": "赤月魔穴",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "map": "T1341",
+      "name": "不归路",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "T1342",
+      "name": "不归路",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "T1343",
+      "name": "不归路",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "4",
+      "name": "封魔谷",
+      "clientInstalled": true,
+      "sourceAvailable": true,
+      "width": 500,
+      "height": 500
+    },
+    {
+      "map": "B341",
+      "name": "封魔皇宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "M101",
+      "name": "姻缘神殿",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 51,
+      "height": 55
+    },
+    {
+      "map": "M100",
+      "name": "同心小径",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "B342",
+      "name": "武器店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "B343",
+      "name": "书药店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "B344",
+      "name": "首饰店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "B345",
+      "name": "服装店",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "B346",
+      "name": "监狱",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "B347",
+      "name": "仓库",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D10053",
+      "name": "秘密通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D10054",
+      "name": "秘密通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2003",
+      "name": "封魔道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2000",
+      "name": "封魔矿区",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2001",
+      "name": "崎路",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2002",
+      "name": "连接通道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "D2004",
+      "name": "疾风殿",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2005",
+      "name": "光芒回廊",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2006",
+      "name": "烈焰殿",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2007",
+      "name": "雷霆之路",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2008",
+      "name": "霸者大厅",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2009",
+      "name": "幽冥回廊",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2010",
+      "name": "纵横道",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2011",
+      "name": "魔魂殿",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2012",
+      "name": "炼狱回廊",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2013",
+      "name": "封魔殿",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "5",
+      "name": "苍月岛",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 800,
+      "height": 800
+    },
+    {
+      "map": "B351",
+      "name": "武器库",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "B352",
+      "name": "饰品铺",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "B353",
+      "name": "布料铺",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 24,
+      "height": 28
+    },
+    {
+      "map": "B354",
+      "name": "储存室",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 26,
+      "height": 26
+    },
+    {
+      "map": "B355",
+      "name": "特产铺",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "B356",
+      "name": "药房",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "map": "D2051",
+      "name": "尸魔洞一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2052",
+      "name": "尸魔洞三层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "D2053",
+      "name": "尸魔洞二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2061",
+      "name": "骨魔洞一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2062",
+      "name": "骨魔洞二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2063",
+      "name": "骨魔洞三层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2064",
+      "name": "骨魔洞四层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2067",
+      "name": "骨魔洞五层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2070",
+      "name": "牛魔寺庙出入口",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "map": "D2071",
+      "name": "牛魔寺庙一层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2072",
+      "name": "牛魔寺庙二层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2073",
+      "name": "牛魔寺庙三层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D2075",
+      "name": "牛魔寺庙四层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "D2076",
+      "name": "牛魔寺庙五层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D2078",
+      "name": "牛魔寺庙六层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "D2079",
+      "name": "牛魔寺庙大厅",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "map": "H001",
+      "name": "幻境一层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H002",
+      "name": "幻境二层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H003",
+      "name": "幻境三层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H004",
+      "name": "幻境四层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H005",
+      "name": "幻境五层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H006",
+      "name": "幻境六层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H007",
+      "name": "幻境七层",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    },
+    {
+      "map": "T1061",
+      "name": "幻境迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T2061",
+      "name": "幻境迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T2062",
+      "name": "幻境迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T2063",
+      "name": "幻境迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T3061",
+      "name": "幻境迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T3062",
+      "name": "幻境迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T3063",
+      "name": "幻境迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H008",
+      "name": "幻境八层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H009",
+      "name": "幻境九层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H010",
+      "name": "屠龙殿",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H106",
+      "name": "王者禁地",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T232",
+      "name": "钳虫巢穴",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T218",
+      "name": "死亡神殿",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T339",
+      "name": "地狱烈焰",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T219",
+      "name": "深渊魔域",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T315",
+      "name": "堕落坟场",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T140",
+      "name": "困惑殿堂",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H201",
+      "name": "沙巴克影之道一层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H202",
+      "name": "沙巴克影之道二层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H203",
+      "name": "沙巴克影之道三层",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "H204",
+      "name": "沙巴克藏宝阁",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D619",
+      "name": "绝望悬崖",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "F013",
+      "name": "魔龙地缝",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "F011",
+      "name": "祖玛圣地",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "T3283",
+      "name": "石墓祭坛",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D2077",
+      "name": "牛魔迷宫",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 400,
+      "height": 400
+    },
+    {
+      "map": "D2066",
+      "name": "骨魔溶洞",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "map": "F009",
+      "name": "赤月秘境",
+      "clientInstalled": false,
+      "sourceAvailable": false
+    },
+    {
+      "map": "D10071",
+      "name": "赤月魔窟",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "map": "F007",
+      "name": "沃玛圣地",
+      "clientInstalled": false,
+      "sourceAvailable": true,
+      "width": 200,
+      "height": 200
+    }
+  ]
+}

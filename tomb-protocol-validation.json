@@ -1,0 +1,30 @@
+{
+  "tomb-shop": {
+    "goodsList": true,
+    "returnScrollBought": true,
+    "returnScrollConsumed": true,
+    "returnScrollMapChange": true
+  },
+  "tomb-entry": {
+    "observedMonsters": [
+      [
+        600517453,
+        15,
+        21
+      ],
+      [
+        1262011897,
+        14,
+        20
+      ],
+      [
+        600517453,
+        15,
+        21
+      ]
+    ],
+    "exitToBichon": true,
+    "entryFromBichon": true
+  },
+  "testPositionsAndGoldRestored": true
+}

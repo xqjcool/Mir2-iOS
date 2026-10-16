@@ -29,7 +29,7 @@ struct SceneData: Decodable {
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("GameData") else {
             throw LoadError.invalid("找不到随应用打包的地图资源")
         }
-        guard ["0", "0103", "0105", "0106", "2", "4", "11"].contains(mapID) else { throw LoadError.invalid("尚未安装地图资源：\(mapID)") }
+        guard ["0", "0103", "0105", "0106", "2", "4", "11", "D001", "D002", "D003"].contains(mapID) else { throw LoadError.invalid("尚未安装地图资源：\(mapID)") }
         let sceneFile = mapID == "0" ? "scene.json" : "maps/\(mapID)/scene.json"
         let data = try JSONDecoder().decode(SceneData.self, from: Data(contentsOf: root.appendingPathComponent(sceneFile)))
         guard data.version == 1, (1...1024).contains(data.width), (1...1024).contains(data.height),

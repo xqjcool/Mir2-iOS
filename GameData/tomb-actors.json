@@ -1,0 +1,42 @@
+[
+  {
+    "race": 14,
+    "appearance": 20,
+    "library": "Mon3"
+  },
+  {
+    "race": 15,
+    "appearance": 21,
+    "library": "Mon3"
+  },
+  {
+    "race": 14,
+    "appearance": 22,
+    "library": "Mon3"
+  },
+  {
+    "race": 14,
+    "appearance": 23,
+    "library": "Mon3"
+  },
+  {
+    "race": 14,
+    "appearance": 150,
+    "library": "Mon16"
+  },
+  {
+    "race": 16,
+    "appearance": 24,
+    "library": "Mon3"
+  },
+  {
+    "race": 19,
+    "appearance": 80,
+    "library": "Mon9"
+  },
+  {
+    "race": 32,
+    "appearance": 83,
+    "library": "Mon9"
+  }
+]

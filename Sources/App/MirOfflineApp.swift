@@ -400,12 +400,12 @@ private struct CombatButtons:View {
     @State private var choosePotion=false
     @State private var chooseScroll=false
     @AppStorage("hud.randomScroll") private var scrollName=""
-    private var scrolls:[MirEquipment.Item] { net.inventory.bag.values.filter { [0,1,2,3,31].contains($0.mode) && net.itemName($0).contains("随机") }.sorted { $0.id<$1.id } }
+    private var scrolls:[MirEquipment.Item] { net.inventory.bag.values.filter { [0,1,2,3,31].contains($0.mode) && ["随机传送卷","回城卷","地牢逃脱卷","随机传送卷包","回城卷包","地牢逃脱卷包"].contains(net.itemName($0)) }.sorted { $0.id<$1.id } }
     private var scrollCount:Int { guard let item=scroll else { return 0 };return scrolls.filter { net.itemName($0)==net.itemName(item) }.count }
     private var scroll:MirEquipment.Item? { scrollName.isEmpty ? scrolls.first : scrolls.first { net.itemName($0)==scrollName } }
     @GestureState private var aiming=false
     @AppStorage("hud.potion") private var potionName=""
-    private var potions:[MirEquipment.Item] { net.inventory.bag.values.filter { (0...3).contains($0.mode) && !net.itemName($0).contains("随机") }.sorted{$0.id<$1.id} }
+    private var potions:[MirEquipment.Item] { net.inventory.bag.values.filter { (0...3).contains($0.mode) && !["随机传送卷","回城卷","地牢逃脱卷","随机传送卷包","回城卷包","地牢逃脱卷包"].contains(net.itemName($0)) }.sorted{$0.id<$1.id} }
     private var potion:MirEquipment.Item? { potions.first { net.itemName($0)==potionName } ?? (potionName.isEmpty ? potions.first : nil) }
     private var potionCount:Int { guard let item=potion else { return 0 };return potions.filter{net.itemName($0)==net.itemName(item)}.count }
     private func skillPosition(_ index:Int)->CGPoint {
@@ -453,7 +453,7 @@ private struct CombatButtons:View {
                 .opacity(scroll == nil || net.usePending != nil ? 0.5 : 1).contentShape(Circle())
                 .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in scene?.suspendControls(true);chooseScroll=true }
                     .exclusively(before:TapGesture().onEnded { if let item=scroll { net.useItem(item) } else { scene?.suspendControls(true);chooseScroll=true } }))
-                .position(x:190,y:90).accessibilityLabel("随机传送卷，长按绑定")
+                .position(x:190,y:90).accessibilityLabel("传送卷，长按绑定")
             HStack {
                 Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:50)
                 Button("拾取") { scene?.input(.pickup) }.frame(minWidth:70,minHeight:50)
@@ -467,7 +467,7 @@ private struct CombatButtons:View {
             ForEach(Array(Set(potions.map{net.itemName($0)})).sorted(),id:\.self) { name in Button(name) { potionName=name } }
             Button("取消",role:.cancel) {}
         }
-        .confirmationDialog("绑定随机传送卷",isPresented:$chooseScroll,titleVisibility:.visible) {
+        .confirmationDialog("绑定传送卷",isPresented:$chooseScroll,titleVisibility:.visible) {
             ForEach(Array(Set(scrolls.map { net.itemName($0) })).sorted(),id:\.self) { name in Button(name) { scrollName=name } }
             Button("取消",role:.cancel) {}
         }
