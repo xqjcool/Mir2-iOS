@@ -401,7 +401,8 @@ final class MirConnection: ObservableObject {
         case 520:
             guard let list=MirWire.characterList(legacyText(p.body),expectedCount:Int(p.actor)) else { fail("角色列表格式无效");return }
             characters=list;selectedName=list.first?.name ?? "";timeout?.cancel();busy=false;screen="characters";status=list.count==2 ? "请选择人物（两个角色栏均已使用）" : "请选择人物，或创建新人物"
-        case 521:send(100,body:account+"/"+ticket);armTimeout()
+        case 521,523:send(100,body:account+"/"+ticket);armTimeout()
+        case 524:timeout?.cancel();busy=false;status="删除失败：请确认角色未在线，并符合服务器删除等级限制"
         case 522:timeout?.cancel();busy=false;status="创建失败：请检查名称是否重复或角色栏是否已满"
         case 750:guildName=legacyText(p.body).components(separatedBy:"/").first ?? ""
         case 104:
@@ -478,6 +479,10 @@ final class MirConnection: ObservableObject {
     func enterSelectedCharacter() {
         guard screen=="characters",!busy,characters.contains(where:{$0.name==selectedName}) else { return }
         character=selectedName;busy=true;send(103,body:account+"/"+character);armTimeout()
+    }
+    func deleteCharacter(name:String) {
+        guard screen=="characters",!busy,!online,characters.contains(where:{$0.name==name}) else { return }
+        busy=true;status="正在删除人物";send(102,body:name);armTimeout()
     }
     func createCharacter(name:String,job:Int,sex:Int) {
         guard screen=="characters",!busy,characters.count<2 else { return }

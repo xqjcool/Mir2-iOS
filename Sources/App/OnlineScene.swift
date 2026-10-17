@@ -435,19 +435,43 @@ final class OnlineScene: SKScene {
         guard net.online,!net.npcOpen,!net.tradeBusy,!net.dealOpen,!interactionSuspended,let id=playerID,let a=actors[id],let touch=touches.first else { return }
         let p=touch.location(in:self),target=Cell(x:Int(floor(p.x/48)),y:Int(floor(-p.y/32)))
         if let skill=armedGroundSkill { performSkill(skill,ground:target);return }
-        if let npc=actors.first(where:{$0.value.npc && $0.value.cell==target}) {
-            stopAutomation()
-            guard max(abs(target.x-a.cell.x),abs(target.y-a.cell.y))<=3 else { combatReport?("请走近 \(npc.value.displayName) 再交谈");return }
-            net.talk(to:npc.key);return
+        // Hit the visible sprite, not only its foot tile; keep a 44-point minimum target.
+        let minimum=CGFloat(44)*(camera?.xScale ?? 1)
+        let hit=actors.filter { key,v in
+            guard key != id,!v.dead else { return false }
+            let f=v.image.frame
+            let origin=v.node.convert(f.origin,to:self)
+            let rect=CGRect(origin:origin,size:f.size)
+            let padded=rect.insetBy(dx:-max(6,(minimum-rect.width)/2),dy:-max(6,(minimum-rect.height)/2))
+            return padded.contains(p) || v.cell==target
+        }.min { lhs,rhs in
+            func distance(_ v:Avatar)->CGFloat {
+                let center=v.node.convert(CGPoint(x:v.image.frame.midX,y:v.image.frame.midY),to:self)
+                return hypot(center.x-p.x,center.y-p.y)
+            }
+            let l=distance(lhs.value),r=distance(rhs.value)
+            return l == r ? lhs.key < rhs.key : l < r
         }
-        if let other=actors.first(where: { $0.key != id && !$0.value.monster && !$0.value.npc && !$0.value.dead && ($0.value.cell==target || $0.value.node.calculateAccumulatedFrame().insetBy(dx:-8,dy:-8).contains(p)) }) {
-            stopAutomation();selected=other.key;targetHealthReport?(nil);targetReport?(other.value.displayName);net.peerMessage="";net.inspectedName="";net.inspectedItems=[:];playerReport?(PlayerTarget(id:other.key,name:other.value.displayName));return
+        if let hit=hit {
+            let v=hit.value
+            if v.npc {
+                stopAutomation()
+                guard max(abs(v.cell.x-a.cell.x),abs(v.cell.y-a.cell.y))<=3 else { combatReport?("请走近 \(v.displayName) 再交谈");return }
+                net.talk(to:hit.key);return
+            }
+            let continueAttack=autoAttack && v.monster
+            stopAutomation();selected=hit.key;targetHealthReport?(nil);targetReport?(v.displayName)
+            if v.monster {
+                autoAttack=continueAttack;queuedAttack=continueAttack
+                combatReport?(continueAttack ? "已切换攻击目标：\(v.displayName)" : "已锁定 \(v.displayName)，点击攻击追打当前目标")
+            } else {
+                net.peerMessage="";net.inspectedName="";net.inspectedItems=[:]
+                playerReport?(PlayerTarget(id:hit.key,name:v.displayName))
+            }
+            return
         }
         if let corpse=actors.first(where: { $0.value.dead && !$0.value.harvested && ["11-160","11-161"].contains($0.value.appearanceKey) && $0.value.cell==target }) {
             stopAutomation();selectedCorpse=corpse.key;combatReport?("已选中 \(corpse.value.displayName) 尸体；靠近后反复点击割肉");return
-        }
-        if let match=actors.first(where: { $0.value.monster && !$0.value.dead && $0.value.cell==target }) {
-            stopAutomation();selected=match.key;targetHealthReport?(nil);route=[];targetReport?(match.value.label.text ?? match.value.displayName);combatReport?("已锁定 \(match.value.displayName)，点击攻击追打当前目标");return
         }
         navigate(to:target)
     }

@@ -276,6 +276,7 @@ private struct ClassicLobby:View {
     @State private var account="probealpha"
     @State private var password=""
     @State private var creating=false
+    @State private var deletingName:String?
     @State private var newName=""
     @State private var job=0
     @State private var sex=0
@@ -305,9 +306,9 @@ private struct ClassicLobby:View {
                         VStack(spacing:16) {
                             Text("热 血 传 奇").font(.system(size:38,weight:.bold,design:.serif)).foregroundColor(gold)
                             Text("经典 1.76").foregroundColor(gold)
-                            HStack { Text("账号");TextField("账号",text:$account) }
-                            HStack { Text("密码");SecureField("密码",text:$password) }
-                            DisclosureGroup("服务器地址") { TextField("服务器地址",text:$host) }
+                            HStack { Text("账号");TextField("账号",text:$account).foregroundColor(.black).tint(.brown).environment(\.colorScheme,.light) }
+                            HStack { Text("密码");SecureField("密码",text:$password).foregroundColor(.black).tint(.brown).environment(\.colorScheme,.light) }
+                            DisclosureGroup("服务器地址") { TextField("服务器地址",text:$host).foregroundColor(.black).tint(.brown).environment(\.colorScheme,.light) }
                             action("登 录") { net.login(host:host.trimmingCharacters(in:.whitespacesAndNewlines),account:account,password:password);password="" }
                         }.textFieldStyle(.roundedBorder).padding(24).frame(width:350).background(Color.black.opacity(0.84)).overlay(Rectangle().stroke(gold.opacity(0.7))).position(x:400,y:320)
                     } else if net.screen=="servers" {
@@ -341,14 +342,15 @@ private struct ClassicLobby:View {
                         VStack(spacing:6) {
                             action("开始游戏") { net.enterSelectedCharacter() }.disabled(net.selectedName.isEmpty)
                             action("创建人物") { creating=true }.disabled(net.characters.count>=2)
+                            action("删除人物") { deletingName=net.selectedName }.disabled(net.selectedName.isEmpty)
                             action("返回登录") { net.disconnect() }
-                        }.position(x:403,y:519)
+                        }.position(x:403,y:490)
                     }
                     if creating && net.screen=="characters" {
                         Color.black.opacity(0.75)
                         VStack(spacing:18) {
                             Text("创建人物").font(.title).foregroundColor(gold)
-                            TextField("人物名字",text:$newName).textFieldStyle(.roundedBorder)
+                            TextField("人物名字",text:$newName).foregroundColor(.black).tint(.brown).environment(\.colorScheme,.light).textFieldStyle(.roundedBorder)
                             Picker("职业",selection:$job) { ForEach(0..<3,id:\.self) { Text(jobs[$0]).tag($0) } }.pickerStyle(.segmented)
                             Picker("性别",selection:$sex) { Text("男").tag(0);Text("女").tag(1) }.pickerStyle(.segmented)
                             HStack {
@@ -363,6 +365,10 @@ private struct ClassicLobby:View {
                     .frame(width:800,height:600).scaleEffect(scale).frame(width:geometry.size.width,height:geometry.size.height)
             }
         }.ignoresSafeArea()
+        .alert("删除人物",isPresented:Binding(get:{deletingName != nil},set:{if !$0 { deletingName=nil }})) {
+            Button("取消",role:.cancel) { deletingName=nil }
+            Button("确认删除",role:.destructive) { if let name=deletingName { net.deleteCharacter(name:name) };deletingName=nil }
+        } message: { Text("确定删除「\(deletingName ?? "")」？该角色及随身物品将无法继续使用。") }
     }
 }
 

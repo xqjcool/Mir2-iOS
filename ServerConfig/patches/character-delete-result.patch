@@ -1,0 +1,10 @@
+--- a/src/DBSrv/Services/Impl/UserService.cs
++++ b/src/DBSrv/Services/Impl/UserService.cs
+@@ -532,6 +532,7 @@
+                 PlayerRecordData humRecord = _playRecordStorage.Get(nIndex, ref boCheck);
+                 if (boCheck)
+                 {
++                    boCheck = false; // Only an authorized update counts as deletion success.
+                     if (humRecord.sAccount == userInfo.sAccount)
+                     {
+                         int nLevel = DelChrSnameToLevel(sChrName);
