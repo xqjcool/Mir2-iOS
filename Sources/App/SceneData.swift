@@ -1,6 +1,8 @@
 import Foundation
 
 struct SceneData: Decodable {
+    struct Door: Decodable { let x, y, index: Int }
+    let doors: [Door]?
     struct Texture: Decodable { let file: String; let width, height: Int }
     struct Ground: Decodable { let file: String; let x, y, width, height: Int }
     struct Object: Decodable {
@@ -29,7 +31,7 @@ struct SceneData: Decodable {
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("GameData") else {
             throw LoadError.invalid("找不到随应用打包的地图资源")
         }
-        guard ["0", "0103", "0105", "0106", "2", "4", "11", "D001", "D002", "D003"].contains(mapID) else { throw LoadError.invalid("尚未安装地图资源：\(mapID)") }
+        guard ["0", "0103", "0105", "0106", "2", "4", "11", "D001", "D002", "D003", "D011", "D012", "DM001", "DM002", "DM011", "E001", "E002", "E401", "E402", "E403", "E404"].contains(mapID) else { throw LoadError.invalid("尚未安装地图资源：\(mapID)") }
         let sceneFile = mapID == "0" ? "scene.json" : "maps/\(mapID)/scene.json"
         let data = try JSONDecoder().decode(SceneData.self, from: Data(contentsOf: root.appendingPathComponent(sceneFile)))
         guard data.version == 1, (1...1024).contains(data.width), (1...1024).contains(data.height),

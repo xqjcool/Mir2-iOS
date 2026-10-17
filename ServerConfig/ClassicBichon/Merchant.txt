@@ -24,3 +24,7 @@ BichonReturn 11 187 300 比奇向导 0 1 0
 BichonReturn 2 500 479 比奇向导 0 1 0
 
 BichonReturn 4 238 199 比奇向导 0 1 0
+
+ClassicCaveTrader DM001 4 6 小李 0 9 0
+
+ClassicCaveTrader DM011 4 6 小李 0 9 0

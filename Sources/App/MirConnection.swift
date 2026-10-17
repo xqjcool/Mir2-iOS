@@ -486,6 +486,14 @@ final class MirConnection: ObservableObject {
         }
         busy=true;send(101,body:account+"/"+name+"/0/\(job)/\(sex)");armTimeout()
     }
+    private var lastDoorRequest: TimeInterval = -10
+    func openDoor(x:Int,y:Int,index:Int) {
+        let now=ProcessInfo.processInfo.systemUptime
+        guard online,(0...65535).contains(x),(0...65535).contains(y),(1...127).contains(index),now-lastDoorRequest>=0.8 else { return }
+        lastDoorRequest=now
+        log("door request x=\(x) y=\(y) index=\(index)")
+        raw(MirWire.command(1002,actor:UInt32(index),x:UInt16(x),y:UInt16(y)))
+    }
     func walk(x:Int,y:Int,direction:Int,running:Bool=false)->Bool {
         let now=ProcessInfo.processInfo.systemUptime
         guard online,(0...65535).contains(x),(0...65535).contains(y),(0...7).contains(direction),now-lastMovement>=0.1 else { return false }

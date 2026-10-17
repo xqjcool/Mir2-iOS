@@ -695,6 +695,9 @@ final class OnlineScene: SKScene {
                     if routeRunning,let two=route.first,two.x-one.x==one.x-a.cell.x,two.y-one.y==one.y-a.cell.y,map.grid.neighbors(one).contains(two),!actors.values.contains(where:{!$0.dead && ($0.cell==one || $0.cell==two)}) { next=two;route.removeFirst();running=true }
                 } else { route=[] }
             }
+            if !attackPending,let n=next,let door=map.doors?.first(where:{ max(abs($0.x-a.cell.x),abs($0.y-a.cell.y))<=3 && max(abs($0.x-n.x),abs($0.y-n.y))<=2 }) {
+                net.openDoor(x:door.x+map.originX,y:door.y+map.originY,index:door.index)
+            }
             if !attackPending,let n=next,!actors.values.contains(where:{!$0.dead && $0.cell==n}),net.walk(x:n.x+map.originX,y:n.y+map.originY,direction:direction,running:running) {
                 a.running=running;a.direction=direction;pending=n;requestedAt=time;pendingDuration=running ? 0.5 : 0.54
                 a.walkingUntil=time+pendingDuration;a.node.run(.move(to:point(n),duration:pendingDuration),withKey:"walk")

@@ -1,61 +1,79 @@
 {
   "source": "mirbeta/MirServer",
-  "installed": 10,
+  "installed": 21,
   "total": 322,
   "maps": [
     {
       "map": "jiaren|0150",
       "name": "假人配置室",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "jiaren",
+      "sourceMap": "0150"
     },
     {
       "map": "G002",
       "name": "真爱质询屋",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "G002",
+      "sourceMap": "G002"
     },
     {
       "map": "M100A|M100",
       "name": "爱情长廊",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "M100A",
+      "sourceMap": "M100"
     },
     {
       "map": "M100B|M100",
       "name": "爱情长廊",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "M100B",
+      "sourceMap": "M100"
     },
     {
       "map": "M100C|M100",
       "name": "爱情长廊",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "M100C",
+      "sourceMap": "M100"
     },
     {
       "map": "F002",
       "name": "爱的小屋",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "F002",
+      "sourceMap": "F002"
     },
     {
       "map": "B013",
       "name": "赌场",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B013",
+      "sourceMap": "B013"
     },
     {
       "map": "B013A|B013",
       "name": "赌场",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B013A",
+      "sourceMap": "B013"
     },
     {
       "map": "DB|DM011",
       "name": "担保地图",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "DB",
+      "sourceMap": "DM011"
     },
     {
       "map": "GA0",
@@ -63,19 +81,25 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 150,
-      "height": 150
+      "height": 150,
+      "logicalMap": "GA0",
+      "sourceMap": "GA0"
     },
     {
       "map": "GA2",
       "name": "比武场",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "GA2",
+      "sourceMap": "GA2"
     },
     {
       "map": "N109",
       "name": "世外桃源",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "N109",
+      "sourceMap": "N109"
     },
     {
       "map": "0147",
@@ -83,31 +107,41 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 20
+      "height": 20,
+      "logicalMap": "0147",
+      "sourceMap": "0147"
     },
     {
       "map": "T2361",
       "name": "小黑屋",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T2361",
+      "sourceMap": "T2361"
     },
     {
       "map": "Q001",
       "name": "勇斗寺殿",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q001",
+      "sourceMap": "Q001"
     },
     {
       "map": "T118",
       "name": "命运囚笼",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T118",
+      "sourceMap": "T118"
     },
     {
       "map": "G003",
       "name": "玛法足球场",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "G003",
+      "sourceMap": "G003"
     },
     {
       "map": "F003",
@@ -115,7 +149,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "F003",
+      "sourceMap": "F003"
     },
     {
       "map": "F005",
@@ -123,49 +159,65 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "F005",
+      "sourceMap": "F005"
     },
     {
       "map": "ZM6|D5071",
       "name": "行会争霸地图",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "ZM6",
+      "sourceMap": "D5071"
     },
     {
       "map": "Q011",
       "name": "神秘迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q011",
+      "sourceMap": "Q011"
     },
     {
       "map": "Q012",
       "name": "天地迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q012",
+      "sourceMap": "Q012"
     },
     {
       "map": "Q013",
       "name": "天地迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q013",
+      "sourceMap": "Q013"
     },
     {
       "map": "Q014",
       "name": "天地迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q014",
+      "sourceMap": "Q014"
     },
     {
       "map": "Q015",
       "name": "生死之间",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q015",
+      "sourceMap": "Q015"
     },
     {
       "map": "Q016",
       "name": "神秘商店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q016",
+      "sourceMap": "Q016"
     },
     {
       "map": "0",
@@ -173,7 +225,9 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 700,
-      "height": 700
+      "height": 700,
+      "logicalMap": "0",
+      "sourceMap": "0"
     },
     {
       "map": "0122",
@@ -181,7 +235,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 51,
-      "height": 55
+      "height": 55,
+      "logicalMap": "0122",
+      "sourceMap": "0122"
     },
     {
       "map": "0110",
@@ -189,7 +245,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0110",
+      "sourceMap": "0110"
     },
     {
       "map": "0111",
@@ -197,7 +255,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0111",
+      "sourceMap": "0111"
     },
     {
       "map": "0112",
@@ -205,7 +265,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0112",
+      "sourceMap": "0112"
     },
     {
       "map": "0102",
@@ -213,7 +275,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 15,
-      "height": 15
+      "height": 15,
+      "logicalMap": "0102",
+      "sourceMap": "0102"
     },
     {
       "map": "0108",
@@ -221,7 +285,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 15,
-      "height": 18
+      "height": 18,
+      "logicalMap": "0108",
+      "sourceMap": "0108"
     },
     {
       "map": "0109",
@@ -229,7 +295,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 10,
-      "height": 15
+      "height": 15,
+      "logicalMap": "0109",
+      "sourceMap": "0109"
     },
     {
       "map": "0104",
@@ -237,13 +305,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 13,
-      "height": 16
+      "height": 16,
+      "logicalMap": "0104",
+      "sourceMap": "0104"
     },
     {
       "map": "0107",
       "name": "水美酒店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0107",
+      "sourceMap": "0107"
     },
     {
       "map": "0125",
@@ -251,7 +323,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 25,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0125",
+      "sourceMap": "0125"
     },
     {
       "map": "0126",
@@ -259,7 +333,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 24,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0126",
+      "sourceMap": "0126"
     },
     {
       "map": "0103",
@@ -267,7 +343,9 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 27,
-      "height": 29
+      "height": 29,
+      "logicalMap": "0103",
+      "sourceMap": "0103"
     },
     {
       "map": "0105",
@@ -275,7 +353,9 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 27,
-      "height": 29
+      "height": 29,
+      "logicalMap": "0105",
+      "sourceMap": "0105"
     },
     {
       "map": "0106",
@@ -283,7 +363,9 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 27,
-      "height": 29
+      "height": 29,
+      "logicalMap": "0106",
+      "sourceMap": "0106"
     },
     {
       "map": "0101",
@@ -291,7 +373,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 28
+      "height": 28,
+      "logicalMap": "0101",
+      "sourceMap": "0101"
     },
     {
       "map": "0100",
@@ -299,7 +383,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 15,
-      "height": 18
+      "height": 18,
+      "logicalMap": "0100",
+      "sourceMap": "0100"
     },
     {
       "map": "0128",
@@ -307,7 +393,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 9,
-      "height": 12
+      "height": 12,
+      "logicalMap": "0128",
+      "sourceMap": "0128"
     },
     {
       "map": "0129",
@@ -315,7 +403,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 7,
-      "height": 10
+      "height": 10,
+      "logicalMap": "0129",
+      "sourceMap": "0129"
     },
     {
       "map": "0123",
@@ -323,7 +413,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 18,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0123",
+      "sourceMap": "0123"
     },
     {
       "map": "0124",
@@ -331,7 +423,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 12,
-      "height": 15
+      "height": 15,
+      "logicalMap": "0124",
+      "sourceMap": "0124"
     },
     {
       "map": "0114",
@@ -339,7 +433,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 23
+      "height": 23,
+      "logicalMap": "0114",
+      "sourceMap": "0114"
     },
     {
       "map": "0115",
@@ -347,7 +443,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 22,
-      "height": 25
+      "height": 25,
+      "logicalMap": "0115",
+      "sourceMap": "0115"
     },
     {
       "map": "0113",
@@ -355,13 +453,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0113",
+      "sourceMap": "0113"
     },
     {
       "map": "0137",
       "name": "竞技场",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0137",
+      "sourceMap": "0137"
     },
     {
       "map": "0135",
@@ -369,7 +471,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 12,
-      "height": 14
+      "height": 14,
+      "logicalMap": "0135",
+      "sourceMap": "0135"
     },
     {
       "map": "0134",
@@ -377,7 +481,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 13,
-      "height": 16
+      "height": 16,
+      "logicalMap": "0134",
+      "sourceMap": "0134"
     },
     {
       "map": "0133",
@@ -385,7 +491,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 10,
-      "height": 11
+      "height": 11,
+      "logicalMap": "0133",
+      "sourceMap": "0133"
     },
     {
       "map": "0119",
@@ -393,7 +501,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 21,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0119",
+      "sourceMap": "0119"
     },
     {
       "map": "0118",
@@ -401,7 +511,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 14,
-      "height": 16
+      "height": 16,
+      "logicalMap": "0118",
+      "sourceMap": "0118"
     },
     {
       "map": "0121",
@@ -409,7 +521,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 18,
-      "height": 20
+      "height": 20,
+      "logicalMap": "0121",
+      "sourceMap": "0121"
     },
     {
       "map": "0127",
@@ -417,7 +531,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0127",
+      "sourceMap": "0127"
     },
     {
       "map": "0130",
@@ -425,7 +541,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 12,
-      "height": 16
+      "height": 16,
+      "logicalMap": "0130",
+      "sourceMap": "0130"
     },
     {
       "map": "0131",
@@ -433,7 +551,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0131",
+      "sourceMap": "0131"
     },
     {
       "map": "0136",
@@ -441,7 +561,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 19,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0136",
+      "sourceMap": "0136"
     },
     {
       "map": "0132",
@@ -449,7 +571,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 22,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0132",
+      "sourceMap": "0132"
     },
     {
       "map": "0138",
@@ -457,7 +581,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 15,
-      "height": 18
+      "height": 18,
+      "logicalMap": "0138",
+      "sourceMap": "0138"
     },
     {
       "map": "0141",
@@ -465,7 +591,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 27,
-      "height": 32
+      "height": 32,
+      "logicalMap": "0141",
+      "sourceMap": "0141"
     },
     {
       "map": "0140",
@@ -473,7 +601,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 20
+      "height": 20,
+      "logicalMap": "0140",
+      "sourceMap": "0140"
     },
     {
       "map": "D001",
@@ -481,7 +611,9 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D001",
+      "sourceMap": "D001"
     },
     {
       "map": "D002",
@@ -489,23 +621,29 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D002",
+      "sourceMap": "D002"
     },
     {
       "map": "DM001",
       "name": "商店",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 9,
-      "height": 13
+      "height": 13,
+      "logicalMap": "DM001",
+      "sourceMap": "DM001"
     },
     {
       "map": "DM002",
       "name": "国王陵墓",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 32,
-      "height": 38
+      "height": 38,
+      "logicalMap": "DM002",
+      "sourceMap": "DM002"
     },
     {
       "map": "D003",
@@ -513,31 +651,39 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D003",
+      "sourceMap": "D003"
     },
     {
       "map": "D011",
       "name": "天然洞穴一层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D011",
+      "sourceMap": "D011"
     },
     {
       "map": "D012",
       "name": "天然洞穴二层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D012",
+      "sourceMap": "D012"
     },
     {
       "map": "DM011",
       "name": "商店",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 9,
-      "height": 13
+      "height": 13,
+      "logicalMap": "DM011",
+      "sourceMap": "DM011"
     },
     {
       "map": "1",
@@ -545,7 +691,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 600,
-      "height": 600
+      "height": 600,
+      "logicalMap": "1",
+      "sourceMap": "1"
     },
     {
       "map": "D021",
@@ -553,7 +701,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D021",
+      "sourceMap": "D021"
     },
     {
       "map": "D022",
@@ -561,7 +711,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 500,
-      "height": 500
+      "height": 500,
+      "logicalMap": "D022",
+      "sourceMap": "D022"
     },
     {
       "map": "D023",
@@ -569,13 +721,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D023",
+      "sourceMap": "D023"
     },
     {
       "map": "D024",
       "name": "沃玛教主大殿",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D024",
+      "sourceMap": "D024"
     },
     {
       "map": "2",
@@ -583,7 +739,9 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 600,
-      "height": 600
+      "height": 600,
+      "logicalMap": "2",
+      "sourceMap": "2"
     },
     {
       "map": "0116",
@@ -591,7 +749,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 21,
-      "height": 27
+      "height": 27,
+      "logicalMap": "0116",
+      "sourceMap": "0116"
     },
     {
       "map": "0117",
@@ -599,7 +759,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 15,
-      "height": 21
+      "height": 21,
+      "logicalMap": "0117",
+      "sourceMap": "0117"
     },
     {
       "map": "0120",
@@ -607,7 +769,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 17,
-      "height": 20
+      "height": 20,
+      "logicalMap": "0120",
+      "sourceMap": "0120"
     },
     {
       "map": "0142",
@@ -615,7 +779,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 12,
-      "height": 14
+      "height": 14,
+      "logicalMap": "0142",
+      "sourceMap": "0142"
     },
     {
       "map": "D401",
@@ -623,7 +789,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D401",
+      "sourceMap": "D401"
     },
     {
       "map": "D411",
@@ -631,7 +799,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D411",
+      "sourceMap": "D411"
     },
     {
       "map": "D413",
@@ -639,7 +809,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D413",
+      "sourceMap": "D413"
     },
     {
       "map": "D402",
@@ -647,7 +819,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D402",
+      "sourceMap": "D402"
     },
     {
       "map": "D414",
@@ -655,7 +829,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D414",
+      "sourceMap": "D414"
     },
     {
       "map": "D403",
@@ -663,7 +839,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D403",
+      "sourceMap": "D403"
     },
     {
       "map": "D412",
@@ -671,7 +849,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D412",
+      "sourceMap": "D412"
     },
     {
       "map": "D404",
@@ -679,7 +859,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D404",
+      "sourceMap": "D404"
     },
     {
       "map": "D416",
@@ -687,7 +869,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D416",
+      "sourceMap": "D416"
     },
     {
       "map": "D405",
@@ -695,7 +879,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D405",
+      "sourceMap": "D405"
     },
     {
       "map": "D415",
@@ -703,7 +889,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D415",
+      "sourceMap": "D415"
     },
     {
       "map": "D406",
@@ -711,7 +899,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D406",
+      "sourceMap": "D406"
     },
     {
       "map": "D421",
@@ -719,7 +909,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D421",
+      "sourceMap": "D421"
     },
     {
       "map": "D422",
@@ -727,13 +919,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D422",
+      "sourceMap": "D422"
     },
     {
       "map": "Q004",
       "name": "尸王殿",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "Q004",
+      "sourceMap": "Q004"
     },
     {
       "map": "3",
@@ -741,7 +937,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 1000,
-      "height": 800
+      "height": 800,
+      "logicalMap": "3",
+      "sourceMap": "3"
     },
     {
       "map": "0143",
@@ -749,7 +947,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 24,
-      "height": 28
+      "height": 28,
+      "logicalMap": "0143",
+      "sourceMap": "0143"
     },
     {
       "map": "0144",
@@ -757,7 +957,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 23,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0144",
+      "sourceMap": "0144"
     },
     {
       "map": "0145",
@@ -765,7 +967,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 23
+      "height": 23,
+      "logicalMap": "0145",
+      "sourceMap": "0145"
     },
     {
       "map": "0146",
@@ -773,7 +977,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0146",
+      "sourceMap": "0146"
     },
     {
       "map": "0148",
@@ -781,7 +987,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 15,
-      "height": 19
+      "height": 19,
+      "logicalMap": "0148",
+      "sourceMap": "0148"
     },
     {
       "map": "0149",
@@ -789,7 +997,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 27,
-      "height": 30
+      "height": 30,
+      "logicalMap": "0149",
+      "sourceMap": "0149"
     },
     {
       "map": "0158",
@@ -797,7 +1007,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 26,
-      "height": 31
+      "height": 31,
+      "logicalMap": "0158",
+      "sourceMap": "0158"
     },
     {
       "map": "0159",
@@ -805,7 +1017,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 18,
-      "height": 24
+      "height": 24,
+      "logicalMap": "0159",
+      "sourceMap": "0159"
     },
     {
       "map": "0160",
@@ -813,7 +1027,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 13,
-      "height": 19
+      "height": 19,
+      "logicalMap": "0160",
+      "sourceMap": "0160"
     },
     {
       "map": "0161",
@@ -821,7 +1037,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 19,
-      "height": 22
+      "height": 22,
+      "logicalMap": "0161",
+      "sourceMap": "0161"
     },
     {
       "map": "0150",
@@ -829,49 +1047,65 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 23,
-      "height": 27
+      "height": 27,
+      "logicalMap": "0150",
+      "sourceMap": "0150"
     },
     {
       "map": "0151",
       "name": "武器店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0151",
+      "sourceMap": "0151"
     },
     {
       "map": "0152",
       "name": "仓库",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0152",
+      "sourceMap": "0152"
     },
     {
       "map": "0153",
       "name": "药品店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0153",
+      "sourceMap": "0153"
     },
     {
       "map": "0154",
       "name": "饰品店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0154",
+      "sourceMap": "0154"
     },
     {
       "map": "0155",
       "name": "服装店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0155",
+      "sourceMap": "0155"
     },
     {
       "map": "0156",
       "name": "监狱",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0156",
+      "sourceMap": "0156"
     },
     {
       "map": "D701",
       "name": "秘密通道",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D701",
+      "sourceMap": "D701"
     },
     {
       "map": "E701",
@@ -879,7 +1113,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E701",
+      "sourceMap": "E701"
     },
     {
       "map": "E702",
@@ -887,7 +1123,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E702",
+      "sourceMap": "E702"
     },
     {
       "map": "E703",
@@ -895,7 +1133,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E703",
+      "sourceMap": "E703"
     },
     {
       "map": "0157",
@@ -903,7 +1143,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 30,
-      "height": 32
+      "height": 32,
+      "logicalMap": "0157",
+      "sourceMap": "0157"
     },
     {
       "map": "D501",
@@ -911,7 +1153,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D501",
+      "sourceMap": "D501"
     },
     {
       "map": "D502",
@@ -919,7 +1163,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D502",
+      "sourceMap": "D502"
     },
     {
       "map": "D503",
@@ -927,7 +1173,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D503",
+      "sourceMap": "D503"
     },
     {
       "map": "D504",
@@ -935,7 +1183,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D504",
+      "sourceMap": "D504"
     },
     {
       "map": "D505",
@@ -943,7 +1193,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D505",
+      "sourceMap": "D505"
     },
     {
       "map": "D511",
@@ -951,7 +1203,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 40,
-      "height": 40
+      "height": 40,
+      "logicalMap": "D511",
+      "sourceMap": "D511"
     },
     {
       "map": "D512",
@@ -959,7 +1213,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 40,
-      "height": 40
+      "height": 40,
+      "logicalMap": "D512",
+      "sourceMap": "D512"
     },
     {
       "map": "D513",
@@ -967,7 +1223,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 40,
-      "height": 40
+      "height": 40,
+      "logicalMap": "D513",
+      "sourceMap": "D513"
     },
     {
       "map": "D514",
@@ -975,7 +1233,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 40,
-      "height": 40
+      "height": 40,
+      "logicalMap": "D514",
+      "sourceMap": "D514"
     },
     {
       "map": "D5061",
@@ -983,7 +1243,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5061",
+      "sourceMap": "D5061"
     },
     {
       "map": "D5062",
@@ -991,7 +1253,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5062",
+      "sourceMap": "D5062"
     },
     {
       "map": "D5063",
@@ -999,7 +1263,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5063",
+      "sourceMap": "D5063"
     },
     {
       "map": "D5064",
@@ -1007,7 +1273,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5064",
+      "sourceMap": "D5064"
     },
     {
       "map": "D5065",
@@ -1015,13 +1283,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5065",
+      "sourceMap": "D5065"
     },
     {
       "map": "D5066",
       "name": "祖玛阁",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D5066",
+      "sourceMap": "D5066"
     },
     {
       "map": "D5067",
@@ -1029,7 +1301,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5067",
+      "sourceMap": "D5067"
     },
     {
       "map": "D5068",
@@ -1037,7 +1311,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5068",
+      "sourceMap": "D5068"
     },
     {
       "map": "D5069",
@@ -1045,31 +1321,41 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D5069",
+      "sourceMap": "D5069"
     },
     {
       "map": "D5071",
       "name": "祖玛六层大厅",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D5071",
+      "sourceMap": "D5071"
     },
     {
       "map": "D5072",
       "name": "祖玛七层一",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D5072",
+      "sourceMap": "D5072"
     },
     {
       "map": "D5073",
       "name": "祖玛七层二",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D5073",
+      "sourceMap": "D5073"
     },
     {
       "map": "D5074",
       "name": "祖玛七层三",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D5074",
+      "sourceMap": "D5074"
     },
     {
       "map": "D515",
@@ -1077,7 +1363,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 40,
-      "height": 40
+      "height": 40,
+      "logicalMap": "D515",
+      "sourceMap": "D515"
     },
     {
       "map": "D710",
@@ -1085,7 +1373,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "D710",
+      "sourceMap": "D710"
     },
     {
       "map": "D711",
@@ -1093,7 +1383,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D711",
+      "sourceMap": "D711"
     },
     {
       "map": "D712",
@@ -1101,7 +1393,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D712",
+      "sourceMap": "D712"
     },
     {
       "map": "D713",
@@ -1109,7 +1403,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D713",
+      "sourceMap": "D713"
     },
     {
       "map": "D714",
@@ -1117,7 +1413,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D714",
+      "sourceMap": "D714"
     },
     {
       "map": "D715",
@@ -1125,7 +1423,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D715",
+      "sourceMap": "D715"
     },
     {
       "map": "D716",
@@ -1133,7 +1433,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "D716",
+      "sourceMap": "D716"
     },
     {
       "map": "D717",
@@ -1141,7 +1443,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D717",
+      "sourceMap": "D717"
     },
     {
       "map": "D71601",
@@ -1149,181 +1453,241 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "D71601",
+      "sourceMap": "D71601"
     },
     {
       "map": "D71602",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71602",
+      "sourceMap": "D71602"
     },
     {
       "map": "D71603",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71603",
+      "sourceMap": "D71603"
     },
     {
       "map": "D71604",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71604",
+      "sourceMap": "D71604"
     },
     {
       "map": "D71605",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71605",
+      "sourceMap": "D71605"
     },
     {
       "map": "D71606",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71606",
+      "sourceMap": "D71606"
     },
     {
       "map": "D71607",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71607",
+      "sourceMap": "D71607"
     },
     {
       "map": "D71608",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71608",
+      "sourceMap": "D71608"
     },
     {
       "map": "D71609",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71609",
+      "sourceMap": "D71609"
     },
     {
       "map": "D71610",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71610",
+      "sourceMap": "D71610"
     },
     {
       "map": "D71611",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71611",
+      "sourceMap": "D71611"
     },
     {
       "map": "D71612",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71612",
+      "sourceMap": "D71612"
     },
     {
       "map": "D71613",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71613",
+      "sourceMap": "D71613"
     },
     {
       "map": "D71614",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71614",
+      "sourceMap": "D71614"
     },
     {
       "map": "D71615",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71615",
+      "sourceMap": "D71615"
     },
     {
       "map": "D71616",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71616",
+      "sourceMap": "D71616"
     },
     {
       "map": "D71617",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71617",
+      "sourceMap": "D71617"
     },
     {
       "map": "D71618",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71618",
+      "sourceMap": "D71618"
     },
     {
       "map": "D71619",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71619",
+      "sourceMap": "D71619"
     },
     {
       "map": "D71620",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71620",
+      "sourceMap": "D71620"
     },
     {
       "map": "D71621",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71621",
+      "sourceMap": "D71621"
     },
     {
       "map": "D71622",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71622",
+      "sourceMap": "D71622"
     },
     {
       "map": "D71623",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71623",
+      "sourceMap": "D71623"
     },
     {
       "map": "D71624",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71624",
+      "sourceMap": "D71624"
     },
     {
       "map": "D71625",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71625",
+      "sourceMap": "D71625"
     },
     {
       "map": "D71650",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71650",
+      "sourceMap": "D71650"
     },
     {
       "map": "D71651",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71651",
+      "sourceMap": "D71651"
     },
     {
       "map": "D71652",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71652",
+      "sourceMap": "D71652"
     },
     {
       "map": "D71653",
       "name": "石墓阵",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D71653",
+      "sourceMap": "D71653"
     },
     {
       "map": "R001",
       "name": "桃源之门",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "R001",
+      "sourceMap": "R001"
     },
     {
       "map": "D601",
@@ -1331,7 +1695,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 250,
-      "height": 250
+      "height": 250,
+      "logicalMap": "D601",
+      "sourceMap": "D601"
     },
     {
       "map": "D602",
@@ -1339,7 +1705,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 250,
-      "height": 250
+      "height": 250,
+      "logicalMap": "D602",
+      "sourceMap": "D602"
     },
     {
       "map": "D603",
@@ -1347,7 +1715,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 250,
-      "height": 250
+      "height": 250,
+      "logicalMap": "D603",
+      "sourceMap": "D603"
     },
     {
       "map": "D604",
@@ -1355,7 +1725,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D604",
+      "sourceMap": "D604"
     },
     {
       "map": "D605",
@@ -1363,7 +1735,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D605",
+      "sourceMap": "D605"
     },
     {
       "map": "D612",
@@ -1371,7 +1745,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D612",
+      "sourceMap": "D612"
     },
     {
       "map": "D613",
@@ -1379,7 +1755,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D613",
+      "sourceMap": "D613"
     },
     {
       "map": "D614",
@@ -1387,7 +1765,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D614",
+      "sourceMap": "D614"
     },
     {
       "map": "D615",
@@ -1395,7 +1775,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D615",
+      "sourceMap": "D615"
     },
     {
       "map": "D616",
@@ -1403,7 +1785,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D616",
+      "sourceMap": "D616"
     },
     {
       "map": "D617",
@@ -1411,7 +1795,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D617",
+      "sourceMap": "D617"
     },
     {
       "map": "D618",
@@ -1419,7 +1805,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D618",
+      "sourceMap": "D618"
     },
     {
       "map": "D606",
@@ -1427,7 +1815,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D606",
+      "sourceMap": "D606"
     },
     {
       "map": "D607",
@@ -1435,7 +1825,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "D607",
+      "sourceMap": "D607"
     },
     {
       "map": "D608",
@@ -1443,79 +1835,101 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "D608",
+      "sourceMap": "D608"
     },
     {
       "map": "D609",
       "name": "石路小溪",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D609",
+      "sourceMap": "D609"
     },
     {
       "map": "D610",
       "name": "石棺材屋",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D610",
+      "sourceMap": "D610"
     },
     {
       "map": "D611",
       "name": "阴森石路",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D611",
+      "sourceMap": "D611"
     },
     {
       "map": "M001",
       "name": "未知暗殿",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "M001",
+      "sourceMap": "M001"
     },
     {
       "map": "E001",
       "name": "沃玛自然洞穴一层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E001",
+      "sourceMap": "E001"
     },
     {
       "map": "E002",
       "name": "沃玛自然洞穴二层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E002",
+      "sourceMap": "E002"
     },
     {
       "map": "E401",
       "name": "连接通道",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 110,
-      "height": 110
+      "height": 110,
+      "logicalMap": "E401",
+      "sourceMap": "E401"
     },
     {
       "map": "E402",
       "name": "连接通道",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E402",
+      "sourceMap": "E402"
     },
     {
       "map": "E403",
       "name": "连接通道",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E403",
+      "sourceMap": "E403"
     },
     {
       "map": "E404",
       "name": "连接通道",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E404",
+      "sourceMap": "E404"
     },
     {
       "map": "E601",
@@ -1523,7 +1937,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 150,
-      "height": 150
+      "height": 150,
+      "logicalMap": "E601",
+      "sourceMap": "E601"
     },
     {
       "map": "E602",
@@ -1531,7 +1947,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 150,
-      "height": 150
+      "height": 150,
+      "logicalMap": "E602",
+      "sourceMap": "E602"
     },
     {
       "map": "E603",
@@ -1539,7 +1957,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 210,
-      "height": 210
+      "height": 210,
+      "logicalMap": "E603",
+      "sourceMap": "E603"
     },
     {
       "map": "E604",
@@ -1547,7 +1967,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 150,
-      "height": 150
+      "height": 150,
+      "logicalMap": "E604",
+      "sourceMap": "E604"
     },
     {
       "map": "E605",
@@ -1555,7 +1977,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "E605",
+      "sourceMap": "E605"
     },
     {
       "map": "11",
@@ -1563,7 +1987,9 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 500,
-      "height": 500
+      "height": 500,
+      "logicalMap": "11",
+      "sourceMap": "11"
     },
     {
       "map": "12",
@@ -1571,7 +1997,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 350,
-      "height": 500
+      "height": 500,
+      "logicalMap": "12",
+      "sourceMap": "12"
     },
     {
       "map": "1001",
@@ -1579,7 +2007,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 22,
-      "height": 22
+      "height": 22,
+      "logicalMap": "1001",
+      "sourceMap": "1001"
     },
     {
       "map": "1002",
@@ -1587,7 +2017,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 24,
-      "height": 24
+      "height": 24,
+      "logicalMap": "1002",
+      "sourceMap": "1002"
     },
     {
       "map": "1003",
@@ -1595,7 +2027,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 26
+      "height": 26,
+      "logicalMap": "1003",
+      "sourceMap": "1003"
     },
     {
       "map": "1004",
@@ -1603,7 +2037,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 26
+      "height": 26,
+      "logicalMap": "1004",
+      "sourceMap": "1004"
     },
     {
       "map": "1005",
@@ -1611,7 +2047,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 26
+      "height": 26,
+      "logicalMap": "1005",
+      "sourceMap": "1005"
     },
     {
       "map": "1006",
@@ -1619,7 +2057,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 28,
-      "height": 20
+      "height": 20,
+      "logicalMap": "1006",
+      "sourceMap": "1006"
     },
     {
       "map": "1007",
@@ -1627,13 +2067,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 24
+      "height": 24,
+      "logicalMap": "1007",
+      "sourceMap": "1007"
     },
     {
       "map": "0123A|0123",
       "name": "房屋",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "0123A",
+      "sourceMap": "0123"
     },
     {
       "map": "D10011",
@@ -1641,7 +2085,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D10011",
+      "sourceMap": "D10011"
     },
     {
       "map": "D10012",
@@ -1649,7 +2095,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D10012",
+      "sourceMap": "D10012"
     },
     {
       "map": "D10013",
@@ -1657,7 +2105,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D10013",
+      "sourceMap": "D10013"
     },
     {
       "map": "D1002",
@@ -1665,19 +2115,25 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D1002",
+      "sourceMap": "D1002"
     },
     {
       "map": "D10031",
       "name": "左回廊",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D10031",
+      "sourceMap": "D10031"
     },
     {
       "map": "D10032",
       "name": "右回廊",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D10032",
+      "sourceMap": "D10032"
     },
     {
       "map": "D1004",
@@ -1685,7 +2141,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D1004",
+      "sourceMap": "D1004"
     },
     {
       "map": "D10051",
@@ -1693,7 +2151,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D10051",
+      "sourceMap": "D10051"
     },
     {
       "map": "D10052",
@@ -1701,7 +2161,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D10052",
+      "sourceMap": "D10052"
     },
     {
       "map": "D10061",
@@ -1709,7 +2171,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 30,
-      "height": 30
+      "height": 30,
+      "logicalMap": "D10061",
+      "sourceMap": "D10061"
     },
     {
       "map": "D10062",
@@ -1717,7 +2181,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 40,
-      "height": 40
+      "height": 40,
+      "logicalMap": "D10062",
+      "sourceMap": "D10062"
     },
     {
       "map": "T1341",
@@ -1725,7 +2191,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "T1341",
+      "sourceMap": "T1341"
     },
     {
       "map": "T1342",
@@ -1733,7 +2201,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "T1342",
+      "sourceMap": "T1342"
     },
     {
       "map": "T1343",
@@ -1741,7 +2211,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "T1343",
+      "sourceMap": "T1343"
     },
     {
       "map": "4",
@@ -1749,13 +2221,17 @@
       "clientInstalled": true,
       "sourceAvailable": true,
       "width": 500,
-      "height": 500
+      "height": 500,
+      "logicalMap": "4",
+      "sourceMap": "4"
     },
     {
       "map": "B341",
       "name": "封魔皇宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B341",
+      "sourceMap": "B341"
     },
     {
       "map": "M101",
@@ -1763,7 +2239,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 51,
-      "height": 55
+      "height": 55,
+      "logicalMap": "M101",
+      "sourceMap": "M101"
     },
     {
       "map": "M100",
@@ -1771,43 +2249,57 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "M100",
+      "sourceMap": "M100"
     },
     {
       "map": "B342",
       "name": "武器店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B342",
+      "sourceMap": "B342"
     },
     {
       "map": "B343",
       "name": "书药店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B343",
+      "sourceMap": "B343"
     },
     {
       "map": "B344",
       "name": "首饰店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B344",
+      "sourceMap": "B344"
     },
     {
       "map": "B345",
       "name": "服装店",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B345",
+      "sourceMap": "B345"
     },
     {
       "map": "B346",
       "name": "监狱",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B346",
+      "sourceMap": "B346"
     },
     {
       "map": "B347",
       "name": "仓库",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "B347",
+      "sourceMap": "B347"
     },
     {
       "map": "D10053",
@@ -1815,7 +2307,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D10053",
+      "sourceMap": "D10053"
     },
     {
       "map": "D10054",
@@ -1823,7 +2317,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D10054",
+      "sourceMap": "D10054"
     },
     {
       "map": "D2003",
@@ -1831,7 +2327,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2003",
+      "sourceMap": "D2003"
     },
     {
       "map": "D2000",
@@ -1839,7 +2337,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2000",
+      "sourceMap": "D2000"
     },
     {
       "map": "D2001",
@@ -1847,7 +2347,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2001",
+      "sourceMap": "D2001"
     },
     {
       "map": "D2002",
@@ -1855,7 +2357,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "D2002",
+      "sourceMap": "D2002"
     },
     {
       "map": "D2004",
@@ -1863,7 +2367,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2004",
+      "sourceMap": "D2004"
     },
     {
       "map": "D2005",
@@ -1871,7 +2377,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2005",
+      "sourceMap": "D2005"
     },
     {
       "map": "D2006",
@@ -1879,7 +2387,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2006",
+      "sourceMap": "D2006"
     },
     {
       "map": "D2007",
@@ -1887,7 +2397,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2007",
+      "sourceMap": "D2007"
     },
     {
       "map": "D2008",
@@ -1895,7 +2407,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2008",
+      "sourceMap": "D2008"
     },
     {
       "map": "D2009",
@@ -1903,7 +2417,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2009",
+      "sourceMap": "D2009"
     },
     {
       "map": "D2010",
@@ -1911,7 +2427,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2010",
+      "sourceMap": "D2010"
     },
     {
       "map": "D2011",
@@ -1919,7 +2437,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2011",
+      "sourceMap": "D2011"
     },
     {
       "map": "D2012",
@@ -1927,7 +2447,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2012",
+      "sourceMap": "D2012"
     },
     {
       "map": "D2013",
@@ -1935,7 +2457,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2013",
+      "sourceMap": "D2013"
     },
     {
       "map": "5",
@@ -1943,7 +2467,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 800,
-      "height": 800
+      "height": 800,
+      "logicalMap": "5",
+      "sourceMap": "5"
     },
     {
       "map": "B351",
@@ -1951,7 +2477,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 20
+      "height": 20,
+      "logicalMap": "B351",
+      "sourceMap": "B351"
     },
     {
       "map": "B352",
@@ -1959,7 +2487,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 20
+      "height": 20,
+      "logicalMap": "B352",
+      "sourceMap": "B352"
     },
     {
       "map": "B353",
@@ -1967,7 +2497,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 24,
-      "height": 28
+      "height": 28,
+      "logicalMap": "B353",
+      "sourceMap": "B353"
     },
     {
       "map": "B354",
@@ -1975,7 +2507,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 26,
-      "height": 26
+      "height": 26,
+      "logicalMap": "B354",
+      "sourceMap": "B354"
     },
     {
       "map": "B355",
@@ -1983,7 +2517,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 20,
-      "height": 20
+      "height": 20,
+      "logicalMap": "B355",
+      "sourceMap": "B355"
     },
     {
       "map": "B356",
@@ -1991,7 +2527,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 24,
-      "height": 24
+      "height": 24,
+      "logicalMap": "B356",
+      "sourceMap": "B356"
     },
     {
       "map": "D2051",
@@ -1999,7 +2537,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2051",
+      "sourceMap": "D2051"
     },
     {
       "map": "D2052",
@@ -2007,7 +2547,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2052",
+      "sourceMap": "D2052"
     },
     {
       "map": "D2053",
@@ -2015,7 +2557,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2053",
+      "sourceMap": "D2053"
     },
     {
       "map": "D2061",
@@ -2023,7 +2567,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2061",
+      "sourceMap": "D2061"
     },
     {
       "map": "D2062",
@@ -2031,7 +2577,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2062",
+      "sourceMap": "D2062"
     },
     {
       "map": "D2063",
@@ -2039,7 +2587,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2063",
+      "sourceMap": "D2063"
     },
     {
       "map": "D2064",
@@ -2047,7 +2597,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2064",
+      "sourceMap": "D2064"
     },
     {
       "map": "D2067",
@@ -2055,7 +2607,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2067",
+      "sourceMap": "D2067"
     },
     {
       "map": "D2070",
@@ -2063,7 +2617,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 50,
-      "height": 50
+      "height": 50,
+      "logicalMap": "D2070",
+      "sourceMap": "D2070"
     },
     {
       "map": "D2071",
@@ -2071,7 +2627,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2071",
+      "sourceMap": "D2071"
     },
     {
       "map": "D2072",
@@ -2079,7 +2637,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2072",
+      "sourceMap": "D2072"
     },
     {
       "map": "D2073",
@@ -2087,7 +2647,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D2073",
+      "sourceMap": "D2073"
     },
     {
       "map": "D2075",
@@ -2095,13 +2657,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "D2075",
+      "sourceMap": "D2075"
     },
     {
       "map": "D2076",
       "name": "牛魔寺庙五层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D2076",
+      "sourceMap": "D2076"
     },
     {
       "map": "D2078",
@@ -2109,7 +2675,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2078",
+      "sourceMap": "D2078"
     },
     {
       "map": "D2079",
@@ -2117,43 +2685,57 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 100,
-      "height": 100
+      "height": 100,
+      "logicalMap": "D2079",
+      "sourceMap": "D2079"
     },
     {
       "map": "H001",
       "name": "幻境一层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H001",
+      "sourceMap": "H001"
     },
     {
       "map": "H002",
       "name": "幻境二层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H002",
+      "sourceMap": "H002"
     },
     {
       "map": "H003",
       "name": "幻境三层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H003",
+      "sourceMap": "H003"
     },
     {
       "map": "H004",
       "name": "幻境四层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H004",
+      "sourceMap": "H004"
     },
     {
       "map": "H005",
       "name": "幻境五层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H005",
+      "sourceMap": "H005"
     },
     {
       "map": "H006",
       "name": "幻境六层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H006",
+      "sourceMap": "H006"
     },
     {
       "map": "H007",
@@ -2161,157 +2743,209 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "H007",
+      "sourceMap": "H007"
     },
     {
       "map": "T1061",
       "name": "幻境迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T1061",
+      "sourceMap": "T1061"
     },
     {
       "map": "T2061",
       "name": "幻境迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T2061",
+      "sourceMap": "T2061"
     },
     {
       "map": "T2062",
       "name": "幻境迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T2062",
+      "sourceMap": "T2062"
     },
     {
       "map": "T2063",
       "name": "幻境迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T2063",
+      "sourceMap": "T2063"
     },
     {
       "map": "T3061",
       "name": "幻境迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T3061",
+      "sourceMap": "T3061"
     },
     {
       "map": "T3062",
       "name": "幻境迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T3062",
+      "sourceMap": "T3062"
     },
     {
       "map": "T3063",
       "name": "幻境迷宫",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T3063",
+      "sourceMap": "T3063"
     },
     {
       "map": "H008",
       "name": "幻境八层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H008",
+      "sourceMap": "H008"
     },
     {
       "map": "H009",
       "name": "幻境九层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H009",
+      "sourceMap": "H009"
     },
     {
       "map": "H010",
       "name": "屠龙殿",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H010",
+      "sourceMap": "H010"
     },
     {
       "map": "H106",
       "name": "王者禁地",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H106",
+      "sourceMap": "H106"
     },
     {
       "map": "T232",
       "name": "钳虫巢穴",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T232",
+      "sourceMap": "T232"
     },
     {
       "map": "T218",
       "name": "死亡神殿",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T218",
+      "sourceMap": "T218"
     },
     {
       "map": "T339",
       "name": "地狱烈焰",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T339",
+      "sourceMap": "T339"
     },
     {
       "map": "T219",
       "name": "深渊魔域",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T219",
+      "sourceMap": "T219"
     },
     {
       "map": "T315",
       "name": "堕落坟场",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T315",
+      "sourceMap": "T315"
     },
     {
       "map": "T140",
       "name": "困惑殿堂",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T140",
+      "sourceMap": "T140"
     },
     {
       "map": "H201",
       "name": "沙巴克影之道一层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H201",
+      "sourceMap": "H201"
     },
     {
       "map": "H202",
       "name": "沙巴克影之道二层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H202",
+      "sourceMap": "H202"
     },
     {
       "map": "H203",
       "name": "沙巴克影之道三层",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H203",
+      "sourceMap": "H203"
     },
     {
       "map": "H204",
       "name": "沙巴克藏宝阁",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "H204",
+      "sourceMap": "H204"
     },
     {
       "map": "D619",
       "name": "绝望悬崖",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "D619",
+      "sourceMap": "D619"
     },
     {
       "map": "F013",
       "name": "魔龙地缝",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "F013",
+      "sourceMap": "F013"
     },
     {
       "map": "F011",
       "name": "祖玛圣地",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "F011",
+      "sourceMap": "F011"
     },
     {
       "map": "T3283",
       "name": "石墓祭坛",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "T3283",
+      "sourceMap": "T3283"
     },
     {
       "map": "D2077",
@@ -2319,7 +2953,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 400,
-      "height": 400
+      "height": 400,
+      "logicalMap": "D2077",
+      "sourceMap": "D2077"
     },
     {
       "map": "D2066",
@@ -2327,13 +2963,17 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 300,
-      "height": 300
+      "height": 300,
+      "logicalMap": "D2066",
+      "sourceMap": "D2066"
     },
     {
       "map": "F009",
       "name": "赤月秘境",
       "clientInstalled": false,
-      "sourceAvailable": false
+      "sourceAvailable": true,
+      "logicalMap": "F009",
+      "sourceMap": "F009"
     },
     {
       "map": "D10071",
@@ -2341,7 +2981,9 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 40,
-      "height": 40
+      "height": 40,
+      "logicalMap": "D10071",
+      "sourceMap": "D10071"
     },
     {
       "map": "F007",
@@ -2349,7 +2991,11 @@
       "clientInstalled": false,
       "sourceAvailable": true,
       "width": 200,
-      "height": 200
+      "height": 200,
+      "logicalMap": "F007",
+      "sourceMap": "F007"
     }
-  ]
+  ],
+  "sourceAvailable": 322,
+  "sourceScan": "All local Shanda Mir 2 map sets; map aliases split into logical map ID and source filename"
 }

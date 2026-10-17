@@ -1,0 +1,11 @@
+--- a/src/M2Server/Player/PlayObject.Operate.cs
++++ b/src/M2Server/Player/PlayObject.Operate.cs
+@@ -363,7 +363,7 @@
+         private void ClientOpenDoor(int nX, int nY)
+         {
+             MapDoor door = default;
+-            if (Envir.GetDoor(nX, nY, ref door))
++            if (Math.Abs(CurrX - nX) > 3 || Math.Abs(CurrY - nY) > 3 || !Envir.GetDoor(nX, nY, ref door))
+             {
+                 return;
+             }

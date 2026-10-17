@@ -1,0 +1,26 @@
+[
+  {
+    "name": "僵尸3",
+    "key": "42-51",
+    "status": "exported",
+    "actionTable": 20
+  },
+  {
+    "name": "僵尸4",
+    "key": "42-52",
+    "status": "exported",
+    "actionTable": 20
+  },
+  {
+    "name": "僵尸5",
+    "key": "42-53",
+    "status": "exported",
+    "actionTable": 20
+  },
+  {
+    "name": "弓箭手",
+    "key": "45-71",
+    "status": "exported",
+    "actionTable": 19
+  }
+]

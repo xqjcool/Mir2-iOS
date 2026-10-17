@@ -1,0 +1,72 @@
+[
+  {
+    "shop": "DM001",
+    "dialogueAndStock": true,
+    "roundTrip": true,
+    "evidence": [
+      {
+        "map": "D002",
+        "position": [
+          191,
+          232
+        ],
+        "packet": 51
+      },
+      {
+        "map": "DM001",
+        "position": [
+          5,
+          10
+        ],
+        "packet": 634
+      },
+      {
+        "shop": "DM001",
+        "npc": [
+          4,
+          6
+        ],
+        "dialogue": true,
+        "buyList": true
+      },
+      {
+        "map": "D002",
+        "position": [
+          191,
+          232
+        ],
+        "packet": 634
+      },
+      {
+        "map": "DM001",
+        "position": [
+          5,
+          10
+        ],
+        "packet": 634
+      }
+    ]
+  },
+  {
+    "map": "E404",
+    "observed": [
+      [
+        40,
+        40
+      ],
+      [
+        42,
+        51
+      ],
+      [
+        42,
+        52
+      ],
+      [
+        42,
+        53
+      ]
+    ],
+    "allObservedAppearancesInstalled": true
+  }
+]
