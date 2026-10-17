@@ -1,7 +1,7 @@
 {
   "source": "mirbeta/MirServer configuration snapshot; includes non-1.76 custom content",
   "monsterTypes": 207,
-  "typesWithUnresolvedDependencies": 146,
+  "typesWithUnresolvedDependencies": 84,
   "monsters": [
     {
       "name": "僵尸1",
@@ -357,7 +357,6 @@
         "HP强化水",
         "MP强化水",
         "疾风神水",
-        "罗刹",
         "道力神水"
       ]
     },
@@ -369,9 +368,7 @@
         "H009"
       ],
       "appearance": "21-92",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -382,9 +379,7 @@
         "H009"
       ],
       "appearance": "21-93",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -394,7 +389,6 @@
       ],
       "appearance": "19-37",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -406,7 +400,6 @@
       ],
       "appearance": "19-70",
       "issues": [
-        "missing_client_animation",
         "missing_drop_item_definitions"
       ],
       "missingItems": [
@@ -434,7 +427,6 @@
       ],
       "appearance": "19-90",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -476,9 +468,7 @@
         "D504"
       ],
       "appearance": "19-46",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -491,9 +481,7 @@
         "D504"
       ],
       "appearance": "19-46",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -542,7 +530,6 @@
       ],
       "appearance": "19-49",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -612,9 +599,7 @@
         "Q004"
       ],
       "appearance": "19-152",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -623,9 +608,7 @@
         "M001"
       ],
       "appearance": "19-152",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -637,9 +620,7 @@
         "Q004"
       ],
       "appearance": "19-152",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -686,9 +667,7 @@
         "M001"
       ],
       "appearance": "19-91",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -698,7 +677,6 @@
       ],
       "appearance": "19-91",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -725,9 +703,7 @@
         "H004"
       ],
       "appearance": "19-82",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -750,9 +726,7 @@
         "H004"
       ],
       "appearance": "19-82",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -897,9 +871,7 @@
         "T140"
       ],
       "appearance": "21-92",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -910,9 +882,7 @@
         "T219"
       ],
       "appearance": "52-93",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1034,9 +1004,7 @@
         "T1343"
       ],
       "appearance": "22-114",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1050,9 +1018,7 @@
         "H009"
       ],
       "appearance": "22-114",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1074,9 +1040,7 @@
         "H009"
       ],
       "appearance": "19-113",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1171,9 +1135,7 @@
         "T3283"
       ],
       "appearance": "52-39",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1182,9 +1144,7 @@
         "H106"
       ],
       "appearance": "52-39",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1352,7 +1312,6 @@
       ],
       "appearance": "19-48",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -1669,9 +1628,7 @@
         "3"
       ],
       "appearance": "19-70",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1680,9 +1637,7 @@
         "3"
       ],
       "appearance": "19-44",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1732,9 +1687,7 @@
         "T3283"
       ],
       "appearance": "19-112",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1758,9 +1711,7 @@
         "M100C"
       ],
       "appearance": "19-112",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1769,9 +1720,7 @@
         "M001"
       ],
       "appearance": "19-112",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1780,9 +1729,7 @@
         "3"
       ],
       "appearance": "19-45",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1823,9 +1770,7 @@
         "H204"
       ],
       "appearance": "47-62",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1853,9 +1798,7 @@
         "H203"
       ],
       "appearance": "47-62",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1865,9 +1808,7 @@
         "D505"
       ],
       "appearance": "47-62",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1889,9 +1830,7 @@
         "H204"
       ],
       "appearance": "47-62",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -1984,7 +1923,6 @@
       ],
       "appearance": "49-63",
       "issues": [
-        "missing_client_animation",
         "missing_drop_item_definitions"
       ],
       "missingItems": [
@@ -2019,9 +1957,7 @@
         "H204"
       ],
       "appearance": "47-61",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2049,9 +1985,7 @@
         "H203"
       ],
       "appearance": "47-61",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2073,9 +2007,7 @@
         "H204"
       ],
       "appearance": "47-61",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2109,9 +2041,7 @@
         "M001"
       ],
       "appearance": "18-27",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2120,9 +2050,7 @@
         "M001"
       ],
       "appearance": "18-27",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2216,9 +2144,7 @@
         "T3283"
       ],
       "appearance": "19-110",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2256,9 +2182,7 @@
         "M100C"
       ],
       "appearance": "19-110",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2300,9 +2224,7 @@
         "T3283"
       ],
       "appearance": "19-110",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2323,9 +2245,7 @@
         "3"
       ],
       "appearance": "19-43",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2348,9 +2268,7 @@
         "H009"
       ],
       "appearance": "19-117",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2364,9 +2282,7 @@
         "H009"
       ],
       "appearance": "19-117",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2376,7 +2292,6 @@
       ],
       "appearance": "45-72",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -2492,7 +2407,6 @@
       ],
       "appearance": "19-162",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -2522,9 +2436,7 @@
         "H004"
       ],
       "appearance": "19-73",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2547,9 +2459,7 @@
         "H004"
       ],
       "appearance": "19-73",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2559,7 +2469,6 @@
       ],
       "appearance": "19-73",
       "issues": [
-        "missing_client_animation",
         "missing_drop_item_definitions"
       ],
       "missingItems": [
@@ -2576,7 +2485,6 @@
       ],
       "appearance": "31-42",
       "issues": [
-        "missing_client_animation",
         "missing_drop_table"
       ],
       "missingItems": []
@@ -2657,9 +2565,7 @@
         "T3283"
       ],
       "appearance": "19-130",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2688,9 +2594,7 @@
         "M100"
       ],
       "appearance": "19-130",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2727,9 +2631,7 @@
         "T3283"
       ],
       "appearance": "19-130",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2745,9 +2647,7 @@
         "H009"
       ],
       "appearance": "19-115",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2760,9 +2660,7 @@
         "H009"
       ],
       "appearance": "19-115",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2778,9 +2676,7 @@
         "H009"
       ],
       "appearance": "19-115",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2793,9 +2689,7 @@
         "H009"
       ],
       "appearance": "19-115",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2906,9 +2800,7 @@
         "H004"
       ],
       "appearance": "19-81",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2931,9 +2823,7 @@
         "H004"
       ],
       "appearance": "19-81",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2950,9 +2840,7 @@
         "T3283"
       ],
       "appearance": "19-164",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -2961,9 +2849,7 @@
         "M001"
       ],
       "appearance": "19-164",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3012,9 +2898,7 @@
         "M001"
       ],
       "appearance": "19-121",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3023,9 +2907,7 @@
         "M001"
       ],
       "appearance": "19-121",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3085,9 +2967,7 @@
         "H009"
       ],
       "appearance": "19-114",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3114,9 +2994,7 @@
         "H004"
       ],
       "appearance": "19-120",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3138,9 +3016,7 @@
         "H004"
       ],
       "appearance": "19-120",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3640,9 +3516,7 @@
         "T3283"
       ],
       "appearance": "19-74",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3689,9 +3563,7 @@
         "M100"
       ],
       "appearance": "19-74",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3750,9 +3622,7 @@
         "T3283"
       ],
       "appearance": "19-111",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3790,9 +3660,7 @@
         "T3283"
       ],
       "appearance": "19-111",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3834,9 +3702,7 @@
         "T3283"
       ],
       "appearance": "19-111",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {
@@ -3858,9 +3724,7 @@
         "H009"
       ],
       "appearance": "19-118",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     }
   ]

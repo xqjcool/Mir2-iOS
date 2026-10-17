@@ -1,0 +1,20 @@
+--- a/src/M2Server/Player/PlayObject.Operate.cs
++++ b/src/M2Server/Player/PlayObject.Operate.cs
+@@ -942,10 +942,16 @@
+                         SendDefMessage(Messages.SM_DEALTRY_FAIL, 0, 0, 0, 0);
+                         return;
+                     }
+-                    if (targetPlayObject.GetPoseCreate() == this && !targetPlayObject.Dealing)
++                    if (!targetPlayObject.Dealing && !Death && !targetPlayObject.Death &&
++                        Math.Abs(targetPlayObject.CurrX - CurrX) <= 1 && Math.Abs(targetPlayObject.CurrY - CurrY) <= 1)
+                     {
+                         if (targetPlayObject.AllowDeal && targetPlayObject.IsCanDeal)
+                         {
++                            // Touch trade: the named adjacent target need not manually pre-face the initiator.
++                            // AllowDeal/IsCanDeal and both final confirmations remain authoritative.
++                            targetPlayObject.Dir = (byte)((Dir + 4) % 8);
++                            targetPlayObject.SendRefMsg(Messages.RM_TURN, targetPlayObject.Dir,
++                                targetPlayObject.CurrX, targetPlayObject.CurrY, 0, "");
+                             targetPlayObject.SysMsg(ChrName + MessageSettings.OpenedDealMsg, MsgColor.Green, MsgType.Hint);
+                             SysMsg(targetPlayObject.ChrName + MessageSettings.OpenedDealMsg, MsgColor.Green, MsgType.Hint);
+                             this.OpenDealDlg(targetPlayObject);

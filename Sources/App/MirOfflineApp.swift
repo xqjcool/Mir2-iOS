@@ -827,7 +827,7 @@ private struct PeerPlayerPanel:View {
                 Button("模式："+net.attackModeName) { net.cycleAttackMode() }
             }.buttonStyle(.bordered).frame(minHeight:44).disabled(net.tradeBusy)
             Text("锁定后用右侧技能施法；点击模式切换。安全区及和平模式等限制由服务端判定。").font(.caption)
-            Text("交易需双方相邻、面对面；请双方分别点“面向对方”。").font(.caption)
+            Text("相邻后点击发起交易，服务器自动转向；双方核对物品后各自确认。").font(.caption)
             Text(net.peerMessage).font(.caption).foregroundColor(.yellow)
             if !net.inspectedName.isEmpty {
                 Text("\(net.inspectedName) 的装备 · \(net.inspectedGuild)").font(.headline)

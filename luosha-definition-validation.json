@@ -1,0 +1,18 @@
+{
+  "source": "cjlaaa/Mir2-GeeM2 StdItems row 284",
+  "fieldMapping": "OpenMir2 GameSrv/DB/MySqlDB.cs",
+  "record": [
+    "1001",
+    "罗刹",
+    "5",
+    "7",
+    "30",
+    "40",
+    "15",
+    "0",
+    "15"
+  ],
+  "iconAndGroundSprite": 40,
+  "serverReloadPending": false,
+  "loadedItemCount": 1001
+}

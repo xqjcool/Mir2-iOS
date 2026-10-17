@@ -97,7 +97,7 @@ final class OnlineScene: SKScene {
         me.direction=dir
         if trade {
             tradeIntent=(target,ProcessInfo.processInfo.systemUptime+15);tradeTurnConfirmed=false
-            net.peerMessage="正在转向；请对方点击面向或交易，双方面对面后自动发起"
+            net.peerMessage="正在转向，服务器确认后发起交易"
         } else { net.peerMessage="已面向对方；双方相邻并面对面即可交易" }
     }
     private struct WorldNPC:Decodable { let x:Int;let y:Int;let name:String }
@@ -669,7 +669,7 @@ final class OnlineScene: SKScene {
             } else if tradeTurnConfirmed,let id=playerID,let me=actors[id],let other=actors[intent.target.id],!me.dead,!other.dead {
                 let dx=other.cell.x-me.cell.x,dy=other.cell.y-me.cell.y
                 if max(abs(dx),abs(dy)) != 1 { tradeIntent=nil;net.peerMessage="对方已走开，请相邻后再交易" }
-                else if let dir=MirTouchInput.direction(x:Double(dx),y:Double(dy)),me.direction==dir,other.direction==(dir+4)%8 {
+                else if let dir=MirTouchInput.direction(x:Double(dx),y:Double(dy)),me.direction==dir {
                     tradeIntent=nil;net.requestPeerTrade(name:other.displayName)
                 }
             }
