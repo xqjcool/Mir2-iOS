@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "wrong peer direction refused",
+    "both facing opens both trade windows",
+    "cancel without exchanging items",
+    "test positions restored"
+  ],
+  "note": "Protocol clients; iPhone UI not tested"
+}

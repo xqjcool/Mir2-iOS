@@ -1,6 +1,6 @@
 {
   "source": "mirbeta/MirServer",
-  "installed": 21,
+  "installed": 26,
   "total": 322,
   "maps": [
     {
@@ -688,7 +688,7 @@
     {
       "map": "1",
       "name": "沃玛森林",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 600,
       "height": 600,
@@ -698,7 +698,7 @@
     {
       "map": "D021",
       "name": "沃玛寺庙入口",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
       "height": 100,
@@ -708,7 +708,7 @@
     {
       "map": "D022",
       "name": "沃玛寺庙一层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 500,
       "height": 500,
@@ -718,7 +718,7 @@
     {
       "map": "D023",
       "name": "沃玛寺庙二层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
       "height": 400,
@@ -728,7 +728,7 @@
     {
       "map": "D024",
       "name": "沃玛教主大殿",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "logicalMap": "D024",
       "sourceMap": "D024"

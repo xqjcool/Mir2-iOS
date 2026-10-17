@@ -85,6 +85,8 @@ final class OnlineScene: SKScene {
         guard let actor=actors[target.id],!actor.monster,!actor.npc else { net.peerMessage="对方已离开视野";return }
         net.inspectPlayer(id:target.id,x:actor.cell.x+map.originX,y:actor.cell.y+map.originY)
     }
+    private var tradeIntent:(target:PlayerTarget,deadline:Double)?
+    private var tradeTurnConfirmed=false
     func face(_ target:PlayerTarget,trade:Bool=false) {
         guard pending==nil,!attackPending,let id=playerID,let me=actors[id],let other=actors[target.id],!other.dead else { net.peerMessage="请等待当前动作结束，或重新选择对方";return }
         let dx=other.cell.x-me.cell.x,dy=other.cell.y-me.cell.y
@@ -94,7 +96,8 @@ final class OnlineScene: SKScene {
         guard net.facePlayer(x:me.cell.x+map.originX,y:me.cell.y+map.originY,direction:dir) else { net.peerMessage="请稍候再试，正在等待上次动作结束";return }
         me.direction=dir
         if trade {
-            net.requestPeerTrade(name:other.displayName)
+            tradeIntent=(target,ProcessInfo.processInfo.systemUptime+15);tradeTurnConfirmed=false
+            net.peerMessage="正在转向；请对方点击面向或交易，双方面对面后自动发起"
         } else { net.peerMessage="已面向对方；双方相邻并面对面即可交易" }
     }
     private struct WorldNPC:Decodable { let x:Int;let y:Int;let name:String }
@@ -111,7 +114,7 @@ final class OnlineScene: SKScene {
         guard let provider=CGDataProvider(data:Data(bytes) as CFData),let image=CGImage(width:map.width,height:map.height,bitsPerComponent:8,bitsPerPixel:32,bytesPerRow:map.width*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGBitmapInfo(rawValue:CGImageAlphaInfo.last.rawValue),provider:provider,decode:nil,shouldInterpolate:false,intent:.defaultIntent) else { return nil }
         return UIImage(cgImage:image)
     }
-    func stopAutomation() { cancelAim();queuedGround=nil;queuedSkill=nil;queuedAttack=false;armedGroundSkill=nil;stickDirection=nil;autoAttack=false;attackHeld=false;pickupSweep=false;route=[];pathGeneration+=1;pathBusy=false }
+    func stopAutomation() { tradeIntent=nil;tradeTurnConfirmed=false;cancelAim();queuedGround=nil;queuedSkill=nil;queuedAttack=false;armedGroundSkill=nil;stickDirection=nil;autoAttack=false;attackHeld=false;pickupSweep=false;route=[];pathGeneration+=1;pathBusy=false }
     func joystick(x:Double,y:Double) {
         let direction=MirTouchInput.direction(x:x,y:y)
         if direction != nil { queuedAttack=false;queuedSkill=nil;queuedGround=nil;armedGroundSkill=nil;autoAttack=false;pickupSweep=false;route=[];pathGeneration+=1;pathBusy=false }
@@ -259,7 +262,7 @@ final class OnlineScene: SKScene {
         if let data=try? Data(contentsOf:root.appendingPathComponent("skill-effects.json")),let frames=try? JSONDecoder().decode([String:[String:SceneData.Frame]].self,from:data) { effectFrames=frames }
         backgroundColor = .black
         net.onPacket={ [weak self] in self?.packet($0) }
-        net.onWalkAck={ [weak self] in self?.accepted() }
+        net.onWalkAck={ [weak self] in self?.tradeTurnConfirmed=true;self?.accepted() }
         net.onWalkRejected={ [weak self] in self?.rejectAction() }
         net.onAttackAck={ [weak self] in
             guard let self=self else { return };self.attackPending=false
@@ -659,7 +662,19 @@ final class OnlineScene: SKScene {
         showPosition()
     }
     override func update(_ time:TimeInterval) {
-        net.autoDrink()
+        if let intent=tradeIntent {
+            if ProcessInfo.processInfo.systemUptime>intent.deadline || !net.online || net.dealOpen {
+                tradeIntent=nil
+                if !net.dealOpen { net.peerMessage="交易等待结束，请双方相邻后重新点击交易" }
+            } else if tradeTurnConfirmed,let id=playerID,let me=actors[id],let other=actors[intent.target.id],!me.dead,!other.dead {
+                let dx=other.cell.x-me.cell.x,dy=other.cell.y-me.cell.y
+                if max(abs(dx),abs(dy)) != 1 { tradeIntent=nil;net.peerMessage="对方已走开，请相邻后再交易" }
+                else if let dir=MirTouchInput.direction(x:Double(dx),y:Double(dy)),me.direction==dir,other.direction==(dir+4)%8 {
+                    tradeIntent=nil;net.requestPeerTrade(name:other.displayName)
+                }
+            }
+        }
+        if tradeIntent==nil { net.autoDrink() }
         if let id=playerID,let me=actors[id],let v=net.vitals {
             me.label.text="我 HP \(v.hp)/\(v.maxHP) MP \(v.mp)/\(v.maxMP)"
         }

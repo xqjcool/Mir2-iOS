@@ -1,0 +1,3867 @@
+{
+  "source": "mirbeta/MirServer configuration snapshot; includes non-1.76 custom content",
+  "monsterTypes": 207,
+  "typesWithUnresolvedDependencies": 146,
+  "monsters": [
+    {
+      "name": "僵尸1",
+      "maps": [
+        "4",
+        "D2001",
+        "D2002",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D411",
+        "D412",
+        "D413",
+        "D414",
+        "D415",
+        "D416",
+        "D421",
+        "D422",
+        "E402",
+        "E403",
+        "E404",
+        "E601",
+        "E602",
+        "E603",
+        "E604",
+        "E701",
+        "E702",
+        "H201"
+      ],
+      "appearance": "40-40",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸10",
+      "maps": [
+        "D2001",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D421",
+        "D422",
+        "E701",
+        "E702"
+      ],
+      "appearance": "40-40",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸2",
+      "maps": [
+        "4",
+        "D2000",
+        "D2001",
+        "D2002",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D411",
+        "D412",
+        "D413",
+        "D414",
+        "D415",
+        "D416",
+        "D421",
+        "D422",
+        "E402",
+        "E403",
+        "E404",
+        "E601",
+        "E602",
+        "E603",
+        "E604",
+        "E701",
+        "E702",
+        "H201"
+      ],
+      "appearance": "41-50",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸20",
+      "maps": [
+        "D2000",
+        "D2001",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D421",
+        "D422"
+      ],
+      "appearance": "41-50",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸3",
+      "maps": [
+        "D2000",
+        "D2001",
+        "D2002",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D411",
+        "D412",
+        "D413",
+        "D414",
+        "D415",
+        "D416",
+        "D421",
+        "D422",
+        "E402",
+        "E403",
+        "E404",
+        "E601",
+        "E602",
+        "E603",
+        "E604",
+        "E701",
+        "E702",
+        "H201"
+      ],
+      "appearance": "42-51",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸30",
+      "maps": [
+        "D2000",
+        "D2001",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D421",
+        "D422",
+        "E701"
+      ],
+      "appearance": "42-51",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸4",
+      "maps": [
+        "D2001",
+        "D2002",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D411",
+        "D412",
+        "D413",
+        "D414",
+        "D415",
+        "D416",
+        "D421",
+        "D422",
+        "E402",
+        "E403",
+        "E404",
+        "E601",
+        "E602",
+        "E603",
+        "E604",
+        "E701",
+        "E702",
+        "H201"
+      ],
+      "appearance": "42-52",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸40",
+      "maps": [
+        "D2001",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D421",
+        "D422",
+        "E702"
+      ],
+      "appearance": "42-52",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸5",
+      "maps": [
+        "D2001",
+        "D2002",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D411",
+        "D412",
+        "D413",
+        "D414",
+        "D415",
+        "D416",
+        "D421",
+        "D422",
+        "E402",
+        "E403",
+        "E404",
+        "E601",
+        "E602",
+        "E603",
+        "E604",
+        "E701",
+        "E702",
+        "H201"
+      ],
+      "appearance": "42-53",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "僵尸50",
+      "maps": [
+        "D2001",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D421",
+        "D422",
+        "E701",
+        "E702"
+      ],
+      "appearance": "42-53",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "剧毒蜘蛛",
+      "maps": [
+        "11",
+        "12"
+      ],
+      "appearance": "19-163",
+      "issues": [
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "千年树妖",
+      "maps": [
+        "4"
+      ],
+      "appearance": "34-141",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "半兽人",
+      "maps": [
+        "0",
+        "1",
+        "2",
+        "5"
+      ],
+      "appearance": "19-100",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "半兽勇士",
+      "maps": [
+        "11",
+        "4",
+        "M001"
+      ],
+      "appearance": "19-102",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "半兽勇士0",
+      "maps": [
+        "1"
+      ],
+      "appearance": "19-102",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "半兽勇士1",
+      "maps": [
+        "4",
+        "M001"
+      ],
+      "appearance": "19-102",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "半兽战士",
+      "maps": [
+        "1",
+        "11",
+        "4"
+      ],
+      "appearance": "19-101",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "半兽统领",
+      "maps": [
+        "11"
+      ],
+      "appearance": "19-102",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "罗刹",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "双头血魔",
+      "maps": [
+        "D10061",
+        "F009",
+        "H009"
+      ],
+      "appearance": "21-92",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "双头金刚",
+      "maps": [
+        "D10061",
+        "F009",
+        "H009"
+      ],
+      "appearance": "21-93",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "变异骷髅0",
+      "maps": [
+        "R001"
+      ],
+      "appearance": "19-37",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "地狱犬",
+      "maps": [
+        "H106"
+      ],
+      "appearance": "19-70",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "地藏魔王",
+      "maps": [
+        "H204"
+      ],
+      "appearance": "72-207",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "多角虫",
+      "maps": [
+        "3"
+      ],
+      "appearance": "19-90",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "多钩猫",
+      "maps": [
+        "0",
+        "1"
+      ],
+      "appearance": "17-25",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "多钩猫王",
+      "maps": [
+        "11",
+        "H106"
+      ],
+      "appearance": "17-25",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "大老鼠",
+      "maps": [
+        "D2012",
+        "D501",
+        "D502",
+        "D503",
+        "D504"
+      ],
+      "appearance": "19-46",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "大老鼠0",
+      "maps": [
+        "D2012",
+        "D501",
+        "D502",
+        "D503",
+        "D504"
+      ],
+      "appearance": "19-46",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "天狼蜘蛛",
+      "maps": [
+        "11",
+        "12",
+        "D10011",
+        "D10012",
+        "D10013",
+        "D1002",
+        "D10031",
+        "D10032",
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10071",
+        "F009",
+        "H009",
+        "T1341",
+        "T1342",
+        "T1343"
+      ],
+      "appearance": "19-119",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "天狼蜘蛛0",
+      "maps": [
+        "12",
+        "D1004",
+        "D10051",
+        "D10052",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-119",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "威思而小虫",
+      "maps": [
+        "3"
+      ],
+      "appearance": "19-49",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "宝箱",
+      "maps": [
+        "D2051",
+        "D2052",
+        "D2053",
+        "D2061",
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "H010"
+      ],
+      "appearance": "19-166",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "宝箱0",
+      "maps": [
+        "D2052",
+        "D2066",
+        "D2067",
+        "D2078",
+        "D2079",
+        "H010"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "尸王",
+      "maps": [
+        "D2001",
+        "D2002",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D411",
+        "D412",
+        "D413",
+        "D414",
+        "D415",
+        "D416",
+        "D422",
+        "M001",
+        "Q004"
+      ],
+      "appearance": "19-152",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "尸王1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "19-152",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "尸王2",
+      "maps": [
+        "D2002",
+        "H001",
+        "H201",
+        "Q004"
+      ],
+      "appearance": "19-152",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "山洞蝙蝠",
+      "maps": [
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012",
+        "D021",
+        "D022",
+        "D023",
+        "E001",
+        "E002",
+        "E401",
+        "E402",
+        "E403"
+      ],
+      "appearance": "19-80",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "山洞蝙蝠0",
+      "maps": [
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012",
+        "D021",
+        "D022",
+        "D023"
+      ],
+      "appearance": "19-80",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "巨型多角虫",
+      "maps": [
+        "3",
+        "M001"
+      ],
+      "appearance": "19-91",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "巨型多角虫1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "19-91",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "巨型蠕虫",
+      "maps": [
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "E604",
+        "E605",
+        "H004"
+      ],
+      "appearance": "19-82",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "巨型蠕虫0",
+      "maps": [
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "H004"
+      ],
+      "appearance": "19-82",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "幻影蜘蛛",
+      "maps": [
+        "D1002",
+        "D10031",
+        "D10032",
+        "D1004",
+        "D10051",
+        "D10052",
+        "F009",
+        "H009"
+      ],
+      "appearance": "35-132",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "弓箭护卫",
+      "maps": [
+        "0",
+        "1",
+        "11",
+        "2",
+        "3",
+        "D601",
+        "E605"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "恶灵僵尸",
+      "maps": [
+        "D2051",
+        "D2052",
+        "D2053",
+        "H001"
+      ],
+      "appearance": "19-190",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "恶灵僵尸0",
+      "maps": [
+        "D2051",
+        "D2052",
+        "D2053"
+      ],
+      "appearance": "19-190",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "恶灵尸王",
+      "maps": [
+        "D2051",
+        "D2052",
+        "D2053",
+        "H001",
+        "H201"
+      ],
+      "appearance": "64-191",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "恶灵尸王0",
+      "maps": [
+        "D2051",
+        "D2052",
+        "D2053"
+      ],
+      "appearance": "64-191",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "恶魔弓箭手",
+      "maps": [
+        "4"
+      ],
+      "appearance": "45-47",
+      "issues": [
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "掷斧骷髅",
+      "maps": [
+        "4",
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012",
+        "E001",
+        "E002",
+        "E401",
+        "E402",
+        "E403"
+      ],
+      "appearance": "15-21",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "掷斧骷髅0",
+      "maps": [
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012"
+      ],
+      "appearance": "15-21",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "暗之双头血魔",
+      "maps": [
+        "H106",
+        "H204",
+        "T140"
+      ],
+      "appearance": "21-92",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "暗之双头金刚",
+      "maps": [
+        "H106",
+        "H204",
+        "T219"
+      ],
+      "appearance": "52-93",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "暗之沃玛教主",
+      "maps": [
+        "H106",
+        "H204",
+        "T232"
+      ],
+      "appearance": "21-34",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "暗之牛魔王",
+      "maps": [
+        "D2077",
+        "D2079",
+        "H010"
+      ],
+      "appearance": "72-207",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "暗之虹魔教主",
+      "maps": [
+        "H106",
+        "H204",
+        "T218"
+      ],
+      "appearance": "62-122",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "暗之触龙神",
+      "maps": [
+        "H010"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "暗之骷髅精灵",
+      "maps": [
+        "H106",
+        "H204",
+        "T339"
+      ],
+      "appearance": "14-150",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "暗之黄泉教主",
+      "maps": [
+        "H106",
+        "H204",
+        "T315"
+      ],
+      "appearance": "63-196",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "暗黑战士",
+      "maps": [
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "22-28",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "暗黑战士0",
+      "maps": [
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "22-28",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "暴牙蜘蛛",
+      "maps": [
+        "12",
+        "D10011",
+        "D10012",
+        "D10013",
+        "D1002",
+        "D10031",
+        "D10032",
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10061",
+        "D10062",
+        "D10071",
+        "F009",
+        "H009",
+        "T1341",
+        "T1342",
+        "T1343"
+      ],
+      "appearance": "22-114",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "暴牙蜘蛛0",
+      "maps": [
+        "12",
+        "D1004",
+        "D10051",
+        "D10052",
+        "F009",
+        "H009"
+      ],
+      "appearance": "22-114",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "月魔蜘蛛",
+      "maps": [
+        "D10011",
+        "D10012",
+        "D10013",
+        "D1002",
+        "D10031",
+        "D10032",
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10061",
+        "D10062",
+        "D10071",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-113",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "森林雪人",
+      "maps": [
+        "0",
+        "1",
+        "5"
+      ],
+      "appearance": "10-1",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "楔蛾",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D2013",
+        "D501",
+        "D502",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5064",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "D515",
+        "D711",
+        "D712",
+        "D713",
+        "D714",
+        "D715",
+        "D716",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "D717",
+        "E702",
+        "E703",
+        "F011",
+        "H002",
+        "H006",
+        "H007",
+        "H008",
+        "H202",
+        "H203",
+        "H204",
+        "T1061",
+        "T2061",
+        "T2062",
+        "T2063",
+        "T3061",
+        "T3062",
+        "T3063",
+        "T3283"
+      ],
+      "appearance": "52-39",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "楔蛾王",
+      "maps": [
+        "H106"
+      ],
+      "appearance": "52-39",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "毒蜘蛛",
+      "maps": [
+        "0",
+        "2",
+        "5"
+      ],
+      "appearance": "19-163",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛勇士",
+      "maps": [
+        "D022",
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "19-32",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛勇士0",
+      "maps": [
+        "D022",
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "19-32",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛卫士",
+      "maps": [
+        "B341",
+        "D023",
+        "D024",
+        "F007",
+        "H003",
+        "H204",
+        "M001"
+      ],
+      "appearance": "19-151",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛卫士1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "19-151",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛卫士2",
+      "maps": [
+        "Q011",
+        "Q012",
+        "Q013",
+        "Q014",
+        "Q015"
+      ],
+      "appearance": "19-151",
+      "issues": [
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛战士",
+      "maps": [
+        "D022",
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "19-30",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛战士0",
+      "maps": [
+        "D022",
+        "D023",
+        "H003"
+      ],
+      "appearance": "19-30",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛战将",
+      "maps": [
+        "D022",
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "19-33",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛战将0",
+      "maps": [
+        "D022",
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "19-33",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛教主",
+      "maps": [
+        "D024",
+        "F007",
+        "M001"
+      ],
+      "appearance": "21-34",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛教主1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "21-34",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "沃玛教主9",
+      "maps": [
+        "B341"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "沙虫",
+      "maps": [
+        "3"
+      ],
+      "appearance": "19-48",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "洞蛆",
+      "maps": [
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012",
+        "D2000",
+        "D401",
+        "D402",
+        "D403",
+        "D404",
+        "D405",
+        "D406",
+        "D411",
+        "D412",
+        "D413",
+        "D414",
+        "D415",
+        "D416",
+        "D421",
+        "D422",
+        "E001",
+        "E002",
+        "E401",
+        "E402",
+        "E403"
+      ],
+      "appearance": "16-24",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "火焰沃玛",
+      "maps": [
+        "D022",
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "20-31",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "火焰沃玛0",
+      "maps": [
+        "D022",
+        "D023",
+        "D024",
+        "F007",
+        "H003"
+      ],
+      "appearance": "20-31",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "牛头魔",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "19-200",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛头魔0",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "H010"
+      ],
+      "appearance": "19-200",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔侍卫",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "19-203",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔侍卫0",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "H010"
+      ],
+      "appearance": "19-203",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔将军",
+      "maps": [
+        "D2075",
+        "D2076",
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "19-204",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔战士",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "19-202",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔战士0",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "H010"
+      ],
+      "appearance": "19-202",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔斗士",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "19-201",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔斗士0",
+      "maps": [
+        "D2071",
+        "D2072",
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "H010"
+      ],
+      "appearance": "19-201",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔法师",
+      "maps": [
+        "D2073",
+        "D2075",
+        "D2076",
+        "D2077",
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "70-205",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔法师0",
+      "maps": [
+        "D2075",
+        "D2076",
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "70-205",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔王",
+      "maps": [
+        "D2077",
+        "D2079",
+        "H010"
+      ],
+      "appearance": "72-207",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔祭司",
+      "maps": [
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "71-206",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "牛魔祭司0",
+      "maps": [
+        "D2078",
+        "D2079",
+        "F002",
+        "H010"
+      ],
+      "appearance": "71-206",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "狼",
+      "maps": [
+        "3"
+      ],
+      "appearance": "19-70",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "猎鹰",
+      "maps": [
+        "3"
+      ],
+      "appearance": "19-44",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "电僵王",
+      "maps": [
+        "H106",
+        "T1061",
+        "T2061",
+        "T2062",
+        "T2063",
+        "T3061",
+        "T3062",
+        "T3063"
+      ],
+      "appearance": "40-40",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "白野猪",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2006",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D714",
+        "D715",
+        "D717",
+        "H006",
+        "H204",
+        "M001",
+        "M100",
+        "M100A",
+        "M100B",
+        "M100C",
+        "T3283"
+      ],
+      "appearance": "19-112",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "白野猪0",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D717",
+        "H006",
+        "H204",
+        "M100",
+        "M100A",
+        "M100B",
+        "M100C"
+      ],
+      "appearance": "19-112",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "白野猪1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "19-112",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "盔甲虫",
+      "maps": [
+        "3"
+      ],
+      "appearance": "19-45",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "石墓尸王",
+      "maps": [
+        "D717",
+        "H006"
+      ],
+      "appearance": "41-50",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛卫士",
+      "maps": [
+        "D2012",
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5064",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203",
+        "H204"
+      ],
+      "appearance": "47-62",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛卫士0",
+      "maps": [
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203"
+      ],
+      "appearance": "47-62",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛卫士00",
+      "maps": [
+        "D504",
+        "D505"
+      ],
+      "appearance": "47-62",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛卫士3",
+      "maps": [
+        "D2012",
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203",
+        "H204"
+      ],
+      "appearance": "47-62",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛弓箭手",
+      "maps": [
+        "D2012",
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5064",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203",
+        "H204"
+      ],
+      "appearance": "45-47",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛弓箭手0",
+      "maps": [
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203"
+      ],
+      "appearance": "45-47",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛弓箭手3",
+      "maps": [
+        "D2012",
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203",
+        "H204"
+      ],
+      "appearance": "45-47",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛教主",
+      "maps": [
+        "D515",
+        "F011",
+        "H204"
+      ],
+      "appearance": "49-63",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "嗜血"
+      ]
+    },
+    {
+      "name": "祖玛雕像",
+      "maps": [
+        "D2012",
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5064",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203",
+        "H204"
+      ],
+      "appearance": "47-61",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛雕像0",
+      "maps": [
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203"
+      ],
+      "appearance": "47-61",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "祖玛雕像3",
+      "maps": [
+        "D2012",
+        "D2013",
+        "D503",
+        "D504",
+        "D505",
+        "D5072",
+        "D5073",
+        "D5074",
+        "F011",
+        "H007",
+        "H008",
+        "H202",
+        "H203",
+        "H204"
+      ],
+      "appearance": "47-61",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "神兽10",
+      "maps": [
+        "R001"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "神鹰",
+      "maps": [
+        "3"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "稻草人",
+      "maps": [
+        "0",
+        "5",
+        "M001"
+      ],
+      "appearance": "18-27",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "稻草人1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "18-27",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "粪虫",
+      "maps": [
+        "D022",
+        "D023"
+      ],
+      "appearance": "52-29",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "红蛇",
+      "maps": [
+        "2"
+      ],
+      "appearance": "19-36",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "红蛇王",
+      "maps": [
+        "H106"
+      ],
+      "appearance": "19-36",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "红野猪",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2003",
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D711",
+        "D712",
+        "D713",
+        "D714",
+        "D715",
+        "D716",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "E702",
+        "E703",
+        "H002",
+        "M100",
+        "M100A",
+        "M100B",
+        "M100C",
+        "T3283"
+      ],
+      "appearance": "19-110",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "红野猪0",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2003",
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D711",
+        "D712",
+        "D713",
+        "D714",
+        "D715",
+        "D71601",
+        "D71605",
+        "D71609",
+        "D71613",
+        "D71617",
+        "D71621",
+        "D71625",
+        "E703",
+        "H002",
+        "M100",
+        "M100A",
+        "M100B",
+        "M100C"
+      ],
+      "appearance": "19-110",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "红野猪3",
+      "maps": [
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D713",
+        "D714",
+        "D715",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "H006",
+        "T3283"
+      ],
+      "appearance": "19-110",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "练功师10",
+      "maps": [
+        "0111"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "羊",
+      "maps": [
+        "3"
+      ],
+      "appearance": "19-43",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "花吻蜘蛛",
+      "maps": [
+        "12",
+        "D10011",
+        "D10012",
+        "D10013",
+        "D1002",
+        "D10031",
+        "D10032",
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10061",
+        "D10062",
+        "D10071",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-117",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "花吻蜘蛛0",
+      "maps": [
+        "12",
+        "D1004",
+        "D10051",
+        "D10052",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-117",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "虎卫",
+      "maps": [
+        "1002"
+      ],
+      "appearance": "45-72",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "虎蛇",
+      "maps": [
+        "2"
+      ],
+      "appearance": "19-38",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "虎蛇王",
+      "maps": [
+        "H106"
+      ],
+      "appearance": "19-38",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "虹魔教主",
+      "maps": [
+        "D2013",
+        "H008",
+        "H204"
+      ],
+      "appearance": "62-122",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "虹魔教主0",
+      "maps": [
+        "F002"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "虹魔猪卫",
+      "maps": [
+        "D2008",
+        "D2013",
+        "F002",
+        "H008",
+        "H204"
+      ],
+      "appearance": "61-103",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "虹魔猪卫0",
+      "maps": [
+        "M100",
+        "M100A",
+        "M100B",
+        "M100C"
+      ],
+      "appearance": "61-103",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "虹魔蝎卫",
+      "maps": [
+        "D2011",
+        "D2013",
+        "F002",
+        "H008",
+        "H204"
+      ],
+      "appearance": "60-153",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "虹魔蝎卫0",
+      "maps": [
+        "D2011"
+      ],
+      "appearance": "60-153",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "蛤蟆",
+      "maps": [
+        "0"
+      ],
+      "appearance": "19-162",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "蜈蚣",
+      "maps": [
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "E602",
+        "E603",
+        "E604",
+        "E605",
+        "H001",
+        "H004"
+      ],
+      "appearance": "19-73",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "蜈蚣0",
+      "maps": [
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "H004"
+      ],
+      "appearance": "19-73",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "蜈蚣王",
+      "maps": [
+        "H106"
+      ],
+      "appearance": "19-73",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "蜜蜂",
+      "maps": [
+        "R001"
+      ],
+      "appearance": "31-42",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "蝎子",
+      "maps": [
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012"
+      ],
+      "appearance": "32-83",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "蝎子王",
+      "maps": [
+        "H106"
+      ],
+      "appearance": "32-83",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "蝎蛇",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D713",
+        "D714",
+        "D715",
+        "D716",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "E702",
+        "E703",
+        "H002",
+        "H006",
+        "M100",
+        "T3283"
+      ],
+      "appearance": "19-130",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "蝎蛇0",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D713",
+        "D714",
+        "D715",
+        "D71604",
+        "D71608",
+        "D71612",
+        "D71616",
+        "D71620",
+        "D71624",
+        "E702",
+        "E703",
+        "H002",
+        "H006",
+        "M100"
+      ],
+      "appearance": "19-130",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "蝎蛇3",
+      "maps": [
+        "D713",
+        "D714",
+        "D715",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "T3283"
+      ],
+      "appearance": "19-130",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "血僵尸",
+      "maps": [
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10061",
+        "D10062",
+        "D10071",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-115",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "血僵尸0",
+      "maps": [
+        "D1004",
+        "D10051",
+        "D10052",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-115",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "血巨人",
+      "maps": [
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10061",
+        "D10062",
+        "D10071",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-115",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "血巨人0",
+      "maps": [
+        "D1004",
+        "D10051",
+        "D10052",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-115",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "角蝇",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2003",
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D2013",
+        "D501",
+        "D502",
+        "D503",
+        "D504",
+        "D505",
+        "D5061",
+        "D5062",
+        "D5063",
+        "D5064",
+        "D5065",
+        "D5066",
+        "D5067",
+        "D5068",
+        "D5069",
+        "D5072",
+        "D5073",
+        "D5074",
+        "D515",
+        "D713",
+        "D714",
+        "D715",
+        "E702",
+        "E703",
+        "F011",
+        "H006",
+        "H202",
+        "H203",
+        "M100",
+        "T1061",
+        "T2061",
+        "T2062",
+        "T2063",
+        "T3061",
+        "T3062",
+        "T3063"
+      ],
+      "appearance": "43-41",
+      "issues": [
+        "missing_client_animation",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "触龙神",
+      "maps": [
+        "H010"
+      ],
+      "appearance": "33-140",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "赤月恶魔",
+      "maps": [
+        "D10062",
+        "D10071",
+        "H010"
+      ],
+      "appearance": "34-131",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "跳跳蜂",
+      "maps": [
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "E602",
+        "E603",
+        "E604",
+        "E605",
+        "H001",
+        "H004"
+      ],
+      "appearance": "19-81",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "跳跳蜂0",
+      "maps": [
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "H004"
+      ],
+      "appearance": "19-81",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "邪恶毒蛇",
+      "maps": [
+        "D10053",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D717",
+        "H006",
+        "M001",
+        "T3283"
+      ],
+      "appearance": "19-164",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "邪恶毒蛇1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "19-164",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "邪恶蜈蚣1",
+      "maps": [
+        "D717",
+        "T3283"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "嗜血"
+      ]
+    },
+    {
+      "name": "邪恶蜈蚣2",
+      "maps": [
+        "D606",
+        "D619"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "嗜血"
+      ]
+    },
+    {
+      "name": "邪恶钳虫",
+      "maps": [
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "H004",
+        "M001"
+      ],
+      "appearance": "19-121",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "邪恶钳虫1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "19-121",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "重装使者",
+      "maps": [
+        "H204",
+        "T1061"
+      ],
+      "appearance": "21-34",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "钉耙猫",
+      "maps": [
+        "0",
+        "1",
+        "5"
+      ],
+      "appearance": "17-26",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "钉耙猫王",
+      "maps": [
+        "11",
+        "H106"
+      ],
+      "appearance": "17-26",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "钢牙蜘蛛",
+      "maps": [
+        "D10011",
+        "D10012",
+        "D10013",
+        "D1002",
+        "D10031",
+        "D10032",
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10061",
+        "D10062",
+        "D10071",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-114",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "钳虫",
+      "maps": [
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "E602",
+        "E603",
+        "E604",
+        "E605",
+        "H001",
+        "H004"
+      ],
+      "appearance": "19-120",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "钳虫0",
+      "maps": [
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "H004"
+      ],
+      "appearance": "19-120",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "雪人王",
+      "maps": [
+        "11",
+        "H106"
+      ],
+      "appearance": "10-1",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "飞火流星",
+      "maps": [
+        "G003"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "食人花",
+      "maps": [
+        "0",
+        "2",
+        "5"
+      ],
+      "appearance": "13-10",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅",
+      "maps": [
+        "4",
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012",
+        "E001",
+        "E002",
+        "E401",
+        "E402",
+        "E403"
+      ],
+      "appearance": "14-20",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅0",
+      "maps": [
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012"
+      ],
+      "appearance": "14-20",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅刀斧手",
+      "maps": [
+        "D2061",
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "67-194",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅刀斧手0",
+      "maps": [
+        "D2061",
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "67-194",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅弓箭手",
+      "maps": [
+        "D2061",
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "67-195",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅弓箭手0",
+      "maps": [
+        "D2061",
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "67-195",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅战士",
+      "maps": [
+        "4",
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012",
+        "E001",
+        "E002",
+        "E401",
+        "E402",
+        "E403"
+      ],
+      "appearance": "14-22",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅战士0",
+      "maps": [
+        "D001",
+        "D002",
+        "D003",
+        "D011",
+        "D012"
+      ],
+      "appearance": "14-22",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅战将",
+      "maps": [
+        "4",
+        "D003",
+        "D012",
+        "E001",
+        "E002",
+        "E401",
+        "E402",
+        "E403"
+      ],
+      "appearance": "14-23",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅战将0",
+      "maps": [
+        "D003",
+        "D012"
+      ],
+      "appearance": "14-23",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅王",
+      "maps": [
+        "H106"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "HP强化水",
+        "MP强化水",
+        "疾风神水",
+        "道力神水"
+      ]
+    },
+    {
+      "name": "骷髅精灵",
+      "maps": [
+        "4",
+        "D003",
+        "H001",
+        "M001"
+      ],
+      "appearance": "14-150",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅精灵1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "14-150",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅锤兵",
+      "maps": [
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "66-192",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅锤兵0",
+      "maps": [
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "66-192",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅长枪兵",
+      "maps": [
+        "D2061",
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "67-193",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "骷髅长枪兵0",
+      "maps": [
+        "D2061",
+        "D2062",
+        "D2063",
+        "D2064",
+        "D2066",
+        "D2067",
+        "H005"
+      ],
+      "appearance": "67-193",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "魔龙刀兵",
+      "maps": [
+        "F013"
+      ],
+      "appearance": "19-213",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "魔龙射手",
+      "maps": [
+        "F013"
+      ],
+      "appearance": "45-215",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "魔龙教主2",
+      "maps": [
+        "F013"
+      ],
+      "appearance": null,
+      "issues": [
+        "missing_monster_definition"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "魔龙破甲兵",
+      "maps": [
+        "F013"
+      ],
+      "appearance": "19-214",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "鸡",
+      "maps": [
+        "0",
+        "M001"
+      ],
+      "appearance": "11-160",
+      "issues": [],
+      "missingItems": []
+    },
+    {
+      "name": "鸡1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "11-160",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "落魄神兵"
+      ]
+    },
+    {
+      "name": "鹰卫",
+      "maps": [
+        "12"
+      ],
+      "appearance": "45-71",
+      "issues": [
+        "missing_drop_table"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "鹿",
+      "maps": [
+        "0",
+        "5",
+        "M001"
+      ],
+      "appearance": "11-161",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "鹿血"
+      ]
+    },
+    {
+      "name": "鹿1",
+      "maps": [
+        "M001"
+      ],
+      "appearance": "11-161",
+      "issues": [
+        "missing_drop_item_definitions"
+      ],
+      "missingItems": [
+        "鹿茸",
+        "鹿血"
+      ]
+    },
+    {
+      "name": "黄泉教主",
+      "maps": [
+        "D2066",
+        "D2067",
+        "H005",
+        "H204"
+      ],
+      "appearance": "63-196",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "黑色恶蛆",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2003",
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "D711",
+        "D712",
+        "D713",
+        "D714",
+        "D715",
+        "D716",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "D717",
+        "E602",
+        "E603",
+        "E604",
+        "E605",
+        "E702",
+        "E703",
+        "H001",
+        "H004",
+        "H006",
+        "M100",
+        "T3283"
+      ],
+      "appearance": "19-74",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "黑色恶蛆0",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2003",
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D601",
+        "D602",
+        "D603",
+        "D604",
+        "D605",
+        "D606",
+        "D612",
+        "D613",
+        "D614",
+        "D615",
+        "D616",
+        "D617",
+        "D618",
+        "D619",
+        "D711",
+        "D712",
+        "D713",
+        "D714",
+        "D715",
+        "D71603",
+        "D71607",
+        "D71611",
+        "D71615",
+        "D71619",
+        "D71623",
+        "H004",
+        "M100"
+      ],
+      "appearance": "19-74",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "黑野猪",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2003",
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D711",
+        "D712",
+        "D713",
+        "D714",
+        "D715",
+        "D716",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "E702",
+        "E703",
+        "H002",
+        "M100",
+        "M100A",
+        "M100B",
+        "M100C",
+        "T3283"
+      ],
+      "appearance": "19-111",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "黑野猪0",
+      "maps": [
+        "D10053",
+        "D10054",
+        "D2003",
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D2008",
+        "D2009",
+        "D2010",
+        "D2011",
+        "D2012",
+        "D711",
+        "D712",
+        "D713",
+        "D714",
+        "D715",
+        "D71602",
+        "D71606",
+        "D71610",
+        "D71614",
+        "D71618",
+        "D71622",
+        "E702",
+        "H002",
+        "M100",
+        "M100A",
+        "M100B",
+        "M100C",
+        "T3283"
+      ],
+      "appearance": "19-111",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "黑野猪3",
+      "maps": [
+        "D2004",
+        "D2005",
+        "D2006",
+        "D2007",
+        "D713",
+        "D714",
+        "D715",
+        "D71601",
+        "D71602",
+        "D71603",
+        "D71604",
+        "D71605",
+        "D71606",
+        "D71607",
+        "D71608",
+        "D71609",
+        "D71610",
+        "D71611",
+        "D71612",
+        "D71613",
+        "D71614",
+        "D71615",
+        "D71616",
+        "D71617",
+        "D71618",
+        "D71619",
+        "D71620",
+        "D71621",
+        "D71622",
+        "D71623",
+        "D71624",
+        "D71625",
+        "H006",
+        "T3283"
+      ],
+      "appearance": "19-111",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    },
+    {
+      "name": "黑锷蜘蛛",
+      "maps": [
+        "D10011",
+        "D10012",
+        "D10013",
+        "D1002",
+        "D10031",
+        "D10032",
+        "D1004",
+        "D10051",
+        "D10052",
+        "D10061",
+        "D10062",
+        "D10071",
+        "F009",
+        "H009"
+      ],
+      "appearance": "19-118",
+      "issues": [
+        "missing_client_animation"
+      ],
+      "missingItems": []
+    }
+  ]
+}

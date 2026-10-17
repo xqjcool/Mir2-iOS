@@ -144,7 +144,7 @@ final class MirConnection: ObservableObject {
         raw(MirWire.command(3010,actor:UInt32(x)|(UInt32(y)<<16),y:UInt16(direction)));return true
     }
     func requestPeerTrade(name:String) {
-        guard !dealOpen,beginTrade("peer-request") else { return }
+        guard !dealOpen,beginTrade("peer-request") else { peerMessage="正在等待物品或其他操作确认，请稍后再点交易";return }
         peerMessage="等待服务器开启交易"
         raw(MirWire.command(1025)+MirWire.encode(legacyBytes(name)))
     }

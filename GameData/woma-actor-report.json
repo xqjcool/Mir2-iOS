@@ -1,0 +1,115 @@
+[
+  {
+    "name": "多钩猫",
+    "key": "17-25",
+    "status": "existing"
+  },
+  {
+    "name": "钉耙猫",
+    "key": "17-26",
+    "status": "existing"
+  },
+  {
+    "name": "森林雪人",
+    "key": "10-1",
+    "status": "existing"
+  },
+  {
+    "name": "半兽人",
+    "key": "19-100",
+    "status": "existing"
+  },
+  {
+    "name": "半兽战士",
+    "key": "19-101",
+    "status": "existing"
+  },
+  {
+    "name": "半兽勇士0",
+    "key": "19-102",
+    "status": "existing"
+  },
+  {
+    "name": "山洞蝙蝠",
+    "key": "19-80",
+    "status": "existing"
+  },
+  {
+    "name": "山洞蝙蝠0",
+    "key": "19-80",
+    "status": "existing"
+  },
+  {
+    "name": "沃玛战士",
+    "key": "19-30",
+    "status": "exported",
+    "actionTable": 19
+  },
+  {
+    "name": "沃玛战士0",
+    "key": "19-30",
+    "status": "existing"
+  },
+  {
+    "name": "沃玛勇士",
+    "key": "19-32",
+    "status": "exported",
+    "actionTable": 19
+  },
+  {
+    "name": "沃玛勇士0",
+    "key": "19-32",
+    "status": "existing"
+  },
+  {
+    "name": "沃玛战将",
+    "key": "19-33",
+    "status": "exported",
+    "actionTable": 19
+  },
+  {
+    "name": "沃玛战将0",
+    "key": "19-33",
+    "status": "existing"
+  },
+  {
+    "name": "火焰沃玛",
+    "key": "20-31",
+    "status": "exported",
+    "actionTable": 19
+  },
+  {
+    "name": "火焰沃玛0",
+    "key": "20-31",
+    "status": "existing"
+  },
+  {
+    "name": "沃玛卫士",
+    "key": "19-151",
+    "status": "exported",
+    "actionTable": 19
+  },
+  {
+    "name": "沃玛教主",
+    "key": "21-34",
+    "status": "exported",
+    "actionTable": 19
+  },
+  {
+    "name": "暗黑战士",
+    "key": "22-28",
+    "status": "exported",
+    "actionTable": 15
+  },
+  {
+    "name": "暗黑战士0",
+    "key": "22-28",
+    "status": "existing"
+  },
+  {
+    "name": "粪虫",
+    "key": "52-29",
+    "status": "exported",
+    "actionTable": 19
+  }
+]
