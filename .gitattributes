@@ -8,3 +8,4 @@
 *.plist text eol=lf
 *.png binary
 *.gif binary
+ServerConfig/ClassicBichon/MonItems/*.txt -text
