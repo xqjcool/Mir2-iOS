@@ -325,6 +325,7 @@ enum MirShop {
 
 // Server packet Ability.cs, 40-byte classic layout. Missing state stays unknown.
 struct MirVitals:Equatable {
+    var weight=0, maxWeight=0, wearWeight=0, maxWearWeight=0, handWeight=0, maxHandWeight=0
     var level:Int, hp:Int, mp:Int, maxHP:Int, maxMP:Int, experience:Int, maxExperience:Int
     mutating func apply(id:UInt16,x:UInt16,y:UInt16,series:UInt16) {
         switch id {
@@ -336,7 +337,7 @@ struct MirVitals:Equatable {
     }
     static func decode(_ b:[UInt8])->MirVitals? {
         guard b.count==40 else { return nil }
-        return MirVitals(level:Int(b[0]),hp:MirEquipment.word(b,12),mp:MirEquipment.word(b,14),maxHP:MirEquipment.word(b,16),maxMP:MirEquipment.word(b,18),experience:Int(MirEquipment.integer(b,24)),maxExperience:Int(MirEquipment.integer(b,28)))
+        return MirVitals(weight:MirEquipment.word(b,32),maxWeight:MirEquipment.word(b,34),wearWeight:Int(b[36]),maxWearWeight:Int(b[37]),handWeight:Int(b[38]),maxHandWeight:Int(b[39]),level:Int(b[0]),hp:MirEquipment.word(b,12),mp:MirEquipment.word(b,14),maxHP:MirEquipment.word(b,16),maxMP:MirEquipment.word(b,18),experience:Int(MirEquipment.integer(b,24)),maxExperience:Int(MirEquipment.integer(b,28)))
     }
 }
 

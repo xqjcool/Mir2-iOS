@@ -78,6 +78,7 @@ struct OnlineView:View {
                         Text(net.selectedName+"  Lv.\(net.vitals?.level.description ?? "—")").font(.caption.bold()).lineLimit(1)
                         meter("HP",net.vitals?.hp,net.vitals?.maxHP,.red)
                         meter("MP",net.vitals?.mp,net.vitals?.maxMP,.blue)
+                        if let v=net.vitals { Text("负重 \(v.weight)/\(v.maxWeight)").font(.system(size:10)).foregroundColor(v.weight>v.maxWeight ? .red : ClassicTheme.gold) }
                         ProgressView(value:Double(min(max(0,net.vitals?.experience ?? 0),max(1,net.vitals?.maxExperience ?? 1))),total:Double(max(1,net.vitals?.maxExperience ?? 1)))
                             .tint(ClassicTheme.gold).frame(height:3).accessibilityLabel("经验 \(net.vitals?.experience ?? 0)/\(net.vitals?.maxExperience ?? 0)")
                     }
@@ -91,12 +92,13 @@ struct OnlineView:View {
     }
     private var quickMenu:some View {
         VStack(alignment:.trailing,spacing:4) {
+            shortcut("背包","bag",.bag)
             Button { withAnimation(.easeInOut(duration:0.15)) { menuExpanded.toggle() } } label: {
                 HStack(spacing:4) { Image(systemName:menuExpanded ? "chevron.up" : "square.grid.2x2");Text(menuExpanded ? "收起" : "菜单").font(.caption) }.frame(width:72,height:44)
             }.background(ClassicTheme.panel.opacity(opacity)).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule())
             if menuExpanded {
                 VStack(spacing:4) {
-                    HStack(spacing:4) { shortcut("背包","bag",.bag);shortcut("角色","person",.character);shortcut("技能","sparkles",.skills) }
+                    HStack(spacing:4) { shortcut("角色","person",.character);shortcut("技能","sparkles",.skills) }
                     HStack(spacing:4) { shortcut("附近","person.2",.nearby);shortcut("聊天","bubble.left",.chat);shortcut("设置","gearshape",.settings) }
                 }.padding(4).background(ClassicTheme.panel.opacity(opacity))
             }
@@ -116,8 +118,8 @@ struct OnlineView:View {
                     ZStack(alignment:.topLeading) {
                         Image(uiImage:image).resizable().interpolation(.none)
                         Circle().fill(Color.yellow).frame(width:5,height:5)
-                            .position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*88,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*34)
-                    }.frame(width:88,height:34).clipped()
+                            .position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*120,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*52)
+                    }.frame(width:120,height:52).clipped()
                 }
                 Text("\(model.position.x),\(model.position.y)").font(.caption2.monospacedDigit())
             }.padding(4).background(ClassicTheme.panel.opacity(opacity)).overlay(Rectangle().stroke(ClassicTheme.gold))
@@ -450,7 +452,7 @@ private struct CombatButtons:View {
             }.frame(width:50,height:50).background(ClassicTheme.panel).clipShape(Circle()).overlay(Circle().stroke(ClassicTheme.gold))
                 .opacity(potion == nil || net.usePending != nil ? 0.5:1).contentShape(Rectangle())
                 .gesture(LongPressGesture(minimumDuration:0.5).onEnded { _ in scene?.suspendControls(true);choosePotion=true }
-                    .exclusively(before:TapGesture().onEnded { if let item=potion { net.useItem(item) } else { scene?.suspendControls(true);choosePotion=true } }))
+                    .exclusively(before:TapGesture().onEnded { if let item=potion { net.useItem(item) } else { net.message("快捷药水已用完；长按药水栏可更换，不会停止当前攻击") } }))
                 .position(x:137,y:139).accessibilityLabel("药水，长按更换")
             VStack(spacing:0) {
                 if let item=scroll { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:28,height:28) }
@@ -461,7 +463,7 @@ private struct CombatButtons:View {
                     .exclusively(before:TapGesture().onEnded { if let item=scroll { net.useItem(item) } else { scene?.suspendControls(true);chooseScroll=true } }))
                 .position(x:190,y:90).accessibilityLabel("传送卷，长按绑定")
             HStack {
-                Button("割肉") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:50)
+                Button("割肉/采矿") { scene?.butcherNearby() }.frame(minWidth:70,minHeight:50)
                 Button("拾取") { scene?.input(.pickup) }.frame(minWidth:70,minHeight:50)
             }.background(ClassicTheme.panel).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule()).position(x:132,y:228)
         }.frame(width:258,height:254).foregroundColor(ClassicTheme.text).buttonStyle(.plain)
@@ -581,7 +583,7 @@ private struct EquipmentPanel:View {
             } else {
                 ForEach(0..<MirEquipment.slotNames.count,id:\.self) { slot in
                     Button { selectedSlot=slot;selected=nil } label: {
-                        HStack { Text(MirEquipment.slotNames[slot]);Spacer();if let value=net.inventory.equipped[slot] { icon(value);Text(net.itemName(value)) } else { Text("空") } }.frame(minHeight:44)
+                        HStack { Text(MirEquipment.slotNames[slot]);Spacer();if let value=net.inventory.equipped[slot] { icon(value);VStack(alignment:.leading,spacing:3) { Text(net.itemName(value));Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc))\n防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))").font(.caption2).fixedSize(horizontal:false,vertical:true) } } else { Text("空") } }.frame(minHeight:44)
                     }
                 }
             }
@@ -698,12 +700,16 @@ private struct NPCShopPanel:View {
                     if net.shopMode=="sell" {
                         Text("选择背包物品，由商店报价后确认出售")
                         ForEach(net.inventory.bag.values.sorted{$0.id<$1.id}) { item in
-                            Button { net.quote(item) } label: {
-                                HStack { ClassicAsset(path:"item-icons/\(item.looks)").frame(width:38,height:38);Text(net.itemName(item));Spacer();Text("询价") }.frame(minHeight:44)
-                            }
-                        }
-                        if let id=net.saleItem,let item=net.inventory.bag[id],let price=net.salePrice,price>0 {
-                            Button("确认出售 \(net.itemName(item))：\(price) 金币") { net.sellQuoted() }.frame(minHeight:44).buttonStyle(.borderedProminent)
+                            HStack {
+                                ClassicAsset(path:"item-icons/\(item.looks)").frame(width:38,height:38)
+                                Text(net.itemName(item));Spacer()
+                                if net.saleItem==item.id,let price=net.salePrice {
+                                    Text(price>0 ? "\(price) 金币" : "不收购").font(.caption)
+                                    if price>0 { Button("确认出售") { net.sellQuoted() }.frame(minHeight:44).buttonStyle(.borderedProminent) }
+                                } else {
+                                    Button("询价") { net.quote(item) }.frame(minWidth:44,minHeight:44)
+                                }
+                            }.frame(minHeight:44)
                         }
                     }
                 }.disabled(net.tradeBusy)
@@ -772,10 +778,14 @@ private struct SkillPanel:View {
     let scene:OnlineScene?
     @Environment(\.dismiss) private var dismiss
     @AppStorage("hud.classic") private var classic=true
+    @AppStorage("auto.hp") private var autoHP=true
+    @AppStorage("auto.mp") private var autoMP=true
     @State private var autoPickup=true
     var body:some View {
         NavigationStack {
             List {
+                Toggle("HP ≤35% 自动喝金创药",isOn:$autoHP)
+                Toggle("MP ≤25% 自动喝魔法药",isOn:$autoMP)
                 Toggle("自动拾取附近物品和金币",isOn:$autoPickup).onChange(of:autoPickup) { scene?.autoPickup=$0 }
                 if net.skills.isEmpty { Text("当前角色尚未学习技能；学习后会显示服务器下发的技能。") }
                 ForEach(net.skills) { skill in

@@ -90,10 +90,12 @@ final class OnlineScene: SKScene {
         let dx=other.cell.x-me.cell.x,dy=other.cell.y-me.cell.y
         guard max(abs(dx),abs(dy))==1 else { net.peerMessage="请先走到对方相邻的一格，再点人物操作";return }
         let dir=MirTouchInput.direction(x:Double(dx),y:Double(dy)) ?? 0
+        stopAutomation()
+        guard net.facePlayer(x:me.cell.x+map.originX,y:me.cell.y+map.originY,direction:dir) else { net.peerMessage="请稍候再试，正在等待上次动作结束";return }
+        me.direction=dir
         if trade {
-            guard me.direction==dir,other.direction==(dir+4)%8 else { net.peerMessage="双方需分别点“面向对方”，再发起交易";return }
             net.requestPeerTrade(name:other.displayName)
-        } else { guard net.facePlayer(x:me.cell.x+map.originX,y:me.cell.y+map.originY,direction:dir) else { net.peerMessage="请稍候再转向";return };me.direction=dir;net.peerMessage="已面向对方，请对方也面向你" }
+        } else { net.peerMessage="已面向对方；双方相邻并面对面即可交易" }
     }
     private struct WorldNPC:Decodable { let x:Int;let y:Int;let name:String }
     private var knownNPCs:[WorldNPC]=[]
@@ -371,7 +373,7 @@ final class OnlineScene: SKScene {
             if selected==p.actor { targetHealthReport?(p.series>0 ? min(1,Double(p.x)/Double(p.series)) : nil) }
         }
         if p.id==31,let a=actors[p.actor] {
-            if p.actor==playerID { route=[];pickupSweep=false }
+            if p.actor==playerID { pickupSweep=false }
             if !a.dead { animate(a,"struck",duration:0.25) }
             if p.actor != playerID { a.label.text = "\(a.displayName) HP \(p.x)/\(p.y)" }
             if selected==p.actor { targetReport?("\(a.displayName)  HP \(p.x)/\(p.y)");targetHealthReport?(p.y>0 ? min(1,Double(p.x)/Double(p.y)) : nil) }
@@ -414,7 +416,7 @@ final class OnlineScene: SKScene {
         if p.id==27 || p.id==10 { avatar.dead=false;avatar.harvested=false;avatar.action="stand";avatar.actionUntil=0 }
         if p.id==10, p.bodyParts.count>1, !p.bodyParts[1].isEmpty {
             avatar.displayName=text(p.bodyParts[1]).components(separatedBy:"/").first ?? "角色"
-        } else if avatar.monster {
+        } else if avatar.monster && avatar.displayName == "角色" {
             avatar.displayName=["11-160":"鸡","11-161":"鹿","18-27":"稻草人","17-25":"多钩猫","17-26":"钉耙猫","19-100":"半兽人"][avatar.appearanceKey] ?? "怪物"
         }
         if [UInt16(32),34,33].contains(p.id) { avatar.dead=true;avatar.harvested=p.id==33;animate(avatar,p.id==33 ? "skeleton" : "die",duration:1.2) }
@@ -515,7 +517,19 @@ final class OnlineScene: SKScene {
         stopAutomation()
         let candidates=actors.filter { $0.value.dead && !$0.value.harvested && ["11-160","11-161"].contains($0.value.appearanceKey) && max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y))<=2 }
         if selectedCorpse==nil || candidates[selectedCorpse!]==nil { selectedCorpse=candidates.keys.sorted().first }
-        guard let corpseID=selectedCorpse,let corpse=candidates[corpseID] else { combatReport?("请靠近鸡或鹿的尸体再割肉");return }
+        guard let corpseID=selectedCorpse,let corpse=candidates[corpseID] else {
+            guard let weapon=net.inventory.equipped[1],weapon.shape==19,weapon.durability>0 else { combatReport?("割肉请靠近鸡鹿尸体；采矿请装备有耐久的鹤嘴锄，面向矿墙");return }
+            let delta=MirTouchInput.directions[a.direction]
+            let wall=Cell(x:a.cell.x+delta.x,y:a.cell.y+delta.y)
+            guard wall.x>=0,wall.y>=0,wall.x<map.width,wall.y<map.height,!map.grid.canWalk(wall) else { combatReport?("请面向矿墙再采矿");return }
+            guard clock>=nextAttack else { return }
+            if net.mine(x:a.cell.x+map.originX,y:a.cell.y+map.originY,direction:a.direction) {
+                lastSkillID=nil;attackPending=true;attackRequested=clock;nextAttack=clock+1.5;nextStep=nextAttack
+                animate(a,"attack",duration:0.6)
+                combatReport?("正在采矿，矿区、矿石和成功率由服务器判定")
+            }
+            return
+        }
         let direction=MirTouchInput.direction(x:Double(corpse.cell.x-a.cell.x),y:Double(corpse.cell.y-a.cell.y)) ?? a.direction
         if net.butcher(target:corpseID,x:corpse.cell.x+map.originX,y:corpse.cell.y+map.originY,direction:direction) {
             a.direction=direction;nextStep=clock+0.65;nextAttack=clock+0.65
@@ -531,6 +545,8 @@ final class OnlineScene: SKScene {
         route=[];nextPickup=clock+0.8;net.pickup(x:a.cell.x+map.originX,y:a.cell.y+map.originY)
     }
     private func rejectAction() {
+        let resumeDestination = !autoAttack && !attackPending ? route.last : nil
+        let resumeRunning=routeRunning
         if attackPending,let id=lastSkillID {
             net.skillReady.removeValue(forKey:id);net.automaticSkills.remove(id)
             combatReport?("服务器拒绝本次施法，已停止该技能自动释放")
@@ -538,6 +554,7 @@ final class OnlineScene: SKScene {
         lastSkillID=nil;predictingSpell=false
         pending=nil;route=[];attackPending=false;nextStep=clock+0.7;nextAttack=clock+1
         if let id=playerID,let a=actors[id] { a.node.removeAction(forKey:"walk");a.node.position=point(a.cell);a.walkingUntil=0;a.actionUntil=0 }
+        if let destination=resumeDestination { queuePath(to:destination,running:resumeRunning) }
     }
     private func applyFeature(_ a:Avatar,_ feature:UInt32) {
         let dress=Int(feature>>24)
@@ -642,6 +659,7 @@ final class OnlineScene: SKScene {
         showPosition()
     }
     override func update(_ time:TimeInterval) {
+        net.autoDrink()
         if let id=playerID,let me=actors[id],let v=net.vitals {
             me.label.text="我 HP \(v.hp)/\(v.maxHP) MP \(v.mp)/\(v.maxMP)"
         }
@@ -703,6 +721,7 @@ final class OnlineScene: SKScene {
                     else { queuePath(to:drop.value.cell,running:false) }
                 } else { pickupSweep=false }
             }
+            let routeBeforeStep=route
             var next:Cell?,running=false,direction=a.direction
             if let d=stickDirection {
                 direction=d;let delta=MirTouchInput.directions[d]
@@ -712,7 +731,7 @@ final class OnlineScene: SKScene {
                     let two=Cell(x:one.x+delta.x,y:one.y+delta.y)
                     if stickRunning && map.grid.neighbors(one).contains(two) && !actors.values.contains(where:{!$0.dead && ($0.cell==one || $0.cell==two)}) { next=two;running=true }
                 }
-            } else if !route.isEmpty {
+            } else if let first=route.first,!actors.values.contains(where:{!$0.dead && $0.cell==first}) {
                 let one=route.removeFirst()
                 if map.grid.neighbors(a.cell).contains(one) {
                     next=one;direction=MirTouchInput.directions.firstIndex(of:Cell(x:one.x-a.cell.x,y:one.y-a.cell.y)) ?? a.direction
@@ -725,7 +744,7 @@ final class OnlineScene: SKScene {
             if !attackPending,let n=next,!actors.values.contains(where:{!$0.dead && $0.cell==n}),net.walk(x:n.x+map.originX,y:n.y+map.originY,direction:direction,running:running) {
                 a.running=running;a.direction=direction;pending=n;requestedAt=time;pendingDuration=running ? 0.5 : 0.54
                 a.walkingUntil=time+pendingDuration;a.node.run(.move(to:point(n),duration:pendingDuration),withKey:"walk")
-            }
+            } else if next != nil,stickDirection==nil { route=routeBeforeStep }
         }
         for a in actors.values {
             let walk=time<a.walkingUntil

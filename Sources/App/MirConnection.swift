@@ -73,6 +73,29 @@ final class MirConnection: ObservableObject {
         let work=DispatchWorkItem { [weak self] in self?.fail("使用物品确认超时，请重新登录同步背包") }
         useTimeout=work;DispatchQueue.main.asyncAfter(deadline:.now()+8,execute:work)
     }
+    private var nextAutoDrink:Double=0
+    func autoDrink() {
+        let now=ProcessInfo.processInfo.systemUptime
+        guard now>=nextAutoDrink else { return };nextAutoDrink=now+0.5
+        guard online,let v=vitals,v.hp>0,usePending==nil,now-lastUse>=2 else { return }
+        let defaults=UserDefaults.standard
+        let hpEnabled=defaults.object(forKey:"auto.hp") as? Bool ?? true
+        let mpEnabled=defaults.object(forKey:"auto.mp") as? Bool ?? true
+        let lowHP=hpEnabled && v.maxHP>0 && Double(v.hp)/Double(v.maxHP)<=0.35
+        let lowMP=mpEnabled && v.maxMP>0 && Double(v.mp)/Double(v.maxMP)<=0.25
+        guard lowHP || lowMP else { return }
+        let items=inventory.bag.values.sorted { $0.id<$1.id }
+        let hp=items.first { [0,1,2,3].contains($0.mode) && itemName($0).contains("金创药") }
+        let mp=items.first { [0,1,2,3].contains($0.mode) && itemName($0).contains("魔法药") }
+        if lowHP,let item=hp { useItem(item) }
+        else if lowMP,let item=mp { useItem(item) }
+    }
+    func mine(x:Int,y:Int,direction:Int)->Bool {
+        guard online,!awaitingAttack,!actionLocked,!dealOpen,!npcOpen,!tradeBusy,(0...65535).contains(x),(0...65535).contains(y),(0...7).contains(direction) else { return false }
+        awaitingAttack=true
+        raw(MirWire.command(3015,actor:UInt32(x)|(UInt32(y)<<16),y:UInt16(direction)))
+        log("mining request x=\(x) y=\(y) direction=\(direction)");return true
+    }
     func say(_ text:String) {
         let value=text.trimmingCharacters(in:.whitespacesAndNewlines)
         guard online,!value.isEmpty,legacyBytes(value).count<=120,!value.contains("\n"),!value.contains("\r") else { return }
@@ -355,6 +378,9 @@ final class MirConnection: ObservableObject {
                             else { self.log("walk accepted");self.onWalkAck?() };continue
                         }
                         if frame.starts(with:Array("+FL/".utf8)) { self.awaitingAttack=false;self.log("action rejected");self.onWalkRejected?();continue }
+                        if frame == Array("=DIG".utf8) || frame == Array("=DIG/".utf8) {
+                            self.log("mining success notice");continue
+                        }
                         if self.warrior.receive(frame,now:ProcessInfo.processInfo.systemUptime) {
                             self.log("warrior state updated");continue
                         }
@@ -561,12 +587,21 @@ final class MirConnection: ObservableObject {
                 equipmentTimeout?.cancel();equipmentTimeout=nil
                 equipmentMessage=success ? "服务器已确认，装备属性已同步" : "操作失败：等级、职业、负重或背包空间不符合要求（\(p.actor)）"
             }
+        case 622:
+            if var v=vitals { v.weight=max(0,Int(p.actor));v.wearWeight=Int(p.x);v.handWeight=Int(p.y);vitals=v }
         case 52:
             goldBalance=p.actor
             if p.body.count==40 {
                 let b=p.body
                 vitals=MirVitals.decode(b);mana=vitals?.mp
                 abilityText="等级 \(b[0])  攻击 \(MirEquipment.range(MirEquipment.word(b,6)))  魔法 \(MirEquipment.range(MirEquipment.word(b,8)))  道术 \(MirEquipment.range(MirEquipment.word(b,10)))\n防御 \(MirEquipment.range(MirEquipment.word(b,2)))  魔防 \(MirEquipment.range(MirEquipment.word(b,4)))"
+            }
+        case 44,45:
+            // SM_WINEXP/SM_LEVELUP carry the authoritative total XP in Recog, not an actor ID.
+            if var state=vitals {
+                state.experience=max(0,Int(p.actor))
+                if p.id==45 { state.level=Int(p.x) }
+                vitals=state
             }
         case 213:attackMode=Int(p.actor)
         case 31,53,32,34:
