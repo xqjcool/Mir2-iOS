@@ -28,7 +28,8 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested"
+    "status": "database definition installed; in-game consumption not yet tested",
+    "serverLoadedItemCount": 1005
   },
   {
     "name": "疾风神水",
@@ -59,7 +60,8 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested"
+    "status": "database definition installed; in-game consumption not yet tested",
+    "serverLoadedItemCount": 1005
   },
   {
     "name": "HP强化水",
@@ -90,7 +92,8 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested"
+    "status": "database definition installed; in-game consumption not yet tested",
+    "serverLoadedItemCount": 1005
   },
   {
     "name": "MP强化水",
@@ -121,6 +124,7 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested"
+    "status": "database definition installed; in-game consumption not yet tested",
+    "serverLoadedItemCount": 1005
   }
 ]
