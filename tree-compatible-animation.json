@@ -8,5 +8,7 @@
   },
   "bodyAttackFramesRecovered": false,
   "attackEffect": "Original ClMain.pas DrawEffectHum 0/1; SM_716 from BigHeartMonster; Mon14 410-415",
-  "serverCombatAndDropsUnchanged": true
+  "serverCombatAndDropsUnchanged": true,
+  "supersededBy": "tree-original-animation.json",
+  "active": false
 }

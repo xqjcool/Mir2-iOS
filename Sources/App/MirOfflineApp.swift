@@ -92,17 +92,36 @@ struct OnlineView:View {
     }
     private var quickMenu:some View {
         VStack(alignment:.trailing,spacing:4) {
-            shortcut("背包","bag",.bag)
-            Button { withAnimation(.easeInOut(duration:0.15)) { menuExpanded.toggle() } } label: {
-                HStack(spacing:4) { Image(systemName:menuExpanded ? "chevron.up" : "square.grid.2x2");Text(menuExpanded ? "收起" : "菜单").font(.caption) }.frame(width:72,height:44)
-            }.background(ClassicTheme.panel.opacity(opacity)).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule())
+            HStack(spacing:4) {
+                shortcut("背包","bag",.bag)
+                shortcut("设置","gearshape",.settings)
+                Button { withAnimation(.easeInOut(duration:0.15)) { menuExpanded.toggle() } } label: {
+                    VStack(spacing:2) { Image(systemName:menuExpanded ? "chevron.up" : "square.grid.2x2");Text(menuExpanded ? "收起" : "菜单").font(.caption2) }.frame(width:44,height:44)
+                }.background(ClassicTheme.panel.opacity(opacity)).overlay(Capsule().stroke(ClassicTheme.gold)).clipShape(Capsule())
+            }
             if menuExpanded {
                 VStack(spacing:4) {
                     HStack(spacing:4) { shortcut("角色","person",.character);shortcut("技能","sparkles",.skills) }
-                    HStack(spacing:4) { shortcut("附近","person.2",.nearby);shortcut("聊天","bubble.left",.chat);shortcut("设置","gearshape",.settings) }
+                    HStack(spacing:4) { shortcut("附近","person.2",.nearby);shortcut("聊天","bubble.left",.chat) }
                 }.padding(4).background(ClassicTheme.panel.opacity(opacity))
             }
         }.buttonStyle(.plain)
+    }
+    private func chatDock(expanded:Bool)->some View {
+        VStack(alignment:.leading,spacing:0) {
+            HStack(spacing:0) {
+                Button { open(.chat) } label: { Text(net.chatChannel+"聊天").font(.caption).frame(minWidth:80,minHeight:44) }
+                Button { if expanded { chatMinimized.toggle() } else { open(.chat) } } label: { Image(systemName:chatMinimized || !expanded ? "plus" : "minus").frame(width:44,height:44) }.accessibilityLabel(chatMinimized || !expanded ? "恢复聊天窗口" : "最小化聊天窗口")
+            }
+            if !chatMinimized && expanded {
+                Button { open(.chat) } label: {
+                    VStack(alignment:.leading,spacing:2) {
+                        if net.displayedChat().isEmpty { Text("暂无"+net.chatChannel+"消息 · 点击切换频道") }
+                        ForEach(Array(net.displayedChat().suffix(2).enumerated()),id:\.offset) { _,text in Text(text).lineLimit(1) }
+                    }.font(.caption2).frame(width:180,height:36,alignment:.leading)
+                }.frame(minHeight:44)
+            }
+        }.padding(.horizontal,4).background(ClassicTheme.panel.opacity(0.8)).buttonStyle(.plain)
     }
     private func meter(_ title:String,_ value:Int?,_ maximum:Int?,_ color:Color)->some View {
         ZStack {
@@ -133,9 +152,14 @@ struct OnlineView:View {
                 GeometryReader { geo in
                     VStack(spacing:0) {
                         HStack(alignment:.top,spacing:6) {
-                            statusCard
+                            statusCard.overlay(alignment:.topLeading) {
+                                GeometryReader { status in
+                                    chatDock(expanded:geo.size.height>=380)
+                                        .fixedSize().offset(y:status.size.height+6)
+                                }
+                            }
                             Spacer(minLength:0)
-                            Color.clear.frame(width:72,height:44).overlay(alignment:.topTrailing) { quickMenu }
+                            Color.clear.frame(width:140,height:44).overlay(alignment:.topTrailing) { quickMenu }
                             miniMap
                         }.zIndex(10)
                         Spacer(minLength:0)
@@ -159,21 +183,7 @@ struct OnlineView:View {
                             if let health=model.targetHealth { ProgressView(value:health).tint(.red).frame(width:160) }
                         }
                     }.frame(maxWidth:.infinity).padding(.top,geo.size.height<360 ? 70 : 78).allowsHitTesting(false)
-                    VStack(alignment:.leading,spacing:0) {
-                        HStack(spacing:0) {
-                            Button { open(.chat) } label: { Text(net.chatChannel+"聊天").font(.caption).frame(minWidth:80,minHeight:44) }
-                            Button { chatMinimized.toggle() } label: { Image(systemName:chatMinimized ? "plus" : "minus").frame(width:44,height:44) }.accessibilityLabel(chatMinimized ? "恢复聊天窗口" : "最小化聊天窗口")
-                        }
-                        if !chatMinimized {
-                            Button { open(.chat) } label: {
-                                VStack(alignment:.leading,spacing:2) {
-                                    if net.displayedChat().isEmpty { Text("暂无"+net.chatChannel+"消息 · 点击切换频道") }
-                                    ForEach(Array(net.displayedChat().suffix(2).enumerated()),id:\.offset) { _,text in Text(text).lineLimit(1) }
-                                }.font(.caption2).frame(width:180,height:36,alignment:.leading)
-                            }.frame(minHeight:44)
-                        }
-                    }.padding(.horizontal,4).background(ClassicTheme.panel.opacity(0.8)).buttonStyle(.plain)
-                        .padding(.leading,8).padding(.top,76)
+
                 }.foregroundColor(ClassicTheme.text)
             } else {
                 ClassicLobby(net:net).disabled(model.scene==nil)

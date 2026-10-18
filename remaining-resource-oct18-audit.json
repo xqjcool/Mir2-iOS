@@ -1,0 +1,120 @@
+{
+  "remainingUnique": 22,
+  "remainingPlacements": 37,
+  "returnLegendsAudit": [
+    {
+      "library": "mon15",
+      "readable": [
+        360,
+        361,
+        362,
+        363,
+        370,
+        371,
+        372,
+        373,
+        374,
+        375,
+        380,
+        381,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409
+      ],
+      "missing": [
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        376,
+        377,
+        378,
+        379,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387,
+        388,
+        389
+      ]
+    },
+    {
+      "library": "objects",
+      "readable": [],
+      "missing": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "library": "objects13",
+      "readable": [],
+      "missing": [
+        1172,
+        1173,
+        1174,
+        1192,
+        1193,
+        1194,
+        1212,
+        1213,
+        1214
+      ]
+    },
+    {
+      "library": "smtiles",
+      "readable": [],
+      "missing": [
+        3891,
+        3895,
+        3896,
+        3902,
+        3903,
+        3924,
+        7310,
+        32767
+      ]
+    },
+    {
+      "library": "tiles",
+      "readable": [],
+      "missing": [
+        3868
+      ]
+    }
+  ],
+  "wemadeTiles": {
+    "available": [
+      3868
+    ],
+    "exactAnchors": 327,
+    "mismatchedAnchors": 13588,
+    "accepted": false,
+    "reason": "Index namespace incompatible; no verified mapping"
+  },
+  "fullyRestored": false,
+  "newOpeningApprovedByValidation": false
+}
