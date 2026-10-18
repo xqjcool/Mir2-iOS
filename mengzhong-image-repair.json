@@ -1,0 +1,157 @@
+{
+  "addedUnique": 1335,
+  "evidence": [
+    {
+      "library": "objects4",
+      "exactAnchors": 8924,
+      "mismatchedAnchors": [
+        741,
+        2825,
+        2828,
+        2831,
+        2833,
+        2834,
+        2840,
+        2842,
+        2843
+      ],
+      "sourceSHA256": "c258bd0ab92df086b02ccafa8b61de82d3af8725a4d509448a65e304aba55319",
+      "added": 93
+    },
+    {
+      "library": "objects",
+      "exactAnchors": 8337,
+      "mismatchedAnchors": [],
+      "sourceSHA256": "6c4decfc1ac6ca23bce6ebb953f32ae7ba8b6620ed676f5d7f496ab1ea8e2f8b",
+      "added": 22
+    },
+    {
+      "library": "smtiles2",
+      "exactAnchors": 1173,
+      "mismatchedAnchors": [],
+      "sourceSHA256": "52b99082c8be0d1d51b8e7404c5404c55436526573f1d866a12abb0cc5928b95",
+      "added": 578
+    },
+    {
+      "library": "tiles2",
+      "exactAnchors": 955,
+      "mismatchedAnchors": [],
+      "sourceSHA256": "63a8cc94a9f850cc5f0a34d6b0448298d543bf845eb239fff2df9b8d70b76ae7",
+      "added": 25
+    },
+    {
+      "library": "objects2",
+      "exactAnchors": 4515,
+      "mismatchedAnchors": [],
+      "sourceSHA256": "3b16c9346844ccd43c5031ceeb2e5844d304779bd8cbb5bd1ec45ae72a9d5958",
+      "added": 601
+    },
+    {
+      "library": "objects14",
+      "exactAnchors": 709,
+      "mismatchedAnchors": [],
+      "sourceSHA256": "1a593049f08551af9fb6263f8d2f5897a8f2cb8843e7ed4653f45d535c7f5ade",
+      "added": 8
+    },
+    {
+      "library": "objects13",
+      "exactAnchors": 105,
+      "mismatchedAnchors": [],
+      "sourceSHA256": "036a9b4e45c6dc9b2b2405d0bac860f30ea9628dbec0e9fa6bd9c39dfef2b852",
+      "added": 8
+    }
+  ],
+  "source": "https://mirfiles.com/resources/mir2/crystal/patch/Data/Map/ShandaMir2/",
+  "remainingPlacements": 37,
+  "remainingUnique": [
+    {
+      "library": "objects",
+      "index": 0
+    },
+    {
+      "library": "objects",
+      "index": 1
+    },
+    {
+      "library": "objects",
+      "index": 2
+    },
+    {
+      "library": "objects",
+      "index": 3
+    },
+    {
+      "library": "objects13",
+      "index": 1172
+    },
+    {
+      "library": "objects13",
+      "index": 1173
+    },
+    {
+      "library": "objects13",
+      "index": 1174
+    },
+    {
+      "library": "objects13",
+      "index": 1192
+    },
+    {
+      "library": "objects13",
+      "index": 1193
+    },
+    {
+      "library": "objects13",
+      "index": 1194
+    },
+    {
+      "library": "objects13",
+      "index": 1212
+    },
+    {
+      "library": "objects13",
+      "index": 1213
+    },
+    {
+      "library": "objects13",
+      "index": 1214
+    },
+    {
+      "library": "smtiles",
+      "index": 3891
+    },
+    {
+      "library": "smtiles",
+      "index": 3895
+    },
+    {
+      "library": "smtiles",
+      "index": 3896
+    },
+    {
+      "library": "smtiles",
+      "index": 3902
+    },
+    {
+      "library": "smtiles",
+      "index": 3903
+    },
+    {
+      "library": "smtiles",
+      "index": 3924
+    },
+    {
+      "library": "smtiles",
+      "index": 7310
+    },
+    {
+      "library": "smtiles",
+      "index": 32767
+    },
+    {
+      "library": "tiles",
+      "index": 3868
+    }
+  ],
+  "fullyRestored": false
+}

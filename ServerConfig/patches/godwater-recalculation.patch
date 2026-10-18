@@ -1,0 +1,91 @@
+--- a/src/M2Server/Player/PlayObject.cs
++++ b/src/M2Server/Player/PlayObject.cs
+@@ -2815,36 +2815,6 @@
+             {
+                 WAbil.MP = WAbil.MaxMP;
+             }
+-            if (ExtraAbil[AbilConst.EABIL_DCUP] > 0)
+-            {
+-                WAbil.DC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.DC), (ushort)(HUtil32.HiByte(WAbil.DC) + ExtraAbil[AbilConst.EABIL_DCUP]));
+-            }
+-            if (ExtraAbil[AbilConst.EABIL_MCUP] > 0)
+-            {
+-                WAbil.MC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.MC), (ushort)(HUtil32.HiByte(WAbil.MC) + ExtraAbil[AbilConst.EABIL_MCUP]));
+-            }
+-            if (ExtraAbil[AbilConst.EABIL_SCUP] > 0)
+-            {
+-                WAbil.SC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.SC), (ushort)(HUtil32.HiByte(WAbil.SC) + ExtraAbil[AbilConst.EABIL_SCUP]));
+-            }
+-            if (ExtraAbil[AbilConst.EABIL_HITSPEEDUP] > 0)
+-            {
+-                HitSpeed = (ushort)(HitSpeed + ExtraAbil[AbilConst.EABIL_HITSPEEDUP]);
+-            }
+-            if (ExtraAbil[AbilConst.EABIL_HPUP] > 0)
+-            {
+-                WAbil.MaxHP = (ushort)(WAbil.MaxHP + ExtraAbil[AbilConst.EABIL_HPUP]);
+-            }
+-            if (ExtraAbil[AbilConst.EABIL_MPUP] > 0)
+-            {
+-                WAbil.MaxMP = (ushort)(WAbil.MaxMP + ExtraAbil[AbilConst.EABIL_MPUP]);
+-            }
+-            if (ExtraAbil[AbilConst.EABIL_PWRRATE] > 0)
+-            {
+-                WAbil.DC = HUtil32.MakeWord((ushort)((HUtil32.LoByte(WAbil.DC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100), (ushort)((HUtil32.HiByte(WAbil.DC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100));
+-                WAbil.MC = HUtil32.MakeWord((ushort)((HUtil32.LoByte(WAbil.MC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100), (ushort)((HUtil32.HiByte(WAbil.MC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100));
+-                WAbil.SC = HUtil32.MakeWord((ushort)((HUtil32.LoByte(WAbil.SC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100), (ushort)((HUtil32.HiByte(WAbil.SC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100));
+-            }
+             if (Race == ActorRace.Play)
+             {
+                 bool fastmoveflag = UseItems[ItemLocation.Boots] != null && UseItems[ItemLocation.Boots].Dura > 0 && UseItems[ItemLocation.Boots].Index == MessageSettings.INDEX_MIRBOOTS;
+@@ -2873,7 +2843,6 @@
+                 //}
+                 CharStatus = GetCharStatus();
+                 StatusChanged();
+-                SendUpdateMsg(Messages.RM_CHARSTATUSCHANGED, HitSpeed, CharStatus, 0, 0, "");
+             }
+             RecalcAdjusBonus();
+ 
+@@ -2904,6 +2873,43 @@
+             WAbil.DC = HUtil32.MakeWord((byte)HUtil32._MIN(255, HUtil32.LoByte(AddAbil.DC) + HUtil32.LoByte(Abil.DC)), (byte)HUtil32._MIN(255, HUtil32.HiByte(AddAbil.DC) + HUtil32.HiByte(Abil.DC)));
+             WAbil.MC = HUtil32.MakeWord((byte)HUtil32._MIN(255, HUtil32.LoByte(AddAbil.MC) + HUtil32.LoByte(Abil.MC)), (byte)HUtil32._MIN(255, HUtil32.HiByte(AddAbil.MC) + HUtil32.HiByte(Abil.MC)));
+             WAbil.SC = HUtil32.MakeWord((byte)HUtil32._MIN(255, HUtil32.LoByte(AddAbil.SC) + HUtil32.LoByte(Abil.SC)), (byte)HUtil32._MIN(255, HUtil32.HiByte(AddAbil.SC) + HUtil32.HiByte(Abil.SC)));
++            // Apply temporary bonuses after the final equipment/base assignment.
++            if (ExtraAbil[AbilConst.EABIL_DCUP] > 0)
++            {
++                WAbil.DC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.DC), (ushort)(HUtil32.HiByte(WAbil.DC) + ExtraAbil[AbilConst.EABIL_DCUP]));
++            }
++            if (ExtraAbil[AbilConst.EABIL_MCUP] > 0)
++            {
++                WAbil.MC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.MC), (ushort)(HUtil32.HiByte(WAbil.MC) + ExtraAbil[AbilConst.EABIL_MCUP]));
++            }
++            if (ExtraAbil[AbilConst.EABIL_SCUP] > 0)
++            {
++                WAbil.SC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.SC), (ushort)(HUtil32.HiByte(WAbil.SC) + ExtraAbil[AbilConst.EABIL_SCUP]));
++            }
++            if (ExtraAbil[AbilConst.EABIL_HITSPEEDUP] > 0)
++            {
++                HitSpeed = (ushort)(HitSpeed + ExtraAbil[AbilConst.EABIL_HITSPEEDUP]);
++            }
++            if (ExtraAbil[AbilConst.EABIL_HPUP] > 0)
++            {
++                WAbil.MaxHP = (ushort)(WAbil.MaxHP + ExtraAbil[AbilConst.EABIL_HPUP]);
++            }
++            if (ExtraAbil[AbilConst.EABIL_MPUP] > 0)
++            {
++                WAbil.MaxMP = (ushort)(WAbil.MaxMP + ExtraAbil[AbilConst.EABIL_MPUP]);
++            }
++            if (ExtraAbil[AbilConst.EABIL_PWRRATE] > 0)
++            {
++                WAbil.DC = HUtil32.MakeWord((ushort)((HUtil32.LoByte(WAbil.DC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100), (ushort)((HUtil32.HiByte(WAbil.DC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100));
++                WAbil.MC = HUtil32.MakeWord((ushort)((HUtil32.LoByte(WAbil.MC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100), (ushort)((HUtil32.HiByte(WAbil.MC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100));
++                WAbil.SC = HUtil32.MakeWord((ushort)((HUtil32.LoByte(WAbil.SC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100), (ushort)((HUtil32.HiByte(WAbil.SC) * ExtraAbil[AbilConst.EABIL_PWRRATE]) / 100));
++            }
++            if (Race == ActorRace.Play)
++            {
++                WAbil.HP = Math.Min(WAbil.HP, WAbil.MaxHP);
++                WAbil.MP = Math.Min(WAbil.MP, WAbil.MaxMP);
++                SendUpdateMsg(Messages.RM_CHARSTATUSCHANGED, HitSpeed, CharStatus, 0, 0, "");
++            }
+         }
+ 
+         public override int GetAttackPower(int nBasePower, int nPower)

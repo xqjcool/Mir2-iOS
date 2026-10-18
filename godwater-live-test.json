@@ -1,0 +1,170 @@
+{
+  "passed": true,
+  "baseline": {
+    "sc": 0,
+    "hp": 19,
+    "mp": 15,
+    "speed": 0
+  },
+  "peak": {
+    "sc": 3,
+    "hp": 69,
+    "mp": 65,
+    "speed": 1
+  },
+  "restored": {
+    "sc": 0,
+    "hp": 19,
+    "mp": 15,
+    "speed": 0
+  },
+  "expirySeconds": {
+    "hp": 121.91,
+    "mp": 121.94,
+    "sc": 181.38,
+    "speed": 181.42
+  },
+  "consumedOnce": true,
+  "events": [
+    {
+      "t": 21.83,
+      "packet": 52,
+      "state": {
+        "sc": 0,
+        "hp": 19,
+        "mp": 15
+      }
+    },
+    {
+      "t": 21.83,
+      "packet": 657,
+      "speed": 0
+    },
+    {
+      "t": 21.83,
+      "packet": 657,
+      "speed": 0
+    },
+    {
+      "t": 25.14,
+      "packet": 52,
+      "state": {
+        "sc": 3,
+        "hp": 19,
+        "mp": 15,
+        "speed": 0
+      }
+    },
+    {
+      "t": 25.14,
+      "packet": 657,
+      "speed": 0
+    },
+    {
+      "t": 27.17,
+      "packet": 52,
+      "state": {
+        "sc": 3,
+        "hp": 19,
+        "mp": 15,
+        "speed": 0
+      }
+    },
+    {
+      "t": 27.17,
+      "packet": 657,
+      "speed": 1
+    },
+    {
+      "t": 29.23,
+      "packet": 52,
+      "state": {
+        "sc": 3,
+        "hp": 69,
+        "mp": 15,
+        "speed": 1
+      }
+    },
+    {
+      "t": 29.23,
+      "packet": 657,
+      "speed": 1
+    },
+    {
+      "t": 31.41,
+      "packet": 52,
+      "state": {
+        "sc": 3,
+        "hp": 69,
+        "mp": 65,
+        "speed": 1
+      }
+    },
+    {
+      "t": 31.41,
+      "packet": 657,
+      "speed": 1
+    },
+    {
+      "t": 149.08,
+      "packet": 52,
+      "state": {
+        "sc": 3,
+        "hp": 19,
+        "mp": 65,
+        "speed": 1
+      }
+    },
+    {
+      "t": 149.08,
+      "packet": 657,
+      "speed": 1
+    },
+    {
+      "t": 151.17,
+      "packet": 52,
+      "state": {
+        "sc": 3,
+        "hp": 19,
+        "mp": 15,
+        "speed": 1
+      }
+    },
+    {
+      "t": 151.17,
+      "packet": 657,
+      "speed": 1
+    },
+    {
+      "t": 204.47,
+      "packet": 52,
+      "state": {
+        "sc": 0,
+        "hp": 19,
+        "mp": 15,
+        "speed": 1
+      }
+    },
+    {
+      "t": 204.47,
+      "packet": 657,
+      "speed": 1
+    },
+    {
+      "t": 206.56,
+      "packet": 52,
+      "state": {
+        "sc": 0,
+        "hp": 19,
+        "mp": 15,
+        "speed": 1
+      }
+    },
+    {
+      "t": 206.56,
+      "packet": 657,
+      "speed": 0
+    }
+  ],
+  "testCharacterRestored": true
+}

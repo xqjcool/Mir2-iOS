@@ -370,6 +370,13 @@ final class OnlineScene: SKScene {
             let label=SKLabelNode(text:name);label.fontSize=12;label.position.y = -18;node.addChild(label)
             addChild(node);drops[p.actor]=(cell,node);combatReport?("地面掉落：\(name) · 走到物品上点击拾取");return
         }
+        // Original DrawEffectHum types 0/1: Mon14 ground spikes at server coordinates.
+        if p.id==716 {
+            if p.series<=1,Int(p.x)<map.width,Int(p.y)<map.height {
+                effect(base:410,count:6,at:point(Cell(x:Int(p.x),y:Int(p.y))),library:"mon14",interval:0.12)
+            }
+            return
+        }
         if p.id==611 { if let cell=drops[p.actor]?.cell { pickupAttempts.removeValue(forKey:cell) };drops.removeValue(forKey:p.actor)?.node.removeFromParent();dropNames.removeValue(forKey:p.actor);return }
         if p.id==53,let a=actors[p.actor],p.actor != playerID {
             a.label.text="\(a.displayName) HP \(p.x)/\(p.series) MP \(p.y)"
@@ -589,7 +596,7 @@ final class OnlineScene: SKScene {
         let container=SKNode(),sprite=SKSpriteNode()
         container.name=temporary ? "transient" : "persistent"
         if temporary { transientEffects.append(container) }
-        sprite.anchorPoint = .zero;sprite.blendMode = .add
+        sprite.anchorPoint = .zero;sprite.blendMode = library == "mon14" ? .alpha : .add
         container.addChild(sprite);container.position=position
         (parent ?? effectsRoot).addChild(container)
         container.zPosition=parent == nil ? 20000 : 4

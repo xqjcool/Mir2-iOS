@@ -28,7 +28,7 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested",
+    "status": "live server consumption and natural expiration passed; see godwater-live-test.json",
     "serverLoadedItemCount": 1005
   },
   {
@@ -60,7 +60,7 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested",
+    "status": "live server consumption and natural expiration passed; see godwater-live-test.json",
     "serverLoadedItemCount": 1005
   },
   {
@@ -92,7 +92,7 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested",
+    "status": "live server consumption and natural expiration passed; see godwater-live-test.json",
     "serverLoadedItemCount": 1005
   },
   {
@@ -124,7 +124,7 @@
       "Price": 500,
       "Stock": 5
     },
-    "status": "database definition installed; in-game consumption not yet tested",
+    "status": "live server consumption and natural expiration passed; see godwater-live-test.json",
     "serverLoadedItemCount": 1005
   }
 ]

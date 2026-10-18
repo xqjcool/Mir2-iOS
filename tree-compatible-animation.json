@@ -1,0 +1,12 @@
+{
+  "bodySource": "https://mirfiles.com/resources/mir2/crystal/patch/Data/Monster/013.Lib",
+  "bodyScope": "Compatible classic tree, not original Mon15 missing frame recovery",
+  "actions": {
+    "stand": 10,
+    "struck": 2,
+    "die": 10
+  },
+  "bodyAttackFramesRecovered": false,
+  "attackEffect": "Original ClMain.pas DrawEffectHum 0/1; SM_716 from BigHeartMonster; Mon14 410-415",
+  "serverCombatAndDropsUnchanged": true
+}
