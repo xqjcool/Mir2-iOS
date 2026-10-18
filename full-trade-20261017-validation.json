@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "inspectionBytes": 1688,
+  "swordId": 2100010213,
+  "checks": [
+    "inspect equipped weapon",
+    "deny configured withdrawal",
+    "cancel refund",
+    "exchange",
+    "reverse exchange",
+    "disconnect refund"
+  ],
+  "events": [
+    {
+      "id": 751,
+      "value": 0
+    },
+    {
+      "id": 675,
+      "value": 0
+    },
+    {
+      "id": 684,
+      "value": 100
+    },
+    {
+      "id": 686,
+      "value": 100
+    },
+    {
+      "id": 678,
+      "value": 0
+    },
+    {
+      "id": 681,
+      "value": 0
+    },
+    {
+      "id": 681,
+      "value": 0
+    },
+    {
+      "id": 675,
+      "value": 0
+    },
+    {
+      "id": 684,
+      "value": 100
+    },
+    {
+      "id": 686,
+      "value": 100
+    },
+    {
+      "id": 687,
+      "value": 0
+    },
+    {
+      "id": 687,
+      "value": 0
+    },
+    {
+      "id": 675,
+      "value": 0
+    },
+    {
+      "id": 684,
+      "value": 100
+    },
+    {
+      "id": 686,
+      "value": 100
+    },
+    {
+      "id": 687,
+      "value": 0
+    },
+    {
+      "id": 687,
+      "value": 0
+    },
+    {
+      "id": 675,
+      "value": 0
+    },
+    {
+      "id": 684,
+      "value": 100
+    },
+    {
+      "id": 686,
+      "value": 100
+    },
+    {
+      "id": 681,
+      "value": 0
+    }
+  ],
+  "goldAfterRoundtrip": {
+    "initiator": 0,
+    "peer": 1000
+  },
+  "testRolePositionsAndGoldRestored": true,
+  "iphoneUITested": false
+}

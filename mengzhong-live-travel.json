@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "map": "3",
+      "position": [
+        304,
+        325
+      ],
+      "packet": 51
+    },
+    {
+      "map": "D710",
+      "position": [
+        28,
+        21
+      ],
+      "packet": 634
+    },
+    {
+      "map": "D711",
+      "position": [
+        205,
+        198
+      ],
+      "packet": 634
+    },
+    {
+      "map": "D710",
+      "position": [
+        26,
+        20
+      ],
+      "packet": 634
+    },
+    {
+      "map": "3",
+      "position": [
+        304,
+        325
+      ],
+      "packet": 634
+    }
+  ],
+  "scope": "Real server protocol; Mengzhong to Stone Tomb first floor and return; second floor static checks only"
+}

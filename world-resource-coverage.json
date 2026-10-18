@@ -1,6 +1,6 @@
 {
   "source": "mirbeta/MirServer",
-  "installed": 26,
+  "installed": 30,
   "total": 322,
   "maps": [
     {
@@ -934,7 +934,7 @@
     {
       "map": "3",
       "name": "盟重省",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 1000,
       "height": 800,
@@ -1370,7 +1370,7 @@
     {
       "map": "D710",
       "name": "石墓入口",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 50,
       "height": 50,
@@ -1380,7 +1380,7 @@
     {
       "map": "D711",
       "name": "石墓一层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
       "height": 400,
@@ -1390,7 +1390,7 @@
     {
       "map": "D712",
       "name": "石墓二层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
       "height": 400,
