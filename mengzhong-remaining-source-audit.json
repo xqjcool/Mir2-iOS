@@ -1,0 +1,627 @@
+{
+  "uniqueUnresolved": 22,
+  "placementsUnresolved": 37,
+  "oldShandaExplicitEmptySlots": 14,
+  "oldShandaSmTilesSlotCount": 1176,
+  "oldShandaSources": [
+    {
+      "file": "objects.Lib",
+      "sha256": "3d293b303fc2838d2e02fed9b1e82ea16ce124c437d4916d74789c96a7893a00",
+      "url": "https://mirfiles.com/resources/mir2/crystal/patch_oldversion/Data/Map/Shanda-Mir2/objects.Lib.gz"
+    },
+    {
+      "file": "objects13.Lib",
+      "sha256": "db1e5248b55498b2c08da807f76acb4a4e7d309c6b26196e1c96fcc514179cf7",
+      "url": "https://mirfiles.com/resources/mir2/crystal/patch_oldversion/Data/Map/Shanda-Mir2/objects13.Lib.gz"
+    },
+    {
+      "file": "SmTiles.Lib",
+      "sha256": "28f3393b68268e132adffb812d45df5f79c97719ce74db570b252f3aa060601e",
+      "url": "https://mirfiles.com/resources/mir2/crystal/patch_oldversion/Data/Map/Shanda-Mir2/SmTiles.Lib.gz"
+    },
+    {
+      "file": "Tiles.Lib",
+      "sha256": "8950bb8747fe54c580e41729f1abd706811c8dce2a0b3ac7f4134be6c1c5fb4e",
+      "url": "https://mirfiles.com/resources/mir2/crystal/patch_oldversion/Data/Map/Shanda-Mir2/Tiles.Lib.gz"
+    }
+  ],
+  "crossVersionCandidateAnchors": [
+    {
+      "original": [
+        "objects13",
+        1162
+      ],
+      "donor": [
+        "objects21",
+        6583
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1168
+      ],
+      "donor": [
+        "objects21",
+        6586
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1167
+      ],
+      "donor": [
+        "objects21",
+        6585
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1180
+      ],
+      "donor": [
+        "objects21",
+        6618
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1179
+      ],
+      "donor": [
+        "objects21",
+        6617
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1187
+      ],
+      "donor": [
+        "objects21",
+        6624
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1186
+      ],
+      "donor": [
+        "objects21",
+        6623
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1185
+      ],
+      "donor": [
+        "objects21",
+        6622
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1196
+      ],
+      "donor": [
+        "objects21",
+        6632
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1195
+      ],
+      "donor": [
+        "objects21",
+        6631
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1202
+      ],
+      "donor": [
+        "objects21",
+        6635
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1201
+      ],
+      "donor": [
+        "objects21",
+        6634
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1200
+      ],
+      "donor": [
+        "objects21",
+        6633
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1210
+      ],
+      "donor": [
+        "objects21",
+        6638
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1209
+      ],
+      "donor": [
+        "objects21",
+        6637
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1208
+      ],
+      "donor": [
+        "objects21",
+        6636
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1216
+      ],
+      "donor": [
+        "objects21",
+        6644
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1215
+      ],
+      "donor": [
+        "objects21",
+        6643
+      ],
+      "equal": false
+    },
+    {
+      "original": [
+        "objects13",
+        1211
+      ],
+      "donor": [
+        "objects21",
+        6639
+      ],
+      "equal": false
+    }
+  ],
+  "crossVersionDecision": "rejected: none of 19 nearby reference frames matched",
+  "sourcesChanged": false,
+  "readyForCompleteResourceOpening": false,
+  "missing": [
+    {
+      "library": "objects",
+      "index": 0,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 148,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects",
+      "index": 1,
+      "placements": 3,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 150,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 152,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 156,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects",
+      "index": 2,
+      "placements": 8,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 149,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 151,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 153,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 154,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 155,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 157,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 159,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 160,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects",
+      "index": 3,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 158,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1172,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 956,
+          "y": 328,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1173,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 956,
+          "y": 327,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1174,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 956,
+          "y": 326,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1192,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 959,
+          "y": 330,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1193,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 959,
+          "y": 329,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1194,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 959,
+          "y": 328,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1212,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 962,
+          "y": 333,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1213,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 962,
+          "y": 332,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "objects13",
+      "index": 1214,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 962,
+          "y": 331,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 3891,
+      "placements": 3,
+      "coordinates": [
+        {
+          "x": 617,
+          "y": 249,
+          "layer": "middle"
+        },
+        {
+          "x": 701,
+          "y": 272,
+          "layer": "middle"
+        },
+        {
+          "x": 644,
+          "y": 346,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 3895,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 631,
+          "y": 308,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 3896,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 702,
+          "y": 270,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 3902,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 632,
+          "y": 308,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 3903,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 703,
+          "y": 270,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 3924,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 706,
+          "y": 271,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 7310,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 592,
+          "y": 328,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "smtiles",
+      "index": 32767,
+      "placements": 5,
+      "coordinates": [
+        {
+          "x": 958,
+          "y": 328,
+          "layer": "middle"
+        },
+        {
+          "x": 959,
+          "y": 328,
+          "layer": "middle"
+        },
+        {
+          "x": 957,
+          "y": 329,
+          "layer": "middle"
+        },
+        {
+          "x": 960,
+          "y": 329,
+          "layer": "middle"
+        },
+        {
+          "x": 960,
+          "y": 330,
+          "layer": "middle"
+        }
+      ],
+      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
+      "resolution": "unresolved_no_replacement_imported"
+    },
+    {
+      "library": "tiles",
+      "index": 3868,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 592,
+          "y": 328,
+          "layer": "back"
+        }
+      ],
+      "oldLibraryEvidence": "explicit_zero_record",
+      "resolution": "unresolved_no_replacement_imported"
+    }
+  ]
+}
