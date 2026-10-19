@@ -1,0 +1,91 @@
+--- a/src/M2Server/M2Share.cs
++++ b/src/M2Server/M2Share.cs
+@@ -1936,25 +1936,25 @@
+         // * 号为通配符
+         public static bool CompareIPaddr(string sIPaddr, string dIPaddr)
+         {
+-            bool result;
+-            if (string.IsNullOrEmpty(sIPaddr) || string.IsNullOrEmpty(dIPaddr))
+-            {
+-                return false;
+-            }
+-            if (dIPaddr[1] == '*')
+-            {
+-                return true;
+-            }
+-            int nPos = dIPaddr.IndexOf('*');
+-            if (nPos > 0)
+-            {
+-                result = HUtil32.CompareLStr(sIPaddr, dIPaddr, nPos - 1);
+-            }
+-            else
+-            {
+-                result = string.Compare(sIPaddr, dIPaddr, StringComparison.OrdinalIgnoreCase) == 0;
+-            }
+-            return result;
++            if (string.IsNullOrWhiteSpace(sIPaddr) || string.IsNullOrWhiteSpace(dIPaddr)) return false;
++            if (!System.Net.IPAddress.TryParse(sIPaddr.Trim(), out var address)) return false;
++            if (address.IsIPv4MappedToIPv6) address = address.MapToIPv4();
++            string pattern = dIPaddr.Trim();
++            if (pattern == "*") return true;
++            if (System.Net.IPAddress.TryParse(pattern, out var expected))
++            {
++                if (expected.IsIPv4MappedToIPv6) expected = expected.MapToIPv4();
++                return address.Equals(expected);
++            }
++            var actualParts = address.ToString().Split('.');
++            var patternParts = pattern.Split('.');
++            if (actualParts.Length != 4 || patternParts.Length != 4) return false;
++            for (int i = 0; i < 4; i++)
++            {
++                if (patternParts[i] == "*") continue;
++                if (!byte.TryParse(patternParts[i], out byte part) || part.ToString() != actualParts[i]) return false;
++            }
++            return true;
+         }
+ 
+         public static int MakeMonsterFeature(byte btRaceImg, byte btWeapon, ushort wAppr)
+--- a/src/M2Server/Player/PlayObject.cs
++++ b/src/M2Server/Player/PlayObject.cs
+@@ -1185,17 +1185,16 @@
+                 {
+                     MapRandomMove(Envir.MapName, 0);
+                 }
+-                //if (SystemShare.WorldEngine.GetHumPermission(ChrName, ref sIPaddr, ref Permission))
+-                //{
+-                //    if (SystemShare.Config.PermissionSystem)
+-                //    {
+-                //        if (!M2Share.CompareIPaddr(LoginIpAddr, sIPaddr))
+-                //        {
+-                //            SysMsg(sCheckIPaddrFail, MsgColor.Red, MsgType.Hint);
+-                //            BoEmergencyClose = true;
+-                //        }
+-                //    }
+-                //}
++                // Apply named GM grants only when the configured source address matches.
++                var admin = SystemShare.WorldEngine.AdminList.FirstOrDefault(entry =>
++                    string.Equals(entry.ChrName, ChrName, StringComparison.OrdinalIgnoreCase));
++                bool namedAdmin = !string.IsNullOrEmpty(admin.ChrName);
++                bool addressMatched = namedAdmin && M2Share.CompareIPaddr(LoginIpAddr, admin.IPaddr);
++                Permission = addressMatched ? admin.Level : SystemShare.Config.StartPermission;
++                if (namedAdmin)
++                {
++                    LogService.Info($"GM admission: character={ChrName}, permission={Permission}, addressMatched={addressMatched}");
++                }
+                 GetStartPoint();
+                 for (int i = MagicList.Count - 1; i >= 0; i--)
+                 {
+--- a/src/Modules/GameCommand/GameCommand.cs
++++ b/src/Modules/GameCommand/GameCommand.cs
+@@ -30,10 +30,7 @@
+         {
+             if (PlayerActor != null)
+             {
+-#if DEBUG
+-                PlayerActor.Permission = 10;
+-                PlayerActor.SysMsg("当前运行调试模式,权限等级：10", MsgColor.Red, MsgType.Hint);
+-#endif
++
+                 if (PlayerActor.Permission < this.Command.PermissionMin)// 检查用户是否有权限来调用命令。
+                 {
+                     return CommandHelp.GameCommandPermissionTooLow;

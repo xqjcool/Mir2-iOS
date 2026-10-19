@@ -1,0 +1,16 @@
+{
+  "PeerCheck14": {
+    "addedItems": [],
+    "expectedAllowed": false
+  },
+  "WeaponCheck13": {
+    "addedItems": [
+      1530527779
+    ],
+    "expectedAllowed": true
+  },
+  "temporaryGrantRevokedAndDeniedAfterRelogin": true,
+  "testItemRemoved": 1530527779,
+  "finalAdminList": "* C176Alpha *",
+  "ipMatcherCasesPassed": 10
+}
