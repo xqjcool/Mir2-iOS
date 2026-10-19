@@ -61,7 +61,10 @@ struct OnlineView:View {
     }
     private func controlScale(_ size:CGSize)->CGFloat {
         let inset=min(bottomInset,max(0,Double(size.height)-350))
-        return CGFloat(min(1.1,max(0.9,min(scale,min((Double(size.width)-20)/406,(Double(size.height)-92-inset)/254)))))
+        let chatHeight:Double=size.height>=400 ? 88 : 44
+        let leftLimit=(Double(size.height)-inset-134-chatHeight)/148
+        let rightLimit=(Double(size.height)-(size.height<350 ? 82 : 104)-inset)/254
+        return CGFloat(min(1.1,max(0.9,min(scale,min((Double(size.width)-20)/406,min(leftLimit,rightLimit))))))
     }
     private func open(_ value:HUDPanel) { menuExpanded=false;model.scene?.suspendControls(true);panel=value }
     private func shortcut(_ title:String,_ icon:String,_ value:HUDPanel)->some View {
@@ -129,16 +132,17 @@ struct OnlineView:View {
             Text("\(title) \(value?.description ?? "—")/\(maximum?.description ?? "—")").font(.system(size:10)).foregroundColor(.white)
         }.frame(height:14)
     }
-    private var miniMap:some View {
-        Button { open(.map) } label: {
+    private func miniMap(compact:Bool)->some View {
+        let mapHeight:CGFloat=compact ? 30 : 52
+        return Button { open(.map) } label: {
             VStack(spacing:2) {
                 Text(model.mapName).font(.caption.bold())
                 if let image=model.minimap,let scene=model.scene {
                     ZStack(alignment:.topLeading) {
                         Image(uiImage:image).resizable().interpolation(.none)
                         Circle().fill(Color.yellow).frame(width:5,height:5)
-                            .position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*120,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*52)
-                    }.frame(width:120,height:52).clipped()
+                            .position(x:CGFloat(model.position.x)/CGFloat(scene.mapWidth)*120,y:CGFloat(model.position.y)/CGFloat(scene.mapHeight)*mapHeight)
+                    }.frame(width:120,height:mapHeight).clipped()
                 }
                 Text("\(model.position.x),\(model.position.y)").font(.caption2.monospacedDigit())
             }.padding(4).background(ClassicTheme.panel.opacity(opacity)).overlay(Rectangle().stroke(ClassicTheme.gold))
@@ -150,32 +154,33 @@ struct OnlineView:View {
             if net.online,let scene=model.scene { SpriteView(scene:scene).ignoresSafeArea() }
             if net.online {
                 GeometryReader { geo in
-                    VStack(spacing:0) {
-                        HStack(alignment:.top,spacing:6) {
-                            statusCard.overlay(alignment:.topLeading) {
-                                GeometryReader { status in
-                                    chatDock(expanded:geo.size.height>=380)
-                                        .fixedSize().offset(y:status.size.height+6)
-                                }
-                            }
+                    HStack(alignment:.top,spacing:6) {
+                        VStack(alignment:.leading,spacing:6) {
+                            statusCard.fixedSize(horizontal:false,vertical:true)
+                            chatDock(expanded:geo.size.height>=400)
+                                .fixedSize(horizontal:false,vertical:true)
                             Spacer(minLength:0)
-                            Color.clear.frame(width:140,height:44).overlay(alignment:.topTrailing) { quickMenu }
-                            miniMap
-                        }.zIndex(10)
-                        Spacer(minLength:0)
-                        HStack(alignment:.bottom,spacing:4) {
                             VirtualJoystick { x,y in model.scene?.input(.move(x,y)) }
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomLeading)
                                 .frame(width:148*controlScale(geo.size),height:148*controlScale(geo.size))
                                 .padding(.leading,CGFloat(min(leftInset,max(0,(Double(geo.size.width)-20-406*Double(controlScale(geo.size)))/2))))
                                 .opacity(opacity)
+                                .padding(.bottom,CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350))))
+                        }.frame(maxHeight:.infinity,alignment:.topLeading)
+                        Spacer(minLength:0)
+                        VStack(alignment:.trailing,spacing:0) {
+                            HStack(alignment:.top,spacing:6) {
+                                Color.clear.frame(width:140,height:44).overlay(alignment:.topTrailing) { quickMenu }
+                                miniMap(compact:geo.size.height<350)
+                            }.fixedSize(horizontal:false,vertical:true).zIndex(10)
                             Spacer(minLength:0)
                             CombatButtons(net:net,scene:model.scene)
                                 .scaleEffect(controlScale(geo.size),anchor:.bottomTrailing)
                                 .frame(width:258*controlScale(geo.size),height:254*controlScale(geo.size))
                                 .padding(.trailing,CGFloat(min(rightInset,max(0,(Double(geo.size.width)-20-406*Double(controlScale(geo.size)))/2))))
                                 .opacity(opacity)
-                        }.padding(.bottom,CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350))))
+                                .padding(.bottom,CGFloat(min(bottomInset,max(0,Double(geo.size.height)-350))))
+                        }.frame(maxHeight:.infinity,alignment:.topTrailing)
                     }.padding(8)
                     VStack(spacing:3) {
                         if !model.target.isEmpty {

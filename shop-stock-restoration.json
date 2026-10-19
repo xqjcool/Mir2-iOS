@@ -1,0 +1,1100 @@
+[
+  {
+    "file": "ClassicGoodsBoundary-0.txt",
+    "npc": "边界杂货店",
+    "source": "Market_Def\\比奇城\\万能-0.txt",
+    "sourceCount": 8,
+    "stock": [
+      {
+        "name": "金创药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 3,
+        "mode": 0,
+        "icon": 398
+      },
+      {
+        "name": "魔法药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 4,
+        "mode": 0,
+        "icon": 394
+      },
+      {
+        "name": "蜡烛",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 48,
+        "mode": 30,
+        "icon": 130
+      },
+      {
+        "name": "回城卷",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 38,
+        "mode": 3,
+        "icon": 402
+      },
+      {
+        "name": "随机传送卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 36,
+        "mode": 3,
+        "icon": 404
+      },
+      {
+        "name": "地牢逃脱卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 37,
+        "mode": 3,
+        "icon": 408
+      },
+      {
+        "name": "回城卷包",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 42,
+        "mode": 31,
+        "icon": 403
+      },
+      {
+        "name": "随机传送卷包",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 41,
+        "mode": 31,
+        "icon": 405
+      },
+      {
+        "name": "地牢逃脱卷包",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 40,
+        "mode": 31,
+        "icon": 409
+      },
+      {
+        "name": "金创药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 5,
+        "mode": 0,
+        "icon": 400
+      },
+      {
+        "name": "魔法药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 6,
+        "mode": 0,
+        "icon": 396
+      },
+      {
+        "name": "太阳水",
+        "count": 500,
+        "refillMinutes": 3,
+        "id": 23,
+        "mode": 0,
+        "icon": 16
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "ClassicGoodsGinkgo-0.txt",
+    "npc": "银杏杂货店",
+    "source": "Market_Def\\比奇城\\万能-0.txt",
+    "sourceCount": 8,
+    "stock": [
+      {
+        "name": "金创药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 3,
+        "mode": 0,
+        "icon": 398
+      },
+      {
+        "name": "魔法药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 4,
+        "mode": 0,
+        "icon": 394
+      },
+      {
+        "name": "蜡烛",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 48,
+        "mode": 30,
+        "icon": 130
+      },
+      {
+        "name": "回城卷",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 38,
+        "mode": 3,
+        "icon": 402
+      },
+      {
+        "name": "随机传送卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 36,
+        "mode": 3,
+        "icon": 404
+      },
+      {
+        "name": "地牢逃脱卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 37,
+        "mode": 3,
+        "icon": 408
+      },
+      {
+        "name": "回城卷包",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 42,
+        "mode": 31,
+        "icon": 403
+      },
+      {
+        "name": "随机传送卷包",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 41,
+        "mode": 31,
+        "icon": 405
+      },
+      {
+        "name": "地牢逃脱卷包",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 40,
+        "mode": 31,
+        "icon": 409
+      },
+      {
+        "name": "金创药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 5,
+        "mode": 0,
+        "icon": 400
+      },
+      {
+        "name": "魔法药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 6,
+        "mode": 0,
+        "icon": 396
+      },
+      {
+        "name": "太阳水",
+        "count": 500,
+        "refillMinutes": 3,
+        "id": 23,
+        "mode": 0,
+        "icon": 16
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "ClassicClothes-0.txt",
+    "npc": "夏家店老板",
+    "source": "Market_Def\\比奇城\\夏家-0.txt",
+    "sourceCount": 14,
+    "stock": [
+      {
+        "name": "金创药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 3,
+        "mode": 0,
+        "icon": 398
+      },
+      {
+        "name": "魔法药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 4,
+        "mode": 0,
+        "icon": 394
+      },
+      {
+        "name": "金创药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 5,
+        "mode": 0,
+        "icon": 400
+      },
+      {
+        "name": "魔法药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 6,
+        "mode": 0,
+        "icon": 396
+      },
+      {
+        "name": "强效金创药",
+        "count": 500,
+        "refillMinutes": 3,
+        "id": 7,
+        "mode": 0,
+        "icon": 28
+      },
+      {
+        "name": "强效魔法药",
+        "count": 500,
+        "refillMinutes": 3,
+        "id": 8,
+        "mode": 0,
+        "icon": 29
+      },
+      {
+        "name": "金创药(小)包",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 13,
+        "mode": 31,
+        "icon": 399
+      },
+      {
+        "name": "魔法药(小)包",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 14,
+        "mode": 31,
+        "icon": 395
+      },
+      {
+        "name": "金创药(中)包",
+        "count": 300,
+        "refillMinutes": 3,
+        "id": 15,
+        "mode": 31,
+        "icon": 401
+      },
+      {
+        "name": "魔法药(中)包",
+        "count": 300,
+        "refillMinutes": 3,
+        "id": 16,
+        "mode": 31,
+        "icon": 397
+      },
+      {
+        "name": "超级金创药",
+        "count": 600,
+        "refillMinutes": 3,
+        "id": 17,
+        "mode": 31,
+        "icon": 313
+      },
+      {
+        "name": "超级魔法药",
+        "count": 600,
+        "refillMinutes": 3,
+        "id": 18,
+        "mode": 31,
+        "icon": 314
+      },
+      {
+        "name": "太阳水",
+        "count": 500,
+        "refillMinutes": 3,
+        "id": 23,
+        "mode": 0,
+        "icon": 16
+      },
+      {
+        "name": "强效太阳水",
+        "count": 200,
+        "refillMinutes": 3,
+        "id": 24,
+        "mode": 0,
+        "icon": 312
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "ClassicBooks-0.txt",
+    "npc": "书店老板",
+    "source": "Market_Def\\比奇城\\书店-0.txt",
+    "sourceCount": 17,
+    "stock": [
+      {
+        "name": "基本剑术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 363,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "火球术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 382,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "治愈术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 369,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "精神力战法",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 370,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "抗拒火环",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 383,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "诱惑之光",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 384,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "地狱火",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 385,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "施毒术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 371,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "攻杀剑术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 364,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "雷电术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 386,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "瞬息移动",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 387,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "大火球",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 388,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "爆裂火焰",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 389,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "灵魂火符",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 372,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "召唤骷髅",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 373,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "隐身术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 374,
+        "mode": 4,
+        "icon": 0
+      },
+      {
+        "name": "集体隐身术",
+        "count": 100,
+        "refillMinutes": 10,
+        "id": 375,
+        "mode": 4,
+        "icon": 0
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "ClassicGoodsBichon-0.txt",
+    "npc": "杂货铺老板",
+    "source": "Market_Def\\比奇城\\杂货-0.txt",
+    "sourceCount": 9,
+    "stock": [
+      {
+        "name": "金创药(小量)",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 3,
+        "mode": 0,
+        "icon": 398
+      },
+      {
+        "name": "魔法药(小量)",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 4,
+        "mode": 0,
+        "icon": 394
+      },
+      {
+        "name": "蜡烛",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 48,
+        "mode": 30,
+        "icon": 130
+      },
+      {
+        "name": "回城卷",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 38,
+        "mode": 3,
+        "icon": 402
+      },
+      {
+        "name": "随机传送卷",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 36,
+        "mode": 3,
+        "icon": 404
+      },
+      {
+        "name": "地牢逃脱卷",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 37,
+        "mode": 3,
+        "icon": 408
+      },
+      {
+        "name": "回城卷包",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 42,
+        "mode": 31,
+        "icon": 403
+      },
+      {
+        "name": "随机传送卷包",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 41,
+        "mode": 31,
+        "icon": 405
+      },
+      {
+        "name": "地牢逃脱卷包",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 40,
+        "mode": 31,
+        "icon": 409
+      },
+      {
+        "name": "护身符",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 45,
+        "mode": 25,
+        "icon": 270
+      },
+      {
+        "name": "黄色药粉(少量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 31,
+        "mode": 25,
+        "icon": 250
+      },
+      {
+        "name": "灰色药粉(少量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 30,
+        "mode": 25,
+        "icon": 251
+      }
+    ],
+    "omitted": [
+      {
+        "name": "月卡",
+        "reason": "No subscription restriction or charging system in this project"
+      }
+    ]
+  },
+  {
+    "file": "ClassicWeapon-0.txt",
+    "npc": "铁匠",
+    "source": "Market_Def\\比奇城\\卫家店-0103.txt",
+    "sourceCount": 7,
+    "stock": [
+      {
+        "name": "木剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 207,
+        "mode": 5,
+        "icon": 30
+      },
+      {
+        "name": "铁剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 212,
+        "mode": 5,
+        "icon": 36
+      },
+      {
+        "name": "乌木剑",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 209,
+        "mode": 5,
+        "icon": 43
+      },
+      {
+        "name": "匕首",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 208,
+        "mode": 5,
+        "icon": 35
+      },
+      {
+        "name": "青铜剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 210,
+        "mode": 5,
+        "icon": 31
+      },
+      {
+        "name": "鹤嘴锄",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 213,
+        "mode": 6,
+        "icon": 50
+      },
+      {
+        "name": "短剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 211,
+        "mode": 5,
+        "icon": 33
+      },
+      {
+        "name": "青铜斧",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 214,
+        "mode": 5,
+        "icon": 32
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "InteriorWeapon-0103.txt",
+    "npc": "卫家店",
+    "source": "Market_Def\\比奇城\\卫家店-0103.txt",
+    "sourceCount": 7,
+    "stock": [
+      {
+        "name": "木剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 207,
+        "mode": 5,
+        "icon": 30
+      },
+      {
+        "name": "铁剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 212,
+        "mode": 5,
+        "icon": 36
+      },
+      {
+        "name": "乌木剑",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 209,
+        "mode": 5,
+        "icon": 43
+      },
+      {
+        "name": "匕首",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 208,
+        "mode": 5,
+        "icon": 35
+      },
+      {
+        "name": "青铜剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 210,
+        "mode": 5,
+        "icon": 31
+      },
+      {
+        "name": "鹤嘴锄",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 213,
+        "mode": 6,
+        "icon": 50
+      },
+      {
+        "name": "短剑",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 211,
+        "mode": 5,
+        "icon": 33
+      },
+      {
+        "name": "青铜斧",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 214,
+        "mode": 5,
+        "icon": 32
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "InteriorClothes-0106.txt",
+    "npc": "安家布衣",
+    "source": "Market_Def\\比奇城\\安家布衣-0106.txt",
+    "sourceCount": 8,
+    "stock": [
+      {
+        "name": "布衣(男)",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 97,
+        "mode": 10,
+        "icon": 60
+      },
+      {
+        "name": "布衣(女)",
+        "count": 20,
+        "refillMinutes": 1,
+        "id": 98,
+        "mode": 11,
+        "icon": 80
+      },
+      {
+        "name": "轻型盔甲(男)",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 99,
+        "mode": 10,
+        "icon": 61
+      },
+      {
+        "name": "轻型盔甲(女)",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 100,
+        "mode": 11,
+        "icon": 81
+      },
+      {
+        "name": "重盔甲(男)",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 103,
+        "mode": 10,
+        "icon": 62
+      },
+      {
+        "name": "重盔甲(女)",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 104,
+        "mode": 11,
+        "icon": 82
+      },
+      {
+        "name": "魔法长袍(男)",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 105,
+        "mode": 10,
+        "icon": 63
+      },
+      {
+        "name": "魔法长袍(女)",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 106,
+        "mode": 11,
+        "icon": 83
+      },
+      {
+        "name": "灵魂战衣(男)",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 107,
+        "mode": 10,
+        "icon": 64
+      },
+      {
+        "name": "灵魂战衣(女)",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 108,
+        "mode": 11,
+        "icon": 84
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "InteriorRings-0105.txt",
+    "npc": "戒指店老板",
+    "source": "Market_Def\\比奇城\\戒指店-0105.txt",
+    "sourceCount": 4,
+    "stock": [
+      {
+        "name": "古铜戒指",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 283,
+        "mode": 22,
+        "icon": 145
+      },
+      {
+        "name": "六角戒指",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 285,
+        "mode": 22,
+        "icon": 144
+      },
+      {
+        "name": "玻璃戒指",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 284,
+        "mode": 22,
+        "icon": 143
+      },
+      {
+        "name": "牛角戒指",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 286,
+        "mode": 22,
+        "icon": 140
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "InteriorBracelets-0105.txt",
+    "npc": "手镯店老板",
+    "source": "Market_Def\\比奇城\\手镯店-0105.txt",
+    "sourceCount": 4,
+    "stock": [
+      {
+        "name": "小手镯",
+        "count": 10,
+        "refillMinutes": 3,
+        "id": 313,
+        "mode": 26,
+        "icon": 192
+      },
+      {
+        "name": "银手镯",
+        "count": 10,
+        "refillMinutes": 3,
+        "id": 314,
+        "mode": 24,
+        "icon": 202
+      },
+      {
+        "name": "铁手镯",
+        "count": 10,
+        "refillMinutes": 3,
+        "id": 312,
+        "mode": 24,
+        "icon": 180
+      },
+      {
+        "name": "钢手镯",
+        "count": 10,
+        "refillMinutes": 3,
+        "id": 316,
+        "mode": 26,
+        "icon": 180
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "InteriorNecklaces-0105.txt",
+    "npc": "项链店老板",
+    "source": "Market_Def\\比奇城\\项链店-0105.txt",
+    "sourceCount": 5,
+    "stock": [
+      {
+        "name": "传统项链",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 299,
+        "mode": 20,
+        "icon": 237
+      },
+      {
+        "name": "金项链",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 298,
+        "mode": 20,
+        "icon": 222
+      },
+      {
+        "name": "黑檀项链",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 302,
+        "mode": 20,
+        "icon": 220
+      },
+      {
+        "name": "黄色水晶项链",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 301,
+        "mode": 20,
+        "icon": 221
+      },
+      {
+        "name": "黑色水晶项链",
+        "count": 10,
+        "refillMinutes": 10,
+        "id": 300,
+        "mode": 20,
+        "icon": 225
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "ClassicCaveTrader-DM001.txt",
+    "npc": "小李",
+    "source": "Market_Def\\比奇城\\不法-DM001.txt",
+    "sourceCount": 8,
+    "stock": [
+      {
+        "name": "蜡烛",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 48,
+        "mode": 30,
+        "icon": 130
+      },
+      {
+        "name": "随机传送卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 36,
+        "mode": 3,
+        "icon": 404
+      },
+      {
+        "name": "地牢逃脱卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 37,
+        "mode": 3,
+        "icon": 408
+      },
+      {
+        "name": "金创药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 3,
+        "mode": 0,
+        "icon": 398
+      },
+      {
+        "name": "魔法药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 4,
+        "mode": 0,
+        "icon": 394
+      },
+      {
+        "name": "金创药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 5,
+        "mode": 0,
+        "icon": 400
+      },
+      {
+        "name": "魔法药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 6,
+        "mode": 0,
+        "icon": 396
+      },
+      {
+        "name": "太阳水",
+        "count": 500,
+        "refillMinutes": 3,
+        "id": 23,
+        "mode": 0,
+        "icon": 16
+      }
+    ],
+    "omitted": []
+  },
+  {
+    "file": "ClassicCaveTrader-DM011.txt",
+    "npc": "小李",
+    "source": "Market_Def\\比奇城\\不法-DM011.txt",
+    "sourceCount": 8,
+    "stock": [
+      {
+        "name": "蜡烛",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 48,
+        "mode": 30,
+        "icon": 130
+      },
+      {
+        "name": "随机传送卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 36,
+        "mode": 3,
+        "icon": 404
+      },
+      {
+        "name": "地牢逃脱卷",
+        "count": 20,
+        "refillMinutes": 10,
+        "id": 37,
+        "mode": 3,
+        "icon": 408
+      },
+      {
+        "name": "金创药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 3,
+        "mode": 0,
+        "icon": 398
+      },
+      {
+        "name": "魔法药(小量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 4,
+        "mode": 0,
+        "icon": 394
+      },
+      {
+        "name": "金创药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 5,
+        "mode": 0,
+        "icon": 400
+      },
+      {
+        "name": "魔法药(中量)",
+        "count": 100,
+        "refillMinutes": 3,
+        "id": 6,
+        "mode": 0,
+        "icon": 396
+      },
+      {
+        "name": "太阳水",
+        "count": 500,
+        "refillMinutes": 3,
+        "id": 23,
+        "mode": 0,
+        "icon": 16
+      }
+    ],
+    "omitted": []
+  }
+]
