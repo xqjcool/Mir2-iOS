@@ -1,0 +1,227 @@
+{
+  "sourceMap": "3.map",
+  "sourceSHA256": "1e23b312dcec981a7a6ef0b88905690ac33d86c5a9caac9742e559333419926e",
+  "candidateMapURL": "https://raw.githubusercontent.com/qigedashen/mir2-1.80-mirror/754d5f271e25272d367d984cc49dea93fac2bed4/Map/3.map",
+  "candidateMapSHA256": "d959f496351dcbb105f2356622890473193b57132e9c7b2e52230f551a2b0e04",
+  "candidateCommit": "754d5f271e25272d367d984cc49dea93fac2bed4",
+  "sameDimensions": [
+    1000,
+    800
+  ],
+  "candidateFormat": "12-byte cell records; used only as a per-coordinate art reference",
+  "prefixCellsIdentical": 765911,
+  "targetUniqueIDsResolved": 17,
+  "placementsPatched": 19,
+  "operations": [
+    {
+      "library": "objects13",
+      "index": 1172,
+      "x": 956,
+      "y": 328,
+      "oldRaw": 33941,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "objects13",
+      "index": 1173,
+      "x": 956,
+      "y": 327,
+      "oldRaw": 33942,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "objects13",
+      "index": 1174,
+      "x": 956,
+      "y": 326,
+      "oldRaw": 33943,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "objects13",
+      "index": 1192,
+      "x": 959,
+      "y": 330,
+      "oldRaw": 33961,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "objects13",
+      "index": 1193,
+      "x": 959,
+      "y": 329,
+      "oldRaw": 33962,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "objects13",
+      "index": 1194,
+      "x": 959,
+      "y": 328,
+      "oldRaw": 33963,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "objects13",
+      "index": 1212,
+      "x": 962,
+      "y": 333,
+      "oldRaw": 33981,
+      "newRaw": 38425,
+      "newSelector": 0,
+      "action": "remap_to_exact_base_objects_frame"
+    },
+    {
+      "library": "objects13",
+      "index": 1213,
+      "x": 962,
+      "y": 332,
+      "oldRaw": 33982,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "objects13",
+      "index": 1214,
+      "x": 962,
+      "y": 331,
+      "oldRaw": 33983,
+      "newRaw": 32768,
+      "newSelector": 12,
+      "action": "clear_unsupported_front_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3891,
+      "x": 617,
+      "y": 249,
+      "oldRaw": 3892,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3891,
+      "x": 701,
+      "y": 272,
+      "oldRaw": 3892,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3891,
+      "x": 644,
+      "y": 346,
+      "oldRaw": 3892,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3895,
+      "x": 631,
+      "y": 308,
+      "oldRaw": 3896,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3896,
+      "x": 702,
+      "y": 270,
+      "oldRaw": 3897,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3902,
+      "x": 632,
+      "y": 308,
+      "oldRaw": 3903,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3903,
+      "x": 703,
+      "y": 270,
+      "oldRaw": 3904,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 3924,
+      "x": 706,
+      "y": 271,
+      "oldRaw": 3925,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "smtiles",
+      "index": 7310,
+      "x": 592,
+      "y": 328,
+      "oldRaw": 7311,
+      "newRaw": 0,
+      "action": "clear_unsupported_middle_reference"
+    },
+    {
+      "library": "tiles",
+      "index": 3868,
+      "x": 592,
+      "y": 328,
+      "oldRaw": 3869,
+      "newRaw": 35071,
+      "newIndex": 2302,
+      "action": "remap_to_exact_base_tiles_frame"
+    }
+  ],
+  "replacementFrameChecks": {
+    "objects5656PixelEqualToBundledMapAsset": true,
+    "tiles2302PixelEqualToCurrentWZLLibrary": true
+  },
+  "patchedMapSHA256": "b57416815bd6bf20a633b33d160f8b6360c7019f775df01d68fb8003c317e3b9",
+  "changedBytes": 39,
+  "doorAnimationAndWalkabilityBytesPreserved": true,
+  "serverConfigChanged": false,
+  "appAssetsChanged": false,
+  "application": {
+    "scene": "GameData/maps/3/scene.json",
+    "sceneSHA256": "7119a663f6dc13446069995d1cc22c71db72dce21b4b6fb26e07a8a239df9fd6",
+    "addedFrontObject": {
+      "texture": "objects-5656",
+      "x": 962,
+      "y": 333,
+      "sourceFrame": "Objects.wil frame 5656",
+      "fileSHA256": "0eb153d055803c147de77936ac381ed0a39ccd205d4942ac4136bf895d38efc3"
+    },
+    "updatedGroundChunk": {
+      "file": "GameData/maps/3/ground-28416-320.png",
+      "width": 768,
+      "height": 512,
+      "sha256": "c8bd719b60ee00659813713b66c4bffcfc4835c16fcb9d8b65ba9d216595c4b8"
+    },
+    "remainingVisibleMissing": 0,
+    "nonRenderingPlaceholders": 13,
+    "nonImageMarkers": 5
+  }
+}

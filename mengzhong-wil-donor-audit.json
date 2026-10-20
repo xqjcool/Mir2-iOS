@@ -1,0 +1,467 @@
+{
+  "date": "2026-10-19",
+  "candidateSet": "D:/Mir2EquipmentWork/classic-monsters/Data",
+  "candidateFiles": {
+    "objects": {
+      "wil": "Objects.wil",
+      "frameCount": 9999,
+      "sha256": "80b27c1be115a19c9d8baac878e90e182c9543ddb0640fda8626b90c636690f0",
+      "wixSha256": "199be3894f277cb4e8ac16e222d7dcda725f2e1fc620d207f432367509afc503"
+    },
+    "tiles": {
+      "wil": "Tiles.wil",
+      "frameCount": 6210,
+      "sha256": "68b60eac9ca55a06ac7c9e29115ac974de21fb9a44e41d41cd506f682faec275",
+      "wixSha256": "4255a9368afb38cd171d0cb4becc98f0906e1bf321ea08a31128b657cedf0243"
+    },
+    "smtiles": {
+      "wil": "SmTiles.wil",
+      "frameCount": 938,
+      "sha256": "f87570676bff54457e9b56630a4b557e1129c3f0a5a359047668be40e44a0605",
+      "wixSha256": "16d41274a8c68632a1bd6d4a64d065ff70cb81e468c97fd34021fd772267e0ed"
+    }
+  },
+  "indexFormat": "WIX frame count at byte offset 44; uint32 offsets from byte 48; WIL frame header uses signed int16 width/height/x/y after 1080-byte header",
+  "results": {
+    "targetUniqueIndices": 21,
+    "targetPlacements": 32,
+    "singlePixelSentinelIndices": 5,
+    "outOfRangeIndices": 7,
+    "noMatchingGroupIndices": 9,
+    "usableReplacementFrames": 0
+  },
+  "targets": [
+    {
+      "library": "objects",
+      "index": 0,
+      "candidateFile": "Objects.wil",
+      "status": "single_pixel_sentinel",
+      "record": {
+        "offset": 1080,
+        "size": [
+          1,
+          1
+        ],
+        "offsetXY": [
+          0,
+          0
+        ],
+        "pixelIndices": [
+          41
+        ]
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 148,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects",
+      "index": 1,
+      "candidateFile": "Objects.wil",
+      "status": "single_pixel_sentinel",
+      "record": {
+        "offset": 1089,
+        "size": [
+          1,
+          1
+        ],
+        "offsetXY": [
+          0,
+          0
+        ],
+        "pixelIndices": [
+          41
+        ]
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 150,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 152,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 156,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects",
+      "index": 2,
+      "candidateFile": "Objects.wil",
+      "status": "single_pixel_sentinel",
+      "record": {
+        "offset": 1098,
+        "size": [
+          1,
+          1
+        ],
+        "offsetXY": [
+          0,
+          0
+        ],
+        "pixelIndices": [
+          41
+        ]
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 149,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 151,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 153,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 154,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 155,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 157,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 159,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 160,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects",
+      "index": 3,
+      "candidateFile": "Objects.wil",
+      "status": "single_pixel_sentinel",
+      "record": {
+        "offset": 1107,
+        "size": [
+          1,
+          1
+        ],
+        "offsetXY": [
+          0,
+          0
+        ],
+        "pixelIndices": [
+          41
+        ]
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 158,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1172,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 956,
+          "y": 328,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1173,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 956,
+          "y": 327,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1174,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 956,
+          "y": 326,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1192,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 959,
+          "y": 330,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1193,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 959,
+          "y": 329,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1194,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 959,
+          "y": 328,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1212,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 962,
+          "y": 333,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1213,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 962,
+          "y": 332,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "objects13",
+      "index": 1214,
+      "candidateFile": null,
+      "status": "no_matching_WIL_group_in_candidate_set",
+      "record": null,
+      "placements": [
+        {
+          "x": 962,
+          "y": 331,
+          "layer": "front"
+        }
+      ]
+    },
+    {
+      "library": "tiles",
+      "index": 3868,
+      "candidateFile": "Tiles.wil",
+      "status": "single_pixel_sentinel",
+      "record": {
+        "offset": 17589513,
+        "size": [
+          1,
+          1
+        ],
+        "offsetXY": [
+          0,
+          0
+        ],
+        "pixelIndices": [
+          41
+        ]
+      },
+      "placements": [
+        {
+          "x": 592,
+          "y": 328,
+          "layer": "back"
+        }
+      ]
+    },
+    {
+      "library": "smtiles",
+      "index": 3891,
+      "candidateFile": "SmTiles.wil",
+      "status": "out_of_range",
+      "record": null,
+      "placements": [
+        {
+          "x": 617,
+          "y": 249,
+          "layer": "middle"
+        },
+        {
+          "x": 701,
+          "y": 272,
+          "layer": "middle"
+        },
+        {
+          "x": 644,
+          "y": 346,
+          "layer": "middle"
+        }
+      ]
+    },
+    {
+      "library": "smtiles",
+      "index": 3895,
+      "candidateFile": "SmTiles.wil",
+      "status": "out_of_range",
+      "record": null,
+      "placements": [
+        {
+          "x": 631,
+          "y": 308,
+          "layer": "middle"
+        }
+      ]
+    },
+    {
+      "library": "smtiles",
+      "index": 3896,
+      "candidateFile": "SmTiles.wil",
+      "status": "out_of_range",
+      "record": null,
+      "placements": [
+        {
+          "x": 702,
+          "y": 270,
+          "layer": "middle"
+        }
+      ]
+    },
+    {
+      "library": "smtiles",
+      "index": 3902,
+      "candidateFile": "SmTiles.wil",
+      "status": "out_of_range",
+      "record": null,
+      "placements": [
+        {
+          "x": 632,
+          "y": 308,
+          "layer": "middle"
+        }
+      ]
+    },
+    {
+      "library": "smtiles",
+      "index": 3903,
+      "candidateFile": "SmTiles.wil",
+      "status": "out_of_range",
+      "record": null,
+      "placements": [
+        {
+          "x": 703,
+          "y": 270,
+          "layer": "middle"
+        }
+      ]
+    },
+    {
+      "library": "smtiles",
+      "index": 3924,
+      "candidateFile": "SmTiles.wil",
+      "status": "out_of_range",
+      "record": null,
+      "placements": [
+        {
+          "x": 706,
+          "y": 271,
+          "layer": "middle"
+        }
+      ]
+    },
+    {
+      "library": "smtiles",
+      "index": 7310,
+      "candidateFile": "SmTiles.wil",
+      "status": "out_of_range",
+      "record": null,
+      "placements": [
+        {
+          "x": 592,
+          "y": 328,
+          "layer": "middle"
+        }
+      ]
+    }
+  ],
+  "decision": "No WIL frame imported. A 1x1 sentinel is not a usable replacement map tile; unmatched Objects13 and out-of-range SmTiles require another compatible source.",
+  "mapComparison": {
+    "candidate": "../server-compatible-maps/3.map",
+    "sha256": "1f82b44e0971a3e1d752b95da1f18dc9216ba20a104bac13f6d49f9e9c6fd138",
+    "format": "classic 12-byte cells",
+    "dimensions": [
+      1000,
+      800
+    ],
+    "cellCount": 800000,
+    "identicalFirst12Bytes": 800000,
+    "differentFirst12Bytes": 0,
+    "missingPlacementPrefixesIdentical": true,
+    "missingPlacementsCompared": 32,
+    "selectorsPresent": false,
+    "imported": false,
+    "conclusion": "The 12-byte map is an exact prefix copy of the 14-byte map at every cell and therefore confirms the same raw image references; it has no selector bytes and supplies no replacement library frames."
+  }
+}

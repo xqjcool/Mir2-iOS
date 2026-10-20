@@ -4,6 +4,18 @@
   "entries": 127,
   "map3": false,
   "imageLibraries": [],
-  "unresolvedIndices": 22,
-  "unresolvedPlacements": 37
+  "unresolvedIndices": 21,
+  "unresolvedPlacements": 32,
+  "nonImageMarkerIndexExcluded": 1,
+  "nonImageMarkerPlacementsExcluded": 5,
+  "fieldRulesSource": "https://github.com/clgforever910/mir2-mapeditor/tree/e2b1df24cf1a33666365980dc2780f9f35075ea8/Map%20Editor/MapCode.cs",
+  "patchMap3Reference": {
+    "url": "https://mirfiles.com/resources/mir2/crystal/patch/Map/3.map",
+    "sha256": "d22ee456e9cff79ff199a0f8e9351a435b832347d5bb4e801337ad7e9c072211",
+    "format": "Map 2010 Ver 1.0",
+    "width": 1000,
+    "height": 800,
+    "cellBytes": 15,
+    "imported": false
+  }
 }

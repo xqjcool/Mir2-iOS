@@ -1,0 +1,262 @@
+{
+  "sourceMap": "3.map",
+  "sourceSHA256": "1e23b312dcec981a7a6ef0b88905690ac33d86c5a9caac9742e559333419926e",
+  "referenceMap": "https://raw.githubusercontent.com/qigedashen/mir2-1.80-mirror/754d5f271e25272d367d984cc49dea93fac2bed4/Map/3.map",
+  "referenceCommit": "754d5f271e25272d367d984cc49dea93fac2bed4",
+  "referenceSHA256": "d959f496351dcbb105f2356622890473193b57132e9c7b2e52230f551a2b0e04",
+  "fieldRuleSource": "https://github.com/clgforever910/mir2-mapeditor/tree/e2b1df24cf1a33666365980dc2780f9f35075ea8/Map%20Editor/MapCode.cs",
+  "fieldUsageEvidence": "The editor draws MiddleImage by using (MiddleImage & 0x7fff) - 1; this yields -1 for 0x8000 and skips image drawing. The editor separately uses the high bit on FrontImage for a front mask, so preserve source high-bit encodings instead of assuming they are disposable.",
+  "emptyFrameSlots": {
+    "count": 13,
+    "sourceFrontIDsMasked": [
+      1,
+      3,
+      2,
+      3,
+      2,
+      3,
+      3,
+      3,
+      2,
+      3,
+      4,
+      3,
+      3
+    ],
+    "allSourceRecordsMatchReferenceFirst12Bytes": true,
+    "nonzeroAnimationFieldCount": 13,
+    "coordinates": [
+      {
+        "x": 0,
+        "y": 148,
+        "frontRaw": 1,
+        "frontImageMasked": 1,
+        "frontAnimationFrame": 5,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0987000001000000050000000000",
+        "reference12Hex": "098700000100000005000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 149,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 1,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0280000003000000010000000000",
+        "reference12Hex": "028000000300000001000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 150,
+        "frontRaw": 2,
+        "frontImageMasked": 2,
+        "frontAnimationFrame": 2,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0987000002000000020000000000",
+        "reference12Hex": "098700000200000002000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 151,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 2,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0180000003000000020000000000",
+        "reference12Hex": "018000000300000002000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 152,
+        "frontRaw": 2,
+        "frontImageMasked": 2,
+        "frontAnimationFrame": 5,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0987000002000000050000000000",
+        "reference12Hex": "098700000200000005000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 153,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 2,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0380000003000000020000000000",
+        "reference12Hex": "038000000300000002000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 154,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 2,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0987000003000000020000000000",
+        "reference12Hex": "098700000300000002000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 155,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 3,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0280000003000000030000000000",
+        "reference12Hex": "028000000300000003000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 156,
+        "frontRaw": 2,
+        "frontImageMasked": 2,
+        "frontAnimationFrame": 2,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0987000002000000020000000000",
+        "reference12Hex": "098700000200000002000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 157,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 3,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0380000003000000030000000000",
+        "reference12Hex": "038000000300000003000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 158,
+        "frontRaw": 4,
+        "frontImageMasked": 4,
+        "frontAnimationFrame": 2,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0987000004000000020000000000",
+        "reference12Hex": "098700000400000002000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 159,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 4,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0380000003000000040000000000",
+        "reference12Hex": "038000000300000004000000",
+        "first12BytesMatchReference": true
+      },
+      {
+        "x": 0,
+        "y": 160,
+        "frontRaw": 3,
+        "frontImageMasked": 3,
+        "frontAnimationFrame": 2,
+        "frontAnimationTick": 0,
+        "frontSelectorArea": 0,
+        "record14Hex": "0987000003000000020000000000",
+        "reference12Hex": "098700000300000002000000",
+        "first12BytesMatchReference": true
+      }
+    ],
+    "decision": "safe to omit from drawable scene/assets; do not rewrite source records because the matched map preserves them and animation fields are present"
+  },
+  "noImageMarkers": {
+    "count": 5,
+    "layer": "middle",
+    "rawValue": "0x8000",
+    "maskedImage": 0,
+    "coordinates": [
+      {
+        "x": 958,
+        "y": 328,
+        "middleRaw": 32768,
+        "middleImageMasked": 0,
+        "middleSelector": 0,
+        "frontRaw": 33955,
+        "frontImageMasked": 1187,
+        "reference12Hex": "338900000080000000000000",
+        "referenceFrontRaw": 32768,
+        "sourceAndReferenceFirst12Match": false
+      },
+      {
+        "x": 959,
+        "y": 328,
+        "middleRaw": 32768,
+        "middleImageMasked": 0,
+        "middleSelector": 0,
+        "frontRaw": 33963,
+        "frontImageMasked": 1195,
+        "reference12Hex": "2f8900000080000000000000",
+        "referenceFrontRaw": 32768,
+        "sourceAndReferenceFirst12Match": false
+      },
+      {
+        "x": 957,
+        "y": 329,
+        "middleRaw": 32768,
+        "middleImageMasked": 0,
+        "middleSelector": 0,
+        "frontRaw": 33947,
+        "frontImageMasked": 1179,
+        "reference12Hex": "328900000080000000000000",
+        "referenceFrontRaw": 32768,
+        "sourceAndReferenceFirst12Match": false
+      },
+      {
+        "x": 960,
+        "y": 329,
+        "middleRaw": 32768,
+        "middleImageMasked": 0,
+        "middleSelector": 0,
+        "frontRaw": 33971,
+        "frontImageMasked": 1203,
+        "reference12Hex": "008000000080000000000000",
+        "referenceFrontRaw": 32768,
+        "sourceAndReferenceFirst12Match": false
+      },
+      {
+        "x": 960,
+        "y": 330,
+        "middleRaw": 32768,
+        "middleImageMasked": 0,
+        "middleSelector": 0,
+        "frontRaw": 33970,
+        "frontImageMasked": 1202,
+        "reference12Hex": "2f8900000080000000000000",
+        "referenceFrontRaw": 32768,
+        "sourceAndReferenceFirst12Match": false
+      }
+    ],
+    "decision": "no drawable middle image; retain raw marker because the matching later map relocates its high bit to FrontImage at these coordinates, whose mask behavior is distinct"
+  },
+  "safeCleanupConclusion": {
+    "drawableExports": true,
+    "sourceMapBytes": false,
+    "reason": "These records render no images and are already absent from scene objects/export missing list. Clearing them in the source provides no visual benefit and loses source/flag fidelity."
+  }
+}

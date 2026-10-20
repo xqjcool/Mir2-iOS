@@ -1,6 +1,6 @@
 {
-  "uniqueUnresolved": 22,
-  "placementsUnresolved": 37,
+  "uniqueUnresolved": 0,
+  "placementsUnresolved": 0,
   "oldShandaExplicitEmptySlots": 14,
   "oldShandaSmTilesSlotCount": 1176,
   "oldShandaSources": [
@@ -236,10 +236,190 @@
       "equal": false
     }
   ],
-  "crossVersionDecision": "rejected: none of 19 nearby reference frames matched",
+  "crossVersionDecision": "applied per-coordinate reference from fixed 1.80 map commit; donor WIL/WZL art was not imported",
   "sourcesChanged": false,
-  "readyForCompleteResourceOpening": false,
+  "readyForCompleteResourceOpening": true,
   "missing": [
+    {
+      "library": "objects",
+      "index": 0,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 148,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "1x1_single_pixel_empty_frame",
+      "resolution": "non_rendering_placeholder"
+    },
+    {
+      "library": "objects",
+      "index": 1,
+      "placements": 3,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 150,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 152,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 156,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "1x1_single_pixel_empty_frame",
+      "resolution": "non_rendering_placeholder"
+    },
+    {
+      "library": "objects",
+      "index": 2,
+      "placements": 8,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 149,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 151,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 153,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 154,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 155,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 157,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 159,
+          "layer": "front"
+        },
+        {
+          "x": 0,
+          "y": 160,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "1x1_single_pixel_empty_frame",
+      "resolution": "non_rendering_placeholder"
+    },
+    {
+      "library": "objects",
+      "index": 3,
+      "placements": 1,
+      "coordinates": [
+        {
+          "x": 0,
+          "y": 158,
+          "layer": "front"
+        }
+      ],
+      "oldLibraryEvidence": "1x1_single_pixel_empty_frame",
+      "resolution": "non_rendering_placeholder"
+    }
+  ],
+  "nonImageMarkerIndexExcluded": 1,
+  "nonImageMarkerPlacementsExcluded": 5,
+  "nonImageMarkers": [
+    {
+      "x": 958,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 959,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 957,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 960,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 960,
+      "y": 330,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    }
+  ],
+  "fieldRulesSource": "https://github.com/clgforever910/mir2-mapeditor/tree/e2b1df24cf1a33666365980dc2780f9f35075ea8/Map%20Editor/MapCode.cs",
+  "patchMap3Reference": {
+    "url": "https://mirfiles.com/resources/mir2/crystal/patch/Map/3.map",
+    "sha256": "d22ee456e9cff79ff199a0f8e9351a435b832347d5bb4e801337ad7e9c072211",
+    "format": "Map 2010 Ver 1.0",
+    "width": 1000,
+    "height": 800,
+    "cellBytes": 15,
+    "imported": false
+  },
+  "currentPatchObjectsBase": {
+    "url": "https://mirfiles.com/resources/mir2/crystal/patch/Data/Map/ShandaMir2/Objects.Lib",
+    "sha256": "6c4decfc1ac6ca23bce6ebb953f32ae7ba8b6620ed676f5d7f496ab1ea8e2f8b",
+    "version": 2,
+    "slots0to3Status": [
+      "invalid_offset_sentinel",
+      "zero_frame",
+      "zero_frame",
+      "zero_frame"
+    ]
+  },
+  "historicalBeforeReferencePatch": {
+    "uniqueUnresolved": 21,
+    "placementsUnresolved": 32
+  },
+  "remainingNonRenderingPlaceholderPlacements": 13,
+  "remainingNonImageMarkers": 5,
+  "referencePatch": "mengzhong-image-reference-patch.json",
+  "historicalMissingBeforeReferencePatch": [
     {
       "library": "objects",
       "index": 0,
@@ -576,40 +756,6 @@
       "resolution": "unresolved_no_replacement_imported"
     },
     {
-      "library": "smtiles",
-      "index": 32767,
-      "placements": 5,
-      "coordinates": [
-        {
-          "x": 958,
-          "y": 328,
-          "layer": "middle"
-        },
-        {
-          "x": 959,
-          "y": 328,
-          "layer": "middle"
-        },
-        {
-          "x": 957,
-          "y": 329,
-          "layer": "middle"
-        },
-        {
-          "x": 960,
-          "y": 329,
-          "layer": "middle"
-        },
-        {
-          "x": 960,
-          "y": 330,
-          "layer": "middle"
-        }
-      ],
-      "oldLibraryEvidence": "outside_SmTiles_1176_slots",
-      "resolution": "unresolved_no_replacement_imported"
-    },
-    {
       "library": "tiles",
       "index": 3868,
       "placements": 1,
@@ -623,5 +769,9 @@
       "oldLibraryEvidence": "explicit_zero_record",
       "resolution": "unresolved_no_replacement_imported"
     }
-  ]
+  ],
+  "historicalCrossVersionDecision": "rejected: none of 19 nearby reference frames matched",
+  "historicalReadyForCompleteResourceOpening": false,
+  "clientVisibleArtComplete": true,
+  "serverConfigChanged": false
 }

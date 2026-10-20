@@ -1,1 +1,188 @@
-{"map": "3", "spawn": {"x": 500, "y": 400}, "groundChunks": 3150, "missing": [{"map": "3.map", "x": 0, "y": 148, "layer": "front", "library": "objects", "index": 0, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 149, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 150, "layer": "front", "library": "objects", "index": 1, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 151, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 152, "layer": "front", "library": "objects", "index": 1, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 153, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 154, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 155, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 156, "layer": "front", "library": "objects", "index": 1, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 157, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 158, "layer": "front", "library": "objects", "index": 3, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 159, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 0, "y": 160, "layer": "front", "library": "objects", "index": 2, "status": "empty_frame"}, {"map": "3.map", "x": 617, "y": 249, "layer": "middle", "library": "smtiles", "index": 3891, "status": "missing_out_of_range"}, {"map": "3.map", "x": 702, "y": 270, "layer": "middle", "library": "smtiles", "index": 3896, "status": "missing_out_of_range"}, {"map": "3.map", "x": 703, "y": 270, "layer": "middle", "library": "smtiles", "index": 3903, "status": "missing_out_of_range"}, {"map": "3.map", "x": 706, "y": 271, "layer": "middle", "library": "smtiles", "index": 3924, "status": "missing_out_of_range"}, {"map": "3.map", "x": 701, "y": 272, "layer": "middle", "library": "smtiles", "index": 3891, "status": "missing_out_of_range"}, {"map": "3.map", "x": 631, "y": 308, "layer": "middle", "library": "smtiles", "index": 3895, "status": "missing_out_of_range"}, {"map": "3.map", "x": 632, "y": 308, "layer": "middle", "library": "smtiles", "index": 3902, "status": "missing_out_of_range"}, {"map": "3.map", "x": 592, "y": 328, "layer": "back", "library": "tiles", "index": 3868, "status": "empty_frame"}, {"map": "3.map", "x": 592, "y": 328, "layer": "middle", "library": "smtiles", "index": 7310, "status": "missing_out_of_range"}, {"map": "3.map", "x": 958, "y": 328, "layer": "middle", "library": "smtiles", "index": 32767, "status": "missing_out_of_range"}, {"map": "3.map", "x": 959, "y": 328, "layer": "middle", "library": "smtiles", "index": 32767, "status": "missing_out_of_range"}, {"map": "3.map", "x": 957, "y": 329, "layer": "middle", "library": "smtiles", "index": 32767, "status": "missing_out_of_range"}, {"map": "3.map", "x": 960, "y": 329, "layer": "middle", "library": "smtiles", "index": 32767, "status": "missing_out_of_range"}, {"map": "3.map", "x": 960, "y": 330, "layer": "middle", "library": "smtiles", "index": 32767, "status": "missing_out_of_range"}, {"map": "3.map", "x": 956, "y": 326, "layer": "front", "library": "objects13", "index": 1174, "status": "empty_frame"}, {"map": "3.map", "x": 956, "y": 327, "layer": "front", "library": "objects13", "index": 1173, "status": "empty_frame"}, {"map": "3.map", "x": 956, "y": 328, "layer": "front", "library": "objects13", "index": 1172, "status": "empty_frame"}, {"map": "3.map", "x": 959, "y": 328, "layer": "front", "library": "objects13", "index": 1194, "status": "empty_frame"}, {"map": "3.map", "x": 959, "y": 329, "layer": "front", "library": "objects13", "index": 1193, "status": "empty_frame"}, {"map": "3.map", "x": 959, "y": 330, "layer": "front", "library": "objects13", "index": 1192, "status": "empty_frame"}, {"map": "3.map", "x": 962, "y": 331, "layer": "front", "library": "objects13", "index": 1214, "status": "empty_frame"}, {"map": "3.map", "x": 962, "y": 332, "layer": "front", "library": "objects13", "index": 1213, "status": "empty_frame"}, {"map": "3.map", "x": 962, "y": 333, "layer": "front", "library": "objects13", "index": 1212, "status": "empty_frame"}, {"map": "3.map", "x": 644, "y": 346, "layer": "middle", "library": "smtiles", "index": 3891, "status": "missing_out_of_range"}]}
+{
+  "map": "3",
+  "spawn": {
+    "x": 500,
+    "y": 400
+  },
+  "groundChunks": 3150,
+  "missing": [],
+  "nonImageMarkers": [
+    {
+      "map": "3.map",
+      "x": 958,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "map": "3.map",
+      "x": 959,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "map": "3.map",
+      "x": 957,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "map": "3.map",
+      "x": 960,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "map": "3.map",
+      "x": 960,
+      "y": 330,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    }
+  ],
+  "sourceSHA256": "b57416815bd6bf20a633b33d160f8b6360c7019f775df01d68fb8003c317e3b9",
+  "nonRenderingPlaceholders": [
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 148,
+      "layer": "front",
+      "library": "objects",
+      "index": 0,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 149,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 150,
+      "layer": "front",
+      "library": "objects",
+      "index": 1,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 151,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 152,
+      "layer": "front",
+      "library": "objects",
+      "index": 1,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 153,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 154,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 155,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 156,
+      "layer": "front",
+      "library": "objects",
+      "index": 1,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 157,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 158,
+      "layer": "front",
+      "library": "objects",
+      "index": 3,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 159,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    },
+    {
+      "map": "3.map",
+      "x": 0,
+      "y": 160,
+      "layer": "front",
+      "library": "objects",
+      "index": 2,
+      "status": "empty_frame_no_visible_content"
+    }
+  ],
+  "referenceRepairs": {
+    "manifest": "mengzhong-image-reference-patch.json",
+    "placements": 19,
+    "cleared": 17,
+    "remapped": 2,
+    "remainingVisibleMissing": 0
+  }
+}

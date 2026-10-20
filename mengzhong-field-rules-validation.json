@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-19",
+  "sourceMap": {
+    "path": "Legend of mir/Map/3.map",
+    "sha256": "1e23b312dcec981a7a6ef0b88905690ac33d86c5a9caac9742e559333419926e",
+    "width": 1000,
+    "height": 800,
+    "cellBytes": 14
+  },
+  "fieldRules": {
+    "source": "https://github.com/clgforever910/mir2-mapeditor/tree/e2b1df24cf1a33666365980dc2780f9f35075ea8/Map%20Editor/MapCode.cs",
+    "rawImageIDs": "1-based; render index = image - 1",
+    "frontLibrary": "area byte + 120",
+    "backTileLibrary": "selector byte + 100",
+    "middleSmTileLibrary": "selector byte + 110",
+    "rawImage0x8000": "mask with 0x7fff gives image 0; no drawable image",
+    "selectorPairDistribution": {
+      "00": 779551,
+      "01": 18018,
+      "11": 1836,
+      "10": 595
+    }
+  },
+  "reclassifiedMarkers": [
+    {
+      "x": 958,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 959,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 957,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 960,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    },
+    {
+      "x": 960,
+      "y": 330,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
+    }
+  ],
+  "correctedMissingCounts": {
+    "uniqueImageIDs": 21,
+    "placements": 32,
+    "emptyFrameIDs": 14,
+    "outOfRangeSmTilesIDs": 7,
+    "outOfRangeSmTilesPlacements": 9,
+    "remainingDrawablePlacements": 0,
+    "remainingNonRenderingPlaceholders": 13,
+    "remainingNoImageMarkers": 5
+  },
+  "currentPatchObjectsBase": {
+    "url": "https://mirfiles.com/resources/mir2/crystal/patch/Data/Map/ShandaMir2/Objects.Lib",
+    "sha256": "6c4decfc1ac6ca23bce6ebb953f32ae7ba8b6620ed676f5d7f496ab1ea8e2f8b",
+    "bytes": 44683401,
+    "version": 2,
+    "slotOffsets": [
+      9999,
+      40004,
+      40021,
+      40038
+    ],
+    "slot0to3Renderable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "laterMap3Reference": {
+    "url": "https://mirfiles.com/resources/mir2/crystal/patch/Map/3.map",
+    "sha256": "d22ee456e9cff79ff199a0f8e9351a435b832347d5bb4e801337ad7e9c072211",
+    "bytes": 12000054,
+    "format": "Map 2010 Ver 1.0",
+    "width": 1000,
+    "height": 800,
+    "cellBytes": 15,
+    "imported": false,
+    "reason": "different record format and fixed map-library groups; not a drop-in classic 14-byte source"
+  },
+  "map3AlreadyListedAndTravelValidated": true,
+  "mapArtComplete": true,
+  "treeStaticValidation": {
+    "actorLibraryKey": "34-141",
+    "uniqueFrames": 32,
+    "missingFrames": 0,
+    "dimensionMismatches": 0,
+    "stand": 4,
+    "attack": 6,
+    "struck": 2,
+    "death": 20,
+    "groundSpikeFramesPresent": 6,
+    "iphoneVisualAcceptance": "pending"
+  },
+  "mapArtCompleteScope": "map 3 drawable image references; 13 empty frame placeholders and 5 no-image flags remain intact",
+  "residualNoImageAudit": "mengzhong-residual-noimage-audit.json"
+}

@@ -62,96 +62,151 @@
     }
   ],
   "source": "https://mirfiles.com/resources/mir2/crystal/patch/Data/Map/ShandaMir2/",
-  "remainingPlacements": 37,
-  "remainingUnique": [
+  "remainingPlacements": 0,
+  "remainingUnique": [],
+  "fullyRestored": true,
+  "nonImageMarkerPlacements": 5,
+  "nonImageMarkers": [
     {
-      "library": "objects",
-      "index": 0
+      "map": "3.map",
+      "x": 958,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
     },
     {
-      "library": "objects",
-      "index": 1
+      "map": "3.map",
+      "x": 959,
+      "y": 328,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
     },
     {
-      "library": "objects",
-      "index": 2
+      "map": "3.map",
+      "x": 957,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
     },
     {
-      "library": "objects",
-      "index": 3
+      "map": "3.map",
+      "x": 960,
+      "y": 329,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
     },
     {
-      "library": "objects13",
-      "index": 1172
-    },
-    {
-      "library": "objects13",
-      "index": 1173
-    },
-    {
-      "library": "objects13",
-      "index": 1174
-    },
-    {
-      "library": "objects13",
-      "index": 1192
-    },
-    {
-      "library": "objects13",
-      "index": 1193
-    },
-    {
-      "library": "objects13",
-      "index": 1194
-    },
-    {
-      "library": "objects13",
-      "index": 1212
-    },
-    {
-      "library": "objects13",
-      "index": 1213
-    },
-    {
-      "library": "objects13",
-      "index": 1214
-    },
-    {
-      "library": "smtiles",
-      "index": 3891
-    },
-    {
-      "library": "smtiles",
-      "index": 3895
-    },
-    {
-      "library": "smtiles",
-      "index": 3896
-    },
-    {
-      "library": "smtiles",
-      "index": 3902
-    },
-    {
-      "library": "smtiles",
-      "index": 3903
-    },
-    {
-      "library": "smtiles",
-      "index": 3924
-    },
-    {
-      "library": "smtiles",
-      "index": 7310
-    },
-    {
-      "library": "smtiles",
-      "index": 32767
-    },
-    {
-      "library": "tiles",
-      "index": 3868
+      "map": "3.map",
+      "x": 960,
+      "y": 330,
+      "layer": "middle",
+      "rawImage": 32768,
+      "maskedImage": 0,
+      "selector": 0,
+      "classification": "flag_only_no_image"
     }
   ],
-  "fullyRestored": false
+  "referencePatch": "mengzhong-image-reference-patch.json",
+  "historicalUnresolvedBeforeReferencePatch": {
+    "placements": 32,
+    "unique": [
+      {
+        "library": "objects",
+        "index": 0
+      },
+      {
+        "library": "objects",
+        "index": 1
+      },
+      {
+        "library": "objects",
+        "index": 2
+      },
+      {
+        "library": "objects",
+        "index": 3
+      },
+      {
+        "library": "objects13",
+        "index": 1172
+      },
+      {
+        "library": "objects13",
+        "index": 1173
+      },
+      {
+        "library": "objects13",
+        "index": 1174
+      },
+      {
+        "library": "objects13",
+        "index": 1192
+      },
+      {
+        "library": "objects13",
+        "index": 1193
+      },
+      {
+        "library": "objects13",
+        "index": 1194
+      },
+      {
+        "library": "objects13",
+        "index": 1212
+      },
+      {
+        "library": "objects13",
+        "index": 1213
+      },
+      {
+        "library": "objects13",
+        "index": 1214
+      },
+      {
+        "library": "smtiles",
+        "index": 3891
+      },
+      {
+        "library": "smtiles",
+        "index": 3895
+      },
+      {
+        "library": "smtiles",
+        "index": 3896
+      },
+      {
+        "library": "smtiles",
+        "index": 3902
+      },
+      {
+        "library": "smtiles",
+        "index": 3903
+      },
+      {
+        "library": "smtiles",
+        "index": 3924
+      },
+      {
+        "library": "smtiles",
+        "index": 7310
+      },
+      {
+        "library": "tiles",
+        "index": 3868
+      }
+    ]
+  },
+  "nonRenderingPlaceholderPlacements": 13
 }
