@@ -1,0 +1,21 @@
+{
+  "command": "@ChangeLevel 37",
+  "character": "WeaponCheck13",
+  "levelBefore": 1,
+  "levelAfter": 37,
+  "verifiedInCharactersAndAbilityTables": true,
+  "restoredCharacterSnapshot": {
+    "level": 1,
+    "map": "0",
+    "x": 648,
+    "y": 629,
+    "direction": 2,
+    "gold": 0,
+    "hp": 19,
+    "mp": 15,
+    "exp": 0
+  },
+  "adminlist": "* C176Alpha *",
+  "servicesRunning": true,
+  "sessionLog": "D:/OpenMir2Test/logs/iphone-20261019-094659"
+}
