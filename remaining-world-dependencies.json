@@ -1,7 +1,7 @@
 {
   "source": "mirbeta/MirServer configuration snapshot; includes non-1.76 custom content",
   "monsterTypes": 207,
-  "typesWithUnresolvedDependencies": 84,
+  "typesWithUnresolvedDependencies": 83,
   "monsters": [
     {
       "name": "僵尸1",
@@ -286,9 +286,7 @@
         "4"
       ],
       "appearance": "34-141",
-      "issues": [
-        "missing_client_animation"
-      ],
+      "issues": [],
       "missingItems": []
     },
     {

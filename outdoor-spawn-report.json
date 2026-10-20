@@ -1,12 +1,7 @@
 {
-  "addedGroups": 23,
-  "configuredCount": 1481,
+  "addedGroups": 24,
+  "configuredCount": 1482,
   "blocked": [
-    {
-      "map": "4",
-      "monster": "千年树妖",
-      "reason": "unresolved actor or drop file"
-    },
     {
       "map": "2",
       "monster": "弓箭护卫",
@@ -213,6 +208,8 @@
     "掷斧骷髅": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3",
     "骷髅战士": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3",
     "骷髅战将": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3",
-    "骷髅精灵": "7c80884ad6040ca12dd9bdae0371c77f47ad38624f682186b902add19170e335"
+    "骷髅精灵": "7c80884ad6040ca12dd9bdae0371c77f47ad38624f682186b902add19170e335",
+    "千年树妖": "a250457542383df9080268336d5a66a098c7470b381bec6640f6ad8e126a5120",
+    "稻草人": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
   }
 }

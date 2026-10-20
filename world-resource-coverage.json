@@ -1,6 +1,6 @@
 {
   "source": "mirbeta/MirServer",
-  "installed": 30,
+  "installed": 31,
   "total": 322,
   "maps": [
     {
@@ -1400,7 +1400,7 @@
     {
       "map": "D713",
       "name": "石墓三层",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 400,
       "height": 400,

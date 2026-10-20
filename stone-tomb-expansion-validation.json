@@ -1,0 +1,118 @@
+{
+  "sourceMapSet": "Shanda Mir 2/Legend of mir/Map",
+  "spawnSource": "openmir2-data-clean/Mir200/Envir/MonGen.txt",
+  "dropSource": "mirbeta/MirServer Envir/MonItems snapshot",
+  "maps": {
+    "D713": {
+      "name": "石墓三层",
+      "sourceSHA256": "899d522fa4cffe9b2918ab2db99302d8889d1e0a1d459266438d05e75e7f53c4",
+      "serverMapSHA256": "899d522fa4cffe9b2918ab2db99302d8889d1e0a1d459266438d05e75e7f53c4",
+      "dimensions": [
+        400,
+        400
+      ],
+      "exportMissing": 0,
+      "portals": [
+        "D712       31,193               ->         D713       31,191",
+        "D713       30,192               ->         D712       30,194"
+      ]
+    }
+  },
+  "spawnGroups": 63,
+  "configuredCount": 441,
+  "monsters": {
+    "红野猪": {
+      "appearance": "19-110",
+      "groups": 18,
+      "configuredCount": 126,
+      "dropSHA256": "7d838b1941a3357d2593af533a98e7d8fe73df9a7682a0d02cc5da687d0e48f9"
+    },
+    "黑野猪": {
+      "appearance": "19-111",
+      "groups": 18,
+      "configuredCount": 90,
+      "dropSHA256": "432f5c3c8f7436ab89346fb13b5c06d794360020f2d4765c06b1b7ac526ba20d"
+    },
+    "黑色恶蛆": {
+      "appearance": "19-74",
+      "groups": 18,
+      "configuredCount": 90,
+      "dropSHA256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    "楔蛾": {
+      "appearance": "52-39",
+      "groups": 1,
+      "configuredCount": 45,
+      "dropSHA256": "0fd06e464d7980644037a4ddb4efaab5780f46ff2118b031453280e669c117bd"
+    },
+    "蝎蛇": {
+      "appearance": "19-130",
+      "groups": 1,
+      "configuredCount": 40,
+      "dropSHA256": "a0fe0828cb11ec3d79560420f0c89c6cf94d89b759121762377bf4890ecae206"
+    },
+    "红野猪0": {
+      "appearance": "19-110",
+      "groups": 1,
+      "configuredCount": 5,
+      "dropSHA256": "d73cb7078362f5760ce7b747fa7692b1a10eb6e9f0498e683419bbcf4c2735cc"
+    },
+    "黑野猪0": {
+      "appearance": "19-111",
+      "groups": 1,
+      "configuredCount": 5,
+      "dropSHA256": "d73cb7078362f5760ce7b747fa7692b1a10eb6e9f0498e683419bbcf4c2735cc"
+    },
+    "黑色恶蛆0": {
+      "appearance": "19-74",
+      "groups": 1,
+      "configuredCount": 5,
+      "dropSHA256": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678"
+    },
+    "蝎蛇0": {
+      "appearance": "19-130",
+      "groups": 1,
+      "configuredCount": 5,
+      "dropSHA256": "7bb069a08bfdbe52e1d3d0530fc88df93cedd778846b23e136372706daf11b04"
+    },
+    "红野猪3": {
+      "appearance": "19-110",
+      "groups": 1,
+      "configuredCount": 10,
+      "dropSHA256": "7d838b1941a3357d2593af533a98e7d8fe73df9a7682a0d02cc5da687d0e48f9"
+    },
+    "黑野猪3": {
+      "appearance": "19-111",
+      "groups": 1,
+      "configuredCount": 10,
+      "dropSHA256": "432f5c3c8f7436ab89346fb13b5c06d794360020f2d4765c06b1b7ac526ba20d"
+    },
+    "蝎蛇3": {
+      "appearance": "19-130",
+      "groups": 1,
+      "configuredCount": 10,
+      "dropSHA256": "235ca6a72a8f0becd907be9da6540f66757c36603ef38b2d4954c53074c9c824"
+    }
+  },
+  "skipped": [
+    {
+      "name": "角蝇",
+      "groups": 1,
+      "reason": "actor action or original drop source unresolved"
+    }
+  ],
+  "dropTables": {
+    "红野猪": "7d838b1941a3357d2593af533a98e7d8fe73df9a7682a0d02cc5da687d0e48f9",
+    "黑野猪": "432f5c3c8f7436ab89346fb13b5c06d794360020f2d4765c06b1b7ac526ba20d",
+    "黑色恶蛆": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946",
+    "楔蛾": "0fd06e464d7980644037a4ddb4efaab5780f46ff2118b031453280e669c117bd",
+    "蝎蛇": "a0fe0828cb11ec3d79560420f0c89c6cf94d89b759121762377bf4890ecae206",
+    "红野猪0": "d73cb7078362f5760ce7b747fa7692b1a10eb6e9f0498e683419bbcf4c2735cc",
+    "黑野猪0": "d73cb7078362f5760ce7b747fa7692b1a10eb6e9f0498e683419bbcf4c2735cc",
+    "黑色恶蛆0": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678",
+    "蝎蛇0": "7bb069a08bfdbe52e1d3d0530fc88df93cedd778846b23e136372706daf11b04",
+    "红野猪3": "7d838b1941a3357d2593af533a98e7d8fe73df9a7682a0d02cc5da687d0e48f9",
+    "黑野猪3": "432f5c3c8f7436ab89346fb13b5c06d794360020f2d4765c06b1b7ac526ba20d",
+    "蝎蛇3": "235ca6a72a8f0becd907be9da6540f66757c36603ef38b2d4954c53074c9c824"
+  }
+}

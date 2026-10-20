@@ -8,4 +8,4 @@
 *.plist text eol=lf
 *.png binary
 *.gif binary
-ServerConfig/ClassicBichon/MonItems/*.txt -text
+ServerConfig/ClassicBichon/MonItems/*.txt -text whitespace=-blank-at-eol

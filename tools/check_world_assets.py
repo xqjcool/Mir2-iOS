@@ -34,7 +34,7 @@ png=(data/'classic-ui/bichon-minimap.png').read_bytes()
 assert png[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',png[16:24])==(1050,700)
 print('PASS: 12 NPC coordinates/appearances; 45 supported spawn groups; animal/scarecrow frames; original minimap dimensions.')
 
-scenes={code:json.loads((data/('scene.json' if code=='0' else f'maps/{code}/scene.json')).read_text(encoding='utf-8')) for code in ['0','0103','0105','0106','2','4','11','D001','D002','D003','D011','D012','DM001','DM002','DM011','E001','E002','E401','E402','E403','E404','1','D021','D022','D023','D024','3','D710','D711','D712']}
+scenes={code:json.loads((data/('scene.json' if code=='0' else f'maps/{code}/scene.json')).read_text(encoding='utf-8')) for code in ['0','0103','0105','0106','2','4','11','D001','D002','D003','D011','D012','DM001','DM002','DM011','E001','E002','E401','E402','E403','E404','1','D021','D022','D023','D024','3','D710','D711','D712','D713']}
 for code,scene in scenes.items():
     assert len(scene['walkable'])==scene['width']*scene['height']
     for ground in scene['ground']:assert (data/ground['file']).is_file()
@@ -50,8 +50,8 @@ for line in (cfg/'MapInfo.txt').read_bytes().decode('gb18030').splitlines():
     for code,xy in [(fields[0],fields[1]),(fields[3],fields[4])]:
         x,y=map(int,xy.split(','));scene=scenes[code]
         assert scene['walkable'][y*scene['width']+x],(code,x,y)
-assert count==184
-print('PASS: 30 map manifests and textures; 184 portal sources/destinations; indoor NPC collision coordinates.')
+assert count==186
+print('PASS: 31 map manifests and textures; 186 portal sources/destinations; indoor NPC collision coordinates.')
 
 for key in ('17-25','17-26','19-100'):
     for action,count in [('stand',4),('walk',6),('attack',6),('struck',2),('die',10)]:
