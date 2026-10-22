@@ -37,7 +37,7 @@ final class OnlineScene: SKScene {
     private var nextPerformanceLog=0.0
     private var transientEffects:[SKNode]=[]
     private var pickupAttempts:[Cell:Int]=[:]
-    var autoPickup=true
+    private var pickupOrigin:Cell?
     var classicMode=true
     private var attackHeld=false
     private var queuedSkill:MirEquipment.Skill?
@@ -133,7 +133,7 @@ final class OnlineScene: SKScene {
             DispatchQueue.main.async {
                 guard let self=self,self.pathGeneration==token,self.net.online else { return }
                 self.pathBusy=false;self.route=path ?? []
-                if path==nil { if self.autoAttack { self.stopAutomation() };self.nextAuto=self.clock+3;self.nextPickup=self.clock+3;self.combatReport?("此处不可到达") }
+                if path==nil { if self.autoAttack || self.pickupSweep { self.stopAutomation() };self.nextAuto=self.clock+3;self.nextPickup=self.clock+3;self.combatReport?("此处不可到达") }
             }
         }
     }
@@ -152,7 +152,7 @@ final class OnlineScene: SKScene {
         switch command {
         case let .move(x,y):joystick(x:x,y:y)
         case .attack:toggleAutoAttack()
-        case .holdAttack(let held):attackHeld=held;if held { attackSelected() }
+        case .holdAttack(let held):if held { stopAutomation() };attackHeld=held;if held { attackSelected() }
         case .skill(let skill):stopAutomation();castSkill(skill)
         case .pickup:collectNearby()
         case .stop:stopAutomation()
@@ -175,7 +175,11 @@ final class OnlineScene: SKScene {
         selected=target.key;autoAttack=true;queuedAttack=true;targetHealthReport?(nil)
         targetReport?(target.value.displayName);combatReport?("自动追打 \(target.value.displayName)；推摇杆或再点攻击停止")
     }
-    func collectNearby() { stopAutomation();pickupSweep=true;combatReport?("拾取周围物品；推摇杆取消") }
+    func collectNearby() {
+        guard net.online,let id=playerID,let a=actors[id],!a.dead else { return }
+        stopAutomation();pickupAttempts.removeAll();pickupOrigin=a.cell;pickupSweep=true
+        combatReport?("拾取点击位置周围物品；移动或攻击可取消")
+    }
     func toggleAutoSkill(_ id:Int) {
         guard !MirSkills.warrior(id) else { combatReport?("剑术状态由服务器确认，点击开启或蓄力");return }
         if net.automaticSkills.contains(id) { net.automaticSkills.remove(id);combatReport?("已关闭技能自动释放") }
@@ -350,7 +354,7 @@ final class OnlineScene: SKScene {
         if p.id==805 { events.removeValue(forKey:p.actor)?.removeFromParent();return }
         if p.id==657 { updateShield(p.actor,state:UInt32(p.x) | UInt32(p.y)<<16);return }
         if p.id==8 || p.id==24 {
-            if let a=actors[p.actor] { a.direction=Int(p.series & 7);animate(a,"attack",duration:0.6);meleeEffect(p.id,actor:a) }
+            if let a=actors[p.actor] { a.direction=Int(p.series & 7);animate(a,p.id==24 && !a.monster ? "wideAttack" : "attack",duration:p.id==24 && !a.monster ? 0.8 : 0.6);meleeEffect(p.id,actor:a) }
             return
         }
         if p.id==41,let a=actors[p.actor],!a.monster,!a.npc { applyFeature(a,UInt32(p.x) | UInt32(p.y)<<16) }
@@ -395,7 +399,11 @@ final class OnlineScene: SKScene {
             if selected==p.actor { stopAutomation();selected=nil;targetHealthReport?(nil);targetReport?("目标已击败") };if playerID==p.actor { stopAutomation();combatReport?("角色已死亡，请退出后重新登录") }
             return
         }
-        if [UInt16(14),15,18,19].contains(p.id),let a=actors[p.actor] { a.direction=Int(p.series & 7);animate(a,"attack",duration:0.6);meleeEffect(p.id,actor:a);return }
+        if [UInt16(14),15,16,18,19].contains(p.id),let a=actors[p.actor] {
+            a.direction=Int(p.series & 7)
+            let action = !a.monster && p.id==15 ? "heavyAttack" : !a.monster && p.id==16 ? "wideAttack" : "attack"
+            animate(a,action,duration:action=="wideAttack" ? 0.8 : 0.6);meleeEffect(p.id,actor:a);return
+        }
         if p.id==51 || p.id==634 { changeMap(p);return }
         if p.id==633 { clearWorldKeepingPlayer();return }
         if p.id==30 { shields.removeValue(forKey:p.actor)?.removeFromParent();actors.removeValue(forKey:p.actor)?.node.removeFromParent();if selected==p.actor { stopAutomation();selected=nil;targetReport?("");targetHealthReport?(nil) };return }
@@ -546,11 +554,11 @@ final class OnlineScene: SKScene {
             combatReport?("正在割肉；反复点击，直至服务器确认采集完成")
         }
     }
-    func pickupHere() {
-        guard net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,pending==nil,!attackPending,clock>=nextPickup,let id=playerID,let a=actors[id],!a.dead else { return }
+    private func pickupHere() {
+        guard pickupSweep,net.online,!net.npcOpen,!interactionSuspended,net.inventory.pending==nil,!net.tradeBusy,!net.dealOpen,pending==nil,!attackPending,clock>=nextPickup,let id=playerID,let a=actors[id],!a.dead else { return }
         guard drops.values.contains(where:{$0.cell==a.cell}) else { combatReport?("请先走到掉落物所在格子");return }
         let attempts=pickupAttempts[a.cell,default:0]
-        guard attempts<3 else { pickupSweep=false;autoPickup=false;combatReport?("连续拾取未获确认，已停止；请检查归属、背包和负重");return }
+        guard attempts<3 else { pickupSweep=false;combatReport?("连续拾取未获确认，已停止；请检查归属、背包和负重");return }
         pickupAttempts[a.cell]=attempts+1
         route=[];nextPickup=clock+0.8;net.pickup(x:a.cell.x+map.originX,y:a.cell.y+map.originY)
     }
@@ -685,6 +693,15 @@ final class OnlineScene: SKScene {
         if let id=playerID,let me=actors[id],let v=net.vitals {
             me.label.text="我 HP \(v.hp)/\(v.maxHP) MP \(v.mp)/\(v.maxMP)"
         }
+        // Equipment snapshots are authoritative, including after login and map changes.
+        if net.equipmentSynchronized,let id=playerID,let me=actors[id],!me.monster {
+            let sex=net.playerSex
+            let dress=(net.inventory.equipped[0]?.shape ?? 0)*2+sex
+            let weapon=(net.inventory.equipped[1]?.shape ?? 0)*2+sex
+            if me.appearanceKey != "human-\(dress)" || me.weaponVariant != weapon {
+                me.sex=sex;me.appearanceKey="human-\(dress)";me.weaponVariant=weapon;me.lastFile=""
+            }
+        }
         guard built else { return };clock=time
         if pending != nil || attackPending {
             let elapsed=time-(pending != nil ? requestedAt : attackRequested)
@@ -734,10 +751,10 @@ final class OnlineScene: SKScene {
                 }
                 if !attackPending { attackSelected() }
             }
-            if !attackPending,stickDirection==nil,route.isEmpty,!autoAttack,!attackHeld,(autoPickup || pickupSweep),time>=nextPickup {
-                if net.inventory.bag.count>=46 { pickupSweep=false;autoPickup=false;combatReport?("背包已满，自动拾取已停止") }
+            if !attackPending,stickDirection==nil,route.isEmpty,!autoAttack,!attackHeld,pickupSweep,let origin=pickupOrigin,time>=nextPickup {
+                if net.inventory.bag.count>=46 { pickupSweep=false;combatReport?("背包已满，拾取已停止") }
                 else if let drop=drops.filter({ pair in
-                    max(abs(pair.value.cell.x-a.cell.x),abs(pair.value.cell.y-a.cell.y))<=3
+                    max(abs(pair.value.cell.x-origin.x),abs(pair.value.cell.y-origin.y))<=3
                 }).min(by:{ max(abs($0.value.cell.x-a.cell.x),abs($0.value.cell.y-a.cell.y)) < max(abs($1.value.cell.x-a.cell.x),abs($1.value.cell.y-a.cell.y)) }) {
                     if drop.value.cell==a.cell { pickupHere();nextPickup=time+1.5 }
                     else { queuePath(to:drop.value.cell,running:false) }

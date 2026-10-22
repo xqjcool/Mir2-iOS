@@ -12,6 +12,7 @@ final class SceneStreamer {
     private var sizes: [String: Int] = [:]
     // One set of subtextures per shared atlas, released with the last owner.
     private var animationFrames: [String: [SKTexture]] = [:]
+    private var additiveObjects = Set<String>()
     private var animationTime: Double = 0
     private var wanted = Set<String>(), keep = Set<String>(), failed = Set<String>()
     private var loading = false
@@ -32,6 +33,7 @@ final class SceneStreamer {
         }
         for (i, o) in map.objects.enumerated() {
             guard let t = map.textures[o.texture] else { continue }
+            if o.blend == "add" { additiveObjects.insert("o\(i)") }
             let frames = o.frameCount ?? 1
             let height = t.height / frames
             let x = o.x*48 + (o.blend == nil ? 0 : (o.offsetX ?? 0))
@@ -85,7 +87,7 @@ final class SceneStreamer {
                 }
             }
             node.texture = animationFrames[item.file]?[item.frame(at: animationTime)]
-            node.blendMode = .add
+            node.blendMode = additiveObjects.contains(item.id) ? .add : .alpha
         }
         node.size = CGSize(width: item.rect.width, height: item.rect.height)
         node.anchorPoint = CGPoint(x: 0, y: 1)

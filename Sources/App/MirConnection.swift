@@ -15,6 +15,7 @@ final class MirConnection: ObservableObject {
     @Published var selectedName = ""
     @Published var npcText = ""
     @Published var inventory=MirEquipment.State()
+    private(set) var equipmentSynchronized=false
     @Published var skills:[MirEquipment.Skill]=[]
     @Published var equipmentMessage="点击背包中的装备穿戴"
     @Published var abilityText=""
@@ -332,7 +333,7 @@ final class MirConnection: ObservableObject {
         useTimeout?.cancel();useTimeout=nil;usePending=nil;vitals=nil;attackMode=nil
         guildName="";guildMessages=[];chatFeedback=""
         connection?.cancel();connection=nil;online=false;busy=false;password="";ticket="";awaitingAttack=false
-        equipmentTimeout?.cancel();equipmentTimeout=nil;inventory=MirEquipment.State();skills=[];abilityText="";goldBalance=0;actionLocked=false;playerActor=nil
+        equipmentTimeout?.cancel();equipmentTimeout=nil;inventory=MirEquipment.State();equipmentSynchronized=false;skills=[];abilityText="";goldBalance=0;actionLocked=false;playerActor=nil
         warrior=MirSkills.WarriorState();skillReady=[:];automaticSkills=[];mana=nil
         tradeTimeout?.cancel();tradeTimeout=nil;tradeBusy=false;tradeOperation="";tradeItem=nil
         dealOpen=false;dealConfirmed=false;dealOwn=[:];dealRemote=[:];dealPendingItem=nil;dealOwnGold=0;dealRemoteGold=0;dealPartner="";peerMessage="";inspectedItems=[:];inspectedName="";inspectedGuild=""
@@ -581,6 +582,7 @@ final class MirConnection: ObservableObject {
                 equipment[slot]=item
             }
             inventory.equipped=equipment
+            equipmentSynchronized=true
         case 615,616,619,620:
             let success=p.id==615 || p.id==619
             if inventory.finish(takingOff:p.id==619 || p.id==620,success:success) {

@@ -1,6 +1,6 @@
 """Validate the supported Bichon world assets without connecting to a server."""
 from pathlib import Path
-import json, struct
+import json, struct, re
 r=Path(__file__).resolve().parents[1]
 data=r/'GameData'; cfg=r/'ServerConfig/ClassicBichon'
 libs=json.loads((data/'actor-libraries.json').read_text())
@@ -34,7 +34,13 @@ png=(data/'classic-ui/bichon-minimap.png').read_bytes()
 assert png[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',png[16:24])==(1050,700)
 print('PASS: 12 NPC coordinates/appearances; 45 supported spawn groups; animal/scarecrow frames; original minimap dimensions.')
 
-scenes={code:json.loads((data/('scene.json' if code=='0' else f'maps/{code}/scene.json')).read_text(encoding='utf-8')) for code in ['0','0103','0105','0106','2','4','11','D001','D002','D003','D011','D012','DM001','DM002','DM011','E001','E002','E401','E402','E403','E404','1','D021','D022','D023','D024','3','D710','D711','D712','D713']}
+scenes={code:json.loads((data/('scene.json' if code=='0' else f'maps/{code}/scene.json')).read_text(encoding='utf-8')) for code in ['0','0103','0105','0106','2','4','11','D001','D002','D003','D011','D012','DM001','DM002','DM011','E001','E002','E401','E402','E403','E404','1','D021','D022','D023','D024','F007','3','D710','D711','D712','D713','D601','D607','D602','D603','D604','D605','D608','D609','D610','D611','D612','D613','D614','D615','D616','D617']}
+coverage=json.loads((r/'world-resource-coverage.json').read_text(encoding='utf-8'))
+installed={m['logicalMap'] for m in coverage['maps'] if m['clientInstalled']}
+swift=(r/'Sources/App/SceneData.swift').read_text(encoding='utf-8')
+registry=re.search(r'guard \[(.*?)\]\.contains\(mapID\)',swift).group(1)
+assert set(re.findall(r'"([^"\n]+)"',registry)) == set(scenes) == installed
+assert coverage['installed'] == len(installed)
 for code,scene in scenes.items():
     assert len(scene['walkable'])==scene['width']*scene['height']
     for ground in scene['ground']:assert (data/ground['file']).is_file()
@@ -50,8 +56,8 @@ for line in (cfg/'MapInfo.txt').read_bytes().decode('gb18030').splitlines():
     for code,xy in [(fields[0],fields[1]),(fields[3],fields[4])]:
         x,y=map(int,xy.split(','));scene=scenes[code]
         assert scene['walkable'][y*scene['width']+x],(code,x,y)
-assert count==186
-print('PASS: 31 map manifests and textures; 186 portal sources/destinations; indoor NPC collision coordinates.')
+assert count==228
+print('PASS: 48 map manifests and textures; 228 portal sources/destinations; indoor NPC collision coordinates.')
 
 for key in ('17-25','17-26','19-100'):
     for action,count in [('stand',4),('walk',6),('attack',6),('struck',2),('die',10)]:

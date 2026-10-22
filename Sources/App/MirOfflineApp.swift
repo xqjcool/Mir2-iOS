@@ -795,13 +795,12 @@ private struct SkillPanel:View {
     @AppStorage("hud.classic") private var classic=true
     @AppStorage("auto.hp") private var autoHP=true
     @AppStorage("auto.mp") private var autoMP=true
-    @State private var autoPickup=true
     var body:some View {
         NavigationStack {
             List {
                 Toggle("HP ≤35% 自动喝金创药",isOn:$autoHP)
                 Toggle("MP ≤25% 自动喝魔法药",isOn:$autoMP)
-                Toggle("自动拾取附近物品和金币",isOn:$autoPickup).onChange(of:autoPickup) { scene?.autoPickup=$0 }
+                Text("点击主界面的拾取按钮，才会拾取周围物品和金币；移动可取消。")
                 if net.skills.isEmpty { Text("当前角色尚未学习技能；学习后会显示服务器下发的技能。") }
                 ForEach(net.skills) { skill in
                     HStack {
@@ -817,7 +816,7 @@ private struct SkillPanel:View {
                     }.buttonStyle(.bordered)
                 }
                 Text("技能由服务端判断等级、蓝量、冷却和材料。火墙等范围技能先点技能，再点地图；自动释放时以当前怪物所在格为目标。刺杀／半月点击切换，烈火点击蓄力；长按快捷技能可替换绑定。经典模式不启用自动技能。")
-            }.onAppear { autoPickup=scene?.autoPickup ?? true }.navigationTitle("技能与拾取").navigationBarTitleDisplayMode(.inline)
+            }.navigationTitle("技能与拾取").navigationBarTitleDisplayMode(.inline)
             .toolbar { Button("关闭") { dismiss() }.frame(minHeight:44) }
         }
     }

@@ -90,6 +90,6 @@ assert hashlib.sha256(tree_drop).hexdigest() == outdoor['dropSHA256'][tree_name]
 assert not any(item.get('monster') == tree_name for item in outdoor['blocked'])
 
 coverage = json.loads((root / 'world-resource-coverage.json').read_text(encoding='utf-8'))
-assert coverage['installed'] == 31
+assert coverage['installed'] == sum(bool(m['clientInstalled']) for m in coverage['maps'])
 assert any(item.get('logicalMap') == code and item.get('clientInstalled') for item in coverage['maps'])
 print('PASS: original D713 map, 2-way portals, 63 supported spawn groups, 12 actors/drops, and restored tree actions/drop.')

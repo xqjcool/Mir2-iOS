@@ -1,6 +1,6 @@
 {
   "source": "mirbeta/MirServer",
-  "installed": 31,
+  "installed": 48,
   "total": 322,
   "maps": [
     {
@@ -1692,7 +1692,7 @@
     {
       "map": "D601",
       "name": "地牢一层东",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 250,
       "height": 250,
@@ -1702,7 +1702,7 @@
     {
       "map": "D602",
       "name": "地牢一层西",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 250,
       "height": 250,
@@ -1712,7 +1712,7 @@
     {
       "map": "D603",
       "name": "地牢一层北",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 250,
       "height": 250,
@@ -1722,7 +1722,7 @@
     {
       "map": "D604",
       "name": "地牢一层西",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 200,
       "height": 200,
@@ -1732,7 +1732,7 @@
     {
       "map": "D605",
       "name": "地牢一层北",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 200,
       "height": 200,
@@ -1742,7 +1742,7 @@
     {
       "map": "D612",
       "name": "黑暗地带",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 300,
       "height": 300,
@@ -1752,7 +1752,7 @@
     {
       "map": "D613",
       "name": "生死之间",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
       "height": 100,
@@ -1762,7 +1762,7 @@
     {
       "map": "D614",
       "name": "传奇部落",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
       "height": 100,
@@ -1772,7 +1772,7 @@
     {
       "map": "D615",
       "name": "邪恶势力",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
       "height": 100,
@@ -1782,7 +1782,7 @@
     {
       "map": "D616",
       "name": "幽明圣域",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
       "height": 100,
@@ -1792,7 +1792,7 @@
     {
       "map": "D617",
       "name": "恐怖空间",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 100,
       "height": 100,
@@ -1822,7 +1822,7 @@
     {
       "map": "D607",
       "name": "铁灯笼屋",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 50,
       "height": 50,
@@ -1832,7 +1832,7 @@
     {
       "map": "D608",
       "name": "紫水晶屋",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 50,
       "height": 50,
@@ -1842,7 +1842,7 @@
     {
       "map": "D609",
       "name": "石路小溪",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "logicalMap": "D609",
       "sourceMap": "D609"
@@ -1850,7 +1850,7 @@
     {
       "map": "D610",
       "name": "石棺材屋",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "logicalMap": "D610",
       "sourceMap": "D610"
@@ -1858,7 +1858,7 @@
     {
       "map": "D611",
       "name": "阴森石路",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "logicalMap": "D611",
       "sourceMap": "D611"
@@ -2988,7 +2988,7 @@
     {
       "map": "F007",
       "name": "沃玛圣地",
-      "clientInstalled": false,
+      "clientInstalled": true,
       "sourceAvailable": true,
       "width": 200,
       "height": 200,

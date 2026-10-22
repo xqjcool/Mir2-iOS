@@ -1,0 +1,391 @@
+{
+  "maps": {
+    "D601": {
+      "name": "地牢一层东",
+      "sourceMap": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mir\\Map\\D601.map",
+      "sourceSHA256": "f9705528c429550ea71b68a5e02cb63024dceb0d4b4f0d738032b5f3cbabb268",
+      "dimensions": [
+        250,
+        250
+      ],
+      "exportMissing": 0,
+      "groundChunks": 256,
+      "spawnGroups": 8,
+      "configuredCount": 132
+    },
+    "D602": {
+      "name": "地牢一层西",
+      "sourceMap": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mir\\Map\\D602.map",
+      "sourceSHA256": "7501ae3b56ffba3ff507c20483121135265f182cee70c6e0569774e576f8b0e3",
+      "dimensions": [
+        250,
+        250
+      ],
+      "exportMissing": 0,
+      "groundChunks": 256,
+      "spawnGroups": 10,
+      "configuredCount": 165
+    },
+    "D607": {
+      "name": "铁灯笼屋",
+      "sourceMap": "C:\\Users\\xqjco\\AppData\\Roaming\\CindyGlobal\\owners\\47bc27652391fef96ed9\\dialogues\\2026-10-05\\02c3d2ab-35aa-4318-9e64-7f767a7bfd4d\\Shanda Mir 2\\Legend of mir\\Map\\D607.map",
+      "sourceSHA256": "d046133aee64915df6ce9ecd18626c260e325100b500f4ae5e1aa2440b94c43e",
+      "dimensions": [
+        50,
+        50
+      ],
+      "exportMissing": 0,
+      "groundChunks": 16,
+      "spawnGroups": 0,
+      "configuredCount": 0
+    }
+  },
+  "source": "mirbeta/MirServer upstream-envir; original Shanda maps",
+  "sourceMonGenSHA256": "e5c39fb7eda66b70f82a61a5c2cea25df9cf0b6892b916fb6d579f88ff43748f",
+  "sourceMapInfoSHA256": "86a6a68ca3604171ab92a706a102f4083fce94bcd1449bc3a211bc5e983c0c06",
+  "portals": [
+    [
+      "3",
+      "139,85",
+      "->",
+      "D601",
+      "207,236"
+    ],
+    [
+      "D601",
+      "208,238",
+      "->",
+      "3",
+      "140,87"
+    ],
+    [
+      "D601",
+      "52,14",
+      "->",
+      "D607",
+      "17,27"
+    ],
+    [
+      "D607",
+      "16,29",
+      "->",
+      "D601",
+      "52,15"
+    ],
+    [
+      "D602",
+      "110,86",
+      "->",
+      "D607",
+      "31,9"
+    ],
+    [
+      "D607",
+      "31,8",
+      "->",
+      "D602",
+      "110,87"
+    ]
+  ],
+  "headers": [
+    "[D601\t地牢一层东] DAY",
+    "[D602\t地牢一层西] DAY",
+    "[D607\t铁灯笼屋] DAY"
+  ],
+  "spawnRows": [
+    [
+      "D601",
+      "125",
+      "125",
+      "蜈蚣",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D601",
+      "125",
+      "125",
+      "跳跳蜂",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D601",
+      "125",
+      "125",
+      "巨型蠕虫",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D601",
+      "125",
+      "125",
+      "黑色恶蛆",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D601",
+      "125",
+      "125",
+      "蜈蚣0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D601",
+      "125",
+      "125",
+      "跳跳蜂0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D601",
+      "125",
+      "125",
+      "巨型蠕虫0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D601",
+      "125",
+      "125",
+      "黑色恶蛆0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "蜈蚣",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "跳跳蜂",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "巨型蠕虫",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "黑色恶蛆",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "钳虫",
+      "125",
+      "30",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "蜈蚣0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "跳跳蜂0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "巨型蠕虫0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "黑色恶蛆0",
+      "125",
+      "3",
+      "8"
+    ],
+    [
+      "D602",
+      "125",
+      "125",
+      "钳虫0",
+      "125",
+      "3",
+      "8"
+    ]
+  ],
+  "spawnGroups": 18,
+  "configuredCount": 297,
+  "drops": {
+    "蜈蚣": {
+      "appearance": "19-73",
+      "sha256": "17727093b4b91d1dd33dfb18885902266a6af71246b1979faa187e6807a40473"
+    },
+    "跳跳蜂": {
+      "appearance": "19-81",
+      "sha256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    "巨型蠕虫": {
+      "appearance": "19-82",
+      "sha256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    "黑色恶蛆": {
+      "appearance": "19-74",
+      "sha256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    "蜈蚣0": {
+      "appearance": "19-73",
+      "sha256": "7cf320e6fdd5bfa270a41c38978a83f1f2e1a41d9bb96085aa2f3a192c75d051"
+    },
+    "跳跳蜂0": {
+      "appearance": "19-81",
+      "sha256": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678"
+    },
+    "巨型蠕虫0": {
+      "appearance": "19-82",
+      "sha256": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678"
+    },
+    "黑色恶蛆0": {
+      "appearance": "19-74",
+      "sha256": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678"
+    },
+    "钳虫": {
+      "appearance": "19-120",
+      "sha256": "a0fe0828cb11ec3d79560420f0c89c6cf94d89b759121762377bf4890ecae206"
+    },
+    "钳虫0": {
+      "appearance": "19-120",
+      "sha256": "7bb069a08bfdbe52e1d3d0530fc88df93cedd778846b23e136372706daf11b04"
+    }
+  },
+  "skipped": [
+    {
+      "row": [
+        "D601",
+        "13",
+        "196",
+        "弓箭护卫",
+        "0",
+        "1",
+        "10"
+      ],
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_table"
+      ]
+    },
+    {
+      "row": [
+        "D601",
+        "7",
+        "201",
+        "弓箭护卫",
+        "0",
+        "1",
+        "10"
+      ],
+      "issues": [
+        "missing_monster_definition",
+        "missing_drop_table"
+      ]
+    },
+    {
+      "row": [
+        "D601",
+        "158",
+        "58",
+        "蜈蚣",
+        "10",
+        "10",
+        "8"
+      ],
+      "issues": [
+        "spawn_region_unreachable_from_open_portals"
+      ]
+    },
+    {
+      "row": [
+        "D601",
+        "158",
+        "58",
+        "跳跳蜂",
+        "10",
+        "10",
+        "8"
+      ],
+      "issues": [
+        "spawn_region_unreachable_from_open_portals"
+      ]
+    },
+    {
+      "row": [
+        "D601",
+        "158",
+        "58",
+        "巨型蠕虫",
+        "10",
+        "10",
+        "8"
+      ],
+      "issues": [
+        "spawn_region_unreachable_from_open_portals"
+      ]
+    },
+    {
+      "row": [
+        "D601",
+        "158",
+        "58",
+        "黑色恶蛆",
+        "10",
+        "10",
+        "8"
+      ],
+      "issues": [
+        "spawn_region_unreachable_from_open_portals"
+      ]
+    }
+  ]
+}

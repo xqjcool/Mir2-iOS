@@ -1,0 +1,9 @@
+{
+  "map": "D608",
+  "spawn": {
+    "x": 31,
+    "y": 31
+  },
+  "groundChunks": 16,
+  "missing": []
+}

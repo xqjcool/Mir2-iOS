@@ -31,7 +31,7 @@ struct SceneData: Decodable {
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("GameData") else {
             throw LoadError.invalid("找不到随应用打包的地图资源")
         }
-        guard ["0", "0103", "0105", "0106", "2", "4", "11", "D001", "D002", "D003", "D011", "D012", "DM001", "DM002", "DM011", "E001", "E002", "E401", "E402", "E403", "E404", "1", "D021", "D022", "D023", "D024", "3", "D710", "D711", "D712"].contains(mapID) else { throw LoadError.invalid("尚未安装地图资源：\(mapID)") }
+        guard ["0", "0103", "0105", "0106", "2", "4", "11", "D001", "D002", "D003", "D011", "D012", "DM001", "DM002", "DM011", "E001", "E002", "E401", "E402", "E403", "E404", "1", "D021", "D022", "D023", "D024", "F007", "3", "D710", "D711", "D712", "D713", "D601", "D607", "D602", "D603", "D604", "D605", "D608", "D609", "D610", "D611", "D612", "D613", "D614", "D615", "D616", "D617"].contains(mapID) else { throw LoadError.invalid("尚未安装地图资源：\(mapID)") }
         let sceneFile = mapID == "0" ? "scene.json" : "maps/\(mapID)/scene.json"
         let data = try JSONDecoder().decode(SceneData.self, from: Data(contentsOf: root.appendingPathComponent(sceneFile)))
         guard data.version == 1, (1...1024).contains(data.width), (1...1024).contains(data.height),
@@ -55,15 +55,18 @@ struct SceneData: Decodable {
             guard let texture = data.textures[object.texture], texture.width > 0, texture.height > 0 else {
                 throw LoadError.invalid("物体纹理尺寸无效")
             }
-            if let blend = object.blend {
-                guard blend == "add", let frames = object.frameCount, (2...64).contains(frames),
+            if let frames = object.frameCount {
+                guard (2...64).contains(frames),
                       texture.height % frames == 0,
-                      let duration = object.frameDuration, duration.isFinite, duration >= 0.05,
+                      let duration = object.frameDuration, duration.isFinite, duration >= 0.05 else {
+                    throw LoadError.invalid("场景动画数据无效")
+                }
+            }
+            if let blend = object.blend {
+                guard blend == "add", object.frameCount != nil,
                       object.offsetX != nil, object.offsetY != nil else {
                     throw LoadError.invalid("光效动画数据无效")
                 }
-            } else if object.frameCount != nil {
-                throw LoadError.invalid("动画缺少混合方式")
             }
         }
         guard !data.autoRoute.isEmpty else { throw LoadError.invalid("自动行走路线为空") }
