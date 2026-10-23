@@ -391,6 +391,18 @@ final class OnlineScene: SKScene {
             if !a.dead { animate(a,"struck",duration:0.25) }
             if p.actor != playerID { a.label.text = "\(a.displayName) HP \(p.x)/\(p.y)" }
             if selected==p.actor { targetReport?("\(a.displayName)  HP \(p.x)/\(p.y)");targetHealthReport?(p.y>0 ? min(1,Double(p.x)/Double(p.y)) : nil) }
+            let hasAttackTarget = selected.flatMap { targetID -> Int32? in
+                guard let target=actors[targetID], target.monster, !target.dead else { return nil }
+                return targetID
+            } != nil
+            if p.actor==playerID, !a.dead, !hasAttackTarget, !autoAttack, !attackHeld, p.body.count>=12 {
+                let attackerID=MirEquipment.integer(p.body,8)
+                if let attacker=actors[attackerID],attacker.monster,!attacker.dead {
+                    selected=attackerID;autoAttack=true;queuedAttack=true;targetHealthReport?(nil)
+                    targetReport?(attacker.displayName)
+                    combatReport?("受到怪物攻击，自动还击：\(attacker.displayName)")
+                }
+            }
             let number=SKLabelNode(text:"-\(p.series)");number.fontColor = .red;number.fontSize=18;number.position.y=55;a.node.addChild(number)
             number.run(.sequence([.moveBy(x:0,y:24,duration:0.6),.removeFromParent()]));return
         }

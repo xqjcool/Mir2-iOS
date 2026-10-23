@@ -166,7 +166,7 @@ enum MirEquipment {
     struct Item: Identifiable, Equatable {
         let id:Int32
         let nameBytes:[UInt8]
-        let mode,shape,looks,durability,maxDurability,ac,mac,dc,mc,sc,need,needLevel:Int
+        let mode,shape,looks,durability,maxDurability,ac,mac,dc,mc,sc,need,needLevel,luck:Int
         var slots:[Int] {
             switch mode {
             case 10,11:return [0]
@@ -189,7 +189,7 @@ enum MirEquipment {
     static func integer(_ b:[UInt8],_ i:Int)->Int32 { Int32(bitPattern:UInt32(word(b,i)) | UInt32(word(b,i+2)) << 16) }
     static func item(_ b:[UInt8])->Item? {
         guard b.count==124,b[0]>0,b[0]<=14 else { return nil }
-        return Item(id:integer(b,100),nameBytes:Array(b[1...Int(b[0])]),mode:Int(b[15]),shape:Int(b[16]),looks:word(b,22),durability:word(b,104),maxDurability:word(b,106),ac:word(b,26),mac:word(b,28),dc:word(b,30),mc:word(b,32),sc:word(b,34),need:Int(b[36]),needLevel:Int(b[37]))
+        return Item(id:integer(b,100),nameBytes:Array(b[1...Int(b[0])]),mode:Int(b[15]),shape:Int(b[16]),looks:word(b,22),durability:word(b,104),maxDurability:word(b,106),ac:word(b,26),mac:word(b,28),dc:word(b,30),mc:word(b,32),sc:word(b,34),need:Int(b[36]),needLevel:Int(b[37]),luck:Int(b[111]))
     }
     static func range(_ value:Int)->String { "\(value & 255)–\(value >> 8)" }
     struct Skill:Identifiable,Equatable {

@@ -598,7 +598,7 @@ private struct EquipmentPanel:View {
             } else {
                 ForEach(0..<MirEquipment.slotNames.count,id:\.self) { slot in
                     Button { selectedSlot=slot;selected=nil } label: {
-                        HStack { Text(MirEquipment.slotNames[slot]);Spacer();if let value=net.inventory.equipped[slot] { icon(value);VStack(alignment:.leading,spacing:3) { Text(net.itemName(value));Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc))\n防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))").font(.caption2).fixedSize(horizontal:false,vertical:true) } } else { Text("空") } }.frame(minHeight:44)
+                        HStack { Text(MirEquipment.slotNames[slot]);Spacer();if let value=net.inventory.equipped[slot] { icon(value);VStack(alignment:.leading,spacing:3) { Text(net.itemName(value));Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc))\n防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))\(slot == 1 ? "\n幸运 +\(value.luck)" : "")").font(.caption2).fixedSize(horizontal:false,vertical:true) } } else { Text("空") } }.frame(minHeight:44)
                     }
                 }
             }
@@ -641,7 +641,7 @@ private struct EquipmentPanel:View {
                     if !characterOnly { Text(net.abilityText).font(.caption) }
                     if let value=item {
                         Text("\(net.itemName(value)) · 耐久 \(value.durability)/\(value.maxDurability)")
-                        Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc)) · 防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))").font(.caption)
+                        Text("攻击 \(MirEquipment.range(value.dc)) · 魔法 \(MirEquipment.range(value.mc)) · 道术 \(MirEquipment.range(value.sc)) · 防御 \(MirEquipment.range(value.ac)) · 魔防 \(MirEquipment.range(value.mac))\(value.slots.contains(1) ? " · 幸运 +\(value.luck)" : "")").font(.caption)
                     }
                     Text(net.tradeMessage.isEmpty ? net.equipmentMessage : net.tradeMessage).font(.caption)
                 }.padding().disabled(locked)
